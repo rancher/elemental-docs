@@ -22,7 +22,8 @@ The <Vars name="elemental_toolkit_name" link="elemental_toolkit_url" /> is at th
 ### Elemental installation configuration
 In order to provision a machine with an Elemental OS image, installation configuration parameters are required: things such as the boot device, the root password, system configuration, users and custom files are things that should be provided aside from the Elemental OS image. All the data can be provided in a single .yaml file. More details can be found in the <Vars name="elemental_toolkit_name" link="elemental_toolkit_url" /> documentation.
 
-### <Vars name="elemental_cli_name" />
+### Elemental CLI
+
 <Vars name="elemental_cli_name" /> is the tool that allows to turn the Elemental OS image in a bootable and installed OS: it can generate an <Vars name="elemental_iso_name" /> image from the provided Elemental OS container image. The generated <Vars name="elemental_iso_name" /> image can be used to boot a virtual machine or a bare metal host and start the Elemental OS installation.
 
 The <Vars name="elemental_cli_name" /> allows also to install the Elemental OS on the storage device of the live booted host, applying the provided Elemental installation configuration. For the list and syntax of the commands available in the <Vars name="elemental_cli_name" />, check the <Vars link="elemental_cli_url">online documentation</Vars>.
@@ -33,12 +34,12 @@ It includes all the tools needed to perform a full node provisioning, from the O
 
 ----
 
-## <Vars name="elemental_operator_name" />
+## Elemental Operator
 The <Vars name="elemental_operator_name" /> is responsible for managing OS upgrades and a secure device inventory to assist
 with zero touch provisioning.
 It provides an <Vars name="elemental_operator_name" /> Helm Chart and an <Vars name="elemental_register_name" />.
 
-### <Vars name="elemental_operator_name" /> Helm Chart
+### Elemental Operator Helm Chart
 The <Vars name="elemental_operator_name" /> Helm Chart must be installed on a Rancher Cluster. It enables new hosts to:
 
 - register against the <Vars name="elemental_operator_name" />.
@@ -87,8 +88,7 @@ MachineInventorySelectors have three conditions:
 #### MachineInventorySelectorTemplate
 The MachineInventorySelectorTemplate is a user defined resource that will be used as the blueprint to create the required MachineInventorySelectors: it includes the selector to identify the eligible MachineInventories.
 
-
-### <Vars name="elemental_register_name" />
+### Elemental Register client
 New hosts start the Elemental provisioning process through the <Vars name="elemental_register_name" />: this tool requires a valid elemental-operator registration URL as input (see the [MachineRegistration section](#machineregistration)), and performs the following steps:
 
 - setups a websocket connection to the registration URL

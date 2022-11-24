@@ -151,7 +151,7 @@ This will download the proper yaml from the registration URL and store it on the
 First we need to obtain the `RegistrationURL` that was generated for our `MachineRegistration`
 
 ```bash showLineNumbers
-$ kubectl get machineregistration -n fleet-default my-test-registration -o jsonpath="{.status.registrationURL}"
+$ kubectl get machineregistration -n fleet-default my-nodes -o jsonpath="{.status.registrationURL}"
 https://172.18.0.2.sslip.io/elemental/registration/gsh4n8nj9gvbsjk4x7hxvnr5l6hmhbdbdffrmkwzrss2dtfbnpbmqp
 ```
 

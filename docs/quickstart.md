@@ -43,6 +43,7 @@ The Elemental Stack consists of some packages on top of SLE Micro for Rancher
  - A machine (bare metal or virtualized) with TPM 2.0
      - Hint 1: Libvirt allows setting virtual TPMs for virtual machines [example here](https://rancher.github.io/elemental/tpm/#add-tpm-module-to-virtual-machine)
      - Hint 2: You can enable TPM emulation on bare metal machines missing the TPM 2.0 module [example here](https://rancher.github.io/elemental/tpm/#add-tpm-emulation-to-bare-metal-machine)
+     - Hint 3: Make sure you're using UEFI (not BIOS), or the ISO won't boot
  - Helm Package Manager (https://helm.sh/)
  - Docker (for iso manipulation)
 

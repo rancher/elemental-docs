@@ -55,7 +55,7 @@ cluster and taking care of creating inventories, registrations for machines and 
 We will use the Helm package manager to install the elemental-operator chart into our cluster
 
 ```shell showLineNumbers
-helm upgrade --create-namespace -n cattle-elemental-system --install elemental-operator oci://registry.opensuse.org/isv/rancher/elemental/stable/charts/elemental/elemental-operator
+helm upgrade --create-namespace -n cattle-elemental-system --install elemental-operator oci://registry.opensuse.org/isv/rancher/elemental/stable/charts/rancher/elemental-operator-chart
 ```
 
 There is a few options that can be set in the chart install but that is out of scope for this document. You can see all the values on the chart [values.yaml](https://github.com/rancher/elemental-operator/blob/main/chart/values.yaml)

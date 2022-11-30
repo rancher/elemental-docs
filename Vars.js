@@ -14,6 +14,7 @@ export const data = {
   elemental_register_name: "Elemental Register client",
   ranchersystemagent_name: "Rancher System Agent",
   ranchersystemagent_url: "https://github.com/rancher/system-agent",
+  elemental_operator_chart_url: "oci://registry.opensuse.org/isv/rancher/elemental/stable/charts/rancher/elemental-operator-chart",
 }
 
 /***

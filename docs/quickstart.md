@@ -229,18 +229,6 @@ The script uses the iso for the arch based on the system is being run from. If y
 you can set the `ARCH` environment variable to the desired target system (x86_64, aarch64) and the iso will be built for that architecture.
 :::
 
-```shell showLineNumbers
-wget -q https://raw.githubusercontent.com/rancher/elemental/main/elemental-iso-build && chmod +x elemental-iso-build
-```
-
-Now that we have the script we can proceed to build the ISO with our configuration injected:
-
-```shell showLineNumbers
-./elemental-iso-build initial-registration.yaml
-```
-
-This will generate an ISO on the current directory with the name `elemental-<timestamp>.iso`
-
 </TabItem>
 </Tabs>
 

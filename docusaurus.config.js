@@ -26,6 +26,91 @@ const config = {
     locales: ['en'],
   },
 
+  plugins: [
+    ["@docusaurus/plugin-client-redirects",
+      {
+        redirects: [
+          // /docs/oldDoc -> /docs/newDoc
+          {
+            to: '/installation',
+            from: '/elemental/installation',
+          },
+          {
+            to: '/',
+            from: '/elemental',
+          },
+          {
+            to: '/architecture',
+            from: '/elemental/architecture',
+          },
+          {
+            to: '/backup',
+            from: '/elemental/backup',
+          },
+          {
+            to: '/cloud-config-reference',
+            from: '/elemental/cloud-config-reference',
+          },
+          {
+            to: '/cluster-reference',
+            from: '/elemental/cluster-reference',
+          },
+          {
+            to: '/customizing',
+            from: '/elemental/customizing',
+          },
+          {
+            to: '/elemental-plans',
+            from: '/elemental/elemental-plans',
+          },
+          {
+            to: '/elementaloperatorchart-reference',
+            from: '/elemental/elementaloperatorchart-reference',
+          },
+          {
+            to: '/inventory-management',
+            from: '/elemental/inventory-management',
+          },
+          {
+            to: '/kubernetesversions',
+            from: '/elemental/kubernetesversions',
+          },
+          {
+            to: '/machineinventoryselectortemplate-reference',
+            from: '/elemental/machineinventoryselectortemplate-reference',
+          },
+          {
+            to: '/machineregistration-reference',
+            from: '/elemental/machineregistration-reference',
+          },
+          {
+            to: '/quickstart',
+            from: '/elemental/quickstart',
+          },
+          {
+            to: '/restore',
+            from: '/elemental/restore',
+          },
+          {
+            to: '/smbios',
+            from: '/elemental/smbios',
+          },
+          {
+            to: '/tpm',
+            from: '/elemental/tpm',
+          },
+          {
+            to: '/troubleshooting-restore',
+            from: '/elemental/troubleshooting-restore',
+          },
+          {
+            to: '/upgrade',
+            from: '/elemental/upgrade',
+          },
+        ],
+      },
+    ],
+  ],
   presets: [
     [
       'classic',

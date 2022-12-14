@@ -84,7 +84,7 @@ You will need to create the following files.
 
 <CodeBlock language="yaml" title="selector.yaml" showLineNumbers>{Selector}</CodeBlock>
 
-As you can see this is a very simple selector that checks the key `node-location` for the value `europe`
+As you can see this is a very simple selector that checks the key `location` for the value `europe`
 
 <CodeBlock language="yaml" title="cluster.yaml" showLineNumbers>{Cluster}</CodeBlock>
 

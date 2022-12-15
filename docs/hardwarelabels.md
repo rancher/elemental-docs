@@ -3,9 +3,9 @@ sidebar_label: Hardware Labels
 title: ''
 ---
 
-
-By default, the registration of the node will result in the inventory of that node containing some default labels that store data
-relative to the node hardware for easy identification and selection via a [MachineSelector](machineinventoryselectortemplate-reference.md)
+## Hardware Labels
+By default, the registration of the node will result in the [inventory](inventory-management.md#machineinventory) of that node containing some default labels that store data
+relative to the node hardware for easy identification and selection via a [MachineSelector](machineinventoryselectortemplate-reference.md).
 
 
 The following labels are set up automatically:

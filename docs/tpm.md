@@ -34,6 +34,12 @@ On the last screen verify once again if TPM module was added properly
 
 During applying `#!yaml MachineRegistration` add following key to the yaml `config:elemental:registration:emulate-tpm: true`
 
+:::info
+If you plan to deploy more than 1 machine with TPM emulation, make sure to set `config:elemental:registration:emulated-tpm-seed: -1`
+so the seed used for the TPM emulation is randomized per machine. Otherwise, you will get the same TPM Hash for all deployed machines and only the last
+one to be registered will be valid.
+:::
+
 ```yaml title="registration-tpm.yaml" showLineNumbers
 --8<-- "examples/quickstart/registration-tpm.yaml"
 ```

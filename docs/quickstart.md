@@ -38,7 +38,7 @@ The Elemental Stack consists of some packages on top of SLE Micro for Rancher
 
 ## Prerequisites
 
- - A Rancher server (2.6.9) configured (server-url set)
+ - A Rancher server (2.7.0) configured (server-url set)
      - To configure the Rancher server-url please check the [Rancher docs](https://rancher.com/docs/rancher/v2.6/en/admin-settings/#first-log-in)
  - A machine (bare metal or virtualized) with TPM 2.0
      - Hint 1: Libvirt allows setting virtual TPMs for virtual machines [example here](https://rancher.github.io/elemental/tpm/#add-tpm-module-to-virtual-machine)
@@ -234,11 +234,17 @@ you can set the `ARCH` environment variable to the desired target system (x86_64
 
 You can now boot your nodes with this ISO, and they will:
 
-- Boot from the ISO
 - Register with the registrationURL given and create a per-machine `MachineInventory`
 - Install Elemental Teal to the given device
-- Restart
-- Auto-deploy the cluster via k3s
+- Reboot
+
+In order for the `MachineInventorySelectorTemplate` to select the nodes, a location label to the `MachineInventory` is now needed:
+
+```shell showLineNumbers
+kubectl -n fleet-default label machineinventory $(kubectl get machineinventory -n fleet-default --no-headers -o custom-columns=":metadata.name") location=europe
+```
+
+After the label has been applied the machines will auto-deploy the cluster via the chosen provider (k3s/rke).
 
 After a few minutes your new cluster will be fully provisioned!!
 

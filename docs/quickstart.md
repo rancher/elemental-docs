@@ -238,7 +238,7 @@ You can now boot your nodes with this ISO, and they will:
 - Install Elemental Teal to the given device
 - Reboot
 
-In order for the `MachineInventorySelectorTemplate` to select the nodes we now need to add a location label to the `MachineInventory`:
+In order for the `MachineInventorySelectorTemplate` to select the nodes, a location label to the `MachineInventory` is now needed:
 
 ```shell showLineNumbers
 kubectl -n fleet-default label machineinventory $(kubectl get machineinventory -n fleet-default --no-headers -o custom-columns=":metadata.name") location=europe

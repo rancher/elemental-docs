@@ -16,5 +16,3 @@ spec:
         debug: true
       registration:
         emulate-tpm: true
-  machineInventoryLabels:
-    location: "europe"

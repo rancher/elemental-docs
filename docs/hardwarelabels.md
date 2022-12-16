@@ -4,8 +4,9 @@ title: ''
 ---
 
 ## Hardware Labels
-By default, the registration of the node will result in the [inventory](inventory-management.md#machineinventory) of that node containing some default labels that store data
-relative to the node hardware for easy identification and selection via a [MachineSelector](machineinventoryselectortemplate-reference.md).
+When a node is registered, the data is stored in the [inventory](inventory-management.md#machineinventory) with default labels and values relative to the node hardware.
+
+This data is used for easy identification and selection via a [MachineSelector](machineinventoryselectortemplate-reference.md).
 
 
 The following labels are set up automatically:

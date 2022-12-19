@@ -43,6 +43,7 @@ const sidebars = {
         'elementaloperatorchart-reference',
         'kubernetesversions',
         'smbios',
+        'hardwarelabels',
       ]
     },
     {

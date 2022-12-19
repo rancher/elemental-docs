@@ -15,7 +15,6 @@ spec:
         device: /dev/sda
         debug: true
   machineInventoryLabels:
-    location: "europe"
     manufacturer: "${System Information/Manufacturer}"
     productName: "${System Information/Product Name}"
     serialNumber: "${System Information/Serial Number}"

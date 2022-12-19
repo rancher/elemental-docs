@@ -42,13 +42,22 @@ Contains the configuration used for the connection and the initial registration 
 
 Supports the following values:
 
-| Key               | Type   | Default value | Description                                                                                                                        |
-|-------------------|--------|---------------|------------------------------------------------------------------------------------------------------------------------------------|
+| Key               | Type   | Default value | Description                                                                                                                                    |
+|-------------------|--------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------|
 | url               | string | empty         | URL to connect to the <Vars name="elemental_operator_name" />                                                                                  |
-| ca-cert           | string | empty         | CA to validate the certificate provided by the server at 'url' (required if the certificate is not signed by a public CA)          |
-| emulate-tpm       | bool   | false         | this will use software emulation of the TPM (required for hosts without TPM hardware)                                              |
-| emulated-tpm-seed | int64  | 1             | fixed seed to use with 'emulate-tpm': use for debug purposes only                                                                  |
-| no-smbios         | bool   | false         | whether SMBIOS data should be sent to the <Vars name="elemental_operator_name" /> (see the [SMBIOS reference](smbios.md) for more information) |
+| ca-cert           | string | empty         | CA to validate the certificate provided by the server at 'url' (required if the certificate is not signed by a public CA)                      |
+| no-smbios         | bool   | false         | Whether SMBIOS data should be sent to the <Vars name="elemental_operator_name" /> (see the [SMBIOS reference](smbios.md) for more information) |
+
+:::warning
+The following values are for development purposes only.
+
+| Key               | Type   | Default value | Description                                                                                                  |
+|-------------------|--------|---------------|--------------------------------------------------------------------------------------------------------------|
+| emulate-tpm       | bool   | false         | This will use software emulation of the TPM (required for hosts without TPM hardware)                        |
+| emulated-tpm-seed | int64  | 1             | Fixed seed to use with 'emulate-tpm'. Set to -1 to get a random seed. See [TPM](tpm.md) for more information |
+
+:::
+
 
 #### config.elemental.install
 

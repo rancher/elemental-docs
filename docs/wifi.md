@@ -75,4 +75,4 @@ spec:
 
 
 This would get the `/etc/NetworkManager/system-connections/wifi1.connection` file deployed on the node during installation with the connection content and NetworkManager would 
-read and enable the connection on boot
+read and enable the connection on boot.

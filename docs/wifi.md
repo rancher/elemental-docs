@@ -18,7 +18,7 @@ In order to add Wi-Fi to your node, your registration should include a configura
 A `.connection` file is a connection configuration file for NetworkManager.
 The connection files are stored under `/etc/NetworkManager/system-connections/` and can include ethernet, Wi-Fi, VPN and more.
 
-For example for a network with the SSID `testSSID` and the WEP key `1234567891` and using the interface `wlan0` you would write the following `.connection` file:
+For example for a network with the SSID `testSSID` and the WPA-PSK key `123456789` and using the interface `wlan0` you would write the following `.connection` file:
 
 ```
 [connection]
@@ -34,9 +34,8 @@ mode=infrastructure
 ssid=testSSID
 
 [wifi-security]
-key-mgmt=none
-wep-key-type=1
-wep-key0=1234567891
+key-mgmt=wpa-psk
+psk=123456789
 
 [ipv4]
 dns-search=

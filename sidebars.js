@@ -66,11 +66,20 @@ const sidebars = {
       ]
     },
     {
-      "type": "category",
-      "collapsible": true,
-      "collapsed": false,
-      "label": "Troubleshooting",
-      "items": [
+      type: 'category',
+      collapsible: true,
+      collapsed: false,
+      label: 'How to',
+      items: [
+        'wifi',
+      ]
+    },
+    {
+      type: 'category',
+      collapsible: true,
+      collapsed: false,
+      label: 'Troubleshooting',
+      items: [
         {
           "type": "category",
           "collapsible": true,

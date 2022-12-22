@@ -1,19 +1,4 @@
-/**
- * Creating a sidebar enables you to:
-        create an ordered group of docs
-        render a sidebar for each doc of that group
-        provide next/previous navigation
-
- The sidebars can be generated from the filesystem, or explicitly defined here.
-
- Create as many sidebars as you want.
- */
-
-// @ts-check
-
-/** @type {import("@docusaurus/plugin-content-docs").SidebarsConfig} */
-const sidebars = {
-  // By default, Docusaurus generates a sidebar from the docs folder structure
+{
   "docs": [
     "index",
     "quickstart",
@@ -27,7 +12,7 @@ const sidebars = {
         "installation",
         "upgrade",
         "customizing",
-        "elemental-plans",
+        "elemental-plans"
       ]
     },
     {
@@ -43,7 +28,7 @@ const sidebars = {
         "elementaloperatorchart-reference",
         "kubernetesversions",
         "smbios",
-        "hardwarelabels",
+        "hardwarelabels"
       ]
     },
     {
@@ -52,7 +37,7 @@ const sidebars = {
       "collapsed": false,
       "label": "Operator",
       "items": [
-        "inventory-management",
+        "inventory-management"
       ]
     },
     {
@@ -62,47 +47,25 @@ const sidebars = {
       "label": "Backup",
       "items": [
         "backup",
-        "restore",
+        "restore"
       ]
     },
     {
-      type: 'category',
-      collapsible: true,
-      collapsed: false,
-      label: 'How to',
-      items: [
-        'wifi',
-      ]
-    },
-    {
-      type: 'category',
-      collapsible: true,
-      collapsed: false,
-      label: 'Troubleshooting',
-      items: [
+      "type": "category",
+      "collapsible": true,
+      "collapsed": false,
+      "label": "Troubleshooting",
+      "items": [
         {
           "type": "category",
           "collapsible": true,
           "collapsed": false,
           "label": "Restore",
           "items": [
-            "troubleshooting-restore",
+            "troubleshooting-restore"
           ]
         }
       ]
-    },
-  ],
-
-  // But you can create a sidebar manually
-  /*
-  tutorialSidebar: [
-    {
-      type: "category",
-      label: "Tutorial",
-      items: ["hello"],
-    },
-  ],
-   */
-};
-
-module.exports = sidebars;
+    }
+  ]
+}

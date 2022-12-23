@@ -26,7 +26,7 @@ const config = {
     locales: ['en'],
   },
 
-    presets: [
+  presets: [
     [
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
@@ -144,6 +144,17 @@ const config = {
         additionalLanguages: ['docker'],
       },
     }),
+  plugins: [
+    [
+      "docusaurus-plugin-remote-content",
+      {
+        name: "examples",
+        sourceBaseUrl: "https://raw.githubusercontent.com/rancher/elemental/main/examples/quickstart/",
+        outDir: "examples/quickstart",
+        documents: ["registration.yaml", "selector.yaml", "registration-tpm.yaml", "cluster.yaml"],
+      },
+    ],
+  ],
 };
 
 module.exports = config;

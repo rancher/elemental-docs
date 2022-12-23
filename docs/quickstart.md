@@ -30,7 +30,7 @@ and available through the [openSUSE Registry](http://registry.opensuse.org/isv/r
 
 #### Elemental on x86-64 hardware
 
-Elemental Teal is production ready and fully supported on x86-64 with Rancher 2.7.0.
+Elemental Teal is production ready and fully supported on x86-64 with Rancher v2.7.0.
 
 #### Elemental on ARM hardware
 
@@ -53,7 +53,7 @@ The Elemental Stack consists of some packages on top of SLE Micro for Rancher
 
 ## Prerequisites
 
- - A Rancher server (2.7.0) configured (server-url set)
+ - A Rancher server (v2.7.0) configured (server-url set)
      - To configure the Rancher `server-url` please check the [Rancher docs](https://rancher.com/docs/rancher/v2.6/en/admin-settings/#first-log-in)
  - A machine (bare metal or virtualized) with TPM 2.0
      - Hint 1: Libvirt allows setting virtual TPMs for virtual machines [example here](https://rancher.github.io/elemental/tpm/#add-tpm-module-to-virtual-machine)

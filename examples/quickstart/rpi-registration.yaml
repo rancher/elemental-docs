@@ -1,0 +1,24 @@
+apiVersion: elemental.cattle.io/v1beta1
+kind: MachineRegistration
+metadata:
+  name: my-nodes
+  namespace: fleet-default
+spec:
+  config:
+    cloud-config:
+      users:
+        - name: root
+          passwd: root
+    elemental:
+      install:
+        reboot: true
+        device: /dev/mmcblk0
+        debug: true
+        disable-boot-entry: true
+      registration:
+        emulate-tpm: true
+  machineInventoryLabels:
+    manufacturer: "${System Information/Manufacturer}"
+    productName: "${System Information/Product Name}"
+    serialNumber: "${System Information/Serial Number}"
+    machineUUID: "${System Information/UUID}"

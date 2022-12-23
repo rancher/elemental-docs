@@ -68,7 +68,7 @@ The Elemental Stack consists of some packages on top of SLE Micro for Rancher
 `elemental-operator` is the management endpoint, running the management
 cluster and taking care of creating inventories, registrations for machines and much more.
 
-We will use the Helm package manager to install the elemental-operator chart into our cluster
+We will use the Helm package manager to install the elemental-operator chart into our cluster.
 
 <Tabs>
 <TabItem value="stableOperator" label="Stable version" default>

@@ -18,7 +18,7 @@ with the only help of an Elemental Teal iso
 
 ### What is Elemental Teal ?
 
-Elemental Teal is the combination of "SLE Micro for Rancher" with the Rancher Elemental stack
+Elemental Teal is the combination of "SLE Micro for Rancher" with the Rancher Elemental stack.
 
 SLE Micro for Rancher is a containerized and "stripped to the bones"
 operating system layer. At its core, it only requires grub2, dracut, a kernel, and systemd.

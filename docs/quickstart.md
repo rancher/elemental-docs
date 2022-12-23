@@ -144,7 +144,7 @@ See that we set the label that match our selector here already, although it can 
 
 
 :::warning warning
-Make sure to modify the registration.yaml above to set the proper install device to point to a valid device based on your node configuration(i.e. /dev/sda, /dev/vda, /dev/nvme0, etc...)
+Make sure to modify the registration.yaml above to set the proper install device to point to a valid device based on your node configuration (i.e. /dev/sda, /dev/vda, /dev/nvme0, etc...).
 
 The SD-card on a Raspberry Pi is usually `/dev/mmcblk0`.
 :::

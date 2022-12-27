@@ -286,7 +286,21 @@ process is modelled similar to x86-64. You boot from a seed image (USB stick in 
 wget -q https://download.opensuse.org/repositories/isv:/Rancher:/Elemental:/Dev:/Teal53/images/rpi.raw
 ```
 
-This `.raw` image needs to be written to a USB stick to boot from. This can be done with `dd` on the Linux command line if you're comfortable with this command.
+##### Verifying the download
+
+There are reports of incomplete downloads. You should verify your
+downloaded image using `sha256sum` as follows:
+
+```shell showLineNumbers
+wget -q https://download.opensuse.org/repositories/isv:/Rancher:/Elemental:/Dev:/Teal53/images/rpi.raw.sha256
+sha256sum -c rpi.raw.sha256
+```
+
+You should see `rpi.raw: OK` as output.
+
+#### Writing the seed image to a USB stick
+
+The `.raw` image needs to be written to a USB stick to boot from. This can be done with `dd` on the Linux command line if you're comfortable with this command.
 [openSUSE](https://www.opensuse.org) has nice instructions on how to write an image to a storage medium for [Linux](https://en.opensuse.org/SDB:Live_USB_stick),
 [Windows](https://en.opensuse.org/SDB:Create_a_Live_USB_stick_using_Windows), and [OS X](https://en.opensuse.org/SDB:Create_a_Live_USB_stick_using_macOS).
 

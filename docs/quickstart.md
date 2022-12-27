@@ -26,7 +26,7 @@ operating system layer. At its core, it only requires grub2, dracut, a kernel, a
 Its sole purpose is to run Kubernetes (k3s or RKE2), with everything controlled through Rancher Manager.
 
 Elemental Teal is built in the [openSUSE Build Service](https://build.opensuse.org/package/show/isv:Rancher:Elemental:Stable:Teal53/node-image)
-and available through the [openSUSE Registry](http://registry.opensuse.org/isv/rancher/elemental/stable/teal53/15.4/rancher/elemental-node-image/5.3:latest).
+and available through the [openSUSE Registry](https://registry.opensuse.org/cgi-bin/cooverview?srch_term=project%3D%5Eisv%3ARancher%3AElemental%3AStable+container%3D.*).
 
 #### Elemental on x86-64 hardware
 

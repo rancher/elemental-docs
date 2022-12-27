@@ -288,15 +288,16 @@ wget -q https://download.opensuse.org/repositories/isv:/Rancher:/Elemental:/Dev:
 
 ##### Verifying the download
 
-There are reports of incomplete downloads. You should verify your
-downloaded image using `sha256sum` as follows:
+In order to verify the integrity of the downloaded artifacts, you
+should do a checksum verification:
+
 
 ```shell showLineNumbers
 wget -q https://download.opensuse.org/repositories/isv:/Rancher:/Elemental:/Dev:/Teal53/images/rpi.raw.sha256
 sha256sum -c rpi.raw.sha256
 ```
 
-You should see `rpi.raw: OK` as output.
+This should print `rpi.raw: OK` as output.
 
 #### Writing the seed image to a USB stick
 

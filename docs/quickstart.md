@@ -158,9 +158,9 @@ kubectl apply -f registration.yaml
 ```
 
 </TabItem>
-<TabItem value="repofiles" label="Using quickstart files from Elemental repo directly">
+<TabItem value="repofiles" label="Using quickstart files from Elemental docs repo directly">
 
-You can directly apply the quickstart example resource files from the [Elemental repository](https://github.com/rancher/elemental)
+You can directly apply the quickstart example resource files from the [Elemental docs repository](https://github.com/rancher/elemental-docs)
 
 :::warning warning
 This assumes that your Node will have a `/dev/sda` disk available as that is the default device selected in those files.

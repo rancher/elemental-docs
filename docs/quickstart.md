@@ -78,7 +78,7 @@ helm upgrade --create-namespace -n cattle-elemental-system --install elemental-o
 ```
 
 </TabItem>
-<TabItem value="develOperator" label="Development version (for ARM)" default>
+<TabItem value="develOperator" label="Development version (including ARM)" default>
 
 :::warning Reminder
 The development version is 'best effort' supported. We welcome feedback via Slack or Github issues. But it might be a bit rough as we move the stack forward.

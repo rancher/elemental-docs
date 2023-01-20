@@ -1,9 +1,9 @@
 ---
-sidebar_label: Custom Images
+sidebar_label: Customize Elemental Install
 title: ''
 ---
 
-# Custom Images
+# Customize Elemental Install
 
 Elemental Teal images can be customized in different ways.
 One option is to provide
@@ -17,57 +17,59 @@ a new image using a Dockerfile based on Elemental Teal image.
 ## Customize installation ISO and installation process
 
 In order to adapt the installation ISO a simple approach is to append extra configuration
-files into the ISO root in the same way a registration yaml configuration file
+files into the ISO root in an analog way the registration yaml configuration file
 is added.
 
-### Additional configuration files
+### Common customization pattern
 
-Elemental Teal installation can be customized in three different, non-exclusive ways. First, including
+Elemental Teal installation can be customized in three different non-exclusive ways. First, including
 some custom Elemental client configuration file, second, by including additional cloud-init files to execute at
 boot time, and finally, by including installation hooks.
+
+A common pattern is a combination of all three, this way custom steps can be added during the installation
+and additional cloud-init files can be added to the installed system so they are evaluated at boot time.
+For that to happen the ISO needs to include:
+
+1. A [configuration file](https://rancher.github.io/elemental-toolkit/docs/customizing/general_configuration/)
+   for the elemental client, at least to point installation hooks location. Commonly this is done by adding
+   a `/elemental/config.yaml` file into the ISO root.
+
+2. The additional cloud-init files to be included into the installed system. They
+   allow to perform custom operations at boot time.
+
+3. The installation hooks evalutated at install time. They allow to perform custom operations
+   during the installation process (include extra software, set additional disks...).
 
 #### Custom Elemental client configuration file
 
 [Elemental client](https://github.com/rancher/elemental-cli) `install`, `upgrade` and `reset` commands can be configured with a
 custom [configuration file](https://rancher.github.io/elemental-toolkit/docs/customizing/general_configuration/).
 
-In order to set a custom configuration file in the installation
-media the MachineRegistration resource associated with this ISO should also include
-the Elemental client configuration directory. For that purpose, the `install` field
-supports the `config-dir` field. See [MachineRegistration reference](/machineregistration-reference#configelementalinstall) and the example
-below:
+In order to set a custom configuration file the installation ISO must include it.
+By default, the `elemental-register` command will attempt to load the Elemental client
+configuration within the `elemental` folder in side the ISO root. That is ISOs including
+`/elemental/config.yaml` file and/or multiple yaml files inside the `/elemental.conf.d` folder.
 
-```yaml showLineNumbers
-apiVersion: elemental.cattle.io/v1beta1
-kind: MachineRegistration
-metadata:
-  name: my-nodes
-  namespace: fleet-default
-spec:
-  ...
-  config:
-    ...
-    elemental:
-      ...
-      install:
-        ...
-        config-dir: "/run/initramfs/live/elemental.conf.d"
+A simple example to set hooks location could be:
+
+```yaml
+cloud-init-paths:
+  - "/run/initramfs/live/hooks"
 ```
 
-Elemental Teal live ISOs, when booted, have the ISO root mounted at `/run/initramfs/live`.
-So in that case, the ISO will contain the custom Elemental client configuration file
-as `/elemental.conf.d/config.yaml`.
+The above example assumes there is a `/hooks` folder in ISO root including
+the hook yaml files. Note the `/run/initramfs/live` prefix is the mount point
+of the ISO filesystem of the Elemental Live ISO.
 
-#### Adding additional cloud-init files at boot
+#### Adding additional cloud-init files witin the installed OS
 
 In order to include additional cloud-init files during the installation they need
 to be added to the installation data into the MachineRegistration resource. More specific
 the `config-urls` field is used for this exact purpose. See [MachineRegistration reference](/machineregistration-reference) page.
 
 `config-urls` is a list of string literals where each item is an http url pointing to a
-cloud-init file or a local path of a cloud init file. Note the local path is evaluated at the
-time of execution by the installation media, hence the local path must exist within
-the installation media, commonly an ISO image.
+cloud-init file or a local path of a cloud init file. Note the local path is evaluated during
+the installation, hence the local path must exist within the installation media, commonly an ISO image.
 
 Since in Elemental Teal live systems the ISO root is mounted at `/run/initramfs/live`,
 the local paths for `config-url` in MachineRegistrations are likely to point there.
@@ -88,10 +90,10 @@ spec:
       install:
         ...
         config-urls:
-        - "/run/initramfs/live/oem/10_install_extra_drivers.yaml"
+        - "/run/initramfs/live/oem/custom_config.yaml"
 ```
-
-In that case the ISO root is expected to include the `/oem/10_install_extra_drivers.yaml` file.
+Elemental Teal live ISOs, when booted, have the ISO root mounted at `/run/initramfs/live`.
+According to that, the example above is expected to include the `/oem/custom_config.yaml` file.
 
 #### Installation hooks
 
@@ -99,11 +101,13 @@ In that case the ISO root is expected to include the `/oem/10_install_extra_driv
 
 * `before-install`: executed after all partition mountpoints are set.
 * `after-install-chroot`: executed after deploying the OS image and before unmounting the associated loop filesystem image. Runs chrooted to the OS image.
-* `after-install`: executed before unmounting partitions but after all OS images are set and unmounted.
+* `after-install`: executed just after the after-install-chroot hook. It is not chrooted.
+* `post-install`: executed as the very last step before ending the installation, partitions are still mounted, the loop devices for the image is not.
 
-Hooks are provided as cloud-init stages. Equivalent hooks exist for `reset` and `upgrade` procedures.
+Hooks are provided as cloud-init stages. Equivalent hooks exist for `reset` and `upgrade` procedures. In fact, hooks are regular cloud-init stages,
+the difference though, is that elemental client only parses them during `install`, `upgrade` or `reset` actions, rather than boot time.
 
-Hooks are evaluated at `install`,`reset` and `upgrade` processes from `/oem`, `/system/oem` and `/usr/local/cloud-config`, however
+Hooks are evaluated during `install`,`reset` and `upgrade` action from `/oem`, `/system/oem` and `/usr/local/cloud-config`, however
 additional paths can be provided with the `cloud-init-paths` flag in [Elemental client configuration](https://rancher.github.io/elemental-toolkit/docs/customizing/general_configuration/).
 
 ### Adding extra driver binaries into the ISO example
@@ -117,8 +121,8 @@ For that use case the following files are required:
 * additional hooks file to copy binaries into the persistent storage and to install them
 * additional Elemental client configuration file to point hooks file location
 
-Lets create an `overlay` directory to include the overlay root-tree that needs to be
-applied over the ISO root. In that case the `overlay` directory could contain:
+Lets create an `overlay` directory to create the directory tree that needs to be
+added into the ISO root. In that case the `overlay` directory could contain:
 
 ```yaml showLineNumbers
 overlay/
@@ -159,9 +163,111 @@ stages:
 Note the installation hooks only cover installation procedures, for upgrades equivalent
 `before-upgrade` and/or `after-upgrade-chroot` should be defined.
 
+### Adding extra LVM volume group disks during the installation
+
+This example is covering the case the host has multiple disks, some of them used
+as part of an LVM setup.
+
+In this particular case we will assume a host includes three disks (`/dev/sda`, `/dev/sdb`
+and `/dev/sdc`), where the first one is used for a regular Elemental Teal installation
+and the other remaining two are used as part of LVM group where abitrary logical volumes
+are created, formatted and mounted at boot time via an extended fstab file.
+
+For that use case the following files are required:
+
+* additional clout-init files to include within the installed system
+* additional installation hooks to prepare the LVM volumes at install time
+* additional Elemental client configuration file to point hooks file location
+
+Lets create an `overlay` directory to create the directory tree that needs to be
+added into the ISO root. In that case the `overlay` directory could contain:
+
+```yaml showLineNumbers
+overlay/
+  oem/
+    lvm_volumes_in_fstab.yaml
+  hooks/
+    lvm_volumes_hook.yaml
+  elemental/
+    config.yaml
+```
+
+The Elemental client config file in `overlay/elemental` could be as:
+
+```yaml showLineNumbers
+cloud-init-paths:
+  - "/run/initramfs/live/hooks"
+```
+
+This is just to let Elemental client know where to find installation hooks.
+
+The installation hook `overlay/hooks/lvm_volumes_hook.yaml` could be as:
+
+```yaml showLineNumbers
+name: "Create LVM logic volumes over some physical disks"
+stages:
+  post-install:
+    - name: "Create physical volume, volume group and logical volumes"
+      if: '[ -e "/dev/vdb" ] && [ -e "/dev/vdc" ]'
+      commands:
+      - | 
+        # Create the physical volume, volume group and logical volumes
+        pvcreate /dev/vdb /dev/vdc
+        vgcreate elementalLVM /dev/vdb /dev/vdc
+        lvcreate -L 8G -n elementalVol1 elementalLVM
+        lvcreate -l 100%FREE -n elementalVol2 elementalLVM
+
+        # Trigger udev detection
+        if [ ! -e "/dev/elementalLVM/elementalVol1" ] || [ ! -e "/dev/elementalLVM/elementalVol2" ]; then
+          sleep 10
+          udeadm settle
+        fi
+
+        # Ensure devices are already available
+        [ -e "/dev/elementalLVM/elementalVol1" ] || exit 1
+        [ -e "/dev/elementalLVM/elementalVol2" ] || exit 1
+
+        # Format logical volumes with a known label for later use in fstab
+        mkfs.xfs -L eVol1 /dev/elementalLVM/elementalVol1
+        mkfs.xfs -L eVol2 /dev/elementalLVM/elementalVol2
+```
+
+It essentially creates and formats the LVM devices as desired. This is a good
+example of an installation hook, as this setup is only needed once at installation
+time. Doing such a thing on first boot is also a possibility, but it would definitely
+require a more sophisticated logic to ensure its only applied once at first boot.
+
+Finally, the boot time cloud-init files have only to take care of setting the mount
+points and actually mounting at boot. In Elemental OS fstab is ephemeral, so there is
+no fstab set during the installation, it is dynamically created at boot time. So that
+it can't be set within an installation hook and a boot time cloud-init file is used.
+
+The `overlay/oem/lvm_volumes_hook.yaml` could something as simple as:
+
+```yaml showLineNumbers
+name: "Mount LVM volumes"
+stages:
+  initramfs:
+    - name: "Extend fstab to mount LVM logical volumes at boot"
+      commands:
+      - |
+        echo "LABEL=eVol1 /usr/local/eVol1  xfs defaults  0 0" >> /etc/fstab
+        echo "LABEL=eVol2 /usr/local/eVol2  xfs defaults  0 0" >> /etc/fstab
+```
+
+Note the `initramfs` stage is the last stage inside the initfamfs right before
+switching root to the actual root tree, in runs chrooted to the final root. At this
+stage `/etc/fstab` already exists and it is a good place to adapt it, as after
+switching root systemd will handle the rest of the initalizaton and process apply it.
+
+This cloud-init file should be included into the `/oem` folder on the installed
+system. `/oem` is mount point for the OEM partition. In order include extra files
+there they should be listed as `config-urls` within the Registration CRD at the
+management cluster.
+
 ### Repacking the ISO image with extra files
 
-Assuming an `overlay` folder was created in the current directory containing all
+¨Assuming an `overlay` folder was created in the current directory containing all
 additional files to be appended, the following `xorriso` command adds the extra files:
 
 ```bash showLineNumbers

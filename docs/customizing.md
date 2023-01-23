@@ -65,8 +65,8 @@ to be added to the installation data into the MachineRegistration resource. More
 the `config-urls` field is used for this exact purpose. See [MachineRegistration reference](/machineregistration-reference) page.
 
 `config-urls` is a list of string literals where each item is an HTTP URL or a local path pointing to a
-cloud-init file or a local path of a cloud init file. Note the local path is evaluated during
-the installation, hence the local path must exist within the installation media, commonly an ISO image.
+cloud-init file. The local path is evaluated during
+the installation, hence it must exists within the installation media, commonly an ISO image.
 
 Since in Elemental Teal live systems the ISO root is mounted at `/run/initramfs/live`,
 the local paths for `config-url` in MachineRegistrations are likely to point there.

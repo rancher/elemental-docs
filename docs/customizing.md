@@ -229,10 +229,10 @@ stages:
         mkfs.xfs -L eVol2 /dev/elementalLVM/elementalVol2
 ```
 
-It essentially creates and formats the LVM devices as desired. This is a good
-example of an installation hook, as this setup is only needed once at installation
-time. Doing such a thing on first boot is also a possibility, but it would definitely
-require a more sophisticated logic to ensure its only applied once at first boot.
+The LVM devices are created and formatted as desired. This is a good
+example of an installation hook, as this setup is only needed once, at installation
+time. As an alternative, the same action could be done on first boot, however it would
+require a more sophisticated logic to ensure it's only applied once at first boot.
 
 Finally, the boot time cloud-init files have only to take care of setting the mount
 points and actually mounting at boot. In Elemental OS fstab is ephemeral, so there is

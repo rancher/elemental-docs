@@ -172,7 +172,7 @@ The first disk is used for a regular Elemental Teal installation
 and the other remaining two are used as part of a LVM group where arbitrary logical volumes
 are created, formatted and mounted at boot time via an extended `fstab` file.
 
-For that use case the following files are required:
+For this example, the following files are required:
 
 * additional clout-init files to include within the installed system
 * additional installation hooks to prepare the LVM volumes at install time

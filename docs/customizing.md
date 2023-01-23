@@ -118,7 +118,7 @@ For that use case the following files are required:
 * additional hooks file to copy binaries into the persistent storage and to install them
 * additional Elemental client configuration file to point hooks file location
 
-Lets create an `overlay` directory to create the directory tree that needs to be
+Let's create an `overlay` directory to create the directory tree that needs to be
 added into the ISO root. In that case the `overlay` directory could contain:
 
 ```yaml showLineNumbers

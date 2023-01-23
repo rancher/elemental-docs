@@ -251,10 +251,11 @@ stages:
         echo "LABEL=eVol2 /usr/local/eVol2  xfs defaults  0 0" >> /etc/fstab
 ```
 
-Note the `initramfs` stage is the last stage inside the initfamfs right before
-switching root to the actual root tree, in runs chrooted to the final root. At this
-stage `/etc/fstab` already exists and it is a good place to adapt it, as after
-switching root systemd will handle the rest of the initalizaton and process apply it.
+:::note
+The `initramfs` stage is the last stage before switching to the actual root tree.
+At this stage, the `/etc/fstab` file already exists and can be adapted before
+switching root. Once running in the final root tree, SystemD will handle the rest of the initialization and apply it.
+:::
 
 This cloud-init file should be included into the `/oem` folder on the installed
 system. `/oem` is mount point for the OEM partition. In order include extra files

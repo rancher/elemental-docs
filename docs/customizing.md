@@ -93,7 +93,7 @@ According to that, the example above is expected to include the `/oem/custom_con
 
 #### Installation hooks
 
-[Elemental client](https://github.com/rancher/elemental-cli) `install`, `upgrade` and `reset` procedures include three different hooks:
+[Elemental client](https://github.com/rancher/elemental-cli) `install`, `upgrade` and `reset` procedures include four different hooks:
 
 * `before-install`: executed after all partition mountpoints are set.
 * `after-install-chroot`: executed after deploying the OS image and before unmounting the associated loop filesystem image. Runs chrooted to the OS image.

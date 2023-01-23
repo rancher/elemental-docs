@@ -257,9 +257,9 @@ At this stage, the `/etc/fstab` file already exists and can be adapted before
 switching root. Once running in the final root tree, SystemD will handle the rest of the initialization and apply it.
 :::
 
-This cloud-init file should be included into the `/oem` folder on the installed
-system. `/oem` is mount point for the OEM partition. In order include extra files
-there they should be listed as `config-urls` within the Registration CRD at the
+This cloud-init file should be included into the `/oem` directory on the installed
+system. `/oem` is a mount point for the OEM partition. In order to include extra files,
+they should be listed as `config-urls` within the Registration CRD at the
 management cluster.
 
 ### Repacking the ISO image with extra files

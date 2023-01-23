@@ -234,10 +234,10 @@ example of an installation hook, as this setup is only needed once, at installat
 time. As an alternative, the same action could be done on first boot, however it would
 require a more sophisticated logic to ensure it's only applied once at first boot.
 
-Finally, the boot time cloud-init files have only to take care of setting the mount
-points and actually mounting at boot. In Elemental OS fstab is ephemeral, so there is
-no fstab set during the installation, it is dynamically created at boot time. So that
-it can't be set within an installation hook and a boot time cloud-init file is used.
+Finally, the boot time `cloud-init` files contain the mount points settings and trigger the
+action of mounting those mountpoints. The Elemental OS `fstab` file is ephemeral and it's 
+dynamically created at boot time. That's why it doesn't exist during the installation and
+can't be used in an installation hook.
 
 The `overlay/oem/lvm_volumes_hook.yaml` could something as simple as:
 

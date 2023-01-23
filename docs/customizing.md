@@ -191,7 +191,7 @@ overlay/
     config.yaml
 ```
 
-The Elemental client config file in `overlay/elemental` could be as:
+The Elemental client config file in `overlay/elemental` with the installation hooks path:
 
 ```yaml showLineNumbers
 cloud-init-paths:

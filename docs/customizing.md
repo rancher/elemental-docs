@@ -198,7 +198,6 @@ cloud-init-paths:
   - "/run/initramfs/live/hooks"
 ```
 
-This is just to let Elemental client know where to find installation hooks.
 
 The installation hook `overlay/hooks/lvm_volumes_hook.yaml` could be as:
 

@@ -58,7 +58,7 @@ The above example assumes there is a `/hooks` folder in ISO root including
 the hook yaml files. Note the `/run/initramfs/live` prefix is the mount point
 of the ISO filesystem of the Elemental Live ISO.
 
-#### Adding additional cloud-init files witin the installed OS
+#### Adding additional cloud-init files within the installed OS
 
 In order to include additional cloud-init files during the installation they need
 to be added to the installation data into the MachineRegistration resource. More specific

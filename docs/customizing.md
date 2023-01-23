@@ -47,7 +47,7 @@ custom [configuration file](https://rancher.github.io/elemental-toolkit/docs/cus
 
 In order to set a custom configuration file the installation ISO must include it.
 By default, the `elemental-register` command will attempt to load the Elemental client
-configuration within the `elemental` folder in side the ISO root. That is ISOs including
+configuration within the `elemental` folder inside the ISO root. That is ISOs including
 `/elemental/config.yaml` file and/or multiple yaml files inside the `/elemental.conf.d` folder.
 
 A simple example to set hooks location could be:

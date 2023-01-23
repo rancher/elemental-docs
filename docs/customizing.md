@@ -68,8 +68,7 @@ the `config-urls` field is used for this exact purpose. See [MachineRegistration
 cloud-init file. The local path is evaluated during
 the installation, hence it must exists within the installation media, commonly an ISO image.
 
-Since in Elemental Teal live systems the ISO root is mounted at `/run/initramfs/live`,
-the local paths for `config-url` in MachineRegistrations are likely to point there.
+By default, Elemental Teal live systems mount the ISO root at `/run/initramfs/live` and this should be the path set for `config-url` in `MachineRegistrations`:
 See the example below:
 
 ```yaml showLineNumbers

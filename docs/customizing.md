@@ -100,8 +100,9 @@ According to that, the example above is expected to include the `/oem/custom_con
 * `after-install`: executed just after the after-install-chroot hook. It is not chrooted.
 * `post-install`: executed as the very last step before ending the installation, partitions are still mounted, the loop devices for the image is not.
 
-Hooks are provided as cloud-init stages. Equivalent hooks exist for `reset` and `upgrade` procedures. In fact, hooks are regular cloud-init stages,
-the difference though, is that elemental client only parses them during `install`, `upgrade` or `reset` actions, rather than boot time.
+Hooks are provided as `cloud-init` stages. Equivalent hooks exist for `reset` and `upgrade` procedures. 
+
+In fact, hooks are regular `cloud-init` stages with the only difference that Elemental client parses them during `install`, `upgrade` or `reset` actions, rather than boot time.
 
 Hooks are evaluated during `install`,`reset` and `upgrade` action from `/oem`, `/system/oem` and `/usr/local/cloud-config`, however
 additional paths can be provided with the `cloud-init-paths` flag in [Elemental client configuration](https://rancher.github.io/elemental-toolkit/docs/customizing/general_configuration/).

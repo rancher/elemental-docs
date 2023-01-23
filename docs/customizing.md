@@ -267,7 +267,7 @@ management cluster.
 
 ### Repacking the ISO image with extra files
 
-¨Assuming an `overlay` folder was created in the current directory containing all
+Assuming an `overlay` folder was created in the current directory containing all
 additional files to be appended, the following `xorriso` command adds the extra files:
 
 ```bash showLineNumbers

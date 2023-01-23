@@ -174,9 +174,9 @@ are created, formatted and mounted at boot time via an extended `fstab` file.
 
 For this example, the following files are required:
 
-* additional clout-init files to include within the installed system
-* additional installation hooks to prepare the LVM volumes at install time
-* additional Elemental client configuration file to point hooks file location
+* additional `clout-init` files included in the installed system
+* additional installation hooks to prepare the LVM volumes during the installation
+* additional Elemental client configuration file containing the hooks file location
 
 Lets create an `overlay` directory to create the directory tree that needs to be
 added into the ISO root. In that case the `overlay` directory could contain:

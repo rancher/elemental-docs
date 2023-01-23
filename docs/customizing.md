@@ -33,7 +33,7 @@ To apply this pattern, the ISO needs to include:
 1. A [configuration file](https://rancher.github.io/elemental-toolkit/docs/customizing/general_configuration/)
    for the elemental client, describing at least the installation hooks location. This file is usually added to the ISO with path and name `/elemental/config.yaml`.
 
-2. The additional cloud-init files to be included into the installed system. They
+2. The additional `cloud-init` files to be included into the installed system. They
    allow to perform custom operations at boot time.
 
 3. The installation hooks evalutated at install time. They allow to perform custom operations

@@ -199,7 +199,7 @@ cloud-init-paths:
 ```
 
 
-The installation hook `overlay/hooks/lvm_volumes_hook.yaml` could be as:
+The installation hook `overlay/hooks/lvm_volumes_hook.yaml`:
 
 ```yaml showLineNumbers
 name: "Create LVM logic volumes over some physical disks"

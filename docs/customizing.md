@@ -165,10 +165,12 @@ Note the installation hooks only cover installation procedures, for upgrades equ
 This example is covering the setup of an host with multiple disks and some of them used
 as part of an LVM setup.
 
-In this particular case we will assume a host includes three disks (`/dev/sda`, `/dev/sdb`
-and `/dev/sdc`), where the first one is used for a regular Elemental Teal installation
-and the other remaining two are used as part of LVM group where abitrary logical volumes
-are created, formatted and mounted at boot time via an extended fstab file.
+As an example, we have an host with three disks (`/dev/sda`, `/dev/sdb`
+and `/dev/sdc`). 
+
+The first disk is used for a regular Elemental Teal installation
+and the other remaining two are used as part of a LVM group where arbitrary logical volumes
+are created, formatted and mounted at boot time via an extended `fstab` file.
 
 For that use case the following files are required:
 

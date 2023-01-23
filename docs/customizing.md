@@ -208,12 +208,12 @@ name: "Create LVM logic volumes over some physical disks"
 stages:
   post-install:
     - name: "Create physical volume, volume group and logical volumes"
-      if: '[ -e "/dev/vdb" ] && [ -e "/dev/vdc" ]'
+      if: '[ -e "/dev/sdb" ] && [ -e "/dev/sdc" ]'
       commands:
       - | 
         # Create the physical volume, volume group and logical volumes
-        pvcreate /dev/vdb /dev/vdc
-        vgcreate elementalLVM /dev/vdb /dev/vdc
+        pvcreate /dev/sdb /dev/sdc
+        vgcreate elementalLVM /dev/sdb /dev/sdc
         lvcreate -L 8G -n elementalVol1 elementalLVM
         lvcreate -l 100%FREE -n elementalVol2 elementalLVM
 

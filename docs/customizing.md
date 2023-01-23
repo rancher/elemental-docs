@@ -162,7 +162,7 @@ Note the installation hooks only cover installation procedures, for upgrades equ
 
 ### Adding extra LVM volume group disks during the installation
 
-This example is covering the case the host has multiple disks, some of them used
+This example is covering the setup of an host with multiple disks and some of them used
 as part of an LVM setup.
 
 In this particular case we will assume a host includes three disks (`/dev/sda`, `/dev/sdb`

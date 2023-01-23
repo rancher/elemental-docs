@@ -44,10 +44,8 @@ To apply this pattern, the ISO needs to include:
 [Elemental client](https://github.com/rancher/elemental-cli) `install`, `upgrade` and `reset` commands can be configured with a
 custom [configuration file](https://rancher.github.io/elemental-toolkit/docs/customizing/general_configuration/) located in the `/elemental` directory.
 
-In order to set a custom configuration file the installation ISO must include it.
-By default, the `elemental-register` command will attempt to load the Elemental client
-configuration within the `elemental` folder inside the ISO root. That is ISOs including
-`/elemental/config.yaml` file and/or multiple yaml files inside the `/elemental.conf.d` folder.
+The `elemental-register` command will also load the Elemental client configuration file
+located in the `/elemental` directory and/or multiple yaml files inside the `/elemental.conf.d` folder.
 
 A simple example to set hooks location could be:
 

@@ -178,7 +178,7 @@ For this example, the following files are required:
 * additional installation hooks to prepare the LVM volumes during the installation
 * additional Elemental client configuration file containing the hooks file location
 
-Lets create an `overlay` directory to create the directory tree that needs to be
+Let's create an `overlay` directory to create the directory tree that needs to be
 added into the ISO root. In that case the `overlay` directory could contain:
 
 ```yaml showLineNumbers

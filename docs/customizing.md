@@ -26,9 +26,9 @@ Elemental Teal installation can be customized in three different non-exclusive w
 some custom Elemental client configuration file, second, by including additional cloud-init files to execute at
 boot time, and finally, by including installation hooks.
 
-A common pattern is a combination of all three, this way custom steps can be added during the installation
-and additional cloud-init files can be added to the installed system so they are evaluated at boot time.
-For that to happen the ISO needs to include:
+A common pattern is to combine the three ways described above. This pattern will allow you to add custom steps during the installation and add `cloud-init` files to be evaluated at boot time.
+
+To apply this pattern, the ISO needs to include:
 
 1. A [configuration file](https://rancher.github.io/elemental-toolkit/docs/customizing/general_configuration/)
    for the elemental client, at least to point installation hooks location. Commonly this is done by adding

@@ -218,7 +218,7 @@ stages:
         # Trigger udev detection
         if [ ! -e "/dev/elementalLVM/elementalVol1" ] || [ ! -e "/dev/elementalLVM/elementalVol2" ]; then
           sleep 10
-          udeadm settle
+          udevadm settle
         fi
 
         # Ensure devices are already available

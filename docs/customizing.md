@@ -45,7 +45,7 @@ To apply this pattern, the ISO needs to include:
 custom [configuration file](https://rancher.github.io/elemental-toolkit/docs/customizing/general_configuration/) located in the `/elemental` directory.
 
 The `elemental-register` command will also load the Elemental client configuration file
-located in the `/elemental` directory and/or multiple yaml files inside the `/elemental.conf.d` folder.
+located in the `/elemental` directory and/or multiple yaml files inside the `/elemental/config.d` folder.
 
 A simple example to set hooks location could be:
 

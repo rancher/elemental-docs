@@ -285,7 +285,7 @@ show case how this could be added:
 
 ```docker showLineNumbers
 # The version of Elemental to modify
-FROM registry.opensuse.org/isv/rancher/elemental/teal52/15.3/rancher/elemental-node-image/5.2:VERSION
+FROM registry.opensuse.org/isv/rancher/elemental/teal53/15.4/rancher/elemental-node-image/5.3:VERSION
 
 # Custom commands
 RUN rpm --import <repo-signing-key-url> && \
@@ -318,3 +318,38 @@ be run and verified using docker with
 ```bash showLineNumbers
 docker run -it myrepo/custom-build:v1.1.1 bash
 ```
+
+## Create a custom bootable installation media
+
+Elemental Teal leverages container images to build its root filesystems; therefore, it is possible
+to use it in a multi-stage environment to create custom bootable media that bundles a custom container image.
+
+```docker showLineNumbers
+FROM registry.opensuse.org/isv/rancher/elemental/teal53/15.4/rancher/elemental-node-image/5.3:latest as os
+
+# Check the section on remastering a custom docker image
+
+FROM registry.opensuse.org/isv/rancher/elemental/stable/teal53/15.4/rancher/elemental-builder-image/5.3:latest AS builder
+
+ARG TARGETARCH
+WORKDIR /iso
+COPY --from=os / rootfs
+
+RUN --mount=type=bind,source=./,target=/output,rw \
+      elemental build-iso \
+        dir:rootfs \
+        --bootloader-in-rootfs \
+        --squash-no-compression \
+        -o /output -n "elemental-teal-${TARGETARCH}"
+```
+
+
+Modify the container image template and afterward run:
+
+```bash showLineNumbers
+buildah build --tag myrepo/custom-build:v1.1.1 .
+              --build-arg IMAGE_REPO=myrepo/custom-build
+              --build-arg IMAGE_TAG=v1.1.1
+```
+
+The new customized installation media can be found in `elemental-teal-amd64.iso` and can be used to boot and provision the machine.

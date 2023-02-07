@@ -5,6 +5,6 @@ metadata:
   namespace: fleet-default
 spec:
   options:
-    URI: "https://raw.githubusercontent.com/rancher/elemental/main/examples/upgrade/versions.json"
+    URI: "https://raw.githubusercontent.com/rancher/elemental-docs/main/examples/upgrade/versions.json"
     Timeout: "1m"
   type: json

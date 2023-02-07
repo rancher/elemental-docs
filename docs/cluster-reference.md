@@ -12,7 +12,7 @@ A `Cluster` definition includes a `kubernetesVersion` and a list of `machinePool
 For how to select a `kubernetesVersion` please check our [Kubernetes Versions](kubernetesversions.md) page.
 
 A `machinePool` is a bundle of configuration with a `ObjectReference` so the cluster is deployed to those `machinePools`
-with the proper roles (etcd, control-plane, worker) with a quantity (how many nodes to deploy from this pool) and some extra configurations (rolling update config, max unhelthy nodes, etc...).
+with the proper roles (etcd, control-plane, worker) with a quantity (how many nodes to deploy from this pool) and some extra configurations (rolling update config, max unhealthy nodes, etc...).
 
 <details>
   <summary>Example</summary>
@@ -48,9 +48,40 @@ with the proper roles (etcd, control-plane, worker) with a quantity (how many no
 
 </details>
 
+It's also possible to disable cluster components via the `Cluster` object in `spec.rkeConfig.machineGlobalConfig`, for example:
+
+<details>
+  <summary>Service Disabling Example</summary>
+
+  ```yaml showLineNumbers
+  kind: Cluster
+  apiVersion: provisioning.cattle.io/v1
+  metadata:
+    name: ...
+    namespace: ...
+  spec:
+    rkeConfig:
+      machinePools:
+        - name: ...
+          controlPlaneRole: ...
+          etcdRole: ...
+          workerRole: ...
+          quantity: ...
+          machineConfigRef:
+            apiVersion: elemental.cattle.io/v1beta1
+            kind: MachineInventorySelectorTemplate
+            name: ...
+      machineGlobalConfig:
+        disable:
+          - servicelb
+          - ...
+  ```
+
+</details>
+
 ## rkeConfig.machinePools
 
-A list of `machinePools`. A minimun of 1 `machinePools` is required for the cluster to be deployed to.
+A list of `machinePools`. A minimum of 1 `machinePools` is required for the cluster to be deployed to.
 
 ## machinePools Spec Reference
 
@@ -103,8 +134,8 @@ This allows us to point to more than one object by using the selector.
 
 ### Example
 
-The example below creates a cluster that uses 2 different `machinePool`s to set different nodes to control-plane and workers nodes,
-based on 2 different `MachineInventorySelectorTemplate` that select their nodes based on a `MachineInventory` label (location)
+The example below creates a cluster that uses 2 different `machinePool`'s to set different nodes to control-plane and workers nodes,
+based on 2 different `MachineInventorySelectorTemplate` that select their nodes based on a `MachineInventory` label (location):
 
 :::warning warning
 The labels for the example are manual set labels, they are not set by Elemental automatically..

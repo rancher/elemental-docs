@@ -1445,17 +1445,17 @@
     react-helmet-async "*"
     react-loadable "npm:@docusaurus/react-loadable@5.5.2"
 
-"@docusaurus/plugin-client-redirects@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@docusaurus/plugin-client-redirects/-/plugin-client-redirects-2.2.0.tgz#f6228e5b2852520e22e0f4b89f870431aa975a90"
-  integrity sha512-psBoWi+cbc2I+VPkKJlcZ12tRN3xiv22tnZfNKyMo18iSY8gr4B6Q0G2KZXGPgNGJ/6gq7ATfgDK6p9h9XRxMQ==
+"@docusaurus/plugin-client-redirects@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@docusaurus/plugin-client-redirects/-/plugin-client-redirects-2.3.1.tgz#e75f373ef19032b0d059c0298f86d6cb18575ef6"
+  integrity sha512-Ye0z36/L8685ni0DIxHqPPaHIXFXiSF90QYiYfpODBX6NxvvveUTyylsDBU1GQhPXPn1bd39QgaOuZ+j9gfaog==
   dependencies:
-    "@docusaurus/core" "2.2.0"
-    "@docusaurus/logger" "2.2.0"
-    "@docusaurus/utils" "2.2.0"
-    "@docusaurus/utils-common" "2.2.0"
-    "@docusaurus/utils-validation" "2.2.0"
-    eta "^1.12.3"
+    "@docusaurus/core" "2.3.1"
+    "@docusaurus/logger" "2.3.1"
+    "@docusaurus/utils" "2.3.1"
+    "@docusaurus/utils-common" "2.3.1"
+    "@docusaurus/utils-validation" "2.3.1"
+    eta "^2.0.0"
     fs-extra "^10.1.0"
     lodash "^4.17.21"
     tslib "^2.4.0"
@@ -4950,9 +4950,9 @@ json-schema-traverse@^1.0.0:
   integrity sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==
 
 json5@^2.1.2, json5@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/json5/-/json5-2.2.1.tgz#655d50ed1e6f95ad1a3caababd2b0efda10b395c"
-  integrity sha512-1hqLFMSrGHRHxav9q9gNjJ5EXznIxGVO09xQRrwplcS8qs28pZ8s8hupZAmqDwZUmVZ2Qb2jnyPOWcDH8m8dlA==
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/json5/-/json5-2.2.3.tgz#78cd6f1a19bdc12b73db5ad0c61efd66c1e29283"
+  integrity sha512-XmOWe7eyHYH14cLdVPoyg+GOH3rYX++KpzrylJwSW98t3Nk+U8XOl8FWKOgwtzdb8lXGf6zYwDUzeHMWfxasyg==
 
 jsonfile@^6.0.1:
   version "6.1.0"

@@ -1,3 +1,10 @@
+---
+sidebar_label: Trusted Platform Module (TPM)
+title: ''
+---
+
+import RegistrationTpm from "!!raw-loader!@site/examples/quickstart/registration-tpm.yaml"
+
 # Trusted Platform Module 2.0 (TPM)
 
 Trusted Platform Module (TPM, also known as ISO/IEC 11889) is an international standard for a secure cryptoprocessor, a dedicated microcontroller designed to secure hardware through integrated cryptographic keys. The term can also refer to a chip conforming to the standard.
@@ -40,6 +47,4 @@ so the seed used for the TPM emulation is randomized per machine. Otherwise, you
 one to be registered will be valid.
 :::
 
-```yaml title="registration-tpm.yaml" showLineNumbers
---8<-- "examples/quickstart/registration-tpm.yaml"
-```
+<CodeBlock language="yaml" title="registration-tpm.yaml" showLineNumbers>{RegistrationTpm}</CodeBlock>

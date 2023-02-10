@@ -24,7 +24,8 @@ is added.
 
 Elemental Teal installation can be customized in three different non-exclusive ways. First, including
 some custom Elemental client configuration file, second, by including additional cloud-init files to execute at
-boot time, and finally, by including installation hooks.
+boot time, and finally, by including  `cloud-init` files such as installation hooks or boot stages evaluated during
+the live system boot itself.
 
 A common pattern is to combine the three ways described above. This pattern will allow you to add custom steps during the installation and add `cloud-init` files to be evaluated at boot time.
 
@@ -36,8 +37,10 @@ To apply this pattern, the ISO needs to include:
 2. The additional `cloud-init` files to be included into the installed system. They
    allow to perform custom operations at boot time.
 
-3. The installation hooks evalutated at install time. They allow to perform custom operations
-   during the installation process (include extra software, set additional disks...).
+3. The installation hooks are evalutated at install time. They allow to perform custom operations
+   during the installation process (include extra software, set additional disks...). The same
+   way `cloud-init` files can be included to perform custom operations during the live installation
+   media boot time.
 
 #### Custom Elemental client configuration file
 
@@ -50,13 +53,13 @@ located in the `/elemental` directory and/or multiple yaml files inside the `/el
 A simple example to set hooks location could be:
 
 ```yaml
-cloud-init-paths:
-  - "/run/initramfs/live/hooks"
+extra-partitions:
+  - size: 10240
+    fs: ext4
+    label: EXTRA_PARTITION
 ```
 
-The above example assumes there is a `/hooks` folder in ISO root including
-the hook yaml files. Note the `/run/initramfs/live` prefix is the mount point
-of the ISO filesystem of the Elemental Live ISO.
+The above example sets an additional extra partition during the installation.
 
 #### Adding additional cloud-init files within the installed OS
 
@@ -91,7 +94,7 @@ spec:
 Elemental Teal live ISOs, when booted, have the ISO root mounted at `/run/initramfs/live`.
 According to that, the example above is expected to include the `/oem/custom_config.yaml` file.
 
-#### Installation hooks
+#### Adding installation hooks or boot stages for the live system
 
 [Elemental client](https://github.com/rancher/elemental-cli) `install`, `upgrade` and `reset` procedures include four different hooks:
 
@@ -100,12 +103,14 @@ According to that, the example above is expected to include the `/oem/custom_con
 * `after-install`: executed just after the after-install-chroot hook. It is not chrooted.
 * `post-install`: executed as the very last step before ending the installation, partitions are still mounted, the loop devices for the image is not.
 
-Hooks are provided as `cloud-init` stages. Equivalent hooks exist for `reset` and `upgrade` procedures. 
+Hooks are provided as `cloud-init` stages. Equivalent hooks exist for `reset` and `upgrade` procedures.
+They are loaded from the `/iso-config` folder in ISO filesystem root. In fact, hooks are regular `cloud-init` stages with the
+only difference that Elemental client parses them during `install`, `upgrade` or `reset` actions, rather than boot time.
+Note any boot stage included this way will be executed during the live installation media boot.
 
-In fact, hooks are regular `cloud-init` stages with the only difference that Elemental client parses them during `install`, `upgrade` or `reset` actions, rather than boot time.
-
-Hooks are evaluated during `install`,`reset` and `upgrade` action from `/oem`, `/system/oem` and `/usr/local/cloud-config`, however
-additional paths can be provided with the `cloud-init-paths` flag in [Elemental client configuration](https://rancher.github.io/elemental-toolkit/docs/customizing/general_configuration/).
+Hooks are evaluated during `install`,`reset` and `upgrade` action from `/oem`, `/system/oem` and `/usr/local/cloud-config` paths,
+however for the live ISOs there is an additional the path `/run/initramfs/live/iso-config` included. Note the `/run/initramfs/live`
+prefix is the mount point of the ISO filesystem of the Elemental Live ISO once booted. 
 
 ### Adding extra driver binaries into the ISO example
 
@@ -116,7 +121,6 @@ For that use case the following files are required:
 
 * additional binaries to install (they could be in the form of RPMs)
 * additional hooks file to copy binaries into the persistent storage and to install them
-* additional Elemental client configuration file to point hooks file location
 
 Let's create an `overlay` directory to create the directory tree that needs to be
 added into the ISO root. In that case the `overlay` directory could contain:
@@ -126,22 +130,11 @@ overlay/
   data/
     extra_drivers/
       some_driver.rpm
-  hooks/
+  iso-config/
     install_hooks.yaml
-  elemental/
-    config.yaml
 ```
 
-The Elemental client config file in `overlay/elemental` could be as:
-
-```yaml showLineNumbers
-cloud-init-paths:
-  - "/run/initramfs/live/hooks"
-```
-
-This is just to let Elemental client know where to find installation hooks.
-
-Finally, the `overlay/hooks/install_hooks.yaml` could be as:
+The `overlay/hooks/install_hooks.yaml` could be as:
 
 ```yaml showLineNumbers
 name: "Install extra drivers"
@@ -176,7 +169,6 @@ For this example, the following files are required:
 
 * additional `clout-init` files included in the installed system
 * additional installation hooks to prepare the LVM volumes during the installation
-* additional Elemental client configuration file containing the hooks file location
 
 Let's create an `overlay` directory to create the directory tree that needs to be
 added into the ISO root. In that case the `overlay` directory could contain:
@@ -185,19 +177,9 @@ added into the ISO root. In that case the `overlay` directory could contain:
 overlay/
   oem/
     lvm_volumes_in_fstab.yaml
-  hooks/
+  iso-config/
     lvm_volumes_hook.yaml
-  elemental/
-    config.yaml
 ```
-
-The Elemental client config file in `overlay/elemental` with the installation hooks path:
-
-```yaml showLineNumbers
-cloud-init-paths:
-  - "/run/initramfs/live/hooks"
-```
-
 
 The installation hook `overlay/hooks/lvm_volumes_hook.yaml`:
 

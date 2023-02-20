@@ -23,7 +23,7 @@ In this document we will see how we can enable elemental support in Rancher and 
 
 
 
-![image-20230218014726271](./images/image-20230218014726271.png)<img src="./images/image-20230218232720333.png" alt="image-20230218232720333" style="zoom: 50%;"/>                 
+![image-20230218014726271](./images/image-20230218014726271.png)<img src="./images/image-20230218232720333.png" alt="image-20230218232720333" width=30% height=30%/>               
 
 Once you click on enable a dialogue box will pop up asking for confirmation and it will also notify you that the rancher extensions repository will be enabled, make sure it is checked and then confirm.
 
@@ -33,7 +33,7 @@ Once you click on enable a dialogue box will pop up asking for confirmation and 
 
 After the extensions are enabled under the available tab you should see elemental plugin available for installation.
 
-<img src="./images/image-20230218233420902.png" alt="image-20230218233420902" style="zoom:70%;" />  
+<img src="./images/image-20230218233420902.png" alt="image-20230218233420902" width=30% height=30%/> 
 
 Click on Install, this will again ask for a confirmation. Click on Install again to continue. Once the installation is finished it will ask to reload the tab. Reload it by hitting reload, post reloading you should see the elemental plugin under the installed tab.
 
@@ -73,7 +73,7 @@ At this point we are ready to proceed with the next step, that is to prepare the
 
 In the OS Management dashboard hit the create registration endpoint button
 
-<img src="./images/image-20230219000334060.png" alt="image-20230219000334060" style="zoom:50%;" />   
+<img src="./images/image-20230219000334060.png" alt="image-20230219000334060" width=30% height=30%/>   
 
 Now here either you can enter each detail in its respective places or you can edit this as yaml and create the endpoint in one go. Here we will edit this as yaml.
 
@@ -127,7 +127,7 @@ Once you create the machine registration end point it should show up as active.
 
 
 
-<img src="./images/image-20230219001900748.png" alt="image-20230219001900748" style="zoom:50%;" />  
+<img src="./images/image-20230219001900748.png" alt="image-20230219001900748" width=30% height=30%/> 
 
 
 
@@ -199,11 +199,11 @@ Click on "advanced" and on the right window pane change the firmware type from "
 
 FROM:
 
-<img src="./images/image-20230219014550840.png" alt="image-20230219014550840" style="zoom:67%;" /> 
+<img src="./images/image-20230219014550840.png" alt="image-20230219014550840" width=30% height=30%/>
 
 TO:
 
- <img src="./images/image-20230219014651704.png" alt="image-20230219014651704" style="zoom:67%;" />  
+ <img src="./images/image-20230219014651704.png" alt="image-20230219014651704" width=30% height=30%/> 
 
 Now on the same "Options" tab click on the "Access Control" option and click on "Encrypt" on the right side.
 
@@ -223,7 +223,7 @@ Next add the ISO that we created earlier in the VM and boot it up.
 
 It should boot up with the ISO and start installing Elemental and 
 
-<img src="./images/image-20230219015435719.png" alt="image-20230219015435719" style="zoom:50%;" />  <img src="./images/image-20230219015536487.png" alt="image-20230219015536487" style="zoom:67%;" /> 
+<img src="./images/image-20230219015435719.png" alt="image-20230219015435719" width=30% height=30%/>  <img src="./images/image-20230219015536487.png" alt="image-20230219015536487" width=30% height=30%/> 
 
 And once it is complete it will reboot the VM and it should show up as active under the machine inventory in Rancher.
 
@@ -231,7 +231,7 @@ And once it is complete it will reboot the VM and it should show up as active un
 
 While Booting:                                                          Post Completion of installation:
 
-<img src="./images/image-20230219015712776.png" alt="image-20230219015712776" style="zoom:67%;" /> <img src="./images/image-20230219015738003.png" alt="image-20230219015738003" style="zoom:67%;" /> 
+<img src="./images/image-20230219015712776.png" alt="image-20230219015712776" width=30% height=30%/> <img src="./images/image-20230219015738003.png" alt="image-20230219015738003" width=30% height=30%/>  
 
 
 
@@ -239,7 +239,7 @@ While Booting:                                                          Post Com
 
 Once the machine shows up as active, select it and hit "Create Elemental Cluster".
 
-<img src="./images/image-20230219020012507.png" alt="image-20230219020012507" style="zoom:67%;" /> 
+<img src="./images/image-20230219020012507.png" alt="image-20230219020012507" width=30% height=30%/> 
 
 At this stage you get a pretty familiar page of creating a cluster in Rancher. 
 

@@ -23,7 +23,7 @@ In this document we will see how we can enable elemental support in Rancher and 
 
 
 
-![image-20230218014726271](C:\Users\Tapas Nandi\AppData\Roaming\Typora\typora-user-images\image-20230218014726271.png)<img src="./images/image-20230218232720333.png" alt="image-20230218232720333" style="zoom: 50%;"/>                 
+![image-20230218014726271](./images/image-20230218014726271.png)<img src="./images/image-20230218232720333.png" alt="image-20230218232720333" style="zoom: 50%;"/>                 
 
 Once you click on enable a dialogue box will pop up asking for confirmation and it will also notify you that the rancher extensions repository will be enabled, make sure it is checked and then confirm.
 

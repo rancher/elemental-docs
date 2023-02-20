@@ -6,7 +6,6 @@
 
 In this document we will see how we can enable elemental support in Rancher and then build iso and test it on a vm in VMware mimicking it for an edge device.
 
-[TOC]
 
 ## Prerequisites
 

@@ -198,11 +198,11 @@ Click on "advanced" and on the right window pane change the firmware type from "
 
 FROM:
 
-<img src="./images/image-20230219014550840.png" alt="image-20230219014550840" width=30% height=30%/>
+<img src="./images/image-20230219014550840.png" alt="image-20230219014550840" width=50% height=50%/>
 
 TO:
 
- <img src="./images/image-20230219014651704.png" alt="image-20230219014651704" width=30% height=30%/> 
+ <img src="./images/image-20230219014651704.png" alt="image-20230219014651704" width=50% height=50%/> 
 
 Now on the same "Options" tab click on the "Access Control" option and click on "Encrypt" on the right side.
 
@@ -222,7 +222,7 @@ Next add the ISO that we created earlier in the VM and boot it up.
 
 It should boot up with the ISO and start installing Elemental and 
 
-<img src="./images/image-20230219015435719.png" alt="image-20230219015435719" width=30% height=30%/>  <img src="./images/image-20230219015536487.png" alt="image-20230219015536487" width=30% height=30%/> 
+<img src="./images/image-20230219015435719.png" alt="image-20230219015435719" width=50% height=50%/>  <img src="./images/image-20230219015536487.png" alt="image-20230219015536487" width=50% height=50%/> 
 
 And once it is complete it will reboot the VM and it should show up as active under the machine inventory in Rancher.
 
@@ -230,7 +230,7 @@ And once it is complete it will reboot the VM and it should show up as active un
 
 While Booting:                                                          Post Completion of installation:
 
-<img src="./images/image-20230219015712776.png" alt="image-20230219015712776" width=30% height=30%/> <img src="./images/image-20230219015738003.png" alt="image-20230219015738003" width=30% height=30%/>  
+<img src="./images/image-20230219015712776.png" alt="image-20230219015712776" width=50% height=50%/> <img src="./images/image-20230219015738003.png" alt="image-20230219015738003" width=50% height=50%/>  
 
 
 

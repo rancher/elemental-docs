@@ -72,6 +72,7 @@ const sidebars = {
       label: 'How to',
       items: [
         'wifi',
+        'rancher-vmware'
       ]
     },
     {

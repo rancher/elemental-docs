@@ -50,9 +50,7 @@ kubectl get pods -n cattle-elemental-system
 
 ![Elemental operator pod](images/rancher-vmware-elemental-operator-pod.png)
 
-
-
-Also this will enable the "OS Management" sub menu under the "Global Apps" menu.
+This will enable the "OS Management" sub menu under the "Global Apps" menu.
 
 ![OS Management menu](images/rancher-vmware-osmanagement-menu.png)
 

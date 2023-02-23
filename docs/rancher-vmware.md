@@ -250,4 +250,4 @@ And once the cluster is fully provisioned it should be active with provider type
 
 ![Elemental cluster created](images/rancher-vmware-elemental-cluster-created.png)
 
-Now you can start deploying application on this cluster the normal way.
+Now you can start deploying application on this cluster the normal way. 

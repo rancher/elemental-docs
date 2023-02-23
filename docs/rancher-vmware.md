@@ -24,7 +24,15 @@ Click on extensions under the configuration menu and enable it by hitting enable
 
 Once you click on enable a dialogue box will pop up asking for confirmation and it will also notify you that the rancher extensions repository will be enabled, make sure it is checked and then confirm.
 
-### 1.2 Install the elemental operator in Rancher cluster
+### 1.2 Install Elemental Plugin
+
+After the extensions are enabled under the available tab you should see elemental plugin available for installation.
+
+![Elemental extension enabled](images/rancher-vmware-extension-enabled.png)
+
+Click on Install, this will again ask for a confirmation. Click on Install again to continue. Once the installation is finished it will ask to reload the tab. Reload it by hitting reload, post reloading you should see the elemental plugin under the installed tab.
+
+### 1.3 Install the elemental operator in Rancher cluster
 
 The next step is to install the elemental operator in Rancher Cluster. For that connect to the Rancher K8S cluster and enter the below command:
 
@@ -42,13 +50,7 @@ kubectl get pods -n cattle-elemental-system
 
 ![Elemental operator pod](images/rancher-vmware-elemental-operator-pod.png)
 
-### 1.3 Install Elemental Plugin
 
-After the extensions are enabled under the available tab you should see elemental plugin available for installation.
-
-![Elemental extension enabled](images/rancher-vmware-extension-enabled.png)
-
-Click on Install, this will again ask for a confirmation. Click on Install again to continue. Once the installation is finished it will ask to reload the tab. Reload it by hitting reload, post reloading you should see the elemental plugin under the installed tab.
 
 Also this will enable the "OS Management" sub menu under the "Global Apps" menu.
 

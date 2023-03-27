@@ -120,9 +120,10 @@ This seed image can then be used to provision an infinite number of machines.
 <Tabs>
 <TabItem value="download" label="Downloading the quickstart ISO">
 
-The seed image is created as a kubernetes resource above and can be downloaded as an ISO using the following one-liner:
+The seed image is created as a kubernetes resource above and can be downloaded as an ISO using the following script which first waits for the ISO to be built:
 
 ```shell showLineNumbers
+kubectl wait --for=condition=ready pod -n fleet-default my-img
 wget --no-check-certificate `kubectl get seedimage -n fleet-default my-img -o jsonpath="{.status.downloadURL}"` -O elemental-teal.x86_64.iso
 ```
 

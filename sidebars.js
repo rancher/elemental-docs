@@ -16,7 +16,16 @@ const sidebars = {
   // By default, Docusaurus generates a sidebar from the docs folder structure
   "docs": [
     "index",
-    "quickstart",
+    {
+      "type": "category",
+      "collapsible": true,
+      "collapsed": false,
+      "label": "Quickstarts",
+      "items": [
+        "quickstart-ui",
+        "quickstart-cli"
+      ]
+    },
     "architecture",
     {
       "type": "category",

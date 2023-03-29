@@ -5,6 +5,9 @@ metadata:
   namespace: fleet-default
 spec:
   rkeConfig:
+    machineGlobalConfig:
+      etcd-expose-metrics: false
+      profile: null
     machinePools:
       - controlPlaneRole: true
         etcdRole: true
@@ -16,4 +19,8 @@ spec:
         quantity: 1
         unhealthyNodeTimeout: 0s
         workerRole: true
+    machineSelectorConfig:
+      - config:
+          protect-kernel-defaults: false
+    registries: {}
   kubernetesVersion: v1.24.8+k3s1

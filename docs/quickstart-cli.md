@@ -41,6 +41,8 @@ As you can see this is a very simple selector that checks the key `location` for
 
 As you can see we are setting that our `machineConfigRef` is of Kind `MachineInventorySelectorTemplate` with the name `my-machine-selector`, which matches the selector we created.
 
+You can get more informations about some cluster options like [`machineGlobalConfig`](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineglobalconfig) or [`machineSelectorConfig`](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorconfig) directly in Rancher Manager documentation.
+
 <Tabs>
 <TabItem value="normalRegistration" label="Registration" default>
 <CodeBlock language="yaml" title="registration.yaml" showLineNumbers>{Registration}</CodeBlock>

@@ -1,5 +1,5 @@
 ---
-sidebar_label: Quickstart
+sidebar_label: Elemental the command line way
 title: ''
 ---
 
@@ -7,99 +7,17 @@ import Cluster from "!!raw-loader!@site/examples/quickstart/cluster.yaml"
 import Registration from "!!raw-loader!@site/examples/quickstart/registration.yaml"
 import RegistrationRPi from "!!raw-loader!@site/examples/quickstart/rpi-registration.yaml"
 import Selector from "!!raw-loader!@site/examples/quickstart/selector.yaml"
+import Prereqs from './partials/_quickstart-prereqs.md'
+import Operator from './partials/_elemental-operator-install.md'
 
-# Quickstart
+# Elemental the command line way
+
 Follow this guide to have an auto-deployed cluster via rke2/k3s and managed by Rancher 
 with the only help of an Elemental Teal iso
 
-## Introduction
+<Prereqs />
 
----
-
-### What is Elemental Teal ?
-
-Elemental Teal is the combination of "SLE Micro for Rancher" with the Rancher Elemental stack.
-
-SLE Micro for Rancher is a containerized and "stripped to the bones"
-operating system layer. At its core, it only requires grub2, dracut, a kernel, and systemd.
-
-Its sole purpose is to run Kubernetes (k3s or RKE2), with everything controlled through Rancher Manager.
-
-Elemental Teal is built in the [openSUSE Build Service](https://build.opensuse.org/package/show/isv:Rancher:Elemental:Stable:Teal53/node-image)
-and available through the [openSUSE Registry](https://registry.opensuse.org/cgi-bin/cooverview?srch_term=project%3D%5Eisv%3ARancher%3AElemental%3AStable+container%3D.*).
-
-#### Elemental on x86-64 hardware
-
-Elemental Teal is production ready and fully supported on x86-64 with Rancher v2.7.0.
-
-#### Elemental on ARM hardware
-
-ARM (aarch64) is functional in the development version. ARM is currently only tested on Raspberry Pi 4 Model B with k3s 1.24.8 (or later). We welcome feedback !
-
-#### Elemental on other hardware
-
-Elemental is currently targeting 'edge' scenarios and does therefore not support other hardware.
-We will revise this as the market evolves.
-
-### What is the Rancher Elemental Stack ?
-
-The Elemental Stack consists of some packages on top of SLE Micro for Rancher
-
-- **elemental-toolkit** - includes a set of OS utilities to enable OS management via containers. Includes dracut modules, bootloader configuration, cloud-init style configuration services, etc.
-- **elemental-operator** - this connects to Rancher Manager and handles machineRegistration and machineInventory CRDs
-- **elemental-register** - this registers machines via machineRegistrations and installs them via elemental-cli
-- **elemental-cli** - this installs any elemental-toolkit based derivative. Basically an installer based on our A/B install and upgrade system
-- **rancher-system-agent** - runs on the installed system and gets instructions ("Plans") from Rancher Manager what to install and run on the system
-
-## Prerequisites
-
- - A Rancher server (v2.7.0) configured (server-url set)
-     - To configure the Rancher `server-url` please check the [Rancher docs](https://rancher.com/docs/rancher/v2.6/en/admin-settings/#first-log-in)
- - A machine (bare metal or virtualized) with TPM 2.0
-     - Hint 1: Libvirt allows setting virtual TPMs for virtual machines [example here](tpm/#add-tpm-module-to-virtual-machine)
-     - Hint 2: You can enable TPM emulation on bare metal machines missing the TPM 2.0 module [example here](tpm/#add-tpm-emulation-to-bare-metal-machine)
-     - Hint 3: Make sure you're using UEFI (not BIOS) on x86-64, or the ISO won't boot
- - Helm Package Manager (https://helm.sh/)
- - Docker (for ISO manipulation)
- - For ARM - One SD-card (32 GB or more, must be **fast** - 40MB/s write speed is acceptable) and a USB-stick for installation
-
-## Preparing the cluster
-
-`elemental-operator` is the management endpoint, running the management
-cluster and taking care of creating inventories, registrations for machines and much more.
-
-We will use the Helm package manager to install the elemental-operator chart into our cluster.
-
-<Tabs>
-<TabItem value="stableOperator" label="Stable version (x86-64 only)" default>
-
-```shell showLineNumbers
-helm upgrade --create-namespace -n cattle-elemental-system --install elemental-operator oci://registry.opensuse.org/isv/rancher/elemental/stable/charts/rancher/elemental-operator-chart
-```
-
-</TabItem>
-<TabItem value="develOperator" label="Development version (x86-64, ARM64 (Raspberry Pi 4))" default>
-
-:::warning Reminder
-The development version is 'best effort' supported. We welcome feedback via Slack or Github issues. But it might be a bit rough as we move the stack forward.
-:::
-
-```shell showLineNumbers
-helm upgrade --create-namespace -n cattle-elemental-system --install --set image.imagePullPolicy=Always elemental-operator oci://registry.opensuse.org/isv/rancher/elemental/dev/charts/rancher/elemental-operator-chart
-```
-
-</TabItem>
-</Tabs>
-
-There is a few options that can be set in the chart install but that is out of scope for this document. You can see all the values on the chart [values.yaml](https://github.com/rancher/elemental-operator/blob/main/chart/values.yaml)
-
-Now after a few seconds you should see the operator pod appear on the `cattle-elemental-system` namespace.
-
-```shell showLineNumbers
-kubectl get pods -n cattle-elemental-system
-NAME                                  READY   STATUS    RESTARTS   AGE
-elemental-operator-64f88fc695-b8qhn   1/1     Running   0          16s
-```
+<Operator />
 
 ## Prepare your kubernetes resources
 

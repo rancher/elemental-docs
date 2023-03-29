@@ -10,6 +10,8 @@ export const data = {
   elemental_operator_url: "https://github.com/rancher/elemental-operator",
   elemental_cli_name: "Elemental CLI",
   elemental_cli_url: "https://github.com/rancher/elemental-cli",
+  elemental_ui_name: "Elemental UI plugin",
+  elemental_ui_url: "https://github.com/rancher/elemental-ui",
   elemental_iso_name: "Elemental ISO",
   elemental_register_name: "Elemental Register client",
   ranchersystemagent_name: "Rancher System Agent",

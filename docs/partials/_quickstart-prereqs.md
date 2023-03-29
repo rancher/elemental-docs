@@ -7,5 +7,4 @@
   * Hint 2: You can enable TPM emulation on bare metal machines missing the TPM 2.0 module [example here](tpm/#add-tpm-emulation-to-bare-metal-machine)
   * Hint 3: Make sure you're using UEFI (not BIOS) on x86-64, or the ISO won't boot
 * Helm Package Manager (https://helm.sh/)
-* Docker (for ISO manipulation)
-* For ARM - One SD-card (32 GB or more, must be **fast** - 40MB/s write speed is acceptable) and a USB-stick for installation
+* For ARM (aarch64) - One SD-card (32 GB or more, must be **fast** - 40MB/s write speed is acceptable) and a USB-stick for installation

@@ -67,17 +67,17 @@ Once the `elemental` plugin installed, you can see the `OS Manamagent` option in
 
 ## Add a Machine Registration Endpoint
 
-In the OS Management dashboard hit the `Create Registration Endpoint` button.
+In the OS Management dashboard, click the `Create Registration Endpoint` button.
 
-![OS Management registration endpoints](images/rancher-vmware-registration-endpoints.png)
+![OS Management registration endpoints](images/quickstart-ui-registration-endpoint-create.png)
 
-Now here either you can enter each detail in its respective places or you can edit this as yaml and create the endpoint in one go. Here we will edit this as yaml.
+Now here either you can enter each detail in its respective places or you can edit this as YAML and create the endpoint in one go. Here we'll edit this as YAML.
 
 ```yaml showLineNumbers
 apiVersion: elemental.cattle.io/v1beta1
 kind: MachineRegistration
 metadata:
-  name: elemental-cls1
+  name: elemental-cluster1
   namespace: fleet-default
 spec:
   config:
@@ -101,34 +101,24 @@ spec:
     machineUUID: "${System Information/UUID}"
 ```
 
-Remove the existing content and enter this code snippet and click on save. Remember to modify this as per your need.
+Remove the existing content and enter this code snippet and click on save. Remember to modify this as per your need. Click the `Create` button.
+
+![Create a Registration Endpoint with YAML](images/quickstart-ui-registration-endpoint-create-yaml.png)
 
 :::info main options
-name: elemental-cls1 --> "Change this as per your need"
+`name: elemental-cluster1`: change this as per your need
 
-device: /dev/sda --> Make sure your target device is "sda" otherwise find out and change the naming convention here, for example in raspberry pi it could be "mmblk---"
+`device: /dev/sda`: make sure your target device is "sda". Otherwise find out how the disk device is named and change it here. For example, in Raspberry Pi it could be "mmblk"
 
-emulate-tpm: true  --> Use this only if your target device doesnt have a tpm device and you have a way of emulating tpm like in VMware or KVM
+`emulate-tpm: true`: use this only if your target device doesn't have a TPM device and you have a way of emulating TPM like in VMware or KVM
 
-emulated-tpm-seed: 1 --> increase this by 1 for every new machine. --> If this is not given each machine will recieve the same tpm hash so at any point in time regardless of how many machines you boot it wont show up under the machine inventory.
+`emulated-tpm-seed: 1`: increase this by 1 for every new machine. If this value is not set, each machine will receive the same TPM hash and it won't show up under the machine inventory.
 :::
 
 :::danger attention
-Emulate TPM is only for non-production usage like for testing as it beats the purpose of security. So in production usage use the code above without the emulate-tpm and emulate-tpm-seed
+Emulated TPM is only for non-production usage like for testing as it beats the purpose of security. So in production usage use the code above without the `emulate-tpm` and `emulate-tpm-seed`
 :::
 
 Once you create the machine registration end point it should show up as active.
 
-![Machine registered in Registration Endpoints](images/rancher-vmware-machine-registered.png)
-
-Next click on it to view the registration url and download the initial-registration yaml.
-
-![Initial registration URL](images/rancher-vmware-initial-registration-url.png)
-
-Hit the download button, this will download the "initial-registration.yaml" file on to your local system.
-
-The registration yaml looks something like this:
-
-![Example of initial registration YAML](images/rancher-vmware-initial-registration-url-yaml.png)
-
-We will use this file and inject its content into our vanilla elemental iso.
+![Machine registered in Registration Endpoints](images/quickstart-ui-registration-endpoint-complete.png)

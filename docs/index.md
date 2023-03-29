@@ -11,7 +11,7 @@ Elemental is a software stack enabling a centralized, full cloud-native OS manag
 The Elemental Stack consists of some packages on top of SLE Micro for Rancher:
 
 - **elemental-toolkit** - includes a set of OS utilities to enable OS management via containers. Includes dracut modules, bootloader configuration, cloud-init style configuration services, etc.
-- **elemental-operator** - this connects to Rancher Manager and handles machineRegistration and machineInventory CRDs
+- **elemental-operator** - this connects to Rancher Manager and handles MachineRegistration and MachineInventory CRDs
 - **elemental-register** - this registers machines via machineRegistrations and installs them via elemental-cli
 - **elemental-cli** - this installs any elemental-toolkit based derivative. Basically an installer based on our A/B install and upgrade system
 - **rancher-system-agent** - runs on the installed system and gets instructions ("Plans") from Rancher Manager what to install and run on the system

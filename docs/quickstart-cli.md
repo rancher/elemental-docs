@@ -76,7 +76,9 @@ The SD-card on a Raspberry Pi is usually `/dev/mmcblk0`.
 <CodeBlock language="yaml" title="seedimage.yaml" showLineNumbers>{SeedImage}</CodeBlock>
 </TabItem>
 <TabItem value="seedImagerpi" label="Seed Image for Raspberry Pi" default>
-The seed image is not yet used for Raspberry Pi and will have to be generated manually in the section [Preparing the seed image manually](./quickstart.md#preparing-the-installation-seed-image)
+
+The seed image is not yet used for Raspberry Pi and will have to be generated manually in the [next section](quickstart-cli.md#preparing-the-installation-seed-image)
+
 </TabItem>
 </Tabs>
 

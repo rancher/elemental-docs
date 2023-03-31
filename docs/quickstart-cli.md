@@ -9,8 +9,10 @@ import RegistrationRPi from "!!raw-loader!@site/examples/quickstart/rpi-registra
 import Selector from "!!raw-loader!@site/examples/quickstart/selector.yaml"
 import Prereqs from './partials/_quickstart-prereqs.md'
 import Operator from './partials/_elemental-operator-install.md'
+import SeedImage from "!!raw-loader!@site/examples/quickstart/seedimage.yaml"
 
 # Elemental the command line way
+=======
 
 Follow this guide to have an auto-deployed cluster via rke2/k3s and managed by Rancher 
 with the only help of an Elemental Teal iso
@@ -69,12 +71,24 @@ Make sure to modify the registration.yaml above to set the proper install device
 The SD-card on a Raspberry Pi is usually `/dev/mmcblk0`.
 :::
 
+<Tabs>
+<TabItem value="seedImagex86" label="Seed Image (x86_64)" default>
+<CodeBlock language="yaml" title="seedimage.yaml" showLineNumbers>{SeedImage}</CodeBlock>
+</TabItem>
+<TabItem value="seedImagerpi" label="Seed Image for Raspberry Pi" default>
+
+The seed image is not yet used for Raspberry Pi and will have to be generated manually in the [next section](quickstart-cli.md#preparing-the-installation-seed-image)
+
+</TabItem>
+</Tabs>
+
 Now that we have all the configuration to create the proper resources in Kubernetes just apply them
 
 ```shell showLineNumbers
 kubectl apply -f selector.yaml 
 kubectl apply -f cluster.yaml 
 kubectl apply -f registration.yaml
+kubectl apply -f seedimage.yaml
 ```
 
 </TabItem>
@@ -91,6 +105,7 @@ If your node doesnt have that device you will have to manually create the regist
 kubectl apply -f https://raw.githubusercontent.com/rancher/elemental-docs/main/examples/quickstart/selector.yaml
 kubectl apply -f https://raw.githubusercontent.com/rancher/elemental-docs/main/examples/quickstart/cluster.yaml
 kubectl apply -f https://raw.githubusercontent.com/rancher/elemental-docs/main/examples/quickstart/registration.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/elemental-docs/main/examples/quickstart/seedimage.yaml
 ```
 
 </TabItem>
@@ -104,92 +119,14 @@ more than the registration url that the node needs to register and the proper se
 
 This seed image can then be used to provision an infinite number of machines.
 
-Our `MachineRegistration` provides the needed config in its resource as part of its `Status.RegistrationURL`,
-so we can use that url to obtain the proper yaml needed for the seed image.
-
 <Tabs>
-<TabItem value="oneLiner" label="One liner">
+<TabItem value="download" label="Downloading the quickstart ISO">
+
+The seed image is created as a kubernetes resource above and can be downloaded as an ISO using the following script which first waits for the ISO to be built:
 
 ```shell showLineNumbers
-wget --no-check-certificate `kubectl get machineregistration -n fleet-default my-nodes -o jsonpath="{.status.registrationURL}"` -O initial-registration.yaml
-```
-
-This will download the proper yaml from the registration URL and store it on the current directory under the `initial-registration.yaml` name.
-
-</TabItem>
-<TabItem value="explanation" label="Full explanation">
-
-First we need to obtain the `RegistrationURL` that was generated for our `MachineRegistration`.
-
-```bash showLineNumbers
-$ kubectl get machineregistration -n fleet-default my-nodes -o jsonpath="{.status.registrationURL}"
-https://172.18.0.2.sslip.io/elemental/registration/gsh4n8nj9gvbsjk4x7hxvnr5l6hmhbdbdffrmkwzrss2dtfbnpbmqp
-```
-
-As you can see we obtained the proper initial registration needed by `elemental-register` to register the node properly and continue with the automated installation.
-
-Then we need to visit that URL as that will provide the URL and CA certificate for unauthenticated requests:
-
-```bash showLineNumbers
-$ curl --insecure https://172.18.0.2.sslip.io/elemental/registration/gsh4n8nj9gvbsjk4x7hxvnr5l6hmhbdbdffrmkwzrss2dtfbnpbmqp
-
-elemental:
-  registration:
-    url: https://172.18.0.2.sslip.io/elemental/registration/gsh4n8nj9gvbsjk4x7hxvnr5l6hmhbdbdffrmkwzrss2dtfbnpbmqp
-    ca-cert: |-
-      -----BEGIN CERTIFICATE-----
-      MIIBqDCCAU2gAwIBAgIBADAKBggqhkjOPQQDAjA7MRwwGgYDVQQKExNkeW5hbWlj
-      bGlzdGVuZXItb3JnMRswGQYDVQQDExJkeW5hbWljbGlzdGVuZXItY2EwHhcNMjIw
-      ODA0MTA1OTE1WhcNMzIwODAxMTA1OTE1WjA7MRwwGgYDVQQKExNkeW5hbWljbGlz
-      dGVuZXItb3JnMRswGQYDVQQDExJkeW5hbWljbGlzdGVuZXItY2EwWTATBgcqhkjO
-      PQIBBggqhkjOPQMBBwNCAASa8PJH7JJGT5QUPMBYnJe0j50G7dTEaDlk4xRpqVk1
-      y4dloslsI0RTb6B++7nNgnLPOe2KqZfylNmVIAelrSaUo0IwQDAOBgNVHQ8BAf8E
-      BAMCAqQwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUxp8OBfjZlnyV6pzzKqIF
-      wWByvCYwCgYIKoZIzj0EAwIDSQAwRgIhAPI2XUWcnxkkBe98SGPFa1Hlncyu/FCR
-      AbEYIAdUC2z+AiEA+GizukSRiiLV28wdNdKihEELy+qzi5MlVYowUuQYZsA=
-      -----END CERTIFICATE-----
-```
-
-As you can see we obtained the proper initial registration needed by `elemental-register` to register the node properly and continue with the automated installation.
-
-Now we can write down the data returned for that url into a file that we will inject into the seed image.
-
-```yaml title="initial-registration.yaml" showLineNumbers
-elemental:
-  registration:
-    url: https://172.18.0.2.sslip.io/elemental/registration/gsh4n8nj9gvbsjk4x7hxvnr5l6hmhbdbdffrmkwzrss2dtfbnpbmqp
-    ca-cert: |-
-      -----BEGIN CERTIFICATE-----
-      MIIBqDCCAU2gAwIBAgIBADAKBggqhkjOPQQDAjA7MRwwGgYDVQQKExNkeW5hbWlj
-      bGlzdGVuZXItb3JnMRswGQYDVQQDExJkeW5hbWljbGlzdGVuZXItY2EwHhcNMjIw
-      ODA0MTA1OTE1WhcNMzIwODAxMTA1OTE1WjA7MRwwGgYDVQQKExNkeW5hbWljbGlz
-      dGVuZXItb3JnMRswGQYDVQQDExJkeW5hbWljbGlzdGVuZXItY2EwWTATBgcqhkjO
-      PQIBBggqhkjOPQMBBwNCAASa8PJH7JJGT5QUPMBYnJe0j50G7dTEaDlk4xRpqVk1
-      y4dloslsI0RTb6B++7nNgnLPOe2KqZfylNmVIAelrSaUo0IwQDAOBgNVHQ8BAf8E
-      BAMCAqQwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUxp8OBfjZlnyV6pzzKqIF
-      wWByvCYwCgYIKoZIzj0EAwIDSQAwRgIhAPI2XUWcnxkkBe98SGPFa1Hlncyu/FCR
-      AbEYIAdUC2z+AiEA+GizukSRiiLV28wdNdKihEELy+qzi5MlVYowUuQYZsA=
-      -----END CERTIFICATE-----
-```
-
-</TabItem>
-</Tabs>
-
-Now we can proceed to create the final seed image:
-
-<Tabs>
-<TabItem value="script" label="ISO (x86-64) via script">
-
-We provide a ISO build script for ease of use that can get the final ISO and inject the `initial-registration.yaml`:
-
-```shell showLineNumbers
-wget -q https://raw.githubusercontent.com/rancher/elemental/main/.github/elemental-iso-add-registration && chmod +x elemental-iso-add-registration
-```
-
-Now that we have the script we can proceed to download the ISO and inject our configuration injected:
-
-```shell showLineNumbers
-./elemental-iso-add-registration initial-registration.yaml
+kubectl wait --for=condition=ready pod -n fleet-default my-img
+wget --no-check-certificate `kubectl get seedimage -n fleet-default my-img -o jsonpath="{.status.downloadURL}"` -O elemental-teal.x86_64.iso
 ```
 
 This will generate an ISO on the current directory with the name `elemental-teal-x86_64.iso`.

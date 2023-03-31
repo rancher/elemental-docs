@@ -49,6 +49,7 @@ const sidebars = {
         "machineregistration-reference",
         "machineinventoryselectortemplate-reference",
         "cluster-reference",
+        "seedimage-reference",
         "elementaloperatorchart-reference",
         "kubernetesversions",
         "smbios",

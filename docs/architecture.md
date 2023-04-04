@@ -95,7 +95,7 @@ the MachineRegistration metadata required for the machine registration. The inst
 SeedImage have two conditions:
 
 - `SeedImageReady`, tracks the status of the associated pod.
-- `Ready`, tracks the overall status of the resource.
+- `Ready`, tracks if all the SeedImage child resources have been successfully created.
 
 ### Elemental Register client
 New hosts start the Elemental provisioning process through the <Vars name="elemental_register_name" />: this tool requires a valid elemental-operator registration URL as input (see the [MachineRegistration section](#machineregistration)), and performs the following steps:

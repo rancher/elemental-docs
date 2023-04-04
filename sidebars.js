@@ -82,6 +82,7 @@ const sidebars = {
       label: 'How to',
       items: [
         'wifi',
+        'elemental_behind_proxy',
         'rancher-vmware'
       ]
     },

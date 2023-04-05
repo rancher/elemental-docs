@@ -71,39 +71,9 @@ In the OS Management dashboard, click the `Create Registration Endpoint` button.
 
 ![OS Management registration endpoints](images/quickstart-ui-registration-endpoint-create.png)
 
-Now here either you can enter each detail in its respective places or you can edit this as YAML and create the endpoint in one go. Here we'll edit this as YAML.
+Now here either you can enter each detail in its respective places or you can edit this as YAML and create the endpoint in one go. Here we'll edit every fields.
 
-```yaml showLineNumbers
-apiVersion: elemental.cattle.io/v1beta1
-kind: MachineRegistration
-metadata:
-  name: elemental-cluster1
-  namespace: fleet-default
-spec:
-  config:
-    cloud-config:
-      users:
-        - name: root
-          passwd: root
-    elemental:
-      install:
-        reboot: true
-        device: /dev/sda
-        debug: true
-      registration:
-        emulate-tpm: true
-        emulated-tpm-seed: 1
-  machineName:
-  machineInventoryLabels:
-    manufacturer: "${System Information/Manufacturer}"
-    productName: "${System Information/Product Name}"
-    serialNumber: "${System Information/Serial Number}"
-    machineUUID: "${System Information/UUID}"
-```
-
-Remove the existing content and enter this code snippet and click on save. Remember to modify this as per your need. Click the `Create` button.
-
-![Create a Registration Endpoint with YAML](images/quickstart-ui-registration-endpoint-create-yaml.png)
+![Create a Registration Endpoint with UI](images/quickstart-ui-registration-endpoint-create-details.png)
 
 :::info main options
 `name: elemental-cluster1`: change this as per your need

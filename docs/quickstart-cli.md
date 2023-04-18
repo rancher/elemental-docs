@@ -113,16 +113,16 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/elemental-docs/main/e
 
 ## Preparing the installation (seed) image
 
-Now this is the last step, we need to prepare an Elemental Teal seed image that includes the initial registration config, so
-it can be auto registered, installed and fully deployed as part of our cluster. The contents of the file are nothing 
-more than the registration url that the node needs to register and the proper server certificate, so it can connect securely.
+Now this is the last step, you need to prepare an Elemental Teal seed image that includes the initial registration config, so
+it can be auto registered, installed and fully deployed as part of your cluster. The contents of the file are nothing 
+more than the registration URL that the node needs to register and the proper server certificate, so it can connect securely.
 
 This seed image can then be used to provision an infinite number of machines.
 
 <Tabs>
 <TabItem value="download" label="Downloading the quickstart ISO">
 
-The seed image is created as a kubernetes resource above and can be downloaded as an ISO using the following script which first waits for the ISO to be built:
+The seed image is created as a Kubernetes resource above and can be downloaded as an ISO using the following script which first waits for the ISO to be built:
 
 ```shell showLineNumbers
 kubectl wait --for=condition=ready pod -n fleet-default my-img

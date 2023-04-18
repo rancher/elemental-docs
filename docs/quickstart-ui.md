@@ -92,3 +92,25 @@ Emulated TPM is only for non-production usage like for testing as it beats the p
 Once you create the machine registration end point it should show up as active.
 
 ![Machine registered in Registration Endpoints](images/quickstart-ui-registration-endpoint-complete.png)
+
+## Preparing the installation (seed) image
+
+Now this is the last step, you need to prepare an Elemental Teal seed image that includes the initial registration config, so
+it can be auto registered, installed and fully deployed as part of your cluster. The contents of the file are nothing 
+more than the registration URL that the node needs to register and the proper server certificate, so it can connect securely.
+
+This seed image can then be used to provision an infinite number of machines.
+
+The seed image is created as a Kubernetes resource above and can be built using the `Build ISO` button:
+
+![Build ISO in Registration Endpoints](images/quickstart-ui-registration-endpoint-build-ISO.png)
+
+Once the build is done, ISO can be downloaded using the `Download ISO` button:
+
+![Download ISO in Registration Endpoints](images/quickstart-ui-registration-endpoint-download-ISO.png)
+
+You can now boot your nodes with this image and they will:
+
+- Register with the registrationURL given and create a per-machine `MachineInventory`
+- Install Elemental Teal to the given device
+- Reboot

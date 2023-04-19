@@ -136,3 +136,24 @@ Finally, you can also filter your `Machine Inventory` using those labels.
 For instance if you only want to see your AMD machines, you can filter on `CPUModel` like below:
 
 ![Machine Inventory filtering](images/quickstart-ui-machine-inventory-filtering.png)
+
+## Create your first Elemental Cluster
+
+Now let's use those `Machine Inventory` to create a cluster by clicking on `Create Elemental Cluster` :
+
+![Create Elemental Cluster button](images/quickstart-ui-create-cluster-button.png)
+
+For your Elemental cluster, you can either choose K3s or RKE2 for Kubernetes.
+
+![Elemental Cluster Creation Screen](images/quickstart-ui-create-cluster-standard-screen-.png)
+
+Most of the options are coming from Rancher, that's why we will not detail all the possibilities.
+Feel free to check the [Rancher Manager documentation](https://ranchermanager.docs.rancher.com/pages-for-subheaders/rancher-server-configuration) if you want to know more.
+
+However, it is important to highlight the `Inventory of Machines Selector Template` section.
+
+It lets you choose which `Machine Inventory` you want to use to create your Elemental cluster using the previously defined `Machine Inventory Labels` :
+
+![Use Machine Inventory Selector Template](images/quickstart-ui-create-cluster-machine-selector-template.png)
+
+As our three Machine Inventories contain the label `CPUVendor` with the key `AuthenticAMD`, the three machines will be used to create the Elemental cluster.

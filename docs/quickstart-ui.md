@@ -114,3 +114,25 @@ You can now boot your nodes with this image and they will:
 - Register with the registrationURL given and create a per-machine `MachineInventory`
 - Install Elemental Teal to the given device
 - Reboot
+
+## Machine Inventory
+
+When nodes are booting up for the first time, they connect to Rancher Manager and a [`Machine Inventory`](https://elemental.docs.rancher.com/architecture#machineinventory) is created for each node.
+
+![Machine Inventory menu](images/quickstart-ui-machine-inventory-menu.png)
+
+Custom columns are based on `Machine Inventory Labels` which you can add when you create your `Machine Registration Endpoint`:
+
+![Machine Registration Endpoint Hardware Labels](images/quickstart-ui-registration-endpoint-hardware-labels.png)
+
+On the following screenshot, [`Hardware Labels`](https://elemental.docs.rancher.com/hardwarelabels/#hardware-labels) are used as custom columns:
+
+You can also add custom columns by clicking on the three dots menu.
+
+![Machine Inventory custom columns](images/quickstart-ui-machine-inventory-custom-columns.png)
+
+Finally, you can also filter your `Machine Inventory` using those labels.
+
+For instance if you only want to see your AMD machines, you can filter on `CPUModel` like below:
+
+![Machine Inventory filtering](images/quickstart-ui-machine-inventory-filtering.png)

@@ -1,7 +1,16 @@
 {
   "docs": [
     "index",
-    "quickstart",
+    {
+      "type": "category",
+      "collapsible": true,
+      "collapsed": false,
+      "label": "Quickstarts",
+      "items": [
+        "quickstart-ui",
+        "quickstart-cli"
+      ]
+    },
     "architecture",
     {
       "type": "category",
@@ -25,6 +34,7 @@
         "machineregistration-reference",
         "machineinventoryselectortemplate-reference",
         "cluster-reference",
+        "seedimage-reference",
         "elementaloperatorchart-reference",
         "kubernetesversions",
         "smbios",
@@ -48,6 +58,17 @@
       "items": [
         "backup",
         "restore"
+      ]
+    },
+    {
+      "type": "category",
+      "collapsible": true,
+      "collapsed": false,
+      "label": "How to",
+      "items": [
+        "wifi",
+        "elemental_behind_proxy",
+        "rancher-vmware"
       ]
     },
     {

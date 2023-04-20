@@ -140,7 +140,7 @@ process is modelled similar to x86-64. You boot from a seed image (USB stick in 
 #### Retrieving the prebuilt seed image
 
 ```shell showLineNumbers
-wget -q https://download.opensuse.org/repositories/isv:/Rancher:/Elemental:/Dev:/Teal53/images/rpi.raw
+wget -q https://download.opensuse.org/repositories/isv:/Rancher:/Elemental:/Stable:/Teal53/images/rpi.raw
 ```
 
 ##### Verifying the download
@@ -150,7 +150,7 @@ should do a checksum verification:
 
 
 ```shell showLineNumbers
-wget -q https://download.opensuse.org/repositories/isv:/Rancher:/Elemental:/Dev:/Teal53/images/rpi.raw.sha256
+wget -q https://download.opensuse.org/repositories/isv:/Rancher:/Elemental:/Stable:/Teal53/images/rpi.raw.sha256
 sha256sum -c rpi.raw.sha256
 ```
 

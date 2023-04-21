@@ -17,7 +17,7 @@ The installation configuration is mostly applied and set as part of the registra
 The registration process is done by the `elemental-register` (the <Vars name="elemental_operator_name" /> client part)
 who is the responsible to register nodes in a Rancher management cluster and fetch the installation configuration.
 
-Please refer to the [Quick Start](quickstart.md) guide for simple step by step deployment instructions.
+Please refer to the [Quick Start](quickstart-cli.md) guide for simple step by step deployment instructions.
 
 ## Elemental Operator Installation
 
@@ -46,14 +46,14 @@ resources are required in order to prepare an Elemental based cluster deployment
   object includes the machine registration URL that nodes use to register against it.
 
 A Rancher Cluster resource is also required to deploy Elemental, it can be manually created as exemplified in
-the [Quick Start](quickstart.md) guide or created from the Rancher 2.6 UI.
+the [Quick Start](quickstart-cli.md) guide or created from the Rancher 2.6 UI.
 
 ## Prepare Installation Media
 
 The installation media is the media that will be used to kick start an Elemental Teal deployment. Currently
 the supported media is a live ISO. The live ISO must include the registration configuration yaml hence it must
 crafted once the MachineRegistration is created. The installation media is created by using the `elemental-iso-add-registration`
-helper script (see [quick start](quickstart.md#preparing-the-iso) guide)
+helper script (see [quick start](quickstart-cli.md#preparing-the-iso) guide)
 or by using the `elemental build-iso` command line utility included as part of the <Vars name="elemental_toolkit_name" link="elemental_toolkit_url/docs/creating-derivatives/build_iso" />.
 
 Within MachineRegistration only a subset of OS installation parameters can be configured, all available parameters are listed

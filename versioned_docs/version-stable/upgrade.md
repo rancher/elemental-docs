@@ -91,8 +91,8 @@ The generated data is then automounted by the syncer and then parsed so it can g
 The only requirement to make your own custom syncer is to make it output a json file to `/data/output` and keep the correct json structure.
 :::
 
-See below for an example use of our [discovery plugin](https://github.com/rancher-sandbox/upgradechannel-discovery), 
-which gathers versions from either git or github releases.
+Elemental project provides an Elemental Teal channel to list all `ManagedOSVersions` released as a custom syncer.
+See the Elemental Teal channel resource definition below:
 
 <CodeBlock language="yaml" title="managed-os-version-channel-json.yaml" showLineNumbers>{ManagedOSVersionChannelCustom}</CodeBlock>
 

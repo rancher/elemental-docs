@@ -1,7 +1,16 @@
 {
   "docs": [
     "index",
-    "quickstart",
+    {
+      "type": "category",
+      "collapsible": true,
+      "collapsed": false,
+      "label": "Quickstarts",
+      "items": [
+        "quickstart-ui",
+        "quickstart-cli"
+      ]
+    },
     "architecture",
     {
       "type": "category",
@@ -25,6 +34,7 @@
         "machineregistration-reference",
         "machineinventoryselectortemplate-reference",
         "cluster-reference",
+        "seedimage-reference",
         "elementaloperatorchart-reference",
         "kubernetesversions",
         "smbios",
@@ -54,8 +64,28 @@
       "type": "category",
       "collapsible": true,
       "collapsed": false,
+      "label": "How to",
+      "items": [
+        "wifi",
+        "elemental_behind_proxy",
+        "rancher-vmware"
+      ]
+    },
+    {
+      "type": "category",
+      "collapsible": true,
+      "collapsed": false,
       "label": "Troubleshooting",
       "items": [
+        {
+          "type": "category",
+          "collapsible": true,
+          "collapsed": false,
+          "label": "Rancher",
+          "items": [
+            "troubleshooting-rancher-upgrades"
+          ]
+        },
         {
           "type": "category",
           "collapsible": true,

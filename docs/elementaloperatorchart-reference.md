@@ -67,7 +67,7 @@ helm show values oci://registry.opensuse.org/isv/rancher/elemental/stable/charts
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | image.empty | string | `rancher/pause:3.1` |  |
-| image.repository | string | `quay.io/costoolkit/elemental-operator` | Source image for elemental-operator with repository name  |
+| image.repository | string | `registry.opensuse.org/isv/rancher/elemental/stable/charts/rancher/elemental-operator-chart` | Source image for elemental-operator with repository name  |
 | image.tag | tag | `""` |  |
 | image.imagePullPolicy | string | `IfNotPresent` |  |
 | noProxy | string | `127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.svc,.cluster.local" | Comma separated list of domains or ip addresses that will not use the proxy |

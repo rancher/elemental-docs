@@ -96,11 +96,21 @@ const sidebars = {
           "type": "category",
           "collapsible": true,
           "collapsed": false,
+          "label": "Rancher",
+          "items": [
+            "troubleshooting-rancher-upgrades",
+          ]
+        },
+        {
+          "type": "category",
+          "collapsible": true,
+          "collapsed": false,
           "label": "Restore",
           "items": [
             "troubleshooting-restore",
           ]
-        }
+        },
+
       ]
     },
   ],

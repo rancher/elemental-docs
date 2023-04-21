@@ -6,7 +6,7 @@ cluster and taking care of creating inventories, registrations for machines and 
 We will use the Helm package manager to install the elemental-operator chart into our cluster.
 
 <Tabs>
-<TabItem value="stableOperator" label="Stable version (x86-64 only)" default>
+<TabItem value="stableOperator" label="Stable version (x86-64, ARM64 (Raspberry Pi 4))" default>
 
 ```shell showLineNumbers
 helm upgrade --create-namespace -n cattle-elemental-system --install elemental-operator oci://registry.opensuse.org/isv/rancher/elemental/stable/charts/rancher/elemental-operator-chart

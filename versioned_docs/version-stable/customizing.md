@@ -267,7 +267,7 @@ show case how this could be added:
 
 ```docker showLineNumbers
 # The version of Elemental to modify
-FROM registry.opensuse.org/isv/rancher/elemental/stable/teal53/15.4/rancher/elemental-node-image/5.3:VERSION
+FROM registry.opensuse.org/isv/rancher/elemental/stable/teal53/15.4/rancher/elemental-teal/5.3:latest
 
 # Custom commands
 RUN rpm --import <repo-signing-key-url> && \
@@ -283,7 +283,7 @@ RUN echo "IMAGE_REPO=${IMAGE_REPO}"          > /etc/os-release && \
     echo "IMAGE=${IMAGE_REPO}:${IMAGE_TAG}" >> /etc/os-release
 ```
 
-Where VERSION is the base version we want to customize.
+Where `latest` is the base version we want to customize.
 
 And then the following commands
 
@@ -307,7 +307,7 @@ Elemental Teal leverages container images to build its root filesystems; therefo
 to use it in a multi-stage environment to create custom bootable media that bundles a custom container image.
 
 ```docker showLineNumbers
-FROM registry.opensuse.org/isv/rancher/elemental/stable/teal53/15.4/rancher/elemental-node-image/5.3:latest as os
+FROM registry.opensuse.org/isv/rancher/elemental/stable/teal53/15.4/rancher/elemental-teal/5.3:latest as os
 
 # Check the section on remastering a custom docker image
 

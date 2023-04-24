@@ -73,13 +73,6 @@ The SD-card on a Raspberry Pi is usually `/dev/mmcblk0`.
 <Tabs>
 <TabItem value="seedImagex86" label="Seed Image (x86_64)" default>
 <CodeBlock language="yaml" title="seedimage.yaml" showLineNumbers>{SeedImage}</CodeBlock>
-</TabItem>
-<TabItem value="seedImagerpi" label="Seed Image for Raspberry Pi" default>
-
-The seed image is not yet used for Raspberry Pi and will have to be generated manually in the [next section](quickstart-cli.md#preparing-the-installation-seed-image)
-
-</TabItem>
-</Tabs>
 
 Now that we have all the configuration to create the proper resources in Kubernetes just apply them
 
@@ -89,6 +82,22 @@ kubectl apply -f cluster.yaml
 kubectl apply -f registration.yaml
 kubectl apply -f seedimage.yaml
 ```
+
+</TabItem>
+<TabItem value="seedImagerpi" label="Seed Image for Raspberry Pi" default>
+
+The seed image is not yet used for Raspberry Pi and will have to be generated manually in the [next section](quickstart-cli.md#preparing-the-installation-seed-image)
+
+Now that we have all the configuration to create the proper resources in Kubernetes just apply them
+
+```shell showLineNumbers
+kubectl apply -f selector.yaml 
+kubectl apply -f cluster.yaml 
+kubectl apply -f registration.yaml
+```
+
+</TabItem>
+</Tabs>
 
 </TabItem>
 <TabItem value="repofiles" label="Using quickstart files from Elemental docs repo directly">
@@ -104,7 +113,7 @@ If your node doesnt have that device you will have to manually create the regist
 kubectl apply -f https://raw.githubusercontent.com/rancher/elemental-docs/main/examples/quickstart/selector.yaml
 kubectl apply -f https://raw.githubusercontent.com/rancher/elemental-docs/main/examples/quickstart/cluster.yaml
 kubectl apply -f https://raw.githubusercontent.com/rancher/elemental-docs/main/examples/quickstart/registration.yaml
-kubectl apply -f https://raw.githubusercontent.com/rancher/elemental-docs/main/examples/quickstart/seedimage.yaml
+kubectl apply -f https://raw.githubusercontent.com/rancher/elemental-docs/main/examples/quickstart/seedimage.yaml (not for aarch64 yet)
 ```
 
 </TabItem>
@@ -112,7 +121,17 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/elemental-docs/main/e
 
 ## Preparing the installation (seed) image
 
-Now this is the last step, you need to prepare an Elemental Teal seed image that includes the initial registration config, so
+:::note note
+The initial registration config is the file generated when you create a `Machine Registration`.
+
+You can download it with:
+
+```shell
+wget --no-check-certificate `kubectl get machineregistration -n fleet-default my-nodes -o jsonpath="{.status.registrationURL}"` -O initial-registration.yaml
+```
+:::
+
+Now this is the last step, you need to prepare an Elemental Teal seed image that includes automatically (not for aarch64 yet) the initial registration config, so
 it can be auto registered, installed and fully deployed as part of your cluster. The contents of the file are nothing 
 more than the registration URL that the node needs to register and the proper server certificate, so it can connect securely.
 

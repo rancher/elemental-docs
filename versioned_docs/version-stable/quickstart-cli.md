@@ -12,7 +12,6 @@ import Operator from './partials/_elemental-operator-install.md'
 import SeedImage from "!!raw-loader!@site/examples/quickstart/seedimage.yaml"
 
 # Elemental the command line way
-=======
 
 Follow this guide to have an auto-deployed cluster via rke2/k3s and managed by Rancher 
 with the only help of an Elemental Teal iso

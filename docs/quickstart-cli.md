@@ -174,12 +174,6 @@ sha256sum -c rpi.raw.sha256
 
 This should print `rpi.raw: OK` as output.
 
-#### Writing the seed image to a USB stick
-
-The `.raw` image needs to be written to a USB stick to boot from. This can be done with `dd` on the Linux command line if you're comfortable with this command.
-[openSUSE](https://www.opensuse.org) has nice instructions on how to write an image to a storage medium for [Linux](https://en.opensuse.org/SDB:Live_USB_stick),
-[Windows](https://en.opensuse.org/SDB:Create_a_Live_USB_stick_using_Windows), and [OS X](https://en.opensuse.org/SDB:Create_a_Live_USB_stick_using_macOS).
-
 #### Injecting the registration information
 
 Adding the `initial-registration.yaml` isn't scripted yet. This is still a manual process:
@@ -192,6 +186,26 @@ If you've mounted the USB stick with a file manager, this command should work to
 ```shell showLineNumbers
 sudo cp initial-registration.yaml /run/media/$USER/COS_LIVE/livecd-cloud-config.yaml
 ```
+
+If you prefer using some CLI tools:
+
+```shell showLineNumbers
+IMAGE=rpi.raw
+DEST=$(mktemp -d)
+
+SECTORSIZE=$(sfdisk -J ${IMAGE} | jq '.partitiontable.sectorsize')
+DATAPARTITIONSTART=$(sfdisk -J ${IMAGE} | jq '.partitiontable.partitions[1].start')
+sudo mount -o rw,loop,offset=$((${SECTORSIZE}*${DATAPARTITIONSTART})) ${IMAGE} ${DEST}
+sudo cp initial-registration.yaml ${DEST}/livecd-cloud-config.yaml
+sudo umount ${DEST}
+rmdir ${DEST}
+```
+
+#### Writing the seed image to a USB stick
+
+The `.raw` image needs to be written to a USB stick to boot from. This can be done with `dd` on the Linux command line if you're comfortable with this command.
+[openSUSE](https://www.opensuse.org) has nice instructions on how to write an image to a storage medium for [Linux](https://en.opensuse.org/SDB:Live_USB_stick),
+[Windows](https://en.opensuse.org/SDB:Create_a_Live_USB_stick_using_Windows), and [OS X](https://en.opensuse.org/SDB:Create_a_Live_USB_stick_using_macOS).
 
 #### Booting the Raspberry Pi
 

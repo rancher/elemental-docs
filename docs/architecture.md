@@ -31,7 +31,7 @@ The <Vars name="elemental_cli_name" /> allows also to install the Elemental OS o
 
 ### <Vars name="elemental_iso_name" />
 The <Vars name="elemental_iso_name" /> is a live ISO based on the Elemental OS (an Elemental live ISO).
-It includes all the tools needed to perform a full node provisioning, from the OS to Kubernetes, including the [<Vars name="elemental_cli_name" />](#elemental-cli) and the [<Vars name="elemental_register_name" />](#elemental-register).
+It includes all the tools needed to perform a full node provisioning, from the OS to Kubernetes, including the [<Vars name="elemental_cli_name" />](#elemental-cli) and the [<Vars name="elemental_register_name" />](#elemental-register-client).
 
 ----
 

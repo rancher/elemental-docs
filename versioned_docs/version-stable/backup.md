@@ -9,162 +9,11 @@ Follow this guide to create backup for Elemental configuration installed togethe
 
 ## Install rancher-backup operator for Rancher
 
-Go to official [Rancher documentation](https://docs.ranchermanager.rancher.io/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher) and install rancher-bakup operator from there.
+Go to official [Rancher documentation](https://docs.ranchermanager.rancher.io/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher) and install rancher-backup operator from there.
 
-:::warning warning
-For Rancher v2.7 and below it is needed to edit `ResourceSet` for rancher-backup operator.
-For Rancher v2.7.1+ backup will be done automatically by rancher-backup operator and no further operation are needed.
-:::
+## Backup Elemental with rancher-backup operator
 
-## Backup Elemental with rancher-backup operator (only for Rancher v2.7 and below)
-
-Fetch `rancher-resource-set` object from Kubernetes cluster
-
-```shell showLineNumbers
-kubectl get ResourceSet rancher-resource-set -o yaml > rancher-resource-set.yaml
-```
-
-<Tabs>
-<TabItem value="manualEdit" label="Manually editing the resource set yaml">
-
-At the end of `rancher-resource-set.yaml` file add the definition of Elemental resources
-
-```yaml showLineNumbers
-- apiVersion: apiextensions.k8s.io/v1
-kindsRegexp: .
-resourceNameRegexp: elemental.cattle.io$
-- apiVersion: apps/v1
-kindsRegexp: ^deployments$
-namespaces:
-- cattle-elemental-system
-resourceNames:
-- elemental-operator
-- apiVersion: rbac.authorization.k8s.io/v1
-kindsRegexp: ^clusterroles$
-resourceNames:
-- elemental-operator
-- apiVersion: rbac.authorization.k8s.io/v1
-kindsRegexp: ^clusterrolebindings$
-resourceNames:
-- elemental-operator
-- apiVersion: v1
-kindsRegexp: ^serviceaccounts$
-namespaces:
-- cattle-elemental-system
-resourceNames:
-- elemental-operator
-- apiVersion: management.cattle.io/v3
-kindsRegexp: ^globalrole$
-resourceNames:
-- elemental-operator
-- apiVersion: management.cattle.io/v3
-kindsRegexp: ^apiservice$
-resourceNameRegexp: elemental.cattle.io$
-- apiVersion: elemental.cattle.io/v1beta1
-kindsRegexp: .
-namespaceRegexp: ^cattle-fleet-|^fleet-|^cluster-fleet-
-- apiVersion: rbac.authorization.k8s.io/v1
-kindsRegexp: ^roles$|^rolebindings$
-labelSelectors:
-  matchExpressions:
-  - key: elemental.cattle.io/managed
-    operator: In
-    values:
-    - "true"
-namespaceRegexp: ^cattle-fleet-|^fleet-|^cluster-fleet-
-- apiVersion: v1
-kindsRegexp: ^secrets$|^serviceaccounts$
-labelSelectors:
-  matchExpressions:
-  - key: elemental.cattle.io/managed
-    operator: In
-    values:
-    - "true"
-namespaceRegexp: ^cattle-fleet-|^fleet-|^cluster-fleet-
-```
-
-</TabItem>
-<TabItem value="yqMerge" label="Using yq to auto merge yaml files">
-
-You can use yq to auto merge `rancher-resource-set.yaml` and `elemental-resource-set.yaml`. Please go and install [yq v4.x](https://github.com/mikefarah/yq/#install) version
-
-Create `elemental-resource-set.yaml` file
-
-```yaml showLineNumbers
-apiVersion: resources.cattle.io/v1
-kind: ResourceSet
-metadata:
-  name: rancher-resource-set
-resourceSelectors:
-- apiVersion: apiextensions.k8s.io/v1
-  kindsRegexp: .
-  resourceNameRegexp: elemental.cattle.io$
-- apiVersion: apps/v1
-  kindsRegexp: ^deployments$
-  namespaces:
-  - cattle-elemental-system
-  resourceNames:
-  - elemental-operator
-- apiVersion: rbac.authorization.k8s.io/v1
-  kindsRegexp: ^clusterroles$
-  resourceNames:
-  - elemental-operator
-- apiVersion: rbac.authorization.k8s.io/v1
-  kindsRegexp: ^clusterrolebindings$
-  resourceNames:
-  - elemental-operator
-- apiVersion: v1
-  kindsRegexp: ^serviceaccounts$
-  namespaces:
-  - cattle-elemental-system
-  resourceNames:
-  - elemental-operator
-- apiVersion: management.cattle.io/v3
-  kindsRegexp: ^globalrole$
-  resourceNames:
-  - elemental-operator
-- apiVersion: management.cattle.io/v3
-  kindsRegexp: ^apiservice$
-  resourceNameRegexp: elemental.cattle.io$
-- apiVersion: elemental.cattle.io/v1beta1
-  kindsRegexp: .
-  namespaceRegexp: ^cattle-fleet-|^fleet-|^cluster-fleet-
-- apiVersion: rbac.authorization.k8s.io/v1
-  kindsRegexp: ^roles$|^rolebindings$
-  labelSelectors:
-    matchExpressions:
-    - key: elemental.cattle.io/managed
-      operator: In
-      values:
-      - "true"
-  namespaceRegexp: ^cattle-fleet-|^fleet-|^cluster-fleet-
-- apiVersion: v1
-  kindsRegexp: ^secrets$|^serviceaccounts$
-  labelSelectors:
-    matchExpressions:
-    - key: elemental.cattle.io/managed
-      operator: In
-      values:
-      - "true"
-  namespaceRegexp: ^cattle-fleet-|^fleet-|^cluster-fleet-
-```
-
-To merge both files, use `yq` command
-
-```shell showLineNumbers
-yq ea --inplace '. as $item ireduce ({}; . *+ $item )' rancher-resource-set.yaml elemental-resource-set.yaml
-```
-
-</TabItem>
-</Tabs>
-
-Then apply changes to Kubernetes cluster
-
-```shell showLineNumbers
-kubectl apply -f rancher-resource-set.yaml
-```
-
-Create backup with creating Backup object
+Create a `backup object` (adapted to your needs) to backup an Elemental configuration.
 
 ```yaml showLineNumbers
 apiVersion: resources.cattle.io/v1
@@ -177,7 +26,13 @@ spec:
   retentionCount: 10
 ```
 
-Check logs from rancher-backup operator
+Apply manifest on Kubernete.
+
+```shell showLineNumbers
+kubectl apply -f elemental-backup.yaml
+```
+
+Check logs from rancher-backup operator.
 
 ```shell showLineNumbers
 kubectl logs -n cattle-resources-system -l app.kubernetes.io/name=rancher-backup -f

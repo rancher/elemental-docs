@@ -5,32 +5,34 @@ title: ''
 
 # Restore
 
-Follow this guide to restore an elemental node configuration from a backup with Rancher.
+Follow this guide to restore an Elemental configuration from a backup with Rancher.
 
 ## Prepare rancher-backup operator and backup files for restoring
 
-Go to official [Rancher documentation](https://docs.ranchermanager.rancher.io/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher) and make sure that `rancher-bakup operator` is installed and has access to backup files.
+Go to official [Rancher documentation](https://docs.ranchermanager.rancher.io/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/restore-rancher) and make sure that `rancher-backup operator` is installed and has access to backup files.
 
-## Restore the elemental node configuration with rancher-backup operator
+You first have to follow this [documentation](backup.md) to do a backup of Elemental resources.
 
-Create a `restore object` to restore the backup tarball:
+## Restore the Elemental configuration with rancher-backup operator
+
+Create a `restore object` (adapted to your needs) to restore the backup tarball.
 
 ```yaml showLineNumbers
 apiVersion: resources.cattle.io/v1
 kind: Restore
 metadata:
-  name: restore-migration
+  name: elemental-restore
 spec:
   backupFilename: rancher-backup-430169aa-edde-4a61-85e8-858f625a755b-2022-10-17T05-15-00Z.tar.gz
 ```
 
-Apply manifest on Kubernetes
+Apply manifest on Kubernetes.
 
 ```shell showLineNumbers
-kubectl apply -f rancher-restore.yaml
+kubectl apply -f elemental-restore.yaml
 ```
 
-Check logs from rancher-backup operator
+Check logs from rancher-backup operator.
 
 ```shell showLineNumbers
 kubectl logs -n cattle-resources-system -l app.kubernetes.io/name=rancher-backup -f

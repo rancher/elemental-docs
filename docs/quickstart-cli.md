@@ -121,7 +121,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/elemental-docs/main/e
 
 ## Preparing the installation (seed) image
 
-:::note note 
+:::note note
 The initial registration config is the file generated when you create a `Machine Registration`.
 
 You can download it with:

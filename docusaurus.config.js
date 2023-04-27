@@ -40,9 +40,6 @@ const config = {
               label: 'Next 🚧',
               badge: false,
             },
-            stable: {
-              label: 'Stable',
-            },
           },
         },
         theme: {

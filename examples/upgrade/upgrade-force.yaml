@@ -1,0 +1,15 @@
+apiVersion: elemental.cattle.io/v1beta1
+kind: ManagedOSImage
+metadata:
+  name: upgrade3
+  namespace: fleet-default
+spec:
+  clusterTargets:
+    - clusterName: my-cluster
+  upgradeContainer:
+    command:
+      - "/usr/sbin/suc-upgrade"
+    envs:
+      - name: FORCE
+        value: "true"
+    image: myimage:mytag

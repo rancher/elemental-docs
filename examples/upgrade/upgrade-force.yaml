@@ -7,9 +7,6 @@ spec:
   clusterTargets:
     - clusterName: my-cluster
   upgradeContainer:
-    command:
-      - "/usr/sbin/suc-upgrade"
     envs:
       - name: FORCE
         value: "true"
-    image: myimage:mytag

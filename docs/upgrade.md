@@ -5,6 +5,7 @@ title: ''
 
 import ClusterTarget from "!!raw-loader!@site/examples/upgrade/upgrade-cluster-target.yaml"
 import NodeSelector from "!!raw-loader!@site/examples/upgrade/upgrade-node-selector.yaml"
+import UpgradeForce from "!!raw-loader!@site/examples/upgrade/upgrade-force.yaml"
 import ManagedOSVersion from "!!raw-loader!@site/examples/upgrade/upgrade-managedos-version.yaml"
 import MangedOSVersionChannelJson from "!!raw-loader!@site/examples/upgrade/managed-os-version-channel-json.yaml"
 import ManagedOSVersionChannelCustom from "!!raw-loader!@site/examples/upgrade/managed-os-version-channel-custom.yaml"
@@ -43,6 +44,14 @@ You can target nodes for an upgrade via a `nodeSelector` by setting it to the la
 Any nodes containing that key with the value will match and be upgraded.
 
 <CodeBlock language="yaml" title="upgrade-node-selector.yaml" showLineNumbers>{NodeSelector}</CodeBlock>
+
+</TabItem>
+<TabItem value="forceUpgrade" label="With FORCE flag">
+When upgrading to an older version or the same version that is already running the upgrade-procedure will be skipped.
+
+It is possible to force upgrades to older versions by setting the FORCE environment variable as shown below.
+
+<CodeBlock language="yaml" title="upgrade-force.yaml" showLineNumbers>{UpgradeForce}</CodeBlock>
 
 </TabItem>
 </Tabs>

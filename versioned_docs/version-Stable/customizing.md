@@ -222,7 +222,7 @@ action of mounting those mountpoints. The Elemental OS `fstab` file is ephemeral
 dynamically created at boot time. That's why it doesn't exist during the installation and
 can't be used in an installation hook.
 
-Here's an example of `overlay/oem/lvm_volumes_hook.yaml`:
+Here's an example of `overlay/oem/lvm_volumes_in_fstab.yaml`:
 
 ```yaml showLineNumbers
 name: "Mount LVM volumes"

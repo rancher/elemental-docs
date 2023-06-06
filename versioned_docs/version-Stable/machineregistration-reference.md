@@ -9,8 +9,6 @@ The MachineRegistration resource is the responsible of defining a machine regist
 
 There are several keys that can be configured under a `MachineRegistration` resource spec.
 
-There are several keys that can be configured under a `MachineRegistration` resource spec.
-
 ```yaml title="MachineRegistration" showLineNumbers
 apiVersion: elemental.cattle.io/v1beta1
 kind: MachineRegistration

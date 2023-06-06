@@ -1,18 +1,9 @@
 apiVersion: elemental.cattle.io/v1beta1
 kind: ManagedOSVersionChannel
 metadata:
-  name: elemental-versions
+  name: elemental-teal-channel
   namespace: fleet-default
 spec:
   options:
-    args:
-      - github
-    command:
-      - /usr/bin/upgradechannel-discovery
-    envs:
-      - name: REPOSITORY
-        value: rancher/elemental
-      - name: IMAGE_PREFIX
-        value: quay.io/costoolkit/elemental
-    image: quay.io/costoolkit/upgradechannel-discovery:v0.3-4b83dbe
+    image: registry.opensuse.org/isv/rancher/elemental/stable/teal53/15.4/rancher/elemental-teal-channel/5.3:latest
   type: custom

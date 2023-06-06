@@ -83,7 +83,8 @@ const sidebars = {
       items: [
         'wifi',
         'elemental_behind_proxy',
-        'rancher-vmware'
+        'rancher-vmware',
+        'removable-device-cloudconfig'
       ]
     },
     {
@@ -96,11 +97,21 @@ const sidebars = {
           "type": "category",
           "collapsible": true,
           "collapsed": false,
+          "label": "Rancher",
+          "items": [
+            "troubleshooting-rancher-upgrades",
+          ]
+        },
+        {
+          "type": "category",
+          "collapsible": true,
+          "collapsed": false,
           "label": "Restore",
           "items": [
             "troubleshooting-restore",
           ]
-        }
+        },
+
       ]
     },
   ],

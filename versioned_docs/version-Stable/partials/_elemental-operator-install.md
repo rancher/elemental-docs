@@ -30,7 +30,7 @@ helm upgrade --create-namespace -n cattle-elemental-system --install --set image
 </TabItem>
 </Tabs>
 
-There is a few options that can be set in the chart install but that is out of scope for this document. You can see all the values on the chart [values.yaml](https://github.com/rancher/elemental-operator/blob/main/chart/values.yaml)
+There is a few options that can be set in the chart install but that is out of scope for this document. You can see all the values on the chart [values.yaml](https://github.com/rancher/elemental-operator/blob/main/charts/operator/values.yaml)
 
 Now after a few seconds you should see the operator pod appear on the `cattle-elemental-system` namespace.
 

@@ -24,7 +24,7 @@ From version 1.2.4 of the Elemental Operator, the custom resource definitions (C
 :::
 
 ```shell showLineNumbers
-helm upgrade --create-namespace -n cattle-elemental-system --install --set image.imagePullPolicy=Always elemental-operator-crds oci://registry.opensuse.org/isv/rancher/elemental/dev/charts/rancher/elemental-operator-crds-chart
+helm upgrade --create-namespace -n cattle-elemental-system --install elemental-operator-crds oci://registry.opensuse.org/isv/rancher/elemental/dev/charts/rancher/elemental-operator-crds-chart
 ```
 
 :::warning Reminder

@@ -23,20 +23,12 @@ helm show all oci://registry.opensuse.org/isv/rancher/elemental/stable/charts/ra
 
 ## Install Chart
 
-It is required to install the custom resource definitions (CRDs) first.  
-
-```console showLineNumbers
-helm install --create-namespace -n cattle-elemental-system elemental-operator-crds \
-             oci://registry.opensuse.org/isv/rancher/elemental/stable/charts/rancher/elemental-operator-crds-chart
-```
-
-After the CRDs chart is installed, the elemental-operator chart can be installed as well.  
-The command below deploys elemental-operator on the Kubernetes cluster in the default configuration.
-
 ```console showLineNumbers
 helm install --create-namespace -n cattle-elemental-system elemental-operator \
              oci://registry.opensuse.org/isv/rancher/elemental/stable/charts/rancher/elemental-operator-chart
 ```
+
+The command deploys elemental-operator on the Kubernetes cluster in the default configuration.
 
 _See [configuration](#configuration) below._
 

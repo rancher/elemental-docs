@@ -6,13 +6,14 @@ cluster and taking care of creating inventories, registrations for machines and 
 We will use the Helm package manager to install the elemental-operator chart into our cluster.
 
 :::info Helm v3.8.0+ required
-The Elemental Operator chart is distributed via an OCI registry: Helm correctly supports OCI based registries starting from the v3.8.0 release.
+The Elemental Operator CRDs and Elemental Operator charts are distributed via an OCI registry: Helm correctly supports OCI based registries starting from the v3.8.0 release.
 :::
 
 <Tabs>
 <TabItem value="stableOperator" label="Stable version (x86-64, ARM64 (Raspberry Pi 4))" default>
 
 ```shell showLineNumbers
+helm upgrade --create-namespace -n cattle-elemental-system --install elemental-operator-crds oci://registry.opensuse.org/isv/rancher/elemental/stable/charts/rancher/elemental-operator-crds-chart
 helm upgrade --create-namespace -n cattle-elemental-system --install elemental-operator oci://registry.opensuse.org/isv/rancher/elemental/stable/charts/rancher/elemental-operator-chart
 ```
 
@@ -24,6 +25,8 @@ The development version is 'best effort' supported. We welcome feedback via Slac
 :::
 
 ```shell showLineNumbers
+helm upgrade --create-namespace -n cattle-elemental-system --install --set image.imagePullPolicy=Always elemental-operator-crds oci://registry.opensuse.org/isv/rancher/elemental/dev/charts/rancher/elemental-operator-crds-chart
+
 helm upgrade --create-namespace -n cattle-elemental-system --install --set image.imagePullPolicy=Always elemental-operator oci://registry.opensuse.org/isv/rancher/elemental/dev/charts/rancher/elemental-operator-chart
 ```
 

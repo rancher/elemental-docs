@@ -19,6 +19,14 @@ helm upgrade --create-namespace -n cattle-elemental-system --install elemental-o
 </TabItem>
 <TabItem value="develOperator" label="Development version (x86-64, ARM64 (Raspberry Pi 4))" default>
 
+:::info Elemental Operator CRDs are required
+From version 1.2.4 of the Elemental Operator, the custom resource definitions (CRDs) must be installed first from a different Helm chart
+:::
+
+```shell showLineNumbers
+helm upgrade --create-namespace -n cattle-elemental-system --install --set image.imagePullPolicy=Always elemental-operator-crds oci://registry.opensuse.org/isv/rancher/elemental/dev/charts/rancher/elemental-operator-crds-chart
+```
+
 :::warning Reminder
 The development version is 'best effort' supported. We welcome feedback via Slack or Github issues. But it might be a bit rough as we move the stack forward.
 :::

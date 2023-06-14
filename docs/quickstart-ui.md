@@ -37,8 +37,6 @@ In order to enable the Rancher Manager Extensions Support, you'll need to follow
 
 ![Add Rancher Manager Extensions repository](images/quickstart-ui-extension-repository.png)
 
-[next section](#install-the-elemental-plugin)
-
 ## Install the elemental plugin
 
 After the Rancher Manager Extensions Support is enabled, you can install the `elemental` plugin as follow:

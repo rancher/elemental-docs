@@ -1,7 +1,7 @@
 apiVersion: elemental.cattle.io/v1beta1
 kind: MachineRegistration
 metadata:
-  name: my-nodes
+  name: fire-nodes
   namespace: fleet-default
 spec:
   config:
@@ -15,6 +15,7 @@ spec:
         device: /dev/sda
         debug: true
   machineInventoryLabels:
+    element: fire
     manufacturer: "${System Information/Manufacturer}"
     productName: "${System Information/Product Name}"
     serialNumber: "${System Information/Serial Number}"

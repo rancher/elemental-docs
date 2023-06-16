@@ -36,7 +36,7 @@ You will need to create the following files.
 
 <CodeBlock language="yaml" title="selector.yaml" showLineNumbers>{Selector}</CodeBlock>
 
-As you can see this is a very simple selector that checks the key `location` for the value `europe`
+As you can see this is a very simple selector that checks the key `element` for the value `fire`
 
 <CodeBlock language="yaml" title="cluster.yaml" showLineNumbers>{Cluster}</CodeBlock>
 
@@ -232,10 +232,10 @@ You can now boot your nodes with this image and they will:
 
 ### Selecting the right machines to join a cluster
 
-In order for the `MachineInventorySelectorTemplate` to select the nodes, a location label to the `MachineInventory` is now needed:
+In order for the `MachineInventorySelectorTemplate` to select the nodes, an element label to the `MachineInventory` is now needed:
 
 ```shell showLineNumbers
-kubectl -n fleet-default label machineinventory $(kubectl get machineinventory -n fleet-default --no-headers -o custom-columns=":metadata.name") location=europe
+kubectl -n fleet-default label machineinventory $(kubectl get machineinventory -n fleet-default --no-headers -o custom-columns=":metadata.name") element=fire
 ```
 
 After the label has been applied the machines will auto-deploy the cluster via the chosen provider (k3s/rke).

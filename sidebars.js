@@ -111,7 +111,15 @@ const sidebars = {
             "troubleshooting-restore",
           ]
         },
-
+        {
+          "type": "category",
+          "collapsible": true,
+          "collapsed": false,
+          "label": "Upgrade",
+          "items": [
+            "troubleshooting-upgrade"
+          ]
+        }
       ]
     },
   ],

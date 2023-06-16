@@ -139,7 +139,7 @@ wget --no-check-certificate `kubectl get machineregistration -n fleet-default my
 ```
 :::
 
-The contents of the registration config file are nothing  more than the registration URL that the node needs to register, the proper server certificate and few options for the registration process, so it can connect securely.
+The contents of the registration config file are nothing more than the registration URL that the node needs to register, the proper server certificate and few options for the registration process, so it can connect securely.
 
 This seed image can then be used to provision any number of machines.
 

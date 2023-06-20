@@ -5,32 +5,33 @@ title: ''
 
 # Backup
 
-Follow this guide to create backup for Elemental configuration installed together with Rancher.
+Since Elemental runs as part of Rancher, the Elemental resources are bundled in the Rancher backup.  
+For more details about Rancher backups, restore, and disaster recovery options, please follow the official [Rancher documentation](https://ranchermanager.docs.rancher.com/pages-for-subheaders/backup-restore-configuration).
 
 ## Install rancher-backup operator for Rancher
 
-Go to official [Rancher documentation](https://docs.ranchermanager.rancher.io/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher) and install rancher-backup operator from there.
+Follow the [Rancher backup guide](https://docs.ranchermanager.rancher.io/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-rancher) to learn how to install and configure the Rancher backup-operator.  
+
+Note that for single node Rancher installations the backup workflow is different.  
+You may follow the official [documentation](https://ranchermanager.docs.rancher.com/v2.6/how-to-guides/new-user-guides/backup-restore-and-disaster-recovery/back-up-docker-installed-rancher) to learn more.
 
 ## Backup Elemental with rancher-backup operator
 
-Create a `backup object` (adapted to your needs) to backup an Elemental configuration.
+Create a `backup object` (adapted to your needs) to backup Rancher running on a Kubernetes cluster.  
 
 ```yaml showLineNumbers
 apiVersion: resources.cattle.io/v1
 kind: Backup
 metadata:
-  name: elemental-backup
+  name: rancher-backup
 spec:
   resourceSetName: rancher-resource-set
   schedule: "10 3 * * *"
   retentionCount: 10
 ```
 
-Apply manifest on Kubernete.
-
-```shell showLineNumbers
-kubectl apply -f elemental-backup.yaml
-```
+The rancher-backup operator offers several options for schedule, encryption, and storage classes.  
+You can explore all options by reading the [official documentation](https://ranchermanager.docs.rancher.com/reference-guides/backup-restore-configuration/backup-configuration).
 
 Check logs from rancher-backup operator.
 

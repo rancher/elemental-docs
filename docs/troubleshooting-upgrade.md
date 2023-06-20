@@ -78,9 +78,9 @@ spec:
 
 ## Elemental Cluster side
 
-Any Elemental Teal node correctly registered and part of this cluster will fetch the bundle and start applying it.  
+Any Elemental Teal node correctly registered and part of the target cluster will fetch the bundle and start applying it.  
 This operation is performed by the Rancher's `system-upgrade-controller` running on the Elemental Cluster.  
-To monitor the correct operation of this controller, you can read its logs.
+To monitor the correct operation of this controller, you can read its logs:
 
 ```shell showLineNumbers
 kubectl -n cattle-system logs deployment/system-upgrade-controller

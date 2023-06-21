@@ -14,7 +14,7 @@ import SeedImage from "!!raw-loader!@site/examples/quickstart/seedimage.yaml"
 # Elemental the command line way
 
 Follow this guide to have an auto-deployed cluster via rke2/k3s and managed by Rancher 
-with the only help of an Elemental Teal iso.
+with the only help of an Elemental Teal ISO.
 
 <Prereqs />
 
@@ -40,11 +40,11 @@ You will need to create the following files:
 
 <CodeBlock language="yaml" title="selector.yaml" showLineNumbers>{Selector}</CodeBlock>
 
-As you can see this is a very simple selector that looks for `MachineInvetories` having a label with the key `element` and the value `fire`.
+As you can see this is a very simple selector that looks for `MachineInventory`s having a label with the key `element` and the value `fire`.
 
 <CodeBlock language="yaml" title="cluster.yaml" showLineNumbers>{Cluster}</CodeBlock>
 
-As you can see we are setting that our `machineConfigRef` is of Kind `MachineInventorySelectorTemplate` with the name `fire-machine-selector`, which matches the selector we created.
+As you can see we are setting that our `machineConfigRef` is of kind `MachineInventorySelectorTemplate` with the name `fire-machine-selector`, which matches the selector we created.
 
 You can get more informations about some cluster options like [`machineGlobalConfig`](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineglobalconfig) or [`machineSelectorConfig`](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorconfig) directly in Rancher Manager documentation.
 
@@ -62,7 +62,7 @@ You also need to disable writing to the EFI store (since Raspberry Pi doesn't ha
 </TabItem>
 </Tabs>
 
-This creates a `MachineRegistration` which provides a unique URL to be used with the `elemental-register` binary to register the machine during installation: if the registration is successful, the operator creates a `MachineInventory` tracking the machine, which is required to bootstrap it as a node of our cluster.
+This creates a `MachineRegistration` which provides a unique URL to be used with the `elemental-register` binary to reach out to the management cluster and register the machine during installation: if the registration is successful, the operator creates a `MachineInventory` tracking the machine, which is required to bootstrap it as a node of our cluster.
 See that we set the label that match our selector here already, although it can always be added later to the `MachineInventory`.
 
 
@@ -77,9 +77,9 @@ The SD-card on a Raspberry Pi is usually `/dev/mmcblk0`.
 <TabItem value="seedImagex86" label="Seed Image (x86_64)" default>
 <CodeBlock language="yaml" title="seedimage.yaml" showLineNumbers>{SeedImage}</CodeBlock>
 
-The `SeedImage` is required to generate the *seed image* (a bootable ISO) that will boot and start the Elemental provisioning on the target machines.
+The `SeedImage` is required to generate the *seed image* (like a bootable ISO) that will boot and start the Elemental provisioning on the target machines.
 
-Now that we have all the configuration to create the proper resources in Kubernetes just apply them:
+Now that we have all the configurations to create the proper resources in Kubernetes just apply them:
 
 ```shell showLineNumbers
 kubectl apply -f selector.yaml 
@@ -93,7 +93,7 @@ kubectl apply -f seedimage.yaml
 
 The seed image is not yet used for Raspberry Pi and will have to be generated manually in the [next section](quickstart-cli.md#preparing-the-installation-seed-image).
 
-Now that we have all the configuration to create the proper resources in Kubernetes just apply them:
+Now that we have all the configurations to create the proper resources in Kubernetes just apply them:
 
 ```shell showLineNumbers
 kubectl apply -f selector.yaml 
@@ -237,7 +237,7 @@ You can now boot your nodes with this image and they will:
 
 ### Selecting the right machines to join a cluster
 
-In order for the `MachineInventorySelectorTemplate` to select the nodes, an *elemental* label to the `MachineInventory` is needed.
+In order for the `MachineInventorySelectorTemplate` to select the nodes, adding an *elemental* label to the `MachineInventory` is needed.
 We have added the *elemental*:*fire* label in the `MachineRegistration` `machineInventoryLabels` map, so all the `MachineInventories` originated from it already have the label.
 One could anyway skip the label from the `MachineRegistration` and add it later:
 
@@ -245,14 +245,14 @@ One could anyway skip the label from the `MachineRegistration` and add it later:
 kubectl -n fleet-default label machineinventory $(kubectl get machineinventory -n fleet-default --no-headers -o custom-columns=":metadata.name") element=fire
 ```
 
-As soon as `MachineInventories` with the *element*:*fire* are present, the corresponding machines will auto-deploy the cluster via the chosen provider (k3s/rke).
+As soon as `MachineInventory`s with the *element*:*fire* are present, the corresponding machines will auto-deploy the cluster via the chosen provider (k3s/rke).
 
 After a few minutes your new cluster will be fully provisioned!!
 
 ## How can I choose the kubernetes version and deployer for the cluster?
 
 In your cluster.yaml file there is a key in the `Spec` called `kubernetesVersion`. That sets the version and deployer that will be used for the cluster,
-for example for rke `v1.24.8` while for rke2 would be `v1.24.8+rke2r1` and for k3s `v1.24.8+k3s1`.
+for example Kubernetes`v1.24.8` for rke2 would be `v1.24.8+rke2r1` and for k3s `v1.24.8+k3s1`.
 
 To see all compatible versions check the [Rancher Support Matrix](https://www.suse.com/suse-rancher/support-matrix/all-supported-versions/) PDF for rke/rke2/k3s versions and their components.
 
@@ -266,9 +266,9 @@ You should be able to follow along what the machine is doing via:
 
 - During ISO boot:
   - ssh into the machine (user/pass: root/ros):
-    - running `journalctl -f -t elemental` shows you the output of the *elemental-register* and the *elemental install* processes
+    - running `journalctl -f -t elemental` shows you the output of the *elemental-register* and the *elemental install* progress.
 - Once the system is installed:
-  - On the Rancher UI -> `Cluster Management` should allow you to see your new cluster and the `Provisioning Log` in the cluster details
+  - On the Rancher UI -> `Cluster Management` allows you to see your new cluster and the `Provisioning Log` in the cluster details
   - ssh into the machine (user/pass: Whatever your configured on the registration.yaml under `Spec.config.cloud-config.users`):
     - running `journalctl -f -u elemental-system-agent` shows the output of the initial elemental config and install of `rancher-system-agent`
     - running `journalctl -f -u rancher-system-agent` shows the output of the boostrap of cluster components like k3s

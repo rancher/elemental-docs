@@ -1,7 +1,7 @@
 kind: Cluster
 apiVersion: provisioning.cattle.io/v1
 metadata:
-  name: my-cluster
+  name: volcano
   namespace: fleet-default
 spec:
   rkeConfig:
@@ -14,8 +14,8 @@ spec:
         machineConfigRef:
           apiVersion: elemental.cattle.io/v1beta1
           kind: MachineInventorySelectorTemplate
-          name: my-machine-selector
-        name: pool1
+          name: fire-machine-selector
+        name: fire-pool
         quantity: 1
         unhealthyNodeTimeout: 0s
         workerRole: true

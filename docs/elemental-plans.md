@@ -74,7 +74,7 @@ spec:
         debug: true
   machineName: my-machine
   machineInventoryLabels:
-    location: "europe"
+    element: fire
 ```
 
 ## Plan examples

@@ -232,7 +232,7 @@ You can now boot your nodes with this image and they will:
 
 ### Selecting the right machines to join a cluster
 
-In order for the `MachineInventorySelectorTemplate` to select the nodes, an element label to the `MachineInventory` is now needed:
+In order for the `MachineInventorySelectorTemplate` to select the nodes, adding an `element` label to the `MachineInventory` is now required:
 
 ```shell showLineNumbers
 kubectl -n fleet-default label machineinventory $(kubectl get machineinventory -n fleet-default --no-headers -o custom-columns=":metadata.name") element=fire

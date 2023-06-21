@@ -63,7 +63,7 @@ You also need to disable writing to the EFI store (since Raspberry Pi doesn't ha
 </Tabs>
 
 This creates a `MachineRegistration` which provides a unique URL to be used with the `elemental-register` binary to reach out to the management cluster and register the machine during installation: if the registration is successful, the operator creates a `MachineInventory` tracking the machine, which is required to bootstrap it as a node of our cluster.
-See that we set the label that match our selector here already, although it can always be added later to the `MachineInventory`.
+See that we set the label that matches our selector here already, although it can always be added later to the `MachineInventory`.
 
 
 
@@ -237,8 +237,8 @@ You can now boot your nodes with this image and they will:
 
 ### Selecting the right machines to join a cluster
 
-In order for the `MachineInventorySelectorTemplate` to select the nodes, adding an *elemental* label to the `MachineInventory` is needed.
-We have added the *elemental*:*fire* label in the `MachineRegistration` `machineInventoryLabels` map, so all the `MachineInventory`s originated from it already have the label.
+In order for the `MachineInventorySelectorTemplate` to select the nodes, adding an *element* label to the `MachineInventory` is needed.
+We have added the *element*:*fire* label in the `MachineRegistration` `machineInventoryLabels` map, so all the `MachineInventory`s originated from it already have the label.
 One could anyway skip the label from the `MachineRegistration` and add it later:
 
 ```shell showLineNumbers

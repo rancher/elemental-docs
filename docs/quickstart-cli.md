@@ -127,7 +127,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/elemental-docs/main/e
 ## Preparing the installation (seed) image
 
 
-This is the last step, you need an Elemental Teal seed image that includes automatically (not for aarch64 yet) the initial registration config, so it can be auto registered, installed and fully deployed as part of your cluster.
+This is the last step: you need an Elemental Teal seed image that includes the initial registration config, so it can be auto registered, installed and fully deployed as part of your cluster.
 
 :::note note
 The initial registration config file is generated when you create a `Machine Registration`.

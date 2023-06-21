@@ -13,8 +13,8 @@ Once the seed image is ready, the download URL is shared in the `.status.downloa
 It stays available for download for `cleanupAfterMinutes` minutes (default is `60`, 1 hour), after which it is deleted.  
 Setting `retriggerBuild` to `true` retriggers the seed image build process while setting `cleanupAfterMinutes` to `0` keeps the seed image around till the `SeedImage` resource is deleted.
 
-:::info
-The seed images are kept on the node's local storage: pay attention to the number of `SeedImage` resources you start concurrently and to the ones you may leave around with the auto-cleanup feature disabled (`cleanupAfterMinutes` = `0`) as you may exhaust the storage on your Cluster Nodes.
+:::warning seed images may fill up local storage
+The seed images are kept on the node's local storage: pay attention to the number of `SeedImage` resources you start concurrently and to the ones you may leave around with the auto-cleanup feature disabled (`cleanupAfterMinutes` = `0`) as you may exhaust the storage on your cluster nodes.
 :::
 
 The `SeedImage` resource tracks the seed image build process through two status conditions:

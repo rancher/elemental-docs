@@ -62,7 +62,7 @@ You also need to disable writing to the EFI store (since Raspberry Pi doesn't ha
 </TabItem>
 </Tabs>
 
-The `MachineRegistration` defines the registration and installation configuration. Once created, the Elemental operator exposes a unique URL to be used with the `elemental-register` binary to reach out to the management cluster and register the machine during installation: if the registration is successful, the operator creates a `MachineInventory` tracking the machine, which can be used to provision the hos as a node of our cluster.
+The `MachineRegistration` defines the registration and installation configuration. Once created, the Elemental operator exposes a unique URL to be used with the `elemental-register` binary to reach out to the management cluster and register the machine during installation: if the registration is successful, the operator creates a `MachineInventory` tracking the machine, which can be used to provision the machine as a node of our cluster.
 We define the label matching our selector here, although it can also be added later to the created `MachineInventory`s.
 
 

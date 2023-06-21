@@ -46,7 +46,7 @@ As you can see this is a very simple selector that looks for `MachineInventory`s
 
 As you can see the `machineConfigRef` is of kind `MachineInventorySelectorTemplate` with the name `fire-machine-selector`: it matches the selector we created.
 
-You can get more information about cluster options like [`machineGlobalConfig`](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineglobalconfig) or [`machineSelectorConfig`](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorconfig) directly in the Rancher Manager documentation.
+You can get more information about cluster options like [`machineGlobalConfig`](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineglobalconfig) or [`machineSelectorConfig`](https://ranchermanager.docs.rancher.com/reference-guides/cluster-configuration/rancher-server-configuration/rke2-cluster-configuration#machineselectorconfig) directly in the [Rancher Manager documentation](https://ranchermanager.docs.rancher.com).
 
 <Tabs>
 <TabItem value="normalRegistration" label="Registration" default>

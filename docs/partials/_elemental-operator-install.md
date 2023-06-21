@@ -26,7 +26,7 @@ helm upgrade --create-namespace -n cattle-elemental-system --install elemental-o
 <TabItem value="develOperator" label="Development version (x86-64, ARM64 (Raspberry Pi 4))" default>
 
 :::warning Reminder
-The development version is not recommended for production environments. We welcome feedback via Slack or Github issues, but it could be unstable and contain experimental features that could be dropped without notice.
+The development version is not recommended for production environments. We welcome feedback via Slack or Github issues, but it could be unstable and contain experimental features that can be dropped without notice.
 :::
 
 ```shell showLineNumbers

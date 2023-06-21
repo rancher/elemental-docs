@@ -11,7 +11,7 @@ The Elemental Operator chart is distributed via an OCI registry: Helm correctly 
 
 :::warning Swap charts installation order when upgrading from elemental-operator release < 1.2.4
 When upgrading from an elemental-operator release embedding the Elemental CRDs (version < 1.2.4) the elemental-operator-crds chart installation will fail.
-You will need to upgrade the elemental-operator chart first, and only then install the elemental-operator-crds chart.
+You will need to upgrade the elemental-operator chart first, and only then install the elemental-operator-crds chart:
 :::
 
 <Tabs>

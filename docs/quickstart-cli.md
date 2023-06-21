@@ -31,7 +31,7 @@ Then it continues with having a Cluster resource that uses a `MachineInventorySe
 This selector is a simple matcher based on labels set in the `MachineInventory`, so if your selector is matching on the label `cluster-id` with a value `cluster-id-val`
 and your `MachineInventory` has that same `cluster-id`:`cluster-id-val` label, it will match and be bootstrapped as part of the cluster.
 
-In this quickstart we are going to deploy the resources to provision a cluster named *volcano* that will match on `MachineInventories` with the label *element*:*fire*.
+In this quickstart we are going to deploy the resources to provision a cluster named *volcano* that will match on `MachineInventory`s with the label *element*:*fire*.
 
 <Tabs>
 <TabItem value="manualYaml" label="Manually creating the resource yamls" default>
@@ -238,7 +238,7 @@ You can now boot your nodes with this image and they will:
 ### Selecting the right machines to join a cluster
 
 In order for the `MachineInventorySelectorTemplate` to select the nodes, adding an *elemental* label to the `MachineInventory` is needed.
-We have added the *elemental*:*fire* label in the `MachineRegistration` `machineInventoryLabels` map, so all the `MachineInventories` originated from it already have the label.
+We have added the *elemental*:*fire* label in the `MachineRegistration` `machineInventoryLabels` map, so all the `MachineInventory`s originated from it already have the label.
 One could anyway skip the label from the `MachineRegistration` and add it later:
 
 ```shell showLineNumbers

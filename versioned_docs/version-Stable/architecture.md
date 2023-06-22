@@ -82,7 +82,7 @@ A MachineInventorySelector selects MachineInventories based on applied selectors
 
 MachineInventorySelectors have two conditions:
 
-- `InventoryReady`, turn to true if the MachineInventorySelector has found a matching MachineInventory and has successfully set itself as the MachineInventory owner.
+- `InventoryReady`, turns to true if the MachineInventorySelector has found a matching MachineInventory and has successfully set itself as the MachineInventory owner.
 - `Ready`, tracks if the selector already adopted a machine and started the kubernetes provisioning process (node bootstrap).
 
 #### MachineInventorySelectorTemplate

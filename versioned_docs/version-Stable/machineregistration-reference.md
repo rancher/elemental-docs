@@ -152,7 +152,7 @@ See our [SMBIOS docs](smbios.md) for more information.
     namespace: fleet-default
   spec:
     machineInventoryLabels:
-      my.prefix.io/location: europe
+      my.prefix.io/element: fire
       my.prefix.io/cpus: 32
       my.prefix.io/manufacturer: "${System Information/Manufacturer}"
       my.prefix.io/productName: "${System Information/Product Name}"

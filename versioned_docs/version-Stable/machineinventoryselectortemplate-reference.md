@@ -38,7 +38,7 @@ It is a map of {key,value} pairs (map[string]string). When multiple labels are p
       spec:
         selector:
           matchlabels:
-            location: europe
+            element: fire
             manufacturer: somevalue
   ```
 
@@ -66,13 +66,13 @@ It is a list of label selectors, each label selectors can be defined as:
       spec:
         selector:
           matchExpressions:
-            - key: location
+            - key: element
               operator: In
-              values: [ 'europe' ]
+              values: [ 'fire' ]
             - key: manufacturer
               operator: Exists
   ```
 
 </details>
 
-A Cluster defined with the above selector will only attempt to provision nodes inventoried with the `location=europe` label and including a `manufacturer` label defined with any value.
+A Cluster defined with the above selector will only attempt to provision nodes inventoried with the `element=fire` label and including a `manufacturer` label defined with any value.

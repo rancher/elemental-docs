@@ -136,7 +136,7 @@ The initial registration config file is generated when you create a `Machine Reg
 You can download it with:
 
 ```shell
-wget --no-check-certificate `kubectl get machineregistration -n fleet-default my-nodes -o jsonpath="{.status.registrationURL}"` -O initial-registration.yaml
+wget --no-check-certificate `kubectl get machineregistration -n fleet-default fire-nodes -o jsonpath="{.status.registrationURL}"` -O initial-registration.yaml
 ```
 :::
 

@@ -56,7 +56,7 @@ Below is an example of the supported configuration on a `MachineRegistration` re
           debug: true
     machineName: my-machine
     machineInventoryLabels:
-      location: "europe"
+      element: fire
   ```
   
 </details>

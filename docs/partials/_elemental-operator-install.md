@@ -26,7 +26,7 @@ helm upgrade --create-namespace -n cattle-elemental-system --install elemental-o
 <TabItem value="develOperator" label="Development version (x86-64, ARM64 (Raspberry Pi 4))" default>
 
 :::warning Reminder
-The development version is 'best effort' supported. We welcome feedback via Slack or Github issues. But it might be a bit rough as we move the stack forward.
+The development version is not recommended for production environments. We welcome feedback via Slack or Github issues, but it could be unstable and contain experimental features that can be dropped without notice.
 :::
 
 ```shell showLineNumbers
@@ -39,7 +39,7 @@ helm upgrade --create-namespace -n cattle-elemental-system --install --set image
 
 There are a few options that can be set in the chart install but that is out of scope for this document. You can see all the values on the chart [values.yaml](https://github.com/rancher/elemental-operator/blob/main/charts/operator/values.yaml).
 
-Now after a few seconds you should see the operator pod appear on the `cattle-elemental-system` namespace.
+Now after a few seconds you should see the operator pod appear on the `cattle-elemental-system` namespace:
 
 ```shell showLineNumbers
 kubectl get pods -n cattle-elemental-system

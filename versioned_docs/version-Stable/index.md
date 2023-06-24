@@ -34,7 +34,7 @@ and available through the [openSUSE Registry](https://registry.opensuse.org/cgi-
 
 ### Elemental on x86-64 hardware
 
-Elemental Teal is production ready and fully supported on x86-64 with Rancher v2.7.0.
+Elemental Teal is production ready and fully supported on x86-64 starting with Rancher v2.7.0.
 
 ### Elemental on ARM hardware
 

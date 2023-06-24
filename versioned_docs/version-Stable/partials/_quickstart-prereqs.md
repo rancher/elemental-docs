@@ -1,6 +1,6 @@
 ## Prerequisites
 
-* A Rancher server (v2.7.0) configured (server-url set)
+* A Rancher server (v2.7.0 or later) configured (server-url set)
   * To configure the Rancher `server-url` please check the [Rancher docs](https://rancher.com/docs/rancher/v2.6/en/admin-settings/#first-log-in)
 * A machine (bare metal or virtualized) with TPM 2.0
   * Hint 1: Libvirt allows setting virtual TPMs for virtual machines [example here](tpm/#add-tpm-module-to-virtual-machine)

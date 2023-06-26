@@ -40,7 +40,6 @@ Elemental Teal is production ready and fully supported on x86-64 starting with R
 
 ARM (aarch64) is functional in the development version. ARM is currently only tested on Raspberry Pi 4 Model B with k3s 1.24.8 (or later). We welcome feedback !
 
-
 ### Elemental on other hardware
 
 Elemental is currently targeting 'edge' scenarios and does therefore not support other hardware.

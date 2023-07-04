@@ -134,7 +134,7 @@ overlay/
     install_hooks.yaml
 ```
 
-The `overlay/hooks/install_hooks.yaml` could be as:
+The `overlay/iso-config/install_hooks.yaml` could be as:
 
 ```yaml showLineNumbers
 name: "Install extra drivers"
@@ -181,7 +181,7 @@ overlay/
     lvm_volumes_hook.yaml
 ```
 
-The installation hook `overlay/hooks/lvm_volumes_hook.yaml`:
+The installation hook `overlay/iso-config/lvm_volumes_hook.yaml`:
 
 ```yaml showLineNumbers
 name: "Create LVM logic volumes over some physical disks"

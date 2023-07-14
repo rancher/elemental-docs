@@ -329,9 +329,10 @@ RUN --mount=type=bind,source=./,target=/output,rw \
 Modify the container image template and afterward run:
 
 ```bash showLineNumbers
-buildah build --tag myrepo/custom-build:v1.1.1 .
-              --build-arg IMAGE_REPO=myrepo/custom-build
-              --build-arg IMAGE_TAG=v1.1.1
+buildah build --tag myrepo/custom-build:v1.1.1 \
+              --build-arg IMAGE_REPO=myrepo/custom-build \
+              --build-arg IMAGE_TAG=v1.1.1 \
+              .
 ```
 
 The new customized installation media can be found in `elemental-teal-amd64.iso` and can be used to boot and provision the machine.

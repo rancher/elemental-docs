@@ -329,8 +329,8 @@ RUN --mount=type=bind,source=./,target=/output,rw \
 Modify the container image template and afterward run:
 
 ```bash showLineNumbers
-buildah build --tag myrepo/custom-build:v1.1.1 .
-              --build-arg IMAGE_REPO=myrepo/custom-build
+buildah build --tag myrepo/custom-build:v1.1.1 . \
+              --build-arg IMAGE_REPO=myrepo/custom-build \
               --build-arg IMAGE_TAG=v1.1.1
 ```
 

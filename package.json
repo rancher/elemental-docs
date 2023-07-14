@@ -26,7 +26,7 @@
     "react-dom": "^17.0.2",
     "react-loadable": "^5.5.0",
     "@algolia/client-search": "^4.17.2",
-    "webpack": "^5.86.0",
+    "webpack": "^5.88.1",
     "typescript": "^5.1.6"
   },
   "devDependencies": {

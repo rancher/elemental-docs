@@ -136,7 +136,7 @@ The UUID will be retrieved from the SMBIOS data if available, otherwise a random
 Labels that will be set to the `MachineInventory` that is created from this `MachineRegistration`
 `Key: value` type. These labels will be used to establish a selection criteria in [MachineInventorySelectorTemplate](machineinventoryselectortemplate-reference.md).  
 
-Elemental Teal nodes will run `elemental-register` at each boot and every 24 hours after that.  
+Elemental Teal nodes will run `elemental-register` every 24 hours.  
 It is possible to update the `machineInventoryLabels` so that all registered nodes will apply the new labels on the next successfull registration update.  
 
 :::info

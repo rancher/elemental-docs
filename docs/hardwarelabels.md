@@ -6,9 +6,12 @@ title: ''
 import Registration from "!!raw-loader!@site/examples/quickstart/registration-hardware.yaml"
 
 ## Hardware Labels
+
 When a node is registered, hardware data is collected and made available to the MachineRegistration in the same way as [SMBIOS data](smbios.md).
 
-This data can be used for easy identification and selection via a [MachineSelector](machineinventoryselectortemplate-reference.md).
+This data can be used for easy identification and selection via a [MachineSelector](machineinventoryselectortemplate-reference.md).  
+
+Note that Elemental Teal nodes will run `elemental-register` at each boot and every 24 hours after that, so that labels will eventually be updated to new values.  
 
 The following are available for templating:
 
@@ -45,7 +48,6 @@ On both `Block Devices` and `Network` the device name is used as a sub-block, as
 | SSD     | Solid-state drive               |
 | virtual | virtual drive i.e. loop devices |
 | Unknown | unknown drive type              |
-
 
 ### Block device controller types
 

@@ -11,7 +11,7 @@ When a node is registered, hardware data is collected and made available to the 
 
 This data can be used for easy identification and selection via a [MachineSelector](machineinventoryselectortemplate-reference.md).  
 
-Note that Elemental Teal nodes will run `elemental-register` at each boot and every 24 hours after that, so that labels will eventually be updated to new values.  
+Note that Elemental Teal nodes will run `elemental-register` at each boot and every 24 hours after that, so that labels will eventually be updated to new values if the hardware changed.  
 
 The following are available for templating:
 

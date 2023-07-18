@@ -62,8 +62,8 @@ spec:
 
 `MachineRegistration` holds information on how to install and configure all connected Elemental Teal machines.  
 
-It is possible to update the `spec.machineInventoryLabels` and `spec.machineInventoryAnnotations`, so that they will be applied to all registered machines.  
-By default, Elemental Teal machines will attempt a registration update every 24 hours to update labels and annotations.  
+It's possible to update the `spec.machineInventoryLabels` and `spec.machineInventoryAnnotations` and this will be applied to all registered machines.
+By default, Elemental Teal machines will attempt a registration update every 24 hours to update labels and annotations.
 
 While it is possible to modify the `spec.config` definition, updates to the `spec.config` will be ignored by machines that already completed installation.  
 Machines that could not complete installation will try again every 30 minutes by default, reloading the remote `MachineRegistration` definition. This can be useful to correct `spec.config` mistakes that prevent successful installation (for ex. `spec.config.elemental.install.device`), without having to create a new `MachineRegistration` and a new ISO.  

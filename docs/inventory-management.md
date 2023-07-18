@@ -11,39 +11,62 @@ the mapping of the machine to it's configuration and assigned cluster.
 
 ### MachineInventory
 
+The `MachineInventory` holds all the relevant information for a registered machine.  
+Upon successful registration, the `MachineInventory` will inherit all `machineInventoryLabels` defined in the related `MachineRegistration`.  
+Additionally, the machine `annotations` will also be updated on each successful registration.  
+
+By default, Elemental Teal machines will attempt a registration update every 24 hours to update labels and annotations.  
+
 #### Reference
 
 ```yaml
 apiVersion: elemental.cattle.io/v1beta1
 kind: MachineInventory
 metadata:
-  name: machine-a
+  # Machine annotations can be useful to identify hosts
+  annotations:
+    elemental.cattle.io/auth: tpm
+    elemental.cattle.io/registration-ip: 192.168.122.152
+  labels:
+    # A label inherited from the MachineRegistration definition
+    element: fire
+    # Generic SMBIOS labels that are typically populated with
+    # the MachineRegister approach
+    machineUUID: f266c64b-3972-40e7-9937-3dc4a311436c
+    manufacturer: QEMU
+    productName: Standard-PC-Q35-ICH9-2009
+    serialNumber: Not-Specified
+    # Custom labels can be applied to each MachineInventory
+    myCustomLabel: foo 
+  name: m-479ab68e-00ff-4081-a731-5b1a76610289
   # The namespace must match the namespace of the cluster
   # assigned to the clusters.provisioning.cattle.io resource
   namespace: fleet-default
+  # A reference to the MachineInventorySelector that links the 
+  # machine to a Cluster definition
+  ownerReferences:
+  - apiVersion: elemental.cattle.io/v1beta1
+    controller: true
+    kind: MachineInventorySelector
+    name: fire-machine-selector-qcn7d
+    uid: 0a1f751e-4ca9-4a0d-919a-97ba1f434d12
 spec:
-  # The cluster that this machine is assigned to
-  clusterName: some-cluster
   # The hash of the TPM EK public key. This is used if you are
   # using TPM2 to identifiy nodes.  You can obtain the TPM by
   # running `rancherd get-tpm-hash` on the node. Or nodes can
   # report their TPM hash by using the MachineRegister
-  tpm: d68795c6192af9922692f050b...
-  # Generic SMBIOS fields that are typically populated with
-  # the MachineRegister approach
-  smbios: {}
-  # A reference to a secret that contains a shared secret value to
-  # identify a node.  The secret must be of type "elemental.cattle.io/token"
-  # and have on field "token" which is the value of the shared secret
-  machineTokenSecretName: some-secret-name
-  # Arbitrary cloud config that will be added to the machines cloud config
-  # during the rancherd bootstrap phase.  The one important field that should
-  # be set is the role.
-  config:
-    role: server
+  tpmHash: d68795c6192af9922692f050b...
 ```
 
 ### MachineRegistration
+
+`MachineRegistration` holds information on how to install and configure all connected Elemental Teal machines.  
+
+It's possible to update the `spec.machineInventoryLabels` and `spec.machineInventoryAnnotations` and this will be applied to all registered machines.
+By default, Elemental Teal machines will attempt a registration update every 24 hours to update labels and annotations.
+
+While it's possible to modify the `spec.config` definition, updates to the `spec.config` will be ignored by machines that already completed installation.
+Machines that couldn't complete the installation will try again every 30 minutes by reloading the remote `MachineRegistration` definition. This can be useful to correct `spec.config` mistakes that prevent successful installation (for ex. `spec.config.elemental.install.device`), without having to create a new `MachineRegistration` and a new ISO.  
 
 #### Reference
 
@@ -51,15 +74,29 @@ spec:
 apiVersion: elemental.cattle.io/v1beta1
 kind: MachineRegistration
 metadata:
-  name: machine-registration
+  name: fire-nodes
   # The namespace must match the namespace of the cluster
   # assigned to the clusters.provisioning.cattle.io resource
   namespace: fleet-default
 spec:
+  # The cloud config that will be used to provision the node
+  config:
+    cloud-config:
+      users:
+        - name: root
+          passwd: root
+    elemental:
+      install:
+        reboot: true
+        device: /dev/sda
+        debug: true
   # Labels to be added to the created MachineInventory object
-  machineInventoryLabels: {}
+  machineInventoryLabels:
+    element: fire
+    manufacturer: "${System Information/Manufacturer}"
+    productName: "${System Information/Product Name}"
+    serialNumber: "${System Information/Serial Number}"
+    machineUUID: "${System Information/UUID}"
   # Annotations to be added to the created MachineInventory object
   machineInventoryAnnotations: {}
-  # The cloud config that will be used to provision the node
-  cloudConfig: {}
 ```

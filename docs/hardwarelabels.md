@@ -9,7 +9,7 @@ import Registration from "!!raw-loader!@site/examples/quickstart/registration-ha
 
 When a node is registered, hardware data is collected and made available to the MachineRegistration in the same way as [SMBIOS data](smbios.md).
 
-This data can be used for easy identification and selection via a [MachineSelector](machineinventoryselectortemplate-reference.md).  
+This data can be used for easy identification and selection via a [MachineSelector](machineinventoryselectortemplate-reference.md). 
 
 The following are available for templating:
 

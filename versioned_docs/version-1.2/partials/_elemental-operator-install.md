@@ -15,11 +15,11 @@ You will need to upgrade the elemental-operator chart first, and only then insta
 :::
 
 <Tabs>
-<TabItem value="stableOperator" label="Stable version (x86-64, ARM64 (Raspberry Pi 4))" default>
+<TabItem value="stagingOperator" label="Staging version (x86-64, ARM64 (Raspberry Pi 4))" default>
 
 ```shell showLineNumbers
-helm upgrade --create-namespace -n cattle-elemental-system --install elemental-operator-crds oci://registry.opensuse.org/isv/rancher/elemental/stable/charts/rancher/elemental-operator-crds-chart
-helm upgrade --create-namespace -n cattle-elemental-system --install elemental-operator oci://registry.opensuse.org/isv/rancher/elemental/stable/charts/rancher/elemental-operator-chart
+helm upgrade --create-namespace -n cattle-elemental-system --install elemental-operator-crds oci://registry.opensuse.org/isv/rancher/elemental/staging/charts/rancher/elemental-operator-crds-chart
+helm upgrade --create-namespace -n cattle-elemental-system --install elemental-operator oci://registry.opensuse.org/isv/rancher/elemental/staging/charts/rancher/elemental-operator-chart
 ```
 
 </TabItem>

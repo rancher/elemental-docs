@@ -6,7 +6,6 @@ title: ''
 import Registration from "!!raw-loader!@site/examples/quickstart/registration-hardware.yaml"
 
 ## Hardware Labels
-
 When a node is registered, hardware data is collected and made available to the MachineRegistration in the same way as [SMBIOS data](smbios.md).
 
 This data can be used for easy identification and selection via a [MachineSelector](machineinventoryselectortemplate-reference.md).
@@ -46,6 +45,7 @@ On both `Block Devices` and `Network` the device name is used as a sub-block, as
 | SSD     | Solid-state drive               |
 | virtual | virtual drive i.e. loop devices |
 | Unknown | unknown drive type              |
+
 
 ### Block device controller types
 

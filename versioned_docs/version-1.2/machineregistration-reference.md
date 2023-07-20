@@ -134,7 +134,10 @@ The UUID will be retrieved from the SMBIOS data if available, otherwise a random
 #### machineInventoryLabels
 
 Labels that will be set to the `MachineInventory` that is created from this `MachineRegistration`
-`Key: value` type. These labels will be used to establish a selection criteria in [MachineInventorySelectorTemplate](machineinventoryselectortemplate-reference.md).
+`Key: value` type. These labels will be used to establish a selection criteria in [MachineInventorySelectorTemplate](machineinventoryselectortemplate-reference.md).  
+
+Elemental Teal nodes will run `elemental-register` every 24 hours.  
+It is possible to update the `machineInventoryLabels` so that all registered nodes will apply the new labels on the next successfull registration update.  
 
 :::info
 When `elemental:registration:no-smbios` is set to `false` (default), Labels are interpolated with [SMBIOS](https://www.dmtf.org/standards/smbios) data. This allows to store hardware information in custom labels.

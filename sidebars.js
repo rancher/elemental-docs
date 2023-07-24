@@ -63,6 +63,7 @@ const sidebars = {
       "label": "Operator",
       "items": [
         "inventory-management",
+        "reset",
       ]
     },
     {

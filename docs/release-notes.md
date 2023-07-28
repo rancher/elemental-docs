@@ -20,6 +20,6 @@ Here's the different components, their latest version and a link to the respecti
 
 :::note Information on docs versioning
 
-The docs versioning is based on `Elemental Operator` instead of `Elemental Linux`. The reason is that, as a user, the component used as an "entrypoint" to the Elemental project stack is the operator and not the Linux OS directly.
+The docs versioning is based on the `Elemental Operator` component as it's the user "entrypoint" to the Elemental project stack.
 
 :::

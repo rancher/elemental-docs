@@ -119,9 +119,10 @@ const sidebars = {
           "items": [
             "troubleshooting-upgrade"
           ]
-        }
-      ]
+        },
+      ],
     },
+    "release-notes",
   ],
 
   // But you can create a sidebar manually

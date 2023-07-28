@@ -78,7 +78,7 @@ A MachineInventory has two conditions:
 - `Ready`, which indicates that the machine has been registered and provisioned with an Elemental OS.
 
 #### MachineInventorySelector
-A MachineInventorySelector selects MachineInventories based on applied selectors (usually patter matching on MachineInventory label values).
+A MachineInventorySelector selects MachineInventories based on applied selectors (usually pattern matching on MachineInventory label values).
 
 MachineInventorySelectors have two conditions:
 

@@ -31,6 +31,12 @@ It's sole purpose is to run Kubernetes (k3s or RKE2), with everything controlled
 Elemental Teal is built in the [openSUSE Build Service](https://build.opensuse.org/package/show/isv:Rancher:Elemental:Stable:Teal53/node-image)
 and available through the [SUSE Registry](https://registry.suse.com).
 
+You can check latest versions available with [reg](https://github.com/genuinetools/reg):
+
+```console showLineNumbers
+reg ls oci://registry.suse.com/rancher/elemental-teal/5.3
+```
+
 ### Elemental on x86-64 hardware
 
 Elemental Teal is production ready and fully supported on x86-64 starting with Rancher v2.7.0.

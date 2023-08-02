@@ -24,6 +24,8 @@ helm show all oci://registry.suse.com/rancher/elemental-operator-chart
 ## Install Chart
 
 ```console showLineNumbers
+helm install --create-namespace -n cattle-elemental-system elemental-operator-crds \
+             oci://registry.suse.com/rancher/elemental-operator-crds-chart
 helm install --create-namespace -n cattle-elemental-system elemental-operator \
              oci://registry.suse.com/rancher/elemental-operator-chart
 ```

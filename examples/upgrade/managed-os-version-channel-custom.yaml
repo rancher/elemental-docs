@@ -5,5 +5,5 @@ metadata:
   namespace: fleet-default
 spec:
   options:
-    image: registry.opensuse.org/isv/rancher/elemental/stable/teal53/15.4/rancher/elemental-teal-channel/5.3:latest
+    image: registry.suse.com/rancher/elemental-teal-channel/5.3:latest
   type: custom

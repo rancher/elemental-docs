@@ -100,7 +100,7 @@ The only required value for a successful installation is the `device` key as we 
           debug: true
           reboot: true
           eject-cd: true
-          system-uri: registry.opensuse.org/isv/rancher/elemental/stable/teal53/15.4/rancher/elemental-teal/5.3:latest
+          system-uri: registry.suse.com/rancher/elemental-teal/5.4:latest
   ```
 </details>
 

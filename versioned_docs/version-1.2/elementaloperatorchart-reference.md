@@ -17,15 +17,17 @@ The associated chart bootstraps an elemental-operator deployment on the [Rancher
 ## Get Helm chart info
 
 ```console showLineNumbers
-helm pull oci://registry.opensuse.org/isv/rancher/elemental/stable/charts/rancher/elemental-operator-chart
-helm show all oci://registry.opensuse.org/isv/rancher/elemental/stable/charts/rancher/elemental-operator-chart
+helm pull oci://registry.suse.com/rancher/elemental-operator-chart
+helm show all oci://registry.suse.com/rancher/elemental-operator-chart
 ```
 
 ## Install Chart
 
 ```console showLineNumbers
+helm install --create-namespace -n cattle-elemental-system elemental-operator-crds \
+             oci://registry.suse.com/rancher/elemental-operator-crds-chart
 helm install --create-namespace -n cattle-elemental-system elemental-operator \
-             oci://registry.opensuse.org/isv/rancher/elemental/stable/charts/rancher/elemental-operator-chart
+             oci://registry.suse.com/rancher/elemental-operator-chart
 ```
 
 The command deploys elemental-operator on the Kubernetes cluster in the default configuration.
@@ -49,7 +51,7 @@ _See [helm uninstall](https://helm.sh/docs/helm/helm_uninstall/) for command doc
 ```console showLineNumbers
 helm upgrade -n cattle-elemental-system \
              --install elemental-operator \
-             oci://registry.opensuse.org/isv/rancher/elemental/stable/charts/rancher/elemental-operator-chart
+             oci://registry.suse.com/rancher/elemental-operator-chart
 ```
 
 _See [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) for command documentation._
@@ -59,7 +61,7 @@ _See [helm upgrade](https://helm.sh/docs/helm/helm_upgrade/) for command documen
 See [Customizing the Chart Before Installing](https://helm.sh/docs/intro/using_helm/#customizing-the-chart-before-installing). To see all configurable options with detailed comments, visit the chart's [values](#values), or run these configuration commands:
 
 ```console showLineNumbers
-helm show values oci://registry.opensuse.org/isv/rancher/elemental/stable/charts/rancher/elemental-operator-chart
+helm show values oci://registry.suse.com/rancher/elemental-operator-chart
 ```
 
 ## Values
@@ -67,7 +69,7 @@ helm show values oci://registry.opensuse.org/isv/rancher/elemental/stable/charts
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | image.empty | string | `rancher/pause:3.1` |  |
-| image.repository | string | `registry.opensuse.org/isv/rancher/elemental/stable/charts/rancher/elemental-operator-chart` | Source image for elemental-operator with repository name  |
+| image.repository | string | `registry.suse.com/rancher/elemental-operator-chart` | Source image for elemental-operator with repository name  |
 | image.tag | tag | `""` |  |
 | image.imagePullPolicy | string | `IfNotPresent` |  |
 | noProxy | string | `127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.svc,.cluster.local" | Comma separated list of domains or ip addresses that will not use the proxy |

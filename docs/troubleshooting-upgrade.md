@@ -21,7 +21,7 @@ metadata:
   namespace: fleet-default
 spec:
   # Set to the new Elemental version you would like to upgrade to or track the latest tag
-  osImage: "registry.opensuse.org/isv/rancher/elemental/staging/teal53/15.4/rancher/elemental-teal/5.3:latest"
+  osImage: "registry.suse.com/rancher/elemental-teal/5.4:latest"
   clusterTargets:
     - clusterName: my-cluster
 ```
@@ -65,7 +65,7 @@ spec:
     name: ServiceAccount-cattle-system-os-upgrader-my-upgrade-ce93d-01096.yaml
   - content: '{"kind":"Secret","apiVersion":"v1","metadata":{"name":"os-upgrader-my-upgrade","namespace":"cattle-system","creationTimestamp":null},"data":{"cloud-config":""}}'
     name: Secret-cattle-system-os-upgrader-my-upgrade-a997ee6a67ef.yaml
-  - content: '{"kind":"Plan","apiVersion":"upgrade.cattle.io/v1","metadata":{"name":"os-upgrader-my-upgrade","namespace":"cattle-system","creationTimestamp":null},"spec":{"concurrency":1,"nodeSelector":{},"serviceAccountName":"os-upgrader-my-upgrade","version":"latest","secrets":[{"name":"os-upgrader-my-upgrade","path":"/run/data"}],"tolerations":[{"operator":"Exists"}],"cordon":true,"upgrade":{"image":"registry.opensuse.org/isv/rancher/elemental/staging/teal53/15.4/rancher/elemental-teal/5.3","command":["/usr/sbin/suc-upgrade"]}},"status":{}}'
+  - content: '{"kind":"Plan","apiVersion":"upgrade.cattle.io/v1","metadata":{"name":"os-upgrader-my-upgrade","namespace":"cattle-system","creationTimestamp":null},"spec":{"concurrency":1,"nodeSelector":{},"serviceAccountName":"os-upgrader-my-upgrade","version":"latest","secrets":[{"name":"os-upgrader-my-upgrade","path":"/run/data"}],"tolerations":[{"operator":"Exists"}],"cordon":true,"upgrade":{"image":"registry.suse.com/rancher/elemental-teal/5.4","command":["/usr/sbin/suc-upgrade"]}},"status":{}}'
     name: Plan-cattle-system-os-upgrader-my-upgrade-273c2c09afca.yaml
   targets:
   - clusterName: my-cluster

@@ -59,7 +59,7 @@ The following values are for development purposes only.
 
 #### config.elemental.install
 
-Contains the installation configuration that would be applied via `elemental-register --reset` when booted from an ISO and passed to [`elemental install`](https://github.com/rancher/elemental-toolkit/blob/main/docs/elemental_install.md)
+Contains the installation configuration that would be applied via `elemental-register --install` when booted from an ISO and passed to [`elemental install`](https://github.com/rancher/elemental-toolkit/blob/main/docs/elemental_install.md)
 
 Supports the following values:
 

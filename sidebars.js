@@ -120,6 +120,15 @@ const sidebars = {
           "items": [
             "troubleshooting-upgrade"
           ]
+        },
+        {
+          "type": "category",
+          "collapsible": true,
+          "collapsed": false,
+          "label": "Reset",
+          "items": [
+            "troubleshooting-reset"
+          ]
         }
       ]
     },

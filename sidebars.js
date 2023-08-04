@@ -124,7 +124,7 @@ const sidebars = {
         {
           "type": "category",
           "collapsible": true,
-          "collapsed": false,
+          "collapsed": true,
           "label": "Reset",
           "items": [
             "troubleshooting-reset"

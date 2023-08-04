@@ -29,7 +29,7 @@ the live system boot itself.
 
 A common pattern is to combine the three ways described above. This pattern will allow you to add custom steps during the installation and add `cloud-init` files to be evaluated at boot time.
 
-Usually additional config files are added to the ISO by dynamically generating them at boot. This can be achieved by generating the ISO via a [SeedImage](/seedimage-reference.md) including custom cloud-config data.
+Additional config files can be added dynamically boot time by generating the ISO via a [SeedImage](/seedimage-reference.md) including custom cloud-config data.
 
 To apply this pattern, the ISO needs to include or generate at boot time:
 

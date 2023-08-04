@@ -112,7 +112,7 @@ Supports the following values:
 
 | Key         | Type   | Default value | Description                                                                                                                                |
 |-------------|--------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| enabled           | bool   | false  | Allow reset on all registered machines  |
+| enabled           | bool   | false  | MachineInventories created from this MachineRegistration will have reset functionality enabled |
 | reset-persistent  | bool   | true   | Format the COS_PERSISTENT partition     |
 | reset-oem         | bool   | true   | Format the COS_OEM partition            |
 | config-urls       | list   | empty  | Cloud-init config files                 |

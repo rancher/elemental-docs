@@ -34,8 +34,8 @@ Additional config files can be added dynamically boot time by generating the ISO
 To apply this pattern, the following files need to be included in the ISO or generated at boot time:
 
 1. A [configuration file](https://rancher.github.io/elemental-toolkit/docs/customizing/general_configuration/)
-   for the elemental client. The file must be named `config.yaml` and by default the elemental client looks for it under `/etc/elemental`, however
-   this path be configured as part of the installation parameters of a [MachineRegistration](/machineregistration-reference) resource.
+   for the elemental client. The file must be named `config.yaml` and located by default in `/etc/elemental`.
+   This path can be configured as part of the installation parameters of a [MachineRegistration](/machineregistration-reference) resource.
 
 2. The additional `cloud-init` files to be included into the installed system. They
    allow to perform custom operations at boot time.

@@ -36,7 +36,7 @@ If you need to bind a machine to a different `MachineRegistration` and trigger a
 ### Enable machine reset
 
 In order to allow machines to be reset automatically, the `spec.config.elemental.reset.enabled` flag of the `MachineRegistration` should be toggled.  
-This is off by default, but once activated, all associated `MachineInventory` will inherit this setting automatically.  
+This is off by default, but once activated, all newly created `MachineInventory` will inherit this setting automatically.  
 For example:
 
 ```yaml

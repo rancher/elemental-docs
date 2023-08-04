@@ -31,7 +31,7 @@ A common pattern is to combine the three ways described above. This pattern will
 
 Additional config files can be added dynamically boot time by generating the ISO via a [SeedImage](/seedimage-reference.md) including custom cloud-config data.
 
-To apply this pattern, the ISO needs to include or generate at boot time:
+To apply this pattern, the following files need to be included in the ISO or generated at boot time:
 
 1. A [configuration file](https://rancher.github.io/elemental-toolkit/docs/customizing/general_configuration/)
    for the elemental client. The file must be named `config.yaml` and by default the elemental client looks for it under `/etc/elemental`, however

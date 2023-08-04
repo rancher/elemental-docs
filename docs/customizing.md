@@ -94,7 +94,9 @@ spec:
 Elemental Teal live ISOs, when booted, have the ISO root mounted at `/run/initramfs/live`.
 According to that, the ISO for the example above is expected to include the `/oem/custom_config.yaml` file.
 
-Note `/run/initramfs/live` is a readonly mountpoint, hence this not an appropriate path for dynamically generated content at ISO boot.
+:::note
+`/run/initramfs/live` is a readonly mountpoint and it's not an appropriate path for dynamically generated content at ISO boot.
+:::
 
 #### Adding installation hooks or boot stages for the live system
 

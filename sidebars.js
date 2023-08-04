@@ -30,7 +30,7 @@ const sidebars = {
     {
       "type": "category",
       "collapsible": true,
-      "collapsed": false,
+      "collapsed": true,
       "label": "Install/Upgrade",
       "items": [
         "installation",
@@ -42,7 +42,7 @@ const sidebars = {
     {
       "type": "category",
       "collapsible": true,
-      "collapsed": false,
+      "collapsed": true,
       "label": "Reference",
       "items": [
         "cloud-config-reference",
@@ -59,7 +59,7 @@ const sidebars = {
     {
       "type": "category",
       "collapsible": true,
-      "collapsed": false,
+      "collapsed": true,
       "label": "Operator",
       "items": [
         "inventory-management",
@@ -69,7 +69,7 @@ const sidebars = {
     {
       "type": "category",
       "collapsible": true,
-      "collapsed": false,
+      "collapsed": true,
       "label": "Backup",
       "items": [
         "backup",
@@ -79,7 +79,7 @@ const sidebars = {
     {
       type: 'category',
       collapsible: true,
-      collapsed: false,
+      collapsed: true,
       label: 'How to',
       items: [
         'wifi',
@@ -91,13 +91,13 @@ const sidebars = {
     {
       type: 'category',
       collapsible: true,
-      collapsed: false,
+      collapsed: true,
       label: 'Troubleshooting',
       items: [
         {
           "type": "category",
           "collapsible": true,
-          "collapsed": false,
+          "collapsed": true,
           "label": "Rancher",
           "items": [
             "troubleshooting-rancher-upgrades",
@@ -106,7 +106,7 @@ const sidebars = {
         {
           "type": "category",
           "collapsible": true,
-          "collapsed": false,
+          "collapsed": true,
           "label": "Restore",
           "items": [
             "troubleshooting-restore",
@@ -115,7 +115,7 @@ const sidebars = {
         {
           "type": "category",
           "collapsible": true,
-          "collapsed": false,
+          "collapsed": true,
           "label": "Upgrade",
           "items": [
             "troubleshooting-upgrade"
@@ -130,8 +130,9 @@ const sidebars = {
             "troubleshooting-reset"
           ]
         }
-      ]
+      ],
     },
+    "release-notes",
   ],
 
   // But you can create a sidebar manually

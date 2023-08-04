@@ -34,7 +34,7 @@ and available through the [SUSE Registry](https://registry.suse.com).
 You can check latest versions available with [reg](https://github.com/genuinetools/reg):
 
 ```console showLineNumbers
-reg ls oci://registry.suse.com/rancher/elemental-teal/5.4
+reg ls oci://registry.suse.com/rancher/elemental-teal/5.3
 ```
 
 ### Elemental on x86-64 hardware

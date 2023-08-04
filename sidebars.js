@@ -84,7 +84,8 @@ const sidebars = {
         'wifi',
         'elemental_behind_proxy',
         'rancher-vmware',
-        'removable-device-cloudconfig'
+        'removable-device-cloudconfig',
+        'custom-certificate'
       ]
     },
     {

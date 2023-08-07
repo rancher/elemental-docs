@@ -29,10 +29,13 @@ the live system boot itself.
 
 A common pattern is to combine the three ways described above. This pattern will allow you to add custom steps during the installation and add `cloud-init` files to be evaluated at boot time.
 
-To apply this pattern, the ISO needs to include:
+Additional config files can be added dynamically boot time by generating the ISO via a [SeedImage](/seedimage-reference.md) including custom cloud-config data.
+
+To apply this pattern, the following files need to be included in the ISO or generated at boot time:
 
 1. A [configuration file](https://rancher.github.io/elemental-toolkit/docs/customizing/general_configuration/)
-   for the elemental client, describing at least the installation hooks location. This file is usually added to the ISO with path and name `/elemental/config.yaml`.
+   for the elemental client. The file must be named `config.yaml` and located by default in `/etc/elemental`.
+   This path can be configured as part of the installation parameters of a [MachineRegistration](/machineregistration-reference) resource.
 
 2. The additional `cloud-init` files to be included into the installed system. They
    allow to perform custom operations at boot time.
@@ -44,7 +47,8 @@ To apply this pattern, the ISO needs to include:
 
 #### Custom Elemental client configuration file
 
-[Elemental client](https://github.com/rancher/elemental-toolkit/blob/main/docs/elemental.md) `install`, `upgrade` and `reset` commands can be configured with a [custom configuration file](https://rancher.github.io/elemental-toolkit/docs/customizing/general_configuration/) located by default in `/elemental/config.yaml` or, if you have multiple yaml files, the `/elemental/config.d` directory will be loaded too.  
+[Elemental client](https://github.com/rancher/elemental-toolkit/blob/main/docs/elemental.md) `install`, `upgrade` and `reset` commands can be configured with a [custom configuration file](https://rancher.github.io/elemental-toolkit/docs/customizing/general_configuration/) located by default in `/etc/elemental/config.yaml`.
+If you have multiple yaml files, you need to add them in the `/etc/elemental/config.d` directory.
 
 A simple example to set hooks location could be:
 
@@ -67,7 +71,7 @@ the `config-urls` field is used for this exact purpose. See [MachineRegistration
 cloud-init file. The local path is evaluated during
 the installation, hence it must exists within the installation media, commonly an ISO image.
 
-By default, Elemental Teal live systems mount the ISO root at `/run/initramfs/live` and this should be the path set for `config-url` in `MachineRegistrations`:
+By default, Elemental Teal live systems mount the ISO root at `/run/initramfs/live` which is also the default path set for `config-url` in `MachineRegistrations`:
 See the example below:
 
 ```yaml showLineNumbers
@@ -88,7 +92,11 @@ spec:
         - "/run/initramfs/live/oem/custom_config.yaml"
 ```
 Elemental Teal live ISOs, when booted, have the ISO root mounted at `/run/initramfs/live`.
-According to that, the example above is expected to include the `/oem/custom_config.yaml` file.
+According to that, the ISO for the example above is expected to include the `/oem/custom_config.yaml` file.
+
+:::note
+`/run/initramfs/live` is a readonly mountpoint and it's not an appropriate path for dynamically generated content at ISO boot.
+:::
 
 #### Adding installation hooks or boot stages for the live system
 

@@ -72,5 +72,5 @@ apiVersion: elemental.cattle.io/v1beta1
 kind: MachineInventory
 metadata:
   annotations:
-    elemental.cattle.io/resettable: true
+    elemental.cattle.io/resettable: "true"
 ```

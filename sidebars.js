@@ -63,6 +63,7 @@ const sidebars = {
       "label": "Operator",
       "items": [
         "inventory-management",
+        "reset",
       ]
     },
     {
@@ -120,6 +121,15 @@ const sidebars = {
             "troubleshooting-upgrade"
           ]
         },
+        {
+          "type": "category",
+          "collapsible": true,
+          "collapsed": true,
+          "label": "Reset",
+          "items": [
+            "troubleshooting-reset"
+          ]
+        }
       ],
     },
     "release-notes",

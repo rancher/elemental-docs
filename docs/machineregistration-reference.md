@@ -1,5 +1,5 @@
 ---
-sidebar_label: Machineregistration reference
+sidebar_label: MachineRegistration reference
 title: ''
 ---
 
@@ -59,7 +59,7 @@ The following values are for development purposes only.
 
 #### config.elemental.install
 
-Contains the installation configuration that would be applied via `operator-register` when booted from an ISO and passed to [`elemental-cli install`](https://github.com/rancher/elemental-cli/blob/main/docs/elemental_install.md)
+Contains the installation configuration that would be applied via `elemental-register --install` when booted from an ISO and passed to [`elemental install`](https://github.com/rancher/elemental-toolkit/blob/main/docs/elemental_install.md)
 
 Supports the following values:
 
@@ -101,6 +101,45 @@ The only required value for a successful installation is the `device` key as we 
           reboot: true
           eject-cd: true
           system-uri: registry.suse.com/rancher/elemental-teal/5.4:latest
+  ```
+</details>
+
+#### config.elemental.reset
+
+Contains the reset configuration that would be applied via `elemental-register --reset`, when booted from the recovery partition and passed to [`elemental reset`](https://github.com/rancher/elemental-toolkit/blob/main/docs/elemental_reset.md)
+
+Supports the following values:
+
+| Key         | Type   | Default value | Description                                                                                                                                |
+|-------------|--------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| enabled           | bool   | false  | MachineInventories created from this MachineRegistration will have reset functionality enabled |
+| reset-persistent  | bool   | true   | Format the COS_PERSISTENT partition     |
+| reset-oem         | bool   | true   | Format the COS_OEM partition            |
+| config-urls       | list   | empty  | Cloud-init config files                 |
+| system-uri        | string | empty  | Sets the system image source and its type (e.g. 'docker:registry.org/image:tag') instead of using the running ISO                          |
+| debug             | bool   | false  | Enable debug output                     |
+| poweroff          | bool   | false  | Shutdown the system after reset         |
+| reboot            | bool   | true   | Reboot the system after reset           |
+
+<details>
+<summary>Example</summary>
+
+  ```yaml showLineNumbers
+  apiVersion: elemental.cattle.io/v1beta1
+  kind: MachineRegistration
+  metadata:
+    name: my-nodes
+    namespace: fleet-default
+  spec:
+    config:
+      elemental:
+        reset:
+          enabled: true
+          debug: true
+          reset-persistent: true
+          reset-oem: true
+          reboot: true
+          system-uri: registry.opensuse.org/isv/rancher/elemental/stable/teal53/15.4/rancher/elemental-teal/5.3:latest
   ```
 </details>
 

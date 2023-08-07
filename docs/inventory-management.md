@@ -60,7 +60,7 @@ spec:
 
 ### MachineRegistration
 
-`MachineRegistration` holds information on how to install and configure all connected Elemental Teal machines.  
+`MachineRegistration` holds information on how to install, reset, and configure all connected Elemental Teal machines.  
 
 It's possible to update the `spec.machineInventoryLabels` and `spec.machineInventoryAnnotations` and this will be applied to all registered machines.
 By default, Elemental Teal machines will attempt a registration update every 24 hours to update labels and annotations.
@@ -90,6 +90,12 @@ spec:
         reboot: true
         device: /dev/sda
         debug: true
+      reset:
+        enabled: true
+        debug: true
+        reset-persistent: true
+        reset-oem: true
+        reboot: true
   # Labels to be added to the created MachineInventory object
   machineInventoryLabels:
     element: fire

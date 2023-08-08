@@ -29,7 +29,7 @@ You will need to upgrade the elemental-operator chart first, and only then insta
 
 ### Non-stable installations
 
-Besides the Helm charts listed above, there are two other, non-stable
+Besides the Helm charts listed above, there are two other `non-stable`
 versions available.
 
 * Staging - refers to the latest tagged release from Github. This is documented in the [Next](next/quickstart-ui) pages.

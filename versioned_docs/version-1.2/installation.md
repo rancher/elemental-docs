@@ -52,7 +52,7 @@ the [Quick Start](quickstart-cli.md) guide or created from the Rancher 2.6 UI.
 
 The installation media is the media that will be used to kick start an Elemental Teal deployment. Currently
 the supported media is a live ISO. The live ISO must include the registration configuration yaml hence it must
-crafted once the MachineRegistration is created. The installation media is created by using the `elemental-iso-add-registration`
+crafted once the MachineRegistration is created. The installation media is created by using the [`elemental-iso-add-registration`](https://github.com/rancher/elemental/blob/main/.github/elemental-iso-add-registration)
 helper script (see [quick start](quickstart-cli.md#preparing-the-iso) guide)
 or by using the `elemental build-iso` command line utility included as part of the <Vars name="elemental_toolkit_name" link="elemental_toolkit_url/docs/creating-derivatives/build_iso" />.
 

@@ -31,10 +31,10 @@ It's sole purpose is to run Kubernetes (k3s or RKE2), with everything controlled
 Elemental Teal is built in the [openSUSE Build Service](https://build.opensuse.org/package/show/isv:Rancher:Elemental:Stable:Teal53/node-image)
 and available through the [SUSE Registry](https://registry.suse.com).
 
-You can check latest versions available with [reg](https://github.com/genuinetools/reg):
+You can check latest versions available with [podman](https://podman.io/):
 
 ```console showLineNumbers
-reg ls oci://registry.suse.com/rancher/elemental-teal/5.4
+podman search registry.suse.com/rancher/elemental-teal/5.3 --list-tags
 ```
 
 ### Elemental on x86-64 hardware

@@ -34,7 +34,7 @@ versions available.
 
 * **Staging:** refers to the latest tagged release from Github. This is documented in the [Next](next/quickstart-ui) pages.
 
-* Development - refers to the 'tip of HEAD' from Github. This is the ongoing development version and changes constantly.
+* **Development:** refers to the 'tip of HEAD' from Github. This is the ongoing development version and changes constantly.
 
 <Tabs>
 <TabItem value="stagingOperator" label="Staging version (x86-64, ARM64 (Raspberry Pi 4))" default>

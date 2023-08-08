@@ -274,9 +274,10 @@ RUN rpm --import <repo-signing-key-url> && \
 # values here should reflect the tag of the image currently being built
 ARG IMAGE_REPO=norepo
 ARG IMAGE_TAG=latest
-RUN echo "IMAGE_REPO=${IMAGE_REPO}"          > /etc/os-release && \
-    echo "IMAGE_TAG=${IMAGE_TAG}"           >> /etc/os-release && \
-    echo "IMAGE=${IMAGE_REPO}:${IMAGE_TAG}" >> /etc/os-release
+RUN \
+    sed -i -e "s/^IMAGE_REPO=.*/IMAGE_REPO=\"${IMAGE_REPO}\"/g" /etc/os-release && \
+    sed -i -e "s/^IMAGE_TAG=.*/IMAGE_TAG=\"${IMAGE_TAG}\"/g" /etc/os-release && \
+    sed -i -e "s/^IMAGE=.*/IMAGE=\"${IMAGE_REPO}:${IMAGE_TAG}\"/g" /etc/os-release
 ```
 
 Where `latest` is the base version we want to customize.

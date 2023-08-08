@@ -10,6 +10,14 @@ helm upgrade --create-namespace -n cattle-elemental-system --install elemental-o
 helm upgrade --create-namespace -n cattle-elemental-system --install elemental-operator oci://registry.suse.com/rancher/elemental-operator-chart
 ```
 
+Now after a few seconds you should see the operator pod appear on the `cattle-elemental-system` namespace:
+
+```shell showLineNumbers
+kubectl get pods -n cattle-elemental-system
+NAME                                  READY   STATUS    RESTARTS   AGE
+elemental-operator-64f88fc695-b8qhn   1/1     Running   0          16s
+```
+
 :::info Helm v3.8.0+ required
 The Elemental Operator chart is distributed via an OCI registry: Helm correctly supports OCI based registries starting from the v3.8.0 release.
 :::
@@ -18,6 +26,15 @@ The Elemental Operator chart is distributed via an OCI registry: Helm correctly 
 When upgrading from an elemental-operator release embedding the Elemental CRDs (version < 1.2.4) the elemental-operator-crds chart installation will fail.
 You will need to upgrade the elemental-operator chart first, and only then install the elemental-operator-crds chart.
 :::
+
+### Non-stable installations
+
+Besides the Helm charts listed above, there are two other `non-stable`
+versions available.
+
+* **Staging:** refers to the latest tagged release from Github. This is documented in the [Next](next/quickstart-ui) pages.
+
+* **Development:** refers to the 'tip of HEAD' from Github. This is the ongoing development version and changes constantly.
 
 <Tabs>
 <TabItem value="stagingOperator" label="Staging version (x86-64, ARM64 (Raspberry Pi 4))" default>
@@ -42,12 +59,6 @@ helm upgrade --create-namespace -n cattle-elemental-system --install --set image
 </TabItem>
 </Tabs>
 
+### Installation options
+
 There are a few options that can be set in the chart install but that is out of scope for this document. You can see all the values on the chart [values.yaml](https://github.com/rancher/elemental-operator/blob/main/charts/operator/values.yaml).
-
-Now after a few seconds you should see the operator pod appear on the `cattle-elemental-system` namespace:
-
-```shell showLineNumbers
-kubectl get pods -n cattle-elemental-system
-NAME                                  READY   STATUS    RESTARTS   AGE
-elemental-operator-64f88fc695-b8qhn   1/1     Running   0          16s
-```

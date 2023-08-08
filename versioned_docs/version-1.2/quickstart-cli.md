@@ -159,7 +159,7 @@ The first command waits for the ISO to be built and ready, the second one downlo
 </TabItem>
 <TabItem value="manual_iso" label="Preparing the seed image (x86_64) manually">
 
-If you've created a [customized ISO](customizing#create-a-custom-bootable-installation-media),
+If you created a [customized ISO](customizing#create-a-custom-bootable-installation-media),
 you can use the [`elemental-iso-add-registration`](https://github.com/rancher/elemental/blob/main/.github/elemental-iso-add-registration)
 script to add the registration config file
 

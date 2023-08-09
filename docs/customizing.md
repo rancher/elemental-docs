@@ -340,4 +340,8 @@ buildah build --tag myrepo/custom-build:v1.1.1 \
               .
 ```
 
-The new customized installation media can be found in `elemental-teal-amd64.iso` and can be used to boot and provision the machine.
+The new customized installation media can be found in `elemental-teal-amd64.iso`.
+
+:::caution important
+You still need to [prepare the installation image](quickstart-cli#preparing-the-installation-seed-image) so it can be used to boot and provision the machine.
+:::

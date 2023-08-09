@@ -157,7 +157,18 @@ wget --no-check-certificate `kubectl get seedimage -n fleet-default fire-img -o 
 The first command waits for the ISO to be built and ready, the second one downloads it in the current directory with the name `elemental-teal-x86_64.iso`.
 
 </TabItem>
-<TabItem value="manual" label="Preparing the seed image (aarch64) manually">
+<TabItem value="manual_iso" label="Preparing the seed image (x86_64) manually">
+
+If you created a [customized ISO](customizing#create-a-custom-bootable-installation-media),
+you can use the [`elemental-iso-add-registration`](https://github.com/rancher/elemental/blob/main/.github/elemental-iso-add-registration)
+script to add the registration config file
+
+```shell showLineNumbers
+elemental-iso-add-registration initial-registration.yaml my-customized.iso
+```
+
+</TabItem>
+<TabItem value="manual_raw" label="Preparing the seed image (aarch64) manually">
 
 Elemental's support for Raspberry Pi is primarily for demonstration purposes at this point. Therefore the installation process is modelled similar to x86-64. You boot from a seed image (an USB stick in this case) and install to a storage medium (SD-card for Raspberry Pi).
 

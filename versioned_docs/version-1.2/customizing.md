@@ -314,6 +314,9 @@ ARG TARGETARCH
 WORKDIR /iso
 COPY --from=os / rootfs
 
+# work around buildah issue: https://github.com/containers/buildah/issues/4242
+RUN rm rootfs/etc/resolv.conf
+
 RUN --mount=type=bind,source=./,target=/output,rw \
       elemental build-iso \
         dir:rootfs \
@@ -323,7 +326,7 @@ RUN --mount=type=bind,source=./,target=/output,rw \
 ```
 
 
-Modify the container image template and afterward run:
+Modify the container image template and afterwards run:
 
 ```bash showLineNumbers
 buildah build --tag myrepo/custom-build:v1.1.1 \

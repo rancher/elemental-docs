@@ -23,7 +23,7 @@ Once the related `MachineInventory` is flagged for deletion, a reset plan will b
 If the machine is still running, this plan will:
 
 1. Reboot the machine in recovery mode.
-2. Execute `elemental-register --reset`.  
+2. Execute `systemctl start elemental-register-reset`.  
    This will fetch the remote `MachineRegistration` and apply the `spec.config.elemental.reset` options to reset the machine.  
    A new `MachineInventory` will be created and the `spec.config.cloud-config` defined in the `MachineRegistration` will be applied again.  
 

@@ -127,7 +127,7 @@ stages:
         - if: '[ -f /run/cos/recovery_mode ]'
           name: Runs elemental reset
           commands:
-            - elemental-register --debug --reset
+            - systemctl start elemental-register-reset
 ```
 
 The `elemental-register` cli will register with the `elemental-operator` as a new machine. This will lead to the creation of a new `MachineInventory` object.  

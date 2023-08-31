@@ -141,4 +141,4 @@ If the machine is unable to execute the reset instructions and the related `Mach
 - Remove the `elemental.cattle.io/resettable: "true"` annotation from the `MachineInventory`.  
 - Remove the `machineinventory.elemental.cattle.io` finalizer from the `MachineInventory`.  
 
-Remember to also take care of the machine itself, by fully reprovisioning it or using the `elemental reset` command directly.  
+Remember to also take care of the machine itself, by fully reprovisioning it or rebooting into recovery mode and using the `elemental reset` command directly.  

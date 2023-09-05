@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Elemental - Immutable Linux for Rancher',
-  url: 'https://rancher.github.io',
+  url: 'https://elemental.docs.rancher.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -73,6 +73,12 @@ const config = {
             docId: 'index',
             position: 'left',
             label: 'Documentation',
+          },
+          {
+            type: 'doc',
+            docId: 'toolkit/index',
+            position: 'left',
+            label: 'Toolkit',
           },
           {
             type: 'docsVersionDropdown',

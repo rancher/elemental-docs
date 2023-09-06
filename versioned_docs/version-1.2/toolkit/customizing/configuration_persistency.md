@@ -13,7 +13,7 @@ By default Elemental and derivatives are reading and executing cloud-init files 
 It is also possible to run cloud-init file in a different location (URLs included, too) from boot cmdline by using  the `cos.setup=..` option.
 
 {{% alert title="Note" %}}
-It is possible to install a custom [cloud-init style file](../../reference/cloud_init/) during install with `--cloud-init` flag on `elemental install` command or, it's possible to add one or more files manually inside the `/oem` directory after installation.
+It is possible to install a custom [cloud-init style file](../reference/cloud_init/) during install with `--cloud-init` flag on `elemental install` command or, it's possible to add one or more files manually inside the `/oem` directory after installation.
 {{% /alert %}}
 
 While `/system/oem` is reserved for system configurations to be included directly in the derivative container image, the `/oem` folder instead is reserved for persistent cloud-init files that can be extended in runtime.

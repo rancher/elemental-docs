@@ -7,7 +7,7 @@ Elemental and every derivative can upgrade, rollback or just switch to different
 
 To upgrade an installed system, just run `elemental upgrade` and reboot. 
 
-This will perform an upgrade based on the default derivative configuration for the image. See [general configuration](../../customizing/general_configuration) on how to configure defaults when building a derivative.
+This will perform an upgrade based on the default derivative configuration for the image. See [general configuration](../customizing/general_configuration) on how to configure defaults when building a derivative.
 
 "Upgrades" are not carried over the usual way of treating each single package individually: Elemental considers the container image as a new system where to boot into. It will pull a new container image during this phase, which will be booted on the next reboot.
 

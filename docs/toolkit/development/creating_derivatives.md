@@ -38,4 +38,4 @@ Where `$NAME` is the name of the ISO and `$SOURCE` might be the reference to the
 
 Some examples for $SOURCE argument "dir:/cOS/system", "oci:quay.io/repository/costoolkit/releases-green:cos-system-0.8.14-10"
 
-See also [building ISOs](../../creating-derivatives/build_iso)
+See also [building ISOs](../creating-derivatives/build_iso)

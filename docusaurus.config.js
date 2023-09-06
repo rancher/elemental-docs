@@ -75,8 +75,8 @@ const config = {
             label: 'Documentation',
           },
           {
-            type: 'doc',
-            docId: 'toolkit/index',
+            type: 'docSidebar',
+            sidebarId: 'toolkit',
             position: 'left',
             label: 'Toolkit',
           },

@@ -34,7 +34,7 @@ checkmodule -M -m -o elemental.mod elemental.te
 semodule_package -o elemental.pp -m elemental.mod
 ```
 
-To make effective the policy package it has to be loaded or installed within the selinux policy, this can be easily done with the `semodule -i /usr/share/elemental/selinux/elemental.pp` command. So from a derivative perspective and following the example from [Creating bootable image](../../creating-derivatives/creating_bootable_images/#example) section adding the following lines to the Dockerfile should be enough to enable SELinux in enforcing mode:
+To make effective the policy package it has to be loaded or installed within the selinux policy, this can be easily done with the `semodule -i /usr/share/elemental/selinux/elemental.pp` command. So from a derivative perspective and following the example from [Creating bootable image](../creating-derivatives/creating_bootable_images/#example) section adding the following lines to the Dockerfile should be enough to enable SELinux in enforcing mode:
 
 ```Dockerfile
 # Install the custom policy package if any and the restore context stage in cloud-init config

@@ -39,4 +39,4 @@ The default partitioning is created during installation and is expected to be pr
 
 The `COS_STATE` partitions contains the `active`, `passive` . While the `active` and `passive` are `.img` files which are loopback mounted, the `recovery` system is in `COS_RECOVERY` and can also be a `squashfs` file (provided in `/cOS/recovery.squashfs`). This ensures the immutability aspect and ease out building derivative in constrained environments (e.g. when we have restricted permissions and we can't mount).
 
-For more information about the immutability aspect of Elemental, see [Immutable rootfs](../immutable_rootfs)
+For more information about the immutability aspect of Elemental, see [Immutable rootfs](immutable_rootfs)

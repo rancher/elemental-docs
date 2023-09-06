@@ -3,15 +3,15 @@ title: "Runtime persistent changes"
 sidebar_label: "Runtime persistent changes"
 ---
 
-Elemental and derivatives are [immutable](../../reference/immutable_rootfs) systems. That means that any change in the running OS will not persist after a reboot.
+Elemental and derivatives are [immutable](../reference/immutable_rootfs) systems. That means that any change in the running OS will not persist after a reboot.
 
-While [configurations can be persisted](../configuration_persistency), there are occasions where installing a custom package or provide additional persistent files in the end system is needed.
+While [configurations can be persisted](configuration_persistency), there are occasions where installing a custom package or provide additional persistent files in the end system is needed.
 
 We will see here a way to install packages, drivers, or apply any modification we might want to do in the OS image during runtime, without any need to rebuild the derivative container image. This will let any user (and not derivative developer) to apply any needed customization and to be able to persist across upgrades.
 
 ## Transient changes
 
-To apply transient changes, it's possible to boot a Elemental derivative in read/write mode by specifying `rd.cos.debugrw` [see here for more details](../../reference/immutable_rootfs). This allows to do any change and will persist into the active/passive booting system (does NOT apply for recovery). Altough this methodology should be only considered for debugging purposes.
+To apply transient changes, it's possible to boot a Elemental derivative in read/write mode by specifying `rd.cos.debugrw` [see here for more details](../reference/immutable_rootfs). This allows to do any change and will persist into the active/passive booting system (does NOT apply for recovery). Altough this methodology should be only considered for debugging purposes.
 
 ## Persist changes with Cloud init files
 
@@ -19,7 +19,7 @@ Elemental allows to apply a set of commands, or cloud-init steps, during upgrade
 
 All the configuration that we want to apply to the system will run each time we do an upgrade, a reset or an installation on top of the new downloaded image (in case of upgrade) or the image which is the target system. 
 
-Between the available [stages](../stages) in the [cloud-init](../../reference/cloud_init/) there are `after-upgrade-chroot`,  `after-install-chroot`, `after-reset-chroot` and  `after-deploy-chroot`, for example, consider the following cloud-init file:
+Between the available [stages](stages) in the [cloud-init](../reference/cloud_init/) there are `after-upgrade-chroot`,  `after-install-chroot`, `after-reset-chroot` and  `after-deploy-chroot`, for example, consider the following cloud-init file:
 
 ```yaml
 stages:

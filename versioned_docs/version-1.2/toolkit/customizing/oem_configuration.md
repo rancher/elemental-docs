@@ -8,9 +8,9 @@ There are several way to customize Elemental and a elemental-toolkit derivative:
 - declaratively in runtime with cloud-config file (by overriding, or extending)
 - stateful, embedding any configuration in the container image to be booted.
 
-For runtime persistence configuration, the only supported way is with cloud-config files, [see the relevant docs](../configuration_persistency).
+For runtime persistence configuration, the only supported way is with cloud-config files, [see the relevant docs](configuration_persistency).
 
-A derivative automatically loads and executes cloud-config files during the various system [stages](../stages) also inside `/system/oem` which is read-only and reserved to the system.
+A derivative automatically loads and executes cloud-config files during the various system [stages](stages) also inside `/system/oem` which is read-only and reserved to the system.
 
 Derivatives that wish to override default configurations can do that by placing extra cloud-init file, or overriding completely `/system/oem` in the target image.
 

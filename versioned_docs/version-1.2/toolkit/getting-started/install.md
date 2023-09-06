@@ -33,7 +33,7 @@ elemental install [options] <device>
 
 ### Custom OEM configuration
 
-During installation it can be specified a [cloud-init config file](../../reference/cloud_init), that will be installed and persist in the system after installation:
+During installation it can be specified a [cloud-init config file](../reference/cloud_init), that will be installed and persist in the system after installation:
 
 ```bash
 elemental install --cloud-init [url|path] <device>
@@ -59,9 +59,9 @@ install
        size: 0
 ```
 
-Refer to the [config file docs](../../customizing/general_configuration) for further details about all partitioning options.
+Refer to the [config file docs](../customizing/general_configuration) for further details about all partitioning options.
 
-In order to create additional partitions please consider the layout section on [cloud-init config file reference](../../reference/cloud_init)
+In order to create additional partitions please consider the layout section on [cloud-init config file reference](../reference/cloud_init)
 
 ### Installation from 3rd party LiveCD or rescue mediums
 
@@ -86,7 +86,7 @@ You can see all the versions at [GitHub Container Registry](https://ghcr.io/ranc
 
 #### By using manually the Elemental installer
 
-Similarly, the same mechanism can be used without docker. Install elemental using the [Download guide](./download.md) and run the follow as root:
+Similarly, the same mechanism can be used without docker. Install elemental using the [Download guide](download.md) and run the follow as root:
 
 ```bash
 elemental install --system.uri $IMAGE $DEVICE

@@ -11,18 +11,18 @@ While building a derivative, or on a running system things can go really wrong, 
 
 Don't forget tocheck the known issues for the [release you're using](https://github.com/rancher/elemental-toolkit/issues).
 
-Before booting, [several kernel parameters](../immutable_rootfs) can be used to help during debugging (also when booting an ISO). Those are meant to be used only while debugging, and they might defeat the concept of immutability.
+Before booting, [several kernel parameters](immutable_rootfs) can be used to help during debugging (also when booting an ISO). Those are meant to be used only while debugging, and they might defeat the concept of immutability.
 
 ## Disable Immutability
 
-By adding `rd.cos.debugrw` to the boot parameters read only mode will be disabled. See [Immutable setup](../immutable_rootfs) for more options.
+By adding `rd.cos.debugrw` to the boot parameters read only mode will be disabled. See [Immutable setup](immutable_rootfs) for more options.
 
 The derivative will boot into RW mode, that means any change made during runtime will persist across reboots. Use this feature with caution as defeats the concept of immutability.
 
 `rd.cos.debugrw` applies only to active and passive partitions. The recovery image can't be mutated.
 
 {{% alert title="Note" %}}
-The changes made will persist during reboots but won't persist across upgrades. If you need to persist changes across upgrades in runtime (for example by adding additional packages on top of the derivative image), see [how to apply persistent changes](../../customizing/runtime_persistent_changes). 
+The changes made will persist during reboots but won't persist across upgrades. If you need to persist changes across upgrades in runtime (for example by adding additional packages on top of the derivative image), see [how to apply persistent changes](../customizing/runtime_persistent_changes). 
 {{% /alert %}}
 
 ## Debug initramfs issues
@@ -36,12 +36,12 @@ For example:
 
 ## Recovery partition
 
-If you can boot into the system, the recovery partition can be used to reset the state of the active/passive, but can also be used to upgrade to specific images. Be sure to read the [Recovery section in the docs](../../getting-started/recovery).
+If you can boot into the system, the recovery partition can be used to reset the state of the active/passive, but can also be used to upgrade to specific images. Be sure to read the [Recovery section in the docs](../getting-started/recovery).
 
 ## Mutating derivative images
 
 It can be useful to mutate derivative images and commit a container’s file changes or settings into a new image. 
-This allows you to debug a container by running an interactive shell, and re-use the mutated image in Elemental systems. Generally, it is better to use Dockerfiles to manage your images in a documented and maintainable way. [Read more about creating bootable images](../../creating-derivatives/creating_bootable_images).
+This allows you to debug a container by running an interactive shell, and re-use the mutated image in Elemental systems. Generally, it is better to use Dockerfiles to manage your images in a documented and maintainable way. [Read more about creating bootable images](../creating-derivatives/creating_bootable_images).
 
 Let's suppose we have the derivative original image at `$IMAGE` and we want to mutate it. We will push it later with another name `$NEW_IMAGE` and use it to our node downstream.
 

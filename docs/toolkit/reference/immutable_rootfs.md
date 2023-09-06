@@ -20,4 +20,4 @@ A running system will look like as follows:
 
 This means that any changes that are not specified as cloud-init configuration are not persisting across reboots.
 
-You can place persisting cloud-init files either in `/oem` or `/usr/local/oem`, `Elemental` already supports cloud-init [datasources](https://cloudinit.readthedocs.io/en/latest/topics/datasources.html), so you can use also load cloud-init configuration as standard userdata, depending on the platform. For more details on the cloud-init syntax, see the [cloud-init configuration reference](../reference/cloud_init).
+You can place persisting cloud-init files either in `/oem` or `/usr/local/oem`, `Elemental` already supports cloud-init [datasources](https://cloudinit.readthedocs.io/en/latest/topics/datasources.html), so you can use also load cloud-init configuration as standard userdata, depending on the platform. For more details on the cloud-init syntax, see the [cloud-init configuration reference](cloud_init).

@@ -26,4 +26,4 @@ make build-cli
 
 ## What to do next?
 
-Check out [the customization section](../../customizing) to build a custom `Elemental` derivative or [the example section](../../examples) for some already prepared recipe examples.
+Check out [the customization section](../customizing/stages) to build a custom `Elemental` derivative or [the example section](../examples/creating_bootable_images) for some already prepared recipe examples.

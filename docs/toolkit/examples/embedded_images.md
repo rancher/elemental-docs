@@ -65,7 +65,7 @@ COPY cloud-init.yaml /system/oem/
 
 ## 2) Configuration
 
-At the end of the Dockerfile, you can see that we copy over a custom [cloud-init](../../reference/cloud_init) file:
+At the end of the Dockerfile, you can see that we copy over a custom [cloud-init](../reference/cloud_init) file:
 
 ```Dockerfile
 # Copy cloud-init default configuration
@@ -200,7 +200,7 @@ Successfully built 38cc4c8b173a
 Successfully tagged derivative:latest
 ```
 
-After the process completed, we are ready to consume our docker image. If you push the image over a container registry, you can then or use a running `Elemental` system to upgrade to it, or deploy it directly [see getting started](../../getting-started).
+After the process completed, we are ready to consume our docker image. If you push the image over a container registry, you can then or use a running `Elemental` system to upgrade to it, or deploy it directly [see getting started](../getting-started/install).
 
 ### Build an ISO image
 
@@ -246,7 +246,7 @@ Written to medium : 282624 sectors at LBA 0
 Writing to 'stdio:derivative-0.20210909.iso' completed successfully.
 ```
 
-After the process completes, we should have a ISO in our folder ready to be used. See the [build ISOs section](../../creating-derivatives/build_iso) for all the available options.
+After the process completes, we should have a ISO in our folder ready to be used. See the [build ISOs section](../creating-derivatives/build_iso) for all the available options.
 
 
 ## Customization
@@ -292,7 +292,7 @@ RUN echo "GRUB_ENTRY_NAME=derivative" >> /etc/os-release
 RUN echo "welcome to our derivative" >> /etc/issue.d/01-derivative
 ```
 
-As our target here is to install `k3s` we do install both k3s `agent` and `server`, so the image can work in both modes. Here we could have installed any service or binary that we want to embed in our container image. We setup the system layout by creating needed paths for `k3s` and set up a os-release which identifies the OS version. Afterward we regenerate the initrd which is required in order to boot, [see also the Initrd section](../../creating-derivatives/creating_bootable_images/#initrd).
+As our target here is to install `k3s` we do install both k3s `agent` and `server`, so the image can work in both modes. Here we could have installed any service or binary that we want to embed in our container image. We setup the system layout by creating needed paths for `k3s` and set up a os-release which identifies the OS version. Afterward we regenerate the initrd which is required in order to boot, [see also the Initrd section](../creating-derivatives/creating_bootable_images/#initrd).
 
 ### Cloud-init, custom SSH access
 
@@ -311,7 +311,7 @@ which you can replace with your github handle, or by specifying directly an ssh 
 
 The user will be part of the `admin` group which is allowed to use `sudo`.
 
-As our target is to run `k3s`, but could have been any other service, we tweak the immutable setup by specifying sensible path required for `k3s` in order to function properly, see [immutable rootfs](../../reference/immutable_rootfs) for all the available options.
+As our target is to run `k3s`, but could have been any other service, we tweak the immutable setup by specifying sensible path required for `k3s` in order to function properly, see [immutable rootfs](../reference/immutable_rootfs) for all the available options.
 
 Finally, we start k3s. Note, we could have tweaked that part slightly to provide `k3s` configurations via systemd env files, or boot up for example the agent instead of the server:
 

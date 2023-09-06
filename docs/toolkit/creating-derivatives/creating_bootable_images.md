@@ -10,7 +10,7 @@ A derivative is a simple container image which can be processed by the Elemental
 ## Requirements
 {{<image_right image="https://docs.google.com/drawings/d/e/2PACX-1vQBfT10W88mD1bbReDmAJIOPF3tWdVHP7QE9w7W7ByOIzoKGOdh2z5YWsKf7wn8csFF_QGrDXgGsPWg/pub?w=478&h=178">}}
 
-Bootable images are standard container images, that means the usual `build` and `push` workflow applies, and building images is also a way to persist [oem customizations](../../customizing). 
+Bootable images are standard container images, that means the usual `build` and `push` workflow applies, and building images is also a way to persist [oem customizations](../customizing/oem_configuration). 
 
 The base image can be any Linux distribution that is compatible with our flavors.
 
@@ -21,7 +21,6 @@ The image needs to ship:
 - grub2 (required)
 - dracut (required)
 - microcode (optional, not required in order to boot, but recomended)
-- [cosign](../cosign) packages (optional, required if you want to verify the images)
 
 ## Example
 
@@ -33,8 +32,8 @@ An illustrative example can be:
 In the example above, the elemental-toolkit parts that are **required** are pulled in by `COPY --from=TOOLKIT /install-root /`.
 
 ## Initrd
-The image should provide at least `grub`, `systemd`, `dracut`, a kernel and an initrd. Those are the common set of packages between derivatives. See also [package stack](../package_stack). 
-By default the initrd is expected to be symlinked to `/boot/initrd` and the kernel to `/boot/vmlinuz`, otherwise you can specify a custom path while [building an iso](../build_iso) and [by customizing grub](../../customizing/configure_grub).
+The image should provide at least `grub`, `systemd`, `dracut`, a kernel and an initrd. Those are the common set of packages between derivatives. See also [package stack](package_stack). 
+By default the initrd is expected to be symlinked to `/boot/initrd` and the kernel to `/boot/vmlinuz`, otherwise you can specify a custom path while [building an iso](build_iso) and [by customizing grub](../customizing/configure_grub).
 
 ## Building
 
@@ -48,10 +47,10 @@ The workflow would be then:
 
 The following can be incorporated in any standard gitops workflow.
 
-You can explore more examples in the [example section](../../examples/creating_bootable_images) on how to create bootable images.
+You can explore more examples in the [example section](../examples/creating_bootable_images) on how to create bootable images.
 
 ## What's next?
 
 Now that we have created our derivative container, we can either:
 
-- [Build an iso](../build_iso)
+- [Build an iso](build_iso)

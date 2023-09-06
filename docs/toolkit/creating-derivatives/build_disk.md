@@ -28,7 +28,7 @@ Preparing the a loop device for the installation is simple and straight forward.
 
 ## Run elemental installation
 
-Execute the elemental installation as described in [installing](../../getting-started/install):
+Execute the elemental installation as described in [installing](../getting-started/install):
 
 ```bash
 > sudo elemental install --firmware efi --system.uri oci:<image=ref> <device>

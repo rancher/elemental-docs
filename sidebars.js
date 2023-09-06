@@ -77,11 +77,11 @@ const sidebars = {
       ]
     },
     {
-      type: 'category',
-      collapsible: true,
-      collapsed: true,
-      label: 'How to',
-      items: [
+      "type": 'category',
+      "collapsible": true,
+      "collapsed": true,
+      "label": 'How to',
+      "items": [
         'wifi',
         'elemental_behind_proxy',
         'rancher-vmware',
@@ -90,11 +90,11 @@ const sidebars = {
       ]
     },
     {
-      type: 'category',
-      collapsible: true,
-      collapsed: true,
-      label: 'Troubleshooting',
-      items: [
+      "type": 'category',
+      "collapsible": true,
+      "collapsed": true,
+      "label": 'Troubleshooting',
+      "items": [
         {
           "type": "category",
           "collapsible": true,
@@ -135,14 +135,14 @@ const sidebars = {
     },
     "release-notes",
   ],
-  toolkit: [
+  "toolkit": [
     "toolkit/index",
     {
-      type: "category",
+      "type": "category",
       "collapsible": true,
       "collapsed": false,
-      label: "Getting Started",
-      items: [
+      "label": "Getting Started",
+      "items": [
         "toolkit/getting-started/download",
         "toolkit/getting-started/install",
         "toolkit/getting-started/upgrading",
@@ -151,11 +151,11 @@ const sidebars = {
       ],
     },
     {
-      type: "category",
-      label: "Customizing",
+      "type": "category",
+      "label": "Customizing",
       "collapsible": true,
       "collapsed": true,
-      items: [
+      "items": [
         "toolkit/customizing/stages",
         "toolkit/customizing/configuration_persistency",
         "toolkit/customizing/embedded_features",
@@ -169,11 +169,11 @@ const sidebars = {
       ],
     },
     {
-      type: "category",
-      label: "Creating Derivatives",
+      "type": "category",
+      "label": "Creating Derivatives",
       "collapsible": true,
       "collapsed": true,
-      items: [
+      "items": [
         "toolkit/creating-derivatives/package_stack",
         "toolkit/creating-derivatives/creating_bootable_images",
         "toolkit/creating-derivatives/build_disk",
@@ -181,26 +181,26 @@ const sidebars = {
       ],
     },
     {
-      type: "category",
-      label: "Examples",
-      items: [
+      "type": "category",
+      "label": "Examples",
+      "items": [
         "toolkit/examples/creating_bootable_images",
         "toolkit/examples/cloud_config",
         "toolkit/examples/embedded_images"
       ],
     },
     {
-      type: "category",
-      label: "Tutorials",
-      items: [
+      "type": "category",
+      "label": "Tutorials",
+      "items": [
         "toolkit/tutorials/k3s_and_fleet_on_vanilla_image_example",
         "toolkit/tutorials/trigger_upgrades_with_fleet"
       ],
     },
     {
-      type: "category",
-      label: "Reference",
-      items: [
+      "type": "category",
+      "label": "Reference",
+      "items": [
         "toolkit/reference/cloud_init",
         "toolkit/reference/immutable_rootfs",
         "toolkit/reference/layout",
@@ -208,9 +208,9 @@ const sidebars = {
         "toolkit/reference/built_with_elemental",
         "toolkit/reference/high_level_architecture",
         {
-          type: "category",
-          label: "Command Line Interface",
-          items: [
+          "type": "category",
+          "label": "Command Line Interface",
+          "items": [
             "toolkit/reference/elemental",
             "toolkit/reference/elemental_build-iso",
             "toolkit/reference/elemental_cloud-init",
@@ -228,9 +228,9 @@ const sidebars = {
       ],
     },
     {
-      type: "category",
-      label: "Development",
-      items: [
+      "type": "category",
+      "label": "Development",
+      "items": [
         "toolkit/development/creating_derivatives",
         "toolkit/development/dependencies"
       ],
@@ -240,7 +240,7 @@ const sidebars = {
   /*
   tutorialSidebar: [
     {
-      type: "category",
+      "type": "category",
       label: "Tutorial",
       items: ["hello"],
     },

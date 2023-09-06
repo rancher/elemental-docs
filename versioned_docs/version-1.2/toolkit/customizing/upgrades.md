@@ -9,7 +9,7 @@ However, it's possible to tweak the default behavior of `elemental upgrade` to p
 
 ## Configuration
 
-`elemental upgrade` during start reads the [Elemental configuration file](../general_configuration) and allows to tweak the following:
+`elemental upgrade` during start reads the [Elemental configuration file](general_configuration) and allows to tweak the following:
 
 ```yaml
 # configuration used for the 'ugrade' command

@@ -37,7 +37,7 @@ It is a map of {key,value} pairs (map[string]string). When multiple labels are p
     template:
       spec:
         selector:
-          matchlabels:
+          matchLabels:
             element: fire
             manufacturer: somevalue
   ```

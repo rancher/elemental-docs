@@ -4,7 +4,7 @@ metadata:
   name: fire-img
   namespace: fleet-default
 spec:
-  baseImage: https://download.opensuse.org/repositories/isv:/Rancher:/Elemental:/Stable:/Teal53/media/iso/elemental-teal.x86_64.iso
+  baseImage: registry.suse.com/rancher/elemental-teal-iso/5.4:1.2.2
   registrationRef:
     apiVersion: elemental.cattle.io/v1beta1
     kind: MachineRegistration

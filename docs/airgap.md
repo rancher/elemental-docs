@@ -7,13 +7,7 @@ title: ''
 
 ### Assumptions
 A Rancher air-gapped installation should be already configured as per the [official Rancher documentation](https://ranchermanager.docs.rancher.com/pages-for-subheaders/air-gapped-helm-cli-install).
-In particular, a local registry should be available in the air-gapped infrastructure.
-
-:::info authenticated access to the private registry is not supported yet
-At this stage Elemental does not support installation from an authenticated registry: the private registry should allow unauthenticated pulls from inside the airgap environment.
-
-Authentication support in registries is tracked in the [*[airgap] add support to private registries* issue](https://github.com/rancher/elemental/issues/967).
-:::
+In particular, a private registry should be available in the air-gapped infrastructure.
 
 ### Download Elemental charts and Elemental images
 In order to run Elemental in an air-gapped environment the following artifacts are needed:
@@ -27,7 +21,7 @@ The official channel image (the *elemental-teal-channel* one) references absolut
 All these steps can be performed by executing the [`elemental-airgap.sh` script](https://raw.githubusercontent.com/rancher/elemental-operator/main/scripts/elemental-airgap.sh) from a host with Internet access.
 You can provide manually downloaded Elemental charts to the script or let it download the helm charts for you.
 `elemental-airgap.sh` will inspect the Elemental Operator chart, identify all the required container images, download and save them in an archive.
-It will also build a new OS channel image with OS URLs pointing to the local registry (which must be specified as an argument on the command line).
+It will also build a new OS channel image with OS URLs pointing to the private registry (which must be specified as an argument on the command line).
 
 Here we will download all the artifacts and build a custom channel from the latest stable release of Elemental:
 
@@ -44,11 +38,16 @@ once completed (the script may take a while) the following files will be availab
 - elemental-images.tar.gz
 
 ### Perform Elemental installation using the generated artifacts
-All the above files should be copied to a host with access to the local registry and with kubectl configured to have access to the air-gapped Rancher cluster.
-The host should also have helm installed.
+All the above files should be copied to a host which:
+- Has access to the private registry. If the private registry requires authentication log into it:
+```shellnocolor showLineNumbers
+docker login <REGISTRY.YOURDOMAIN.COM:PORT>
+```
+- Has the kubectl binary installed and configured to access the air-gapped Rancher cluster.
+- Has the helm binary installed.
 
 Two steps are needed to perform the Elemental installation:
-1. load the archive with all the required container images on the local registry:
+1. load the archive with all the required container images on the private registry:
 this could be done using the `rancher-load-images.sh` script distributed with the Rancher release and already used for the Rancher air-gapped deployment:
 ```shellnocolor showLineNumbers
 rancher-load-images.sh \
@@ -74,4 +73,4 @@ The `elemental-airgap.sh` scripts prints out the required commands shown above b
 ### Elemental UI Extension
 Rancher 2.7.x doesn't support UI extensions plugin in air-gapped environments, and so the Elemental UI is not available in Rancher 2.7.x.
 
-The Elemental UI plugin will be present in the available UI extension in Rancher 2.8.0.
+The Elemental UI plugin will be present in the available UI extensions in Rancher 2.8.0.

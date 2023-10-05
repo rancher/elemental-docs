@@ -52,9 +52,8 @@ metadata:
     uid: 0a1f751e-4ca9-4a0d-919a-97ba1f434d12
 spec:
   # The hash of the TPM EK public key. This is used if you are
-  # using TPM2 to identifiy nodes.  You can obtain the TPM by
-  # running `rancherd get-tpm-hash` on the node. Or nodes can
-  # report their TPM hash by using the MachineRegister
+  # using TPM2 to identifiy nodes. Nodes can report their TPM
+  # hash by using the MachineRegistration.
   tpmHash: d68795c6192af9922692f050b...
 ```
 

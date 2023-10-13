@@ -18,14 +18,14 @@ container image instead.
 In order to install a custom certificate on SLE Micro for Rancher we
 need to
 
-* copy the `.pem` file to `/etc/ssl/certs`
+* copy the `.pem` file to `/etc/pki/trust/anchors/`
 * run `update-ca-certificates`
 
 The respective `cloud-config` snippet looks like this:
 
-```
+```yaml
 write_files:
-  - path: /etc/ssl/certs/my-custom-certificate.pem
+  - path: /etc/pki/trust/anchors/my-custom-certificate.pem
     permission: 0444
     content: |-
       -----BEGIN CERTIFICATE-----

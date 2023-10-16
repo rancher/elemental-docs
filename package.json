@@ -30,7 +30,7 @@
     "typescript": "^5.2.2"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "^2.4.0"
+    "@docusaurus/module-type-aliases": "^2.4.3"
   },
   "browserslist": {
     "production": [

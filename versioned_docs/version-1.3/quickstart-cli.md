@@ -175,7 +175,7 @@ Elemental's support for Raspberry Pi is primarily for demonstration purposes at 
 #### Retrieving the prebuilt seed image
 
 ```shell showLineNumbers
-wget -q https://download.opensuse.org/repositories/isv:/Rancher:/Elemental:/Staging:/containers/rpi.raw
+wget -q https://download.opensuse.org/repositories/isv:/Rancher:/Elemental:/Stable/containers/rpi.raw
 ```
 
 ##### Verifying the download
@@ -185,7 +185,7 @@ should do a checksum verification:
 
 
 ```shell showLineNumbers
-wget -q https://download.opensuse.org/repositories/isv:/Rancher:/Elemental:/Staging:/containers/rpi.raw.sha256
+wget -q https://download.opensuse.org/repositories/isv:/Rancher:/Elemental:/Stable/containers/rpi.raw.sha256
 sha256sum -c rpi.raw.sha256
 ```
 

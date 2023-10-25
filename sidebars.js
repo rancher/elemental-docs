@@ -86,7 +86,8 @@ const sidebars = {
         'elemental_behind_proxy',
         'rancher-vmware',
         'removable-device-cloudconfig',
-        'custom-certificate'
+        'custom-certificate',
+        'airgap'
       ]
     },
     {

@@ -57,6 +57,8 @@ media is created by using the [`elemental-iso-add-registration`](https://github.
 helper script (see [quick start](quickstart-cli.md#preparing-the-iso) guide)
 or by using the `elemental build-iso` command line utility included as part of the <Vars name="elemental_toolkit_name" link="elemental_toolkit_url/docs/creating-derivatives/build_iso" />.
 
+The live ISO supports PXE booting for direct integration with [SUSE Manager](https://documentation.suse.com/suma/4.3/en/suse-manager/client-configuration/autoinst-distributions.html#based-on-iso-image).
+
 Within MachineRegistration only a subset of OS installation parameters can be configured, all available parameters are listed
 at [MachineRegistration](machineregistration-reference.md) reference page.
 

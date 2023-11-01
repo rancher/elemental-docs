@@ -12,100 +12,55 @@
     background-color: var(--ifm-navbar-link-color);
   }
 
-  .navbar__rancher:hover:before {
-    background-color: #2e68e9;
-  }
   .navbar__rancher:before {
     mask: url(/static/img/icon-rancher-mask.png) no-repeat 100% 100%;
     mask-size: cover;
     width: 35px;
     padding-bottom: 10px;
+    background-color: #2e68e9;
   }
 
-  .navbar__rd:hover:before {
-    background-color: #0081be;
-  }
   .navbar__rd:before {
     mask: url(/static/img/icon-rd-mask.png) no-repeat 100% 100%;
     mask-size: cover;
     width: 35px;
     height: 22px;
     padding-bottom: 7px;
+    background-color: #0081be;
   }
 
-  .navbar__epinio:hover:before {
-    background-color: #004d93;
-  }
   .navbar__epinio:before {
     mask: url(/static/img/icon-epinio-mask.png) no-repeat 100% 100%;
     mask-size: cover;
     width: 35px;
     height: 22px;
     padding-bottom: 7px;
+    background-color: #004d93;
   }
 
-  .navbar__fleet:hover:before {
-    background-color: #00b056;
-  }
   .navbar__fleet:before {
     mask: url(/static/img/icon-fleet-mask.png) no-repeat 100% 100%;
     mask-size: cover;
     width: 35px;
     height: 22px;
     padding-bottom: 7px;
+    background-color: #00b056;
   }
 
-  .navbar__harvester:hover:before {
-    background-color: #00a580;
-  }
   .navbar__harvester:before {
     mask: url(/static/img/icon-harvester-mask.png) no-repeat 100% 100%;
     mask-size: cover;
     width: 35px;
     height: 22px;
     padding-bottom: 7px;
+    background-color: #00a580;
   }
 
-  .navbar__kubewarden:hover:before {
-    background-color: #bc2a46;
-  }
-  .navbar__kubewarden:before {
-    mask: url(/static/img/icon-kubewarden-mask.png) no-repeat 100% 100%;
-    mask-size: cover;
-    width: 35px;
-    height: 22px;
-    padding-bottom: 7px;
-  }
-
-  .navbar__longhorn:hover:before {
-    background-color: #671c4c;
-  }
-  .navbar__longhorn:before {
-    mask: url(/static/img/icon-longhorn-mask.png) no-repeat 100% 100%;
-    mask-size: cover;
-    width: 35px;
-    height: 22px;
-    padding-bottom: 7px;
-  }
-
-  .navbar__opni:hover:before {
-    background-color: #a453b9;
-  }
-  .navbar__opni:before {
-    mask: url(/static/img/icon-opni-mask.png) no-repeat 100% 100%;
-    mask-size: cover;
-    width: 35px;
-    height: 22px;
-    padding-bottom: 7px;
-  }
-
-  .navbar__suse:hover:before {
-    background-color: #30ba78;
-  }
   .navbar__suse:before {
     mask: url(/static/img/icon-suse-mask.png) no-repeat 100% 100%;
     mask-size: cover;
     width: 35px;
     height: 13px;
     padding-bottom: 7px;
+    background-color: #30ba78;
   }

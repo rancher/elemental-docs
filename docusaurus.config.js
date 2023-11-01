@@ -121,16 +121,6 @@ const config = {
                 className: 'navbar__icon navbar__harvester',
               },
               {
-                label: 'Kubewarden',
-                to: "https://kubewarden.io",
-                className: 'navbar__icon navbar__kubewarden',
-              },
-              {
-                label: 'Opni',
-                to: "https://opni.io",
-                className: 'navbar__icon navbar__opni',
-              },
-              {
                 label: 'Rancher Desktop',
                 to: "https://rancherdesktop.io",
                 className: 'navbar__icon navbar__rd',

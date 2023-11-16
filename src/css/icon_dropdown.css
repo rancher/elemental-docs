@@ -14,9 +14,8 @@
 
   .navbar__rancher:before {
     mask: url(/static/img/icon-rancher-mask.png) no-repeat 100% 100%;
-    mask-size: cover;
+    mask-size: contain;
     width: 35px;
-    padding-bottom: 10px;
     background-color: #2e68e9;
   }
 

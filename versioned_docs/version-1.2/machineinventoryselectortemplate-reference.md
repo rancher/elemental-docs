@@ -26,7 +26,7 @@ spec:
 
 #### template.spec.selector.matchLabels
 
-It is a map of {key,value} pairs (map[string]string). When multiple labels are provided all labels must match.
+It is a map of `{key,value}` pairs `(map[string]string)`. When multiple labels are provided all labels must match.
 
 <details>
   <summary>Example</summary>

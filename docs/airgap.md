@@ -32,10 +32,10 @@ chmod 755 elemental-airgap.sh
 ```
 
 once completed (the script may take a while) the following files will be available in the current dir:
-- elemental-operator-crds-chart-<*VERSION*\>.tgz
-- elemental-operator-chart-<*VERSION*\>.tgz
-- elemental-images.txt
-- elemental-images.tar.gz
+- `elemental-operator-crds-chart-<*VERSION*>.tgz`
+- `elemental-operator-chart-<*VERSION*>.tgz`
+- `elemental-images.txt`
+- `elemental-images.tar.gz`
 
 ### Perform Elemental installation using the generated artifacts
 All the above files should be copied to a host which:

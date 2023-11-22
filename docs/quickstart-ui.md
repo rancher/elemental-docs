@@ -7,25 +7,25 @@ import Cluster from "!!raw-loader!@site/examples/quickstart/cluster.yaml"
 import Registration from "!!raw-loader!@site/examples/quickstart/registration.yaml"
 import RegistrationRPi from "!!raw-loader!@site/examples/quickstart/rpi-registration.yaml"
 import Selector from "!!raw-loader!@site/examples/quickstart/selector.yaml"
-import Prereqs from './partials/_quickstart-prereqs.md'
-import Operator from './partials/_elemental-operator-install.md'
 
 # Elemental the visual way
 
-This quickstart will show you how to deploy the Elemental plugin into an existing Rancher Manager instance.
+:::note
+The following instructions need Rancher 2.8.x at least.
+:::
+
+This quickstart will show you how to deploy the Elemental plugin and operator into an existing Rancher Manager instance.
 
 Once installed, you'll be able to provision a new Elemental cluster based on RKE2 or K3s.
 
-<Prereqs />
-
-<Operator />
+However, if you want to install staging or dev operator, you can only do it in [CLI mode](http://elemental.docs.rancher.com/next/quickstart-cli#non-stable-installations).
 
 ## Enable the Rancher Manager Extensions Support
 
 In order to enable the Rancher Manager Extensions Support, you'll need to follow the steps below:
 
 * Open a web browser, connect and login to your Rancher Manager instance
-* Click on the top left menu `a` and click on `Extensions`
+* Click on the top left menu and click on `Extensions`
 
 ![Rancher Manager menu](images/quickstart-ui-menu.png)
 
@@ -59,9 +59,35 @@ If the `Available` tab shows no entries, refresh the page. The `elemental` plugi
 If the `elemental` plugin is listed and the status stays at `Installing...`, refresh the page. The `elemental` plugin will display correctly.
 :::
 
-Once the `elemental` plugin installed, you can see the `OS Manamagent` option in the Rancher Manager menu.
+Once the `elemental` plugin installed, you can see the `OS Management` option in the Rancher Manager menu, refresh the page if you do not see it.
 
 ![Rancher Manager OS Management menu](images/quickstart-ui-elemental-plugin-menu.png)
+
+## Install the elemental operator
+
+:::note
+The following guide will show you how to install the operator through the Elemental UI. But you can also install it directly from the Marketplace.
+:::
+
+Click on the OS Management button in the navigation menu.
+
+If the operator is not already installed, the elemental ui will let you deploy it by clicking on the `Install Elemental Operator` button:
+![Button to deploy elemental operator](images/quickstart-ui-extension-operator-button.png)
+
+It will redirect you to the Rancher Marketplace to install the operator.
+
+Click on the `Next` button:
+![Install Elemental operator screenshot 1](images/quickstart-ui-extension-operator-install-1.png)
+
+In this screen, you can customize or use the default values, click on `Install` to continue:
+![Install Elemental operator screenshot 2](images/quickstart-ui-extension-operator-install-2.png)
+
+You should see `elemental-operator-crds`and `elemental-operator` deployed in the `cattle-elemental-system` namespace:
+![Install Elemental operator screenshot 3](images/quickstart-ui-extension-operator-install-3.png)
+
+:::warning
+If you do not see them, make sure to select the correct namespace at the top of the page.
+:::
 
 ## Add a Machine Registration Endpoint
 

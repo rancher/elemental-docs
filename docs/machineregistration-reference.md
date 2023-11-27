@@ -107,6 +107,10 @@ If both `device` and `device-selector` is specified the value of `device` is use
   ```
 </details>
 
+#### config.elemental.install.device-selector
+
+The `device-selector` field can be used to dynamically pick device during installation. The field contains a list of rules that looks like the following:
+
 <details>
 <summary>Example device-selector based on device name</summary>
   ```yaml showLineNumbers
@@ -135,6 +139,23 @@ If both `device` and `device-selector` is specified the value of `device` is use
   ```
 </details>
 
+The currently supported operators are:
+
+| Operator            | Description                                       |
+| ------------------- | ------------------------------------------------- |
+| In                  | The key matches one of the provided values        |
+| NotIn               | The key does not match any of the provided values |
+| Gt                  | The key is greater than a single provided value   |
+| Lt                  | The key is lesser than  a single provided value   |
+
+The currently supported keys are:
+
+| Key                 | Description                                                                    |
+| ------------------- | ------------------------------------------------------------------------------ |
+| Name                | The device name (eg. /dev/sda)                                                 |
+| Size                | The device size (values can be specified using kubernetes resources, eg 100Gi) |
+
+The rules are AND:ed together, which means all rules must match the targeted device.
 
 #### config.elemental.reset
 

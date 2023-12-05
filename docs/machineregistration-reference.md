@@ -63,25 +63,28 @@ Contains the installation configuration that would be applied via `elemental-reg
 
 Supports the following values:
 
-| Key         | Type   | Default value | Description                                                                                                                                |
-|-------------|--------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| firmware    | string | efi           | Firmware to install ('efi' or 'bios')                                                                                                      |
-| device      | string | empty         | Device to install the system to                                                                                                            |
-| no-format   | bool   | false         | Don’t format disks. It is implied that COS_STATE, COS_RECOVERY, COS_PERSISTENT, COS_OEM partitions are already existing on the target disk |
-| config-urls | list   | empty         | Cloud-init config files locations                                                                                                          |
-| iso         | string | empty         | Performs an installation from the ISO url instead of the running ISO                                                                       |
-| system-uri  | string | empty         | Sets the system image source and its type (e.g. 'docker:registry.org/image:tag') instead of using the running ISO                          |
-| debug       | bool   | false         | Enable debug output                                                                                                                        |
-| tty         | string | empty         | Add named tty to grub                                                                                                                      |
-| poweroff    | bool   | false         | Shutdown the system after install                                                                                                          |
-| reboot      | bool   | false         | Reboot the system after install                                                                                                            |
-| eject-cd    | bool   | false         | Try to eject the cd on reboot                                                                                                              |
+| Key             | Type   | Default value | Description                                                                                                                                |
+|-----------------|--------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------|
+| firmware        | string | efi           | Firmware to install ('efi' or 'bios')                                                                                                      |
+| device          | string | empty         | Device to install the system to                                                                                                            |
+| device-selector | string | empty         | Rules for picking device to install the system to                                                                                          |
+| no-format       | bool   | false         | Don’t format disks. It is implied that COS_STATE, COS_RECOVERY, COS_PERSISTENT, COS_OEM partitions are already existing on the target disk |
+| config-urls     | list   | empty         | Cloud-init config files locations                                                                                                          |
+| iso             | string | empty         | Performs an installation from the ISO url instead of the running ISO                                                                       |
+| system-uri      | string | empty         | Sets the system image source and its type (e.g. 'docker:registry.org/image:tag') instead of using the running ISO                          |
+| debug           | bool   | false         | Enable debug output                                                                                                                        |
+| tty             | string | empty         | Add named tty to grub                                                                                                                      |
+| poweroff        | bool   | false         | Shutdown the system after install                                                                                                          |
+| reboot          | bool   | false         | Reboot the system after install                                                                                                            |
+| eject-cd        | bool   | false         | Try to eject the cd on reboot                                                                                                              |
 
 :::warning warning
 In case of using both `iso` and `system-uri` the `iso` value takes precedence
 :::
 
-The only required value for a successful installation is the `device` key as we need a target disk to install to. The rest of the parameters are all optional.
+It is only required to specify either the `device` or `device-selector` fields for a successful install, the rest of the parameters are all optional.
+
+If both `device` and `device-selector` is specified the value of `device` is used and `device-selector` is ignored.
 
 <details>
 <summary>Example</summary>
@@ -104,22 +107,72 @@ The only required value for a successful installation is the `device` key as we 
   ```
 </details>
 
+#### config.elemental.install.device-selector
+
+The `device-selector` field can be used to dynamically pick device during installation. The field contains a list of rules that looks like the following:
+
+<details>
+<summary>Example device-selector based on device name</summary>
+  ```yaml showLineNumbers
+  device-selector:
+  - key: Name
+    operator: In
+    values:
+    - /dev/sda
+    - /dev/vda
+    - /dev/nvme0
+  ```
+</details>
+
+<details>
+<summary>Example device-selector based on device size</summary>
+  ```yaml showLineNumbers
+  device-selector:
+  - key: Size
+    operator: Lt
+    values:
+    - 100Gi
+  - key: Size
+    operator: Gt
+    values:
+    - 30Gi
+  ```
+</details>
+
+The currently supported operators are:
+
+| Operator            | Description                                       |
+| ------------------- | ------------------------------------------------- |
+| In                  | The key matches one of the provided values        |
+| NotIn               | The key does not match any of the provided values |
+| Gt                  | The key is greater than a single provided value   |
+| Lt                  | The key is lesser than  a single provided value   |
+
+The currently supported keys are:
+
+| Key                 | Description                                                                    |
+| ------------------- | ------------------------------------------------------------------------------ |
+| Name                | The device name (eg. /dev/sda)                                                 |
+| Size                | The device size (values can be specified using kubernetes resources, eg 100Gi) |
+
+The rules are AND:ed together, which means all rules must match the targeted device.
+
 #### config.elemental.reset
 
 Contains the reset configuration that would be applied via `elemental-register --reset`, when booted from the recovery partition and passed to [`elemental reset`](https://github.com/rancher/elemental-toolkit/blob/main/docs/elemental_reset.md)
 
 Supports the following values:
 
-| Key         | Type   | Default value | Description                                                                                                                                |
-|-------------|--------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| enabled           | bool   | false  | MachineInventories created from this MachineRegistration will have reset functionality enabled |
-| reset-persistent  | bool   | true   | Format the COS_PERSISTENT partition     |
-| reset-oem         | bool   | true   | Format the COS_OEM partition            |
-| config-urls       | list   | empty  | Cloud-init config files                 |
-| system-uri        | string | empty  | Sets the system image source and its type (e.g. 'docker:registry.org/image:tag') instead of using the running ISO                          |
-| debug             | bool   | false  | Enable debug output                     |
-| poweroff          | bool   | false  | Shutdown the system after reset         |
-| reboot            | bool   | true   | Reboot the system after reset           |
+| Key               | Type   | Default value | Description                                                                                                                                |
+|-------------------|--------|---------------|-------------------------------------------------------------------------------------------------------------------|
+| enabled           | bool   | false         | MachineInventories created from this MachineRegistration will have reset functionality enabled                    |
+| reset-persistent  | bool   | true          | Format the COS_PERSISTENT partition                                                                               |
+| reset-oem         | bool   | true          | Format the COS_OEM partition                                                                                      |
+| config-urls       | list   | empty         | Cloud-init config files                                                                                           |
+| system-uri        | string | empty         | Sets the system image source and its type (e.g. 'docker:registry.org/image:tag') instead of using the running ISO |
+| debug             | bool   | false         | Enable debug output                                                                                               |
+| poweroff          | bool   | false         | Shutdown the system after reset                                                                                   |
+| reboot            | bool   | true          | Reboot the system after reset                                                                                     |
 
 <details>
 <summary>Example</summary>

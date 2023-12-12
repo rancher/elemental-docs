@@ -3,6 +3,10 @@ sidebar_label: Elemental Operator Helm Chart
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/elementaloperatorchart-reference"/>
+</head>
+
 # Elemental Operator Helm Chart
 
 The <Vars name="elemental_operator_name" link="elemental_operator_url" /> is responsible for managing the Elemental versions and maintaining a machine inventory to assist with edge or bare metal installations.

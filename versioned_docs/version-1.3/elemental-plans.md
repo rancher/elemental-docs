@@ -3,6 +3,10 @@ sidebar_label: Elemental plans
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/elemental-plans"/>
+</head>
+
 ## Introduction
 
 Elemental uses the [Rancher System Agent](https://github.com/rancher/system-agent), renamed to Elemental System Agent, to initially bootstrap the node with a simple plan.

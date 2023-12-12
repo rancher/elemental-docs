@@ -3,6 +3,10 @@ sidebar_label: Configure Wi-Fi
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/wifi"/>
+</head>
+
 
 ### How to configure Wi-Fi
 

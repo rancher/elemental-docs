@@ -3,6 +3,10 @@ sidebar_label: Installation
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/installation"/>
+</head>
+
 # Installation
 
 ## Overview

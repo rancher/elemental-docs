@@ -3,6 +3,10 @@ sidebar_label: Rancher upgrades
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/troubleshooting-rancher-upgrades"/>
+</head>
+
 # Troubleshooting Rancher upgrades
 
 :::warning warning

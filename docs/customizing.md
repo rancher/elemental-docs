@@ -3,6 +3,10 @@ sidebar_label: Customize Elemental Install
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/customizing"/>
+</head>
+
 # Customize Elemental Install
 
 Elemental Teal images can be customized in different ways.

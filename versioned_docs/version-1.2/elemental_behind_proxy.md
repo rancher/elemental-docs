@@ -3,6 +3,10 @@ sidebar_label: Elemental behind proxy
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/elemental_behind_proxy"/>
+</head>
+
 import RegistrationProxy from "!!raw-loader!@site/examples/proxy/registration-proxy.yaml"
 import SeedimageProxy from "!!raw-loader!@site/examples/proxy/seedimage-proxy.yaml"
 import ClusterProxy from "!!raw-loader!@site/examples/proxy/cluster-proxy.yaml"

@@ -3,6 +3,10 @@ sidebar_label: Reset
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/troubleshooting-reset"/>
+</head>
+
 # Troubleshooting reset
 
 Each `MachineInventory` with the `elemental.cattle.io/resettable: "true"` annotation will trigger the execution of a reset plan, upon deletion.  

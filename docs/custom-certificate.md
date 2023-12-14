@@ -3,6 +3,10 @@ sidebar_label: Add a custom certificate
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/custom-certificate"/>
+</head>
+
 
 ### How to add a custom certificate
 

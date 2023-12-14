@@ -3,6 +3,10 @@ sidebar_label: Elemental the visual way
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/quickstart-ui"/>
+</head>
+
 import Cluster from "!!raw-loader!@site/examples/quickstart/cluster.yaml"
 import Registration from "!!raw-loader!@site/examples/quickstart/registration.yaml"
 import RegistrationRPi from "!!raw-loader!@site/examples/quickstart/rpi-registration.yaml"

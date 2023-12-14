@@ -3,6 +3,10 @@ sidebar_label: Smbios
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/smbios"/>
+</head>
+
 import Registration from "!!raw-loader!@site/examples/quickstart/registration.yaml"
 
 ## Introduction

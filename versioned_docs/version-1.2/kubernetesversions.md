@@ -3,6 +3,10 @@ sidebar_label: Kubernetes versions
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/kubernetesversions"/>
+</head>
+
 ## Valid Versions
 
 The list of valid versions for the `kubernetesVersion` field can be determined

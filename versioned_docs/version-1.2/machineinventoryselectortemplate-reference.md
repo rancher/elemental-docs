@@ -3,6 +3,10 @@ sidebar_label: MachineInventorySelectorTemplate reference
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/machineinventoryselectortemplate-reference"/>
+</head>
+
 # MachineInventorySelectorTemplate reference
 
 The MachineInventorySelectorTemplate is the resource responsible of defining the matching criteria to pair an inventoried machine with a Cluster resource.

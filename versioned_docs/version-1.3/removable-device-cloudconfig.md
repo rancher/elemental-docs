@@ -3,6 +3,10 @@ sidebar_label: Include cloud-config from removable devices
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/removable-device-cloudconfig"/>
+</head>
+
 
 ### How to include cloud-config files from removable devices
 

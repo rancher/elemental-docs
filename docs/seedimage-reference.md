@@ -3,6 +3,10 @@ sidebar_label: SeedImage reference
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/seedimage-reference"/>
+</head>
+
 # SeedImage reference
 
 A `SeedImage` resource allows to build an ISO that can be used to install Elemental onto a node.  

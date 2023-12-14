@@ -3,6 +3,10 @@ sidebar_label: Restore
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/troubleshooting-restore"/>
+</head>
+
 # Troubleshooting restore
 
 :::warning warning

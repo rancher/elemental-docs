@@ -3,6 +3,10 @@ sidebar_label: Air-Gapped Installation
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/airgap"/>
+</head>
+
 ## Install Elemental in an Air-Gapped Environment
 
 ### Assumptions

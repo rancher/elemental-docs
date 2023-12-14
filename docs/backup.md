@@ -3,6 +3,10 @@ sidebar_label: Backup
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/backup"/>
+</head>
+
 # Backup
 
 Since Elemental runs as part of Rancher, the Elemental resources are bundled in the Rancher backup.  

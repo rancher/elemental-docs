@@ -4,6 +4,10 @@ sidebar_label: Overview
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com"/>
+</head>
+
 # Overview
 
 Elemental is a software stack enabling centralized, full cloud-native OS management with Kubernetes.

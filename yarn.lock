@@ -3201,10 +3201,10 @@ clone-deep@^4.0.1:
     kind-of "^6.0.2"
     shallow-clone "^3.0.0"
 
-clsx@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/clsx/-/clsx-2.0.0.tgz"
-  integrity sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==
+clsx@^2.0.0, clsx@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/clsx/-/clsx-2.0.1.tgz#acae79a8018b4b348f53fada993452d8487f6f92"
+  integrity sha512-PrYqtepbSWwrFmtHX0IHv3zUEbWn1psIqaIZyjB3b9wEGpRAkpyeKbCCCkCXJYiHZPjK7jckJvf2sEB/8VKPgQ==
 
 collapse-white-space@^2.0.0:
   version "2.1.0"

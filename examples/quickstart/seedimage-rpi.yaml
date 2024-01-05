@@ -1,0 +1,15 @@
+apiVersion: elemental.cattle.io/v1beta1
+kind: SeedImage
+metadata:
+  name: fire-img-raw
+  namespace: fleet-default
+spec:
+  type: raw
+  baseImage: registry.opensuse.org/isv/rancher/elemental/dev/containers/suse/sle-micro/5.5:latest
+  targetPlatform: linux/arm64
+  registrationRef:
+    apiVersion: elemental.cattle.io/v1beta1
+    kind: MachineRegistration
+    name: fire-nodes
+    namespace: fleet-default
+

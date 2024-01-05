@@ -14,6 +14,7 @@ import Selector from "!!raw-loader!@site/examples/quickstart/selector.yaml"
 import Prereqs from './partials/_quickstart-prereqs.md'
 import Operator from './partials/_elemental-operator-install.md'
 import SeedImage from "!!raw-loader!@site/examples/quickstart/seedimage.yaml"
+import SeedImageRpi from "!!raw-loader!@site/examples/quickstart/seedimage-rpi.yaml"
 
 # Elemental the command line way
 
@@ -78,7 +79,7 @@ The SD-card on a Raspberry Pi is usually `/dev/mmcblk0`.
 :::
 
 <Tabs>
-<TabItem value="seedImagex86" label="Seed Image (x86_64)" default>
+<TabItem value="seedImagex86" label="Seed Image ISO (x86_64)" default>
 <CodeBlock language="yaml" title="seedimage.yaml" showLineNumbers>{SeedImage}</CodeBlock>
 
 The `SeedImage` is required to generate the *seed image* (like a bootable ISO) that will boot and start the Elemental provisioning on the target machines.
@@ -94,9 +95,9 @@ kubectl apply -f seedimage.yaml
 
 </TabItem>
 <TabItem value="seedImagerpi" label="Seed Image for Raspberry Pi" default>
+<CodeBlock language="yaml" title="seedimage-rpi.yaml" showLineNumbers>{SeedImageRpi}</CodeBlock>
 
-The `SeedImage` resource, which automates the creation of an Elemental bootable image (the *seed image*), does not support Raspberry Pi yet.
-We will generate a *seed image* manually in the [next section](quickstart-cli.md#preparing-the-installation-seed-image).
+The `SeedImage` resource will generate a raw disk image that can be burned directly to an SD-card or USB-drive.
 
 Now that we have defined all the configuration files let's apply them to create the proper resources in Kubernetes:
 
@@ -104,6 +105,7 @@ Now that we have defined all the configuration files let's apply them to create 
 kubectl apply -f selector.yaml 
 kubectl apply -f cluster.yaml 
 kubectl apply -f registration.yaml
+kubectl apply -f seedimage-rpi.yaml
 ```
 
 </TabItem>
@@ -125,122 +127,6 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/elemental-docs/main/e
 kubectl apply -f https://raw.githubusercontent.com/rancher/elemental-docs/main/examples/quickstart/registration.yaml
 kubectl apply -f https://raw.githubusercontent.com/rancher/elemental-docs/main/examples/quickstart/seedimage.yaml (not for aarch64 yet)
 ```
-
-</TabItem>
-</Tabs>
-
-## Preparing the installation (seed) image
-
-
-This is the last step: you need an Elemental Teal seed image that includes the initial registration config, so it can be auto registered, installed and fully deployed as part of your cluster.
-
-:::note note
-The initial registration config file is generated when you create a `Machine Registration`.
-
-You can download it with:
-
-```shell
-wget --no-check-certificate `kubectl get machineregistration -n fleet-default fire-nodes -o jsonpath="{.status.registrationURL}"` -O initial-registration.yaml
-```
-:::
-
-The contents of the registration config file are nothing more than the registration URL that the node needs to register, the proper server certificate and few options for the registration process.
-
-Once generated, a seed image can be used to provision any number of machines.
-
-<Tabs>
-<TabItem value="download" label="Downloading the quickstart ISO">
-
-The seed image created by the `SeedImage` resource above can be downloaded as an ISO via the following script:
-
-```shell showLineNumbers
-kubectl wait --for=condition=ready pod -n fleet-default fire-img
-wget --no-check-certificate `kubectl get seedimage -n fleet-default fire-img -o jsonpath="{.status.downloadURL}"` -O elemental-teal.x86_64.iso
-```
-
-The first command waits for the ISO to be built and ready, the second one downloads it in the current directory with the name `elemental-teal-x86_64.iso`.
-
-</TabItem>
-<TabItem value="manual_iso" label="Preparing the seed image (x86_64) manually">
-
-If you created a [customized ISO](customizing#create-a-custom-bootable-installation-media),
-you can use the [`elemental-iso-add-registration`](https://github.com/rancher/elemental/blob/main/.github/elemental-iso-add-registration)
-script to add the registration config file
-
-```shell showLineNumbers
-elemental-iso-add-registration initial-registration.yaml my-customized.iso
-```
-
-</TabItem>
-<TabItem value="manual_raw" label="Preparing the seed image (aarch64) manually">
-
-Elemental's support for Raspberry Pi is primarily for demonstration purposes at this point. Therefore the installation process is modelled similar to x86-64. You boot from a seed image (an USB stick in this case) and install to a storage medium (SD-card for Raspberry Pi).
-
-#### Retrieving the prebuilt seed image
-
-```shell showLineNumbers
-wget -q https://download.opensuse.org/repositories/isv:/Rancher:/Elemental:/Stable/containers/rpi.raw
-```
-
-##### Verifying the download
-
-In order to verify the integrity of the downloaded artifacts, you
-should do a checksum verification:
-
-
-```shell showLineNumbers
-wget -q https://download.opensuse.org/repositories/isv:/Rancher:/Elemental:/Stable/containers/rpi.raw.sha256
-sha256sum -c rpi.raw.sha256
-```
-
-This should print `rpi.raw: OK` as output.
-
-#### Injecting the registration information
-
-Adding the `initial-registration.yaml` isn't scripted yet. This is still a manual process:
-
-The written USB stick will have two partitions. `RPI_BOOT` contains the boot loader files and `COS_LIVE` the Elemental files.
-Mount the `COS_LIVE` partition and write `initial-registration.yaml` as `livecd-cloud-config.yaml` to this partition.
-
-If you've mounted the USB stick with a file manager, this command should work to copy the registration information:
-
-```shell showLineNumbers
-sudo cp initial-registration.yaml /run/media/$USER/COS_LIVE/livecd-cloud-config.yaml
-```
-
-If you prefer using some CLI tools:
-
-```shell showLineNumbers
-IMAGE=rpi.raw
-DEST=$(mktemp -d)
-
-SECTORSIZE=$(sfdisk -J ${IMAGE} | jq '.partitiontable.sectorsize')
-DATAPARTITIONSTART=$(sfdisk -J ${IMAGE} | jq '.partitiontable.partitions[1].start')
-sudo mount -o rw,loop,offset=$((${SECTORSIZE}*${DATAPARTITIONSTART})) ${IMAGE} ${DEST}
-sudo cp initial-registration.yaml ${DEST}/livecd-cloud-config.yaml
-sudo umount ${DEST}
-rmdir ${DEST}
-```
-
-#### Writing the seed image to a USB stick
-
-The `.raw` image needs to be written to a USB stick to boot from. This can be done with `dd` on the Linux command line if you're comfortable with this command.
-[openSUSE](https://www.opensuse.org) has nice instructions on how to write an image to a storage medium for [Linux](https://en.opensuse.org/SDB:Live_USB_stick),
-[Windows](https://en.opensuse.org/SDB:Create_a_Live_USB_stick_using_Windows), and [OS X](https://en.opensuse.org/SDB:Create_a_Live_USB_stick_using_macOS).
-
-#### Booting the Raspberry Pi
-
-Now unmount the USB stick and plug it into your Raspberry Pi.
-
-Plug a large (32 GB or more) and **fast** (!!) micro SD-card into the respective slot.
-
-Connect the system to ethernet.
-
-A powercycle will reboot the Pi. Everything else is identical to x86-64.
-
-:::warning warning
-Make sure the micro SD-card is unpartitioned. Otherwise the Pi bootloader will try to boot from it and fail.
-:::
 
 </TabItem>
 </Tabs>

@@ -7,7 +7,7 @@ title: ''
   <link rel="canonical" href="https://elemental.docs.rancher.com/hardwarelabels"/>
 </head>
 
-import Registration from "!!raw-loader!@site/examples/quickstart/registration-hardware.yaml"
+import Registration from "!!raw-loader!@site/examples/quickstart/registration-hardware-dhcphostname.yaml"
 
 ## Hardware Labels
 
@@ -19,6 +19,7 @@ The following are available for templating:
 
 | Label                                                         | Description                                                           |
 | ------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `${System Data/Runtime/Hostname}`                             | The hostname of the node (at registration time)                       |
 | `${System Data/Memory/Total Physical Bytes}`                  | The total RAM memory in the node, expressed in bytes                  |
 | `${System Data/CPU/Total Cores}`                              | Total CPU cores                                                       |
 | `${System Data/CPU/Total Threads}`                            | Total CPU threads                                                     |

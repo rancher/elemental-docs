@@ -57,9 +57,9 @@ Elemental is currently targeting 'edge' scenarios and does therefore not support
 
 Get an Elemental Cluster up and running with your preferred method
 
-* With Rancher manager [Elemental plugin](quickstart-ui.md)
-* With the [Elemental CLI](quickstart-cli.md)
+* With Rancher manager [Elemental plugin](quickstart-ui)
+* With the [Elemental CLI](quickstart-cli)
 
 :::note What's next?
-Want more details? Take a look at the [Architecture](architecture.md) section or reach out to the <Vars link="elemental_slack_url" name="elemental_slack_name" /> Slack channel.
+Want more details? Take a look at the [Architecture](architecture) section or reach out to the <Vars link="elemental_slack_url" name="elemental_slack_name" /> Slack channel.
 :::

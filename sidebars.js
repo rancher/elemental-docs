@@ -88,7 +88,8 @@ const sidebars = {
         'rancher-vmware',
         'removable-device-cloudconfig',
         'custom-certificate',
-        'airgap'
+        'airgap',
+        'raspi-disk'
       ]
     },
     {

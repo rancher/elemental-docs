@@ -32,7 +32,7 @@ Proxy settings must be configured in the following locations:
 The `elemental-system-agent` needs proxy settings to reach the Rancher Manager.
 To achieve that, you need to fill the cloud-init section of the Machine Registration Endpoint.
 
-You can do it either with [UI](https://elemental.docs.rancher.com/quickstart-ui#add-a-machine-registration-endpoint) or [CLI](https://elemental.docs.rancher.com/quickstart-cli#prepare-your-kubernetes-resources).
+You can do it either with [UI](quickstart-ui#add-a-machine-registration-endpoint) or [CLI](quickstart-cli#prepare-your-kubernetes-resources).
 
 <Tabs>
 <TabItem value="cliRegistration" label="CLI" default>
@@ -46,14 +46,14 @@ You can do it either with [UI](https://elemental.docs.rancher.com/quickstart-ui#
 
 ## Elemental-register
 
-[Elemental-register](https://elemental.docs.rancher.com/architecture/#elemental-register-client) is the first communication endpoint between the new host and Rancher Manager, this is the first place where proxy settings need to be set.
+[Elemental-register](architecture#elemental-register-client) is the first communication endpoint between the new host and Rancher Manager, this is the first place where proxy settings need to be set.
 
 :::warning warning
 At the time of writing, it's only possible to configure proxy settings for the ISO with the CLI. The proxy settings aren't implemented in the UI.
 :::
 
 The process happens when you boot your Elemental ISO for the first time, in order to configure the proxy settings you have to include a `cloud-init` definition in the ISO.
-To do that, you have to create a [SeedImage](https://elemental.docs.rancher.com/seedimage-reference/) definition.
+To do that, you have to create a [SeedImage](seedimage-reference) definition.
 
 <CodeBlock language="yaml" title="seedimage.yaml" showLineNumbers>{SeedimageProxy}</CodeBlock>
 
@@ -64,7 +64,7 @@ kubectl apply -f <my_seedimage_yaml_file>
 kubectl get seedimage <seed_image_name> -n <namespace> -o yaml
 ```
 
-Boot the ISO and you should see your new system appears in [Machine inventory](https://elemental.docs.rancher.com/architecture#machineinventory).
+Boot the ISO and you should see your new system appears in [Machine inventory](architecture#machineinventory).
 
 ## Create Elemental cluster
 

@@ -119,7 +119,7 @@ You can now boot your nodes with this image and they will:
 
 ## Machine Inventory
 
-When nodes are booting up for the first time, they connect to Rancher Manager and a [`Machine Inventory`](https://elemental.docs.rancher.com/architecture#machineinventory) is created for each node.
+When nodes are booting up for the first time, they connect to Rancher Manager and a [`Machine Inventory`](architecture#machineinventory) is created for each node.
 
 ![Machine Inventory menu](images/quickstart-ui-machine-inventory-menu.png)
 
@@ -127,7 +127,7 @@ Custom columns are based on `Machine Inventory Labels` which you can add when yo
 
 ![Machine Registration Endpoint Hardware Labels](images/quickstart-ui-registration-endpoint-hardware-labels.png)
 
-On the following screenshot, [`Hardware Labels`](https://elemental.docs.rancher.com/hardwarelabels/#hardware-labels) are used as custom columns:
+On the following screenshot, [`Hardware Labels`](hardwarelabels#hardware-labels) are used as custom columns:
 
 You can also add custom columns by clicking on the three dots menu.
 

@@ -4,6 +4,10 @@ title: ''
 version_badge: '1.3.0'
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/reset"/>
+</head>
+
 ## Machine Reset
 
 There are two ways to reset Elemental machines to their original state or decommission them:

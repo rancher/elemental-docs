@@ -3,6 +3,10 @@ sidebar_label: Restore
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/restore"/>
+</head>
+
 # Restore
 
 Follow this guide to restore an Elemental configuration from a backup with Rancher.

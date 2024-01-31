@@ -3,6 +3,10 @@ sidebar_label: Upgrade
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/troubleshooting-upgrade"/>
+</head>
+
 # Troubleshooting upgrade
 
 ![Upgrade Flow](images/troubleshooting-upgrade.png)

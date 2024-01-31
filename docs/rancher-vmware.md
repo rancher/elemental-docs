@@ -3,6 +3,10 @@ sidebar_label: How to use Elemental with Rancher and VMware
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/rancher-vmware"/>
+</head>
+
 # How to use Elemental with Rancher and VMware
 
 ## Excerpt

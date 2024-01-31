@@ -1,8 +1,8 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require('prism-react-renderer').themes.github;
+const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -96,6 +96,51 @@ const config = {
             position: 'right',
             className: 'header-slack-link',
             'aria-label': 'Slack Channel',
+          },
+          {
+            type: 'dropdown',
+            label: 'More From SUSE',
+            position: 'right',
+            items: [
+              {
+                label: 'Rancher',
+                to: 'https://www.rancher.com',
+                className: 'navbar__icon navbar__rancher',
+              },
+              {
+                type: 'html',
+                value: '<hr style="margin: 0.3rem 0;">',
+              },
+              {
+                label: 'Epinio',
+                to: "http://epinio.io",
+                className: 'navbar__icon navbar__epinio',
+              },
+              {
+                label: 'Fleet',
+                to: "http://fleet.rancher.io",
+                className: 'navbar__icon navbar__fleet',
+              },
+              {
+                label: 'Harvester',
+                to: "http://harvesterhci.io",
+                className: 'navbar__icon navbar__harvester',
+              },
+              {
+                label: 'Rancher Desktop',
+                to: "https://rancherdesktop.io",
+                className: 'navbar__icon navbar__rd',
+              },
+              {
+                type: 'html',
+                value: '<hr style="margin: 0.3rem 0;">',
+              },
+              {
+                label: 'More Projects...',
+                to: "https://opensource.suse.com",
+                className: 'navbar__icon navbar__suse',
+              },
+            ],
           },
         ],
       },

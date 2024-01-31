@@ -3,6 +3,10 @@ sidebar_label: MachineInventorySelectorTemplate reference
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/machineinventoryselectortemplate-reference"/>
+</head>
+
 # MachineInventorySelectorTemplate reference
 
 The MachineInventorySelectorTemplate is the resource responsible of defining the matching criteria to pair an inventoried machine with a Cluster resource.
@@ -26,7 +30,7 @@ spec:
 
 #### template.spec.selector.matchLabels
 
-It is a map of {key,value} pairs (map[string]string). When multiple labels are provided all labels must match.
+It is a map of `{key,value}` pairs `(map[string]string)`. When multiple labels are provided all labels must match.
 
 <details>
   <summary>Example</summary>

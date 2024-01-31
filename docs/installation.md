@@ -3,6 +3,10 @@ sidebar_label: Installation
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/installation"/>
+</head>
+
 # Installation
 
 ## Overview
@@ -54,8 +58,10 @@ The installation media is the media that will be used to kick start an Elemental
 the supported media is a live ISO. The live ISO must include the registration configuration yaml hence it must
 crafted once the MachineRegistration is created. The installation
 media is created by using the [`elemental-iso-add-registration`](https://github.com/rancher/elemental/blob/main/.github/elemental-iso-add-registration)
-helper script (see [quick start](quickstart-cli.md#preparing-the-iso) guide)
+helper script (see [quick start](quickstart-cli#preparing-the-installation-seed-image) guide)
 or by using the `elemental build-iso` command line utility included as part of the <Vars name="elemental_toolkit_name" link="elemental_toolkit_url/docs/creating-derivatives/build_iso" />.
+
+The live ISO supports PXE booting for direct integration with [SUSE Manager](https://documentation.suse.com/suma/4.3/en/suse-manager/client-configuration/autoinst-distributions.html#based-on-iso-image).
 
 Within MachineRegistration only a subset of OS installation parameters can be configured, all available parameters are listed
 at [MachineRegistration](machineregistration-reference.md) reference page.

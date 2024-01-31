@@ -3,6 +3,10 @@ sidebar_label: Elemental the command line way
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/quickstart-cli"/>
+</head>
+
 import Cluster from "!!raw-loader!@site/examples/quickstart/cluster.yaml"
 import Registration from "!!raw-loader!@site/examples/quickstart/registration.yaml"
 import RegistrationRPi from "!!raw-loader!@site/examples/quickstart/rpi-registration.yaml"
@@ -92,7 +96,7 @@ kubectl apply -f seedimage.yaml
 <TabItem value="seedImagerpi" label="Seed Image for Raspberry Pi" default>
 
 The `SeedImage` resource, which automates the creation of an Elemental bootable image (the *seed image*), does not support Raspberry Pi yet.
-We will generate a *seed image* manually in the [next section](quickstart-cli.md#preparing-the-installation-seed-image).
+We will generate a *seed image* manually in the [next section](quickstart-cli#preparing-the-installation-seed-image).
 
 Now that we have defined all the configuration files let's apply them to create the proper resources in Kubernetes:
 

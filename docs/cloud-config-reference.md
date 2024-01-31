@@ -3,6 +3,10 @@ sidebar_label: Cloud-config reference
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/cloud-config-reference"/>
+</head>
+
 # Cloud-config Reference
 
 All custom configuration applied on top of a fresh deployment should come

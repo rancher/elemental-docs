@@ -3,6 +3,10 @@ sidebar_label: MachineRegistration reference
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/machineregistration-reference"/>
+</head>
+
 # MachineRegistration reference
 
 The MachineRegistration resource is the responsible of defining a machine registration end point. Once created it generates a registration URL used by nodes to register so they are inventoried.

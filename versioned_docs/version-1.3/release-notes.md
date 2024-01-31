@@ -3,6 +3,10 @@ sidebar_label: Release Notes
 title: ''
 ---
 
+<head>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/release-notes"/>
+</head>
+
 # Release Notes
 
 The Elemental project stack is made of various components such as the `Operator` and `UI` for example.

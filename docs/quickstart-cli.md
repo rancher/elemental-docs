@@ -95,7 +95,7 @@ kubectl apply -f seedimage.yaml
 </TabItem>
 <TabItem value="seedImagerpi" label="Seed Image for Raspberry Pi" default>
 
-The `SeedImage` resource, which automates the creation of an Elemental bootable image (the *seed image*), does not support Raspberry Pi ISOs yet (Click [here](raspi-disk.md) for a guide to build a raw disk image).
+The `SeedImage` resource, which automates the creation of an Elemental bootable image (the *seed image*), does not support Raspberry Pi ISOs yet (click [here](raspi-disk.md) for a guide to build a raw disk image).
 
 We will generate a *seed image* manually in the [next section](quickstart-cli.md#preparing-the-installation-seed-image).
 

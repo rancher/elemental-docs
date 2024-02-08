@@ -18,10 +18,9 @@ Here's the different components, their latest version and a link to the respecti
 | Name                                                                 | Version | Release Notes                                                              |
 |----------------------------------------------------------------------|---------|----------------------------------------------------------------------------|
 | [Elemental Operator](https://github.com/rancher/elemental-operator/) | v1.4.2  | [Link](https://github.com/rancher/elemental-operator/releases/tag/v1.4.2)  |
-| [Elemental Operator](https://github.com/rancher/elemental-operator/) | v1.3.4  | [Link](https://github.com/rancher/elemental-operator/releases/tag/v1.3.4)  |
-| [Elemental Toolkit](https://github.com/rancher/elemental-toolkit/)   | v0.11.1 | [Link](https://github.com/rancher/elemental-toolkit/releases/tag/v0.11.1)  |
-| [Elemental Linux](https://github.com/rancher/elemental)              | v1.2.2  | [Link](https://github.com/rancher/elemental/releases/tag/v1.2.2)           |
-| [Elemental UI](https://github.com/rancher/elemental-ui)              | v1.2.0  | [Link](https://github.com/rancher/elemental-ui/releases/tag/elemental-1.2.0) |
+| [Elemental Toolkit](https://github.com/rancher/elemental-toolkit/)   | v1.1.1  | [Link](https://github.com/rancher/elemental-toolkit/releases/tag/v1.1.1)  |
+| [Elemental Linux](https://github.com/rancher/elemental)              | v2.0.2  | [Link](https://github.com/rancher/elemental/releases/tag/v2.0.2)           |
+| [Elemental UI](https://github.com/rancher/elemental-ui)              | v1.3.0  | [Link](https://github.com/rancher/elemental-ui/releases/tag/elemental-1.3.0) |
 
 :::note Information on docs versioning
 

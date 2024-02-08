@@ -61,4 +61,4 @@ helm upgrade --create-namespace -n cattle-elemental-system --install --set image
 
 ### Installation options
 
-There are a few options that can be set in the chart install but that is out of scope for this document. You can see all the values on the chart [values.yaml](https://github.com/rancher/elemental-operator/blob/main/charts/operator/values.yaml).
+There are a few options that can be set in the chart install but that is out of scope for this document. You can see all the values on the chart [values.yaml](https://github.com/rancher/elemental-operator/blob/main/.obs/chartfile/operator/values.yaml).

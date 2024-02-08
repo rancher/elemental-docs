@@ -38,15 +38,13 @@ If you are using GitHub pages for hosting, this command is a convenient way to b
 
 ## Docs versioning
 
-The versioning is done in two steps:
-
-1. Delete the entry `Stable` from the file `/versions.json`
-
-1. Copy the content from the `Next` version into `Stable`
+Generating a new versioned docs from local environment is as simple as running the following command:
 
 ```console
-yarn run docusaurus docs:version Stable
+yarn run docusaurus docs:version <new_version>
 ```
+
+Where `<new_version>` should be replaced by the actual version number (e.g. `1.4`)
 
 ### Check the versioning
 

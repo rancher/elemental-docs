@@ -320,14 +320,15 @@ FROM registry.suse.com/rancher/elemental-teal/5.4:latest as os
 
 # Check the section on remastering a custom docker image
 
-FROM registry.suse.com/rancher/elemental-builder-image/5.4:latest AS builder
+# The released OS already includes the toolchain for building ISOs
+FROM registry.suse.com/rancher/elemental-teal/5.4:latest AS builder
 
 ARG TARGETARCH
 WORKDIR /iso
 COPY --from=os / rootfs
 
 # work around buildah issue: https://github.com/containers/buildah/issues/4242
-RUN rm rootfs/etc/resolv.conf
+RUN rm -f rootfs/etc/resolv.conf
 
 RUN --mount=type=bind,source=./,target=/output,rw \
       elemental build-iso \

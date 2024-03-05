@@ -10,6 +10,7 @@ title: ''
 import ClusterTarget from "!!raw-loader!@site/examples/upgrade/upgrade-cluster-target.yaml"
 import NodeSelector from "!!raw-loader!@site/examples/upgrade/upgrade-node-selector.yaml"
 import UpgradeForce from "!!raw-loader!@site/examples/upgrade/upgrade-force.yaml"
+import UpgradeRecovery from "!!raw-loader!@site/examples/upgrade/upgrade-recovery.yaml"
 import ManagedOSVersion from "!!raw-loader!@site/examples/upgrade/upgrade-managedos-version.yaml"
 import MangedOSVersionChannelJson from "!!raw-loader!@site/examples/upgrade/managed-os-version-channel-json.yaml"
 import ManagedOSVersionChannelCustom from "!!raw-loader!@site/examples/upgrade/managed-os-version-channel-custom.yaml"
@@ -56,6 +57,13 @@ When upgrading to an older version or the same version that is already running t
 It is possible to force upgrades to older versions by setting the FORCE environment variable as shown below.
 
 <CodeBlock language="yaml" title="upgrade-force.yaml" showLineNumbers>{UpgradeForce}</CodeBlock>
+
+</TabItem>
+
+<TabItem value="recoveryUpgrade" label="With UPGRADE_RECOVERY flag">
+You can decide upgrade the Recovery partition when upgrading the system, or alternatively to upgrade the Recovery partition only.
+
+<CodeBlock language="yaml" title="upgrade-recovery.yaml" showLineNumbers>{UpgradeRecovery}</CodeBlock>
 
 </TabItem>
 </Tabs>

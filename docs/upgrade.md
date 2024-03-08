@@ -34,7 +34,9 @@ Upgrade can be achieve either with CLI or UI:
 
 There are two ways of selecting nodes for upgrading. Via a cluster target, which will match ALL nodes in a cluster that matches our
 selector or via node selector, which will match nodes based on the node labels. Node selector allows us to be more targeted with the upgrade
-while cluster selector just selects all the nodes in a matched cluster.
+while cluster selector just selects all the nodes in a matched cluster.  
+
+Updating an existing `ManagedOSImage` will trigger a new upgrade cycle, to reconcile the configured image (or image version) to all targeted nodes.  
 
 <Tabs>
 <TabItem value="clusterTarget" label="With 'clusterTarget'" default>
@@ -68,8 +70,7 @@ You can decide upgrade the Recovery partition when upgrading the system, or alte
 </TabItem>
 </Tabs>
 
-
-### Selecting source for upgrade
+### Selecting source for upgrade 
 
 <Tabs>
 <TabItem value="osImage" label="Via 'osImage'">

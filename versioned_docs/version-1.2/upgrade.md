@@ -35,6 +35,13 @@ There are two ways of selecting nodes for upgrading. Via a cluster target, which
 selector or via node selector, which will match nodes based on the node labels. Node selector allows us to be more targeted with the upgrade
 while cluster selector just selects all the nodes in a matched cluster.
 
+Updating an existing `ManagedOSImage` is ineffective.  
+Once a version upgrade is completed on all targeted clusters, you can safely delete the `ManagedOSImage` and create a new one to trigger a new upgrade.  
+
+:::info
+From version `1.5.0` of the Elemental Operator, the `ManagedOSImage` is an editable resource and can be used to reconcile a desired OS image or image version to all targeted clusters.  
+:::
+
 <Tabs>
 <TabItem value="clusterTarget" label="With 'clusterTarget'" default>
 You can target nodes for an upgrade via a `clusterTarget` by setting it to the cluster name that you want to upgrade.

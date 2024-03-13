@@ -48,6 +48,7 @@ const sidebars = {
         "cloud-config-reference",
         "machineregistration-reference",
         "machineinventoryselectortemplate-reference",
+        "managedosimage-reference",
         "cluster-reference",
         "seedimage-reference",
         "elementaloperatorchart-reference",

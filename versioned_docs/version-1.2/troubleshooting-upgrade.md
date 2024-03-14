@@ -9,9 +9,7 @@ title: ''
 
 # Troubleshooting upgrade
 
-![Upgrade Flow](images/troubleshooting-upgrade.png)
-
-For a high level overview of the upgrade workflow, please refer to the image above.  
+For a high level overview of the upgrade lifecycle and components, please refer to the [related document](./upgrade-lifecycle).  
 
 ## Rancher side
 
@@ -25,7 +23,7 @@ metadata:
   namespace: fleet-default
 spec:
   # Set to the new Elemental version you would like to upgrade to or track the latest tag
-  osImage: "registry.suse.com/rancher/elemental-teal/5.3:latest"
+  osImage: "registry.suse.com/rancher/elemental-teal/5.4:latest"
   clusterTargets:
     - clusterName: my-cluster
 ```
@@ -69,7 +67,7 @@ spec:
     name: ServiceAccount-cattle-system-os-upgrader-my-upgrade-ce93d-01096.yaml
   - content: '{"kind":"Secret","apiVersion":"v1","metadata":{"name":"os-upgrader-my-upgrade","namespace":"cattle-system","creationTimestamp":null},"data":{"cloud-config":""}}'
     name: Secret-cattle-system-os-upgrader-my-upgrade-a997ee6a67ef.yaml
-  - content: '{"kind":"Plan","apiVersion":"upgrade.cattle.io/v1","metadata":{"name":"os-upgrader-my-upgrade","namespace":"cattle-system","creationTimestamp":null},"spec":{"concurrency":1,"nodeSelector":{},"serviceAccountName":"os-upgrader-my-upgrade","version":"latest","secrets":[{"name":"os-upgrader-my-upgrade","path":"/run/data"}],"tolerations":[{"operator":"Exists"}],"cordon":true,"upgrade":{"image":"registry.suse.com/rancher/elemental-teal/5.3","command":["/usr/sbin/suc-upgrade"]}},"status":{}}'
+  - content: '{"kind":"Plan","apiVersion":"upgrade.cattle.io/v1","metadata":{"name":"os-upgrader-my-upgrade","namespace":"cattle-system","creationTimestamp":null},"spec":{"concurrency":1,"nodeSelector":{},"serviceAccountName":"os-upgrader-my-upgrade","version":"latest","secrets":[{"name":"os-upgrader-my-upgrade","path":"/run/data"}],"tolerations":[{"operator":"Exists"}],"cordon":true,"upgrade":{"image":"registry.suse.com/rancher/elemental-teal/5.4","command":["/usr/sbin/suc-upgrade"]}},"status":{}}'
     name: Plan-cattle-system-os-upgrader-my-upgrade-273c2c09afca.yaml
   targets:
   - clusterName: my-cluster
@@ -90,7 +88,13 @@ To monitor the correct operation of this controller, you can read its logs:
 kubectl -n cattle-system logs deployment/system-upgrade-controller
 ```
 
-If everything is correct, the `system-upgrade-controller` will create an upgrade job for each targeted machine.  
+If everything is correct, the `system-upgrade-controller` will create an upgrade Plan on the cluster:
+
+```shell
+kubectl -n cattle-system get plans
+```
+
+For each Plan, the controller will orchestrate the jobs that will apply it on each targeted node.  
 The job names will use the Plan name (`os-upgrader-my-upgrade`) and the target machine hostname (`my-host`) for easy discoverability.  
 For example: `apply-os-upgrader-my-upgrade-on-my-host-7a25e`  
 You can monitor these jobs with:

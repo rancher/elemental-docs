@@ -56,7 +56,7 @@ Also beware that a new `CATTLE_SYSTEM_UPGRADE_CONTROLLER_CHART_VERSION` will tri
 Verifying the correct execution of the upgrade jobs is a fundamental part of ensuring the Elemental upgrade process is complete.  
 
 To troubleshoot each step within the entire upgrade process, please consult the [related document](./troubleshooting-upgrade.md).  
-This section only describes the last step needed to verify the correct application of the upgrade Plan on one targeted node.  
+This section only describes the last step needed to verify the correct application of the upgrade Plan on one targeted cluster.  
 
 - Versions higher or equal to **v0.13.4** of the `system-upgrade-controller`:  
 

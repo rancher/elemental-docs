@@ -35,6 +35,7 @@ const sidebars = {
       "items": [
         "installation",
         "upgrade",
+        "upgrade-lifecycle",
         "customizing",
         "elemental-plans",
       ]

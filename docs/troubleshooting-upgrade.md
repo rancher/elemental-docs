@@ -9,9 +9,7 @@ title: ''
 
 # Troubleshooting upgrade
 
-![Upgrade Flow](images/troubleshooting-upgrade.png)
-
-For a high level overview of the upgrade workflow, please refer to the image above.  
+For a high level overview of the upgrade lifecycle and components, please refer to the [related document](./upgrade-lifecycle).  
 
 ## Rancher side
 
@@ -90,7 +88,13 @@ To monitor the correct operation of this controller, you can read its logs:
 kubectl -n cattle-system logs deployment/system-upgrade-controller
 ```
 
-If everything is correct, the `system-upgrade-controller` will create an upgrade job for each targeted machine.  
+If everything is correct, the `system-upgrade-controller` will create an upgrade Plan on the cluster:
+
+```shell
+kubectl -n cattle-system get plans
+```
+
+For each Plan, the controller will orchestrate the jobs that will apply it on each targeted node.  
 The job names will use the Plan name (`os-upgrader-my-upgrade`) and the target machine hostname (`my-host`) for easy discoverability.  
 For example: `apply-os-upgrader-my-upgrade-on-my-host-7a25e`  
 You can monitor these jobs with:

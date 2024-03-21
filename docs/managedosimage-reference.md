@@ -66,11 +66,12 @@ The drain settings directly translates to the [kubectl drain](https://kubernetes
 |--------------------------|------------------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | timeout                  | time.Duration    | null          | The length of time to wait before giving up draining a node, zero means infinite.                                                          |
 | gracePeriod              | int              | null          | Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used.     |
-| deleteLocalData          | bool             | true          | Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained).                                 |
+| deleteEmptydirData       | bool             | true          | Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained).                                 |
 | ignoreDaemonSets         | bool             | true          | Ignore DaemonSet-managed pods.                                                                                                             |
 | force                    | bool             | true          | Continue even if there are pods that do not declare a controller.                                                                          |
 | disableEviction          | bool             | false         | Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution.                |
 | skipWaitForDeleteTimeout | int              | 60            | If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip.                           |
+| podSelector              | label selector   | null          | Label selector to filter pods on the node. Only selected pods will be evicted.                                                             |
 
 #### prepare
 
@@ -85,6 +86,31 @@ Note that the node filesystem is mounted at `/host` inside the container.
 | args                     | list   | empty         | Arguments to the entrypoint.                                         |
 | env                      | list   | empty         | List of environment variables to set in the container.               |
 | envFrom                  | list   | empty         | List of sources to populate environment variables in the container.  |
+| volumes                  | list   | empty         | List of `hostPath` volumes. See [reference](#preparevolumes).        |
+| securityContext          | object | null          | The security options the ephemeral container should be run with.     |
+
+##### prepare.volumes
+
+Each volume definition will translate to a [hostPath](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath-volume-types) volume (`source`) which will be mounted in the container (`destination`).  
+Note that by default the host root filesystem `/` will always be mounted at `/host`.  
+
+| Key          | Type   | Default value | Description                 |
+|--------------|--------|---------------|-----------------------------|
+| name         | string | empty         | Volume name.                |
+| source       | string | empty         | HostPath volume path.       |
+| destination  | string | empty         | HostPath volume mount path. |
+
+<details>
+  <summary>Example</summary>
+
+  ```yaml showLineNumbers
+  volumes:
+    - name: my-custom-volume
+      source: /foo
+      destination: /foo
+  ```
+  
+</details>
 
 #### upgradeContainer
 
@@ -101,12 +127,12 @@ Any other change to the `upgradeContainer` may result in issues during upgrades.
 #### clusterRolloutStrategy
 
 This controls the rollout of the bundle across clusters.  
-For more information you can read the [reference documentation](https://fleet.rancher.io/0.7/ref-crds#rolloutstrategy).  
+For more information you can read the [reference documentation](https://fleet.rancher.io/0.9/ref-crds#rolloutstrategy).  
 
 #### clusterTargets
 
 Select Clusters to be targeted for the OS image upgrade.  
-For more information you can read the [reference documentation](https://fleet.rancher.io/0.7/ref-crds#bundletarget).  
+For more information you can read the [reference documentation](https://fleet.rancher.io/0.9/ref-crds#bundletarget).  
 
 <details>
   <summary>Example</summary>

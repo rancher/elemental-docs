@@ -1,7 +1,7 @@
 apiVersion: elemental.cattle.io/v1beta1
 kind: MachineRegistration
 metadata:
-  name: my-nodes
+  name: fire-nodes-emulate-tpm
   namespace: fleet-default
 spec:
   config:
@@ -16,3 +16,9 @@ spec:
         debug: true
       registration:
         emulate-tpm: true
+  machineInventoryLabels:
+    element: fire
+    manufacturer: "${System Information/Manufacturer}"
+    productName: "${System Information/Product Name}"
+    serialNumber: "${System Information/Serial Number}"
+    machineUUID: "${System Information/UUID}"

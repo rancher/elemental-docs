@@ -91,7 +91,8 @@ const sidebars = {
         'removable-device-cloudconfig',
         'custom-certificate',
         'airgap',
-        'raspi-disk'
+        'raspi-disk',
+        'tpm'
       ]
     },
     {

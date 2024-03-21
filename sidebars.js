@@ -40,6 +40,7 @@ const sidebars = {
         "elemental-plans",
       ]
     },
+    "authentication",
     {
       "type": "category",
       "collapsible": true,

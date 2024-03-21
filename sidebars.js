@@ -40,6 +40,7 @@ const sidebars = {
         "elemental-plans",
       ]
     },
+    "authentication",
     {
       "type": "category",
       "collapsible": true,
@@ -91,7 +92,8 @@ const sidebars = {
         'removable-device-cloudconfig',
         'custom-certificate',
         'airgap',
-        'raspi-disk'
+        'raspi-disk',
+        'tpm'
       ]
     },
     {

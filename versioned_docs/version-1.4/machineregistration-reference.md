@@ -53,10 +53,11 @@ Supports the following values:
 :::warning
 The following values are for development purposes only.
 
-| Key               | Type   | Default value | Description                                                                                                  |
-|-------------------|--------|---------------|--------------------------------------------------------------------------------------------------------------|
-| emulate-tpm       | bool   | false         | This will use software emulation of the TPM (required for hosts without TPM hardware)                        |
-| emulated-tpm-seed | int64  | 1             | Fixed seed to use with 'emulate-tpm'. Set to -1 to get a random seed. See [TPM](tpm.md) for more information |
+| Key               | Type   | Default value | Description                                                                                                                                       |
+|-------------------|--------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| auth              | string | tpm           | Authentication method to use during registration, one of `tpm`, `mac` or `sys-uuid`. See [Authentication](authentication.md) for more information |
+| emulate-tpm       | bool   | false         | This will use software emulation of the TPM (required for hosts without TPM hardware)                                                             |
+| emulated-tpm-seed | int64  | 1             | Fixed seed to use with 'emulate-tpm'. Set to -1 to get a random seed. See [TPM](tpm.md) for more information                                      |
 
 :::
 

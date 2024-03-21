@@ -25,6 +25,7 @@
         "elemental-plans"
       ]
     },
+    "authentication",
     {
       "type": "category",
       "collapsible": true,
@@ -75,7 +76,8 @@
         "rancher-vmware",
         "removable-device-cloudconfig",
         "custom-certificate",
-        "airgap"
+        "airgap",
+        "tpm"
       ]
     },
     {

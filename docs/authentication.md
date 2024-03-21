@@ -37,7 +37,7 @@ The authentication/identification method can be specified in the
 
 :::warning
 The only secure and officially supported **authentication** method in Elemental is the default one, based on TPM attestation.
-The no-TPM alternatives can be handy for demo purposes or local deployments but are not reccomended for production use as the onboarding machines identity is not securely verified.
+The no-TPM alternatives can be used for demo purposes or local deployments but are not reccomended for production use as the onboarding machines identity is not securely verified.
 :::
 
 ### TPM emulation

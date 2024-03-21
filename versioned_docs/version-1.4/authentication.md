@@ -37,7 +37,7 @@ The authentication/identification method can be specified in the
 
 :::warning
 The only secure and officially supported **authentication** method in Elemental is the default one, based on TPM attestation.
-The no-TPM alternatives can be handy for demo purposes or local deployments but are not reccomended for production use as the onboarding machines identity is not securely verified.
+The TPM alternatives can be used for demo purposes or local deployments but are not reccomended for production use as the onboarding machines identity is not securely verified.
 :::
 
 ### TPM emulation
@@ -73,7 +73,7 @@ When using the `sys-uuid` value as the `auth` field of the [config:elemental:reg
 :::warning 
 The SMBIOS `System information/UUID` value should be filled by the hardware vendor as a unique UUID for the host.
 
-We saw devices from not well-known hardware vendors not properly filling SMBIOS data. In particular, there were cases in which the UUID was missing or even worse was **equal** in all the shipped devices.
+The SMBIOS data is not always reliable. This depends on the manufacturer. You may experience the UUID being missing, or the same UUID being applied to multiple devices within the same batch.
 
 It is up to the administrator to ensure that the machines have unique `System information/UUID` SMBIOS values (the  `dmidecode` tool could be of help), otherwise the machines will keep overwriting the same `MachineInventory` resource and the Elemental provisioning will fail.
 :::

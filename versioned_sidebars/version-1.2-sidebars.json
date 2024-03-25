@@ -111,5 +111,106 @@
       ]
     },
     "release-notes"
+  ],
+  "toolkit": [
+    "toolkit/index",
+    {
+      "type": "category",
+      "collapsible": true,
+      "collapsed": false,
+      "label": "Getting Started",
+      "items": [
+        "toolkit/getting-started/download",
+        "toolkit/getting-started/install",
+        "toolkit/getting-started/upgrading",
+        "toolkit/getting-started/recovery",
+        "toolkit/getting-started/deploy"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Customizing",
+      "collapsible": true,
+      "collapsed": true,
+      "items": [
+        "toolkit/customizing/stages",
+        "toolkit/customizing/configuration_persistency",
+        "toolkit/customizing/embedded_features",
+        "toolkit/customizing/login",
+        "toolkit/customizing/oem_configuration",
+        "toolkit/customizing/runtime_persistent_changes",
+        "toolkit/customizing/general_configuration",
+        "toolkit/customizing/upgrades",
+        "toolkit/customizing/configure_grub",
+        "toolkit/customizing/selinux_support"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Creating Derivatives",
+      "collapsible": true,
+      "collapsed": true,
+      "items": [
+        "toolkit/creating-derivatives/package_stack",
+        "toolkit/creating-derivatives/creating_bootable_images",
+        "toolkit/creating-derivatives/build_disk",
+        "toolkit/creating-derivatives/build_iso"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Examples",
+      "items": [
+        "toolkit/examples/creating_bootable_images",
+        "toolkit/examples/cloud_config",
+        "toolkit/examples/embedded_images"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Tutorials",
+      "items": [
+        "toolkit/tutorials/k3s_and_fleet_on_vanilla_image_example",
+        "toolkit/tutorials/trigger_upgrades_with_fleet"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Reference",
+      "items": [
+        "toolkit/reference/cloud_init",
+        "toolkit/reference/immutable_rootfs",
+        "toolkit/reference/layout",
+        "toolkit/reference/troubleshooting",
+        "toolkit/reference/built_with_elemental",
+        "toolkit/reference/high_level_architecture",
+        {
+          "type": "category",
+          "label": "Command Line Interface",
+          "items": [
+            "toolkit/reference/elemental",
+            "toolkit/reference/elemental_build-iso",
+            "toolkit/reference/elemental_cloud-init",
+            "toolkit/reference/elemental_convert-disk",
+            "toolkit/reference/elemental_exit-codes",
+            "toolkit/reference/elemental_install",
+            "toolkit/reference/elemental_new",
+            "toolkit/reference/elemental_pull-image",
+            "toolkit/reference/elemental_reset",
+            "toolkit/reference/elemental_run-stage",
+            "toolkit/reference/elemental_upgrade",
+            "toolkit/reference/elemental_version"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Development",
+      "items": [
+        "toolkit/development/creating_derivatives",
+        "toolkit/development/dependencies"
+      ]
+    }
   ]
 }

@@ -1,22 +1,26 @@
 ---
-sidebar_label: Customize Elemental Install
+sidebar_label: Customize Elemental Installation
 title: ''
 ---
 
 <head>
-  <link rel="canonical" href="https://elemental.docs.rancher.com/customizing"/>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/custom-install"/>
 </head>
 
-# Customize Elemental Install
+# Customize Elemental Installation
 
-Elemental Teal images can be customized in different ways.
-One option is to provide
-additional resources within the installation media so that during installation, or
-eventually at boot time, additional binaries such as drivers can be included.
+Elemental installed OS images can be customized in different ways.
 
-Another option would be to remaster the Elemental Teal by simply using a docker build.
-Elemental Teal is a regular container image, so it is absolutely possible to create
-a new image using a Dockerfile based on Elemental Teal image.
+One option is to remaster container OS images by simply using a docker build.
+SLE Micro for Rancher images are regular container images, so it is absolutely possible to create
+a new image using a Dockerfile based on SLE Micro for Rancher. See [Build Custom OS Images](/custom-images.md)
+section for further details on that possibility.
+
+Alternatively, it is also possible to provide additional resources within the installation
+media so that during installation, or eventually at boot time, additional binaries such as
+drivers or extra configuration files can be included.
+
+This section focuses on how to customize the installation process from a given OS image. 
 
 ## Customize installation ISO and installation process
 
@@ -264,92 +268,3 @@ xorriso -indev elemental-teal.x86_64.iso -outdev elemental-teal.custom.x86_64.is
 ```
 
 For that a `xorriso` equal or higher than version 1.5 is required.
-
-## Remastering a custom docker image
-
-Since Elemental Teal image is a Docker image it can also be used as a base image
-in a Dockerfile in order to create a new container image.
-
-Imagine some additional package from an extra repository is required, the following example
-show case how this could be added:
-
-```docker showLineNumbers
-# The version of Elemental to modify
-FROM registry.suse.com/rancher/elemental-teal/5.4:latest
-
-# Custom commands
-RUN rpm --import <repo-signing-key-url> && \
-    zypper addrepo --refresh <repo_url> extra_repo && \
-    zypper install -y <extra_package>
-
-# IMPORTANT: /etc/os-release is used for versioning/upgrade. The
-# values here should reflect the tag of the image currently being built
-ARG IMAGE_REPO=norepo
-ARG IMAGE_TAG=latest
-RUN \
-    sed -i -e "s/^IMAGE_REPO=.*/IMAGE_REPO=\"${IMAGE_REPO}\"/g" /etc/os-release && \
-    sed -i -e "s/^IMAGE_TAG=.*/IMAGE_TAG=\"${IMAGE_TAG}\"/g" /etc/os-release && \
-    sed -i -e "s/^IMAGE=.*/IMAGE=\"${IMAGE_REPO}:${IMAGE_TAG}\"/g" /etc/os-release
-```
-
-Where `latest` is the base version we want to customize.
-
-And then the following commands
-
-```bash showLineNumbers
-docker build --build-arg IMAGE_REPO=myrepo/custom-build \
-             --build-arg IMAGE_TAG=v1.1.1 \
-             -t myrepo/custom-build:v1.1.1 .
-docker push myrepo/custom-build:v1.1.1
-```
-
-The new customized OS is available as the Docker image `myrepo/custom-build:v1.1.1` and it can
-be run and verified using docker with
-
-```bash showLineNumbers
-docker run -it myrepo/custom-build:v1.1.1 bash
-```
-
-## Create a custom bootable installation media
-
-Elemental Teal leverages container images to build its root filesystems; therefore, it is possible
-to use it in a multi-stage environment to create custom bootable media that bundles a custom container image.
-
-```docker showLineNumbers
-FROM registry.suse.com/suse/sle-micro/5.5:latest AS os
-
-# Check the section on remastering a custom docker image
-
-# The released OS already includes the toolchain for building ISOs
-FROM registry.suse.com/suse/sle-micro/5.5:latest AS builder
-
-ARG TARGETARCH
-WORKDIR /iso
-COPY --from=os / rootfs
-
-# work around buildah issue: https://github.com/containers/buildah/issues/4242
-RUN rm -f rootfs/etc/resolv.conf
-
-RUN --mount=type=bind,source=./,target=/output,rw \
-      elemental build-iso \
-        dir:rootfs \
-        --bootloader-in-rootfs \
-        --squash-no-compression \
-        -o /output -n "elemental-teal-${TARGETARCH}"
-```
-
-
-Modify the container image template and afterwards run:
-
-```bash showLineNumbers
-buildah build --tag myrepo/custom-build:v1.1.1 \
-              --build-arg IMAGE_REPO=myrepo/custom-build \
-              --build-arg IMAGE_TAG=v1.1.1 \
-              .
-```
-
-The new customized installation media can be found in `elemental-teal-amd64.iso`.
-
-:::caution important
-You still need to [prepare the installation image](quickstart-cli#preparing-the-installation-seed-image) so it can be used to boot and provision the machine.
-:::

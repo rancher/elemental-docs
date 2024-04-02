@@ -36,7 +36,7 @@ const sidebars = {
         "installation",
         "upgrade",
         "upgrade-lifecycle",
-        "customizing",
+	'custom-install',
         "elemental-plans",
       ]
     },
@@ -85,6 +85,7 @@ const sidebars = {
       collapsed: true,
       label: 'How to',
       items: [
+	'custom-images',
         'wifi',
         'elemental_behind_proxy',
         'hostname',

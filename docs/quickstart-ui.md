@@ -106,15 +106,9 @@ Now here either you can enter each detail in its respective places or you can ed
 :::info main options
 `name: elemental-cluster1`: change this as per your need
 
-`device: /dev/sda`: make sure your target device is "sda". Otherwise find out how the disk device is named and change it here. For example, in Raspberry Pi it could be "mmblk"
+`device-selector`: The [device-selector](machineregistration-reference#configelementalinstalldevice-selector) field can be used to dynamically pick device during installation. The field contains a list of rules to select the device you want.
 
-`emulate-tpm: true`: use this only if your target device doesn't have a TPM device and you have a way of emulating TPM like in VMware or KVM
-
-`emulated-tpm-seed: 1`: increase this by 1 for every new machine. If this value is not set, each machine will receive the same TPM hash and it won't show up under the machine inventory.
-:::
-
-:::danger attention
-Emulated TPM is only for non-production usage like for testing as it beats the purpose of security. So in production usage use the code above without the `emulate-tpm` and `emulate-tpm-seed`
+`snapshotter`: Type of device used to manage snapshots in OS images.
 :::
 
 Once you create the machine registration end point it should show up as active.

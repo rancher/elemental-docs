@@ -51,6 +51,8 @@ const sidebars = {
         "machineregistration-reference",
         "machineinventoryselectortemplate-reference",
         "managedosimage-reference",
+        "managedosversionchannel-reference",
+        "managedosversion-reference",
         "cluster-reference",
         "seedimage-reference",
         "elementaloperatorchart-reference",

@@ -124,18 +124,22 @@ Once you create the machine registration end point it should show up as active.
 ## Preparing the installation (seed) image
 
 Now this is the last step, you need to prepare an Elemental Teal seed image that includes the initial registration config, so
-it can be auto registered, installed and fully deployed as part of your cluster. The contents of the file are nothing 
+it can be auto registered, installed and fully deployed as part of your cluster. The contents of the file are nothing
 more than the registration URL that the node needs to register and the proper server certificate, so it can connect securely.
 
 This seed image can then be used to provision an infinite number of machines.
 
-The seed image is created as a Kubernetes resource above and can be built using the `Build ISO` button:
+The seed image is created as a Kubernetes resource above and can be built using the `Build Media` button, but first, you have to select ISO or RAW image.
 
-![Build ISO in Registration Endpoints](images/quickstart-ui-registration-endpoint-build-ISO.png)
+In opposite to ISO where it needs two devices (device with ISO and another disk where to install Elemental), RAW image allows to boot from a single device and directly install the operating system in the device.
+RAW image only contains a boot and a recovery partition and it boots first into recovery mode to install Elemental (for information, the process is similar to the [reset](reset#reset-workflow) one).
 
-Once the build is done, ISO can be downloaded using the `Download ISO` button:
 
-![Download ISO in Registration Endpoints](images/quickstart-ui-registration-endpoint-download-ISO.png)
+![Build Media in Registration Endpoints](images/quickstart-ui-registration-endpoint-build-media.png)
+
+Once the build is done, media can be downloaded using the `Download Media` button:
+
+![Download Media in Registration Endpoints](images/quickstart-ui-registration-endpoint-download-media.png)
 
 You can now boot your nodes with this image and they will:
 

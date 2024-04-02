@@ -10,7 +10,7 @@
 
 
 <link rel="search" type="application/opensearchdescription+xml" title="Elemental - Immutable Linux for Rancher" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.5d1d48fd.css">
-<script src="/assets/js/runtime~main.19856762.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.8c93fafe.js" defer="defer"></script>
 <script src="/assets/js/main.fd558bb9.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -81,10 +81,12 @@
 it can be auto registered, installed and fully deployed as part of your cluster. The contents of the file are nothing
 more than the registration URL that the node needs to register and the proper server certificate, so it can connect securely.</p>
 <p>This seed image can then be used to provision an infinite number of machines.</p>
-<p>The seed image is created as a Kubernetes resource above and can be built using the <code>Build ISO</code> button:</p>
-<p><img loading="lazy" alt="Build ISO in Registration Endpoints" src="/assets/images/quickstart-ui-registration-endpoint-build-ISO-f8f10423606ddf4a1ca1e677be69316c.png" width="2316" height="858" class="img_CujE"></p>
-<p>Once the build is done, ISO can be downloaded using the <code>Download ISO</code> button:</p>
-<p><img loading="lazy" alt="Download ISO in Registration Endpoints" src="/assets/images/quickstart-ui-registration-endpoint-download-ISO-804d30921eedaf172794e756e6c47d9f.png" width="2316" height="858" class="img_CujE"></p>
+<p>The seed image is created as a Kubernetes resource above and can be built using the <code>Build Media</code> button, but first, you have to select ISO or RAW image.</p>
+<p>In opposite to ISO where it needs two devices (device with ISO and another disk where to install Elemental), RAW image allows to boot from a single device and directly install the operating system in the device.
+RAW image only contains a boot and a recovery partition and it boots first into recovery mode to install Elemental (for information, the process is similar to the <a href="/next/reset#reset-workflow">reset</a> one).</p>
+<p><img loading="lazy" alt="Build Media in Registration Endpoints" src="/assets/images/quickstart-ui-registration-endpoint-build-media-27e72e15227dbe321cfb541b111e2b5a.png" width="3100" height="1120" class="img_CujE"></p>
+<p>Once the build is done, media can be downloaded using the <code>Download Media</code> button:</p>
+<p><img loading="lazy" alt="Download Media in Registration Endpoints" src="/assets/images/quickstart-ui-registration-endpoint-download-media-3bd346012209b18dd68024eff20667fa.png" width="3100" height="1120" class="img_CujE"></p>
 <p>You can now boot your nodes with this image and they will:</p>
 <ul>
 <li>Register with the registrationURL given and create a per-machine <code>MachineInventory</code></li>

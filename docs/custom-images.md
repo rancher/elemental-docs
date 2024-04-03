@@ -15,7 +15,7 @@ Since OS images provided by Elemental are container images, they can also be use
 in a Dockerfile in order to create a new container image.
 
 Imagine some additional packages from an extra repository is required, the following example
-show case how this could be added:
+showcases how this could be added:
 
 ```docker showLineNumbers
 # The version of Elemental to modify

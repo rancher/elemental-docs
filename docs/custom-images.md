@@ -113,7 +113,7 @@ The new customized installation media can be found in `elemental-<arch>.iso`.
 The above container run is equivalent to what *elemental-operator* does to extract
 the ISO from a container to build a new one including the registration URL,
 hence this is also a good check mark to verify the container can be pushed to a
-registry and used in *elemental-operator* as a `baseImage` for a
+registry and used by the *elemental-operator* as a `baseImage` for a
 [SeedImage](seedimage-reference) resource.
 
 

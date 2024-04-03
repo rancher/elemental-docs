@@ -119,7 +119,7 @@ The keys directly translate to the [container](https://kubernetes.io/docs/refere
 Note that the node filesystem is mounted at `/host` inside the container.  
 
 :::warning warning
-When using any Elemental or [Elemental based image](./customizing.md#remastering-a-custom-docker-image) you are expected to only edit the `env` key to optionally set the `FORCE`, `UPGRADE_RECOVERY`, or `UPGRADE_RECOVERY_ONLY` variables.  
+When using any Elemental or [Elemental based image](./custom-images.md) you are expected to only edit the `env` key to optionally set the `FORCE`, `UPGRADE_RECOVERY`, or `UPGRADE_RECOVERY_ONLY` variables.  
 For more info you can read the [upgrade](./upgrade.md#upgrade-via-command-line-interface) documentation.  
 Any other change to the `upgradeContainer` may result in issues during upgrades.  
 :::

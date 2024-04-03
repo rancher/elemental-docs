@@ -14,7 +14,7 @@ title: ''
 Since OS images provided by Elemental are container images, they can also be used as a base image
 in a Dockerfile in order to create a new container image.
 
-Imagine some additional package from an extra repository is required, the following example
+Imagine some additional packages from an extra repository is required, the following example
 show case how this could be added:
 
 ```docker showLineNumbers

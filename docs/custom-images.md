@@ -124,7 +124,7 @@ resources is not mandatory but handy. Specially from a UI perspective this makes
 the custom images visible and easy to use from the Elemental UI extension.
 
 Continuing the example from the previous section a custom OS container referenced as
-`myrepo/custom-build:v1.1.1` was build and eventually pushed to a registry. Then this
+`myrepo/custom-build:v1.1.1` was built and eventually pushed to a registry. Then this
 image ready to be added as a ManagedOSVersion resource with:
 
 ```yaml showLineNumbers

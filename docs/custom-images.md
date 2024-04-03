@@ -125,7 +125,7 @@ the custom images visible and easy to use from the Elemental UI extension.
 
 Continuing the example from the previous section a custom OS container referenced as
 `myrepo/custom-build:v1.1.1` was built and eventually pushed to a registry. Then this
-image ready to be added as a ManagedOSVersion resource with:
+image is ready to be added as a ManagedOSVersion resource with:
 
 ```yaml showLineNumbers
 apiVersion: elemental.cattle.io/v1beta1

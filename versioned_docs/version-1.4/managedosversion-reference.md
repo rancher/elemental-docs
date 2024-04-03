@@ -83,5 +83,6 @@ If `type` is set to `iso`:
 
 #### upgradeContainer
 
-This allows to overwrite the default `upgrade` container executing the upgrade job on a node.
-The keys directly translate to the [container](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#Container) specification.  
+This allows to overwrite the default `upgrade` field of System Upgrade Controller plans (see [upgrade compontents](/upgrade-lifecycle.md#components)) based on this ManagedOSVersion.
+These keys are translated by the System Upgrade Controller to a Kubernetes [container](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#Container) specification.
+This is the container responsible of running an OS upgrade.

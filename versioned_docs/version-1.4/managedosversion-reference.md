@@ -69,11 +69,17 @@ spec:
 
 This describes the needed informations to define an OS image in Elemental.
 
+If `type` is set to `container`:
+| Key          | Type   | Default value | Description                                                  |
+|--------------|--------|---------------|--------------------------------------------------------------|
+| displayName  | string | empty         | OS image name as seen in Rancher UI                          |
+| upgradeImage | string | empty         | Fully qualified Containter image (OCI reference or HTTP URI) |
+
+If `type` is set to `iso`:
 | Key          | Type   | Default value | Description                         |
 |--------------|--------|---------------|-------------------------------------|
 | displayName  | string | empty         | OS image name as seen in Rancher UI |
 | uri          | string | empty         | Fully qualified ISO image           |
-| upgradeImage | string | empty         | Fully qualified Containter image    |
 
 #### upgradeContainer
 

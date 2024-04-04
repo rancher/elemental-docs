@@ -1,5 +1,5 @@
 ---
-sidebar_label: Machineregistration reference
+sidebar_label: MachineRegistration reference
 title: ''
 ---
 

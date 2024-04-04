@@ -10,7 +10,7 @@ title: ''
 
 ### How to include cloud-config files from removable devices
 
-Elemental Teal supports loading [cloud-config](cloud-config-reference.md) files from specific block devices.
+Elemental nodes supports loading [cloud-config](cloud-config-reference.md) files from specific block devices.
 In particular supports loading cloud-config files from an ISO having `CIDATA` as the volume ID or any vFAT formatted
 device labeled with `CIDATA`. If a device matching this criteria is found on early boot the Elemental client will
 read it and look for a `user-data` file in its root.

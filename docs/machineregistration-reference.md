@@ -81,6 +81,7 @@ Supports the following values:
 | tty             | string | empty         | Add named tty to grub                                                                                                                      |
 | poweroff        | bool   | false         | Shutdown the system after install                                                                                                          |
 | reboot          | bool   | false         | Reboot the system after install                                                                                                            |
+| snapshotter     | string | loopdevice    | Type of device used to manage snapshots in OS images ('loopdevice' or 'btrfs').                                                            |
 | eject-cd        | bool   | false         | Try to eject the cd on reboot                                                                                                              |
 
 :::warning warning

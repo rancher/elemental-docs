@@ -30,7 +30,7 @@ is added.
 
 ### Common customization pattern
 
-Elemental Teal installation can be customized in three different non-exclusive ways. First, including
+Elemental installation can be customized in three different non-exclusive ways. First, including
 some custom Elemental client configuration file, second, by including additional cloud-init files to execute at
 boot time, and finally, by including  `cloud-init` files such as installation hooks or boot stages evaluated during
 the live system boot itself.
@@ -79,7 +79,7 @@ the `config-urls` field is used for this exact purpose. See [MachineRegistration
 cloud-init file. The local path is evaluated during
 the installation, hence it must exists within the installation media, commonly an ISO image.
 
-By default, Elemental Teal live systems mount the ISO root at `/run/initramfs/live` which is also the default path set for `config-url` in `MachineRegistrations`:
+By default, Elemental live systems mount the ISO root at `/run/initramfs/live` which is also the default path set for `config-url` in `MachineRegistrations`:
 See the example below:
 
 ```yaml showLineNumbers
@@ -99,7 +99,7 @@ spec:
         config-urls:
         - "/run/initramfs/live/oem/custom_config.yaml"
 ```
-Elemental Teal live ISOs, when booted, have the ISO root mounted at `/run/initramfs/live`.
+Elemental live ISOs, when booted, have the ISO root mounted at `/run/initramfs/live`.
 According to that, the ISO for the example above is expected to include the `/oem/custom_config.yaml` file.
 
 :::note
@@ -173,7 +173,7 @@ as part of an LVM setup.
 As an example, we have an host with three disks (`/dev/sda`, `/dev/sdb`
 and `/dev/sdc`). 
 
-The first disk is used for a regular Elemental Teal installation
+The first disk is used for a regular Elemental installation
 and the other remaining two are used as part of a LVM group where arbitrary logical volumes
 are created, formatted and mounted at boot time via an extended `fstab` file.
 
@@ -264,7 +264,7 @@ Assuming an `overlay` folder was created in the current directory containing all
 additional files to be appended, the following `xorriso` command adds the extra files:
 
 ```bash showLineNumbers
-xorriso -indev elemental-teal.x86_64.iso -outdev elemental-teal.custom.x86_64.iso -map overlay / -boot_image any replay
+xorriso -indev elemental.x86_64.iso -outdev elemental.custom.x86_64.iso -map overlay / -boot_image any replay
 ```
 
 For that a `xorriso` equal or higher than version 1.5 is required.

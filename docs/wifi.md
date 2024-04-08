@@ -22,7 +22,7 @@ You can refer to the same instructions as below on how to create it.
 The information on this page is just a specific use case of using cloud-config. For more generic info on how to create arbitrary files check our [cloud-config](cloud-config-reference.md) page
 :::
 
-Elemental Teal currently uses [NetworkManager](https://networkmanager.dev/) to manage network connections.
+SLE Micro for Rancher currently uses [NetworkManager](https://networkmanager.dev/) to manage network connections.
 
 In order to add Wi-Fi to your node, your registration should include a configuration in the [cloud-config](cloud-config-reference.md) section to write a
 `.connection` file so NetworkManager can connect to the Wi-Fi.

@@ -18,7 +18,7 @@ import SeedImage from "!!raw-loader!@site/examples/quickstart/seedimage.yaml"
 # Elemental the command line way
 
 Follow this guide to have an auto-deployed cluster via rke2/k3s and managed by Rancher 
-with the only help of an Elemental Teal ISO.
+with the only help of an Elemental ISO.
 
 <Prereqs />
 
@@ -133,7 +133,7 @@ kubectl apply -f https://raw.githubusercontent.com/rancher/elemental-docs/main/e
 ## Preparing the installation (seed) image
 
 
-This is the last step: you need an Elemental Teal seed image that includes the initial registration config, so it can be auto registered, installed and fully deployed as part of your cluster.
+This is the last step: you need an Elemental seed image that includes the initial registration config, so it can be auto registered, installed and fully deployed as part of your cluster.
 
 :::note note
 The initial registration config file is generated when you create a `Machine Registration`.
@@ -156,10 +156,10 @@ The seed image created by the `SeedImage` resource above can be downloaded as an
 
 ```shell showLineNumbers
 kubectl wait --for=condition=ready pod -n fleet-default fire-img
-wget --no-check-certificate `kubectl get seedimage -n fleet-default fire-img -o jsonpath="{.status.downloadURL}"` -O elemental-teal.x86_64.iso
+wget --no-check-certificate `kubectl get seedimage -n fleet-default fire-img -o jsonpath="{.status.downloadURL}"` -O elemental.x86_64.iso
 ```
 
-The first command waits for the ISO to be built and ready, the second one downloads it in the current directory with the name `elemental-teal-x86_64.iso`.
+The first command waits for the ISO to be built and ready, the second one downloads it in the current directory with the name `elemental-x86_64.iso`.
 
 </TabItem>
 <TabItem value="manual_raw" label="Preparing the seed image (aarch64) manually">
@@ -238,7 +238,7 @@ Make sure the micro SD-card is unpartitioned. Otherwise the Pi bootloader will t
 You can now boot your nodes with this image and they will:
 
 - Register with the registrationURL given and create a per-machine `MachineInventory`
-- Install Elemental Teal to the given device
+- Install SLE Micro to the given device
 - Reboot
 
 ### Selecting the right machines to join a cluster

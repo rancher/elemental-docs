@@ -19,8 +19,7 @@ Kubernetes workloads should bring their certificates within the
 container image instead.
 :::
 
-In order to install a custom certificate on SLE Micro for Rancher we
-need to
+In order to install a custom certificate we need to
 
 * copy the `.pem` file to `/etc/pki/trust/anchors/`
 * run `update-ca-certificates`

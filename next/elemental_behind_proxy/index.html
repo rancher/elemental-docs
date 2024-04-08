@@ -10,7 +10,7 @@
 
 
 <link rel="search" type="application/opensearchdescription+xml" title="Elemental - Immutable Linux for Rancher" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.5d1d48fd.css">
-<script src="/assets/js/runtime~main.19f0c5fb.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.4c9772cf.js" defer="defer"></script>
 <script src="/assets/js/main.b0dae79a.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -20,7 +20,7 @@
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="introduction">Introduction<a href="#introduction" class="hash-link" aria-label="Direct link to Introduction" title="Direct link to Introduction">​</a></h2>
 <p>In a lot of enterprise environments, servers or VMs running on premises do not have direct Internet access. Instead, the connection to external services is done through a HTTP(S) proxy for security reasons. This tutorial shows you how to set up an Elemental deployment in such an environment.</p>
 <div class="theme-admonition theme-admonition-caution admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>important note</div><div class="admonitionContent_BuS1"><p>This guide will not cover the Rancher installation behind a proxy. It&#x27;s a different use case and you can find the detailed documentation <a href="https://ranchermanager.docs.rancher.com/pages-for-subheaders/rancher-behind-an-http-proxy" target="_blank" rel="noopener noreferrer">here</a>.</p></div></div>
-<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>For this documentation, we assume you are using a SUSE family system (like Elemental Teal), so proxy settings have to be written in <code>/etc/sysconfig/proxy</code>.</p></div></div>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>For this documentation, we assume you are using a SUSE family system (like SLE Micro), so proxy settings have to be written in <code>/etc/sysconfig/proxy</code>.</p></div></div>
 <p>Proxy settings must be configured in the following locations:</p>
 <ul>
 <li>Machine Registration Endpoint</li>

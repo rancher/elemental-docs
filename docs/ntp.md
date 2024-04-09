@@ -56,7 +56,7 @@ machineInventoryLabels:
 
 ### Configure NTP from DHCP
 In order to get the NTP server from the network via the NTP DHCP option, we need
-a NetworkManager dispatcher script to reconfigure dinamically the `systemd-timesync` service when
+a NetworkManager dispatcher script to reconfigure dynamically the `systemd-timesync` service when
 needed.
 
 We will have both to:

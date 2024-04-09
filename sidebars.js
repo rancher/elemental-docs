@@ -91,6 +91,7 @@ const sidebars = {
         'wifi',
         'elemental_behind_proxy',
         'hostname',
+        'ntp',
         'rancher-vmware',
         'removable-device-cloudconfig',
         'custom-certificate',

@@ -88,9 +88,19 @@ const sidebars = {
       "label": "How to",
       "items": [
         "custom-images",
-        "wifi",
         "elemental_behind_proxy",
         "hostname",
+        {
+          "type": "category",
+          "collapsible": true,
+          "collapsed": true,
+          "label": "Customize networking",
+          "link": {"type": "doc", "id": "networking"},
+          "items": [
+            "networking-vlans",
+            "wifi"
+          ]
+        },
         "ntp",
         "rancher-vmware",
         "removable-device-cloudconfig",

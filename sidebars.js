@@ -36,7 +36,7 @@ const sidebars = {
         "installation",
         "upgrade",
         "upgrade-lifecycle",
-	'custom-install',
+        "custom-install",
         "elemental-plans",
       ]
     },
@@ -82,30 +82,40 @@ const sidebars = {
       ]
     },
     {
-      type: 'category',
-      collapsible: true,
-      collapsed: true,
-      label: 'How to',
-      items: [
-	'custom-images',
-        'wifi',
-        'elemental_behind_proxy',
-        'hostname',
-        'ntp',
-        'rancher-vmware',
-        'removable-device-cloudconfig',
-        'custom-certificate',
-        'airgap',
-        'raspi-disk',
-        'tpm'
+      "type": "category",
+      "collapsible": true,
+      "collapsed": true,
+      "label": "How to",
+      "items": [
+        "custom-images",
+        "elemental_behind_proxy",
+        "hostname",
+        {
+          "type": "category",
+          "collapsible": true,
+          "collapsed": true,
+          "label": "Customize networking",
+          "link": {"type": "doc", "id": "networking"},
+          "items": [
+            "networking-vlans",
+            "wifi"
+          ]
+        },
+        "ntp",
+        "rancher-vmware",
+        "removable-device-cloudconfig",
+        "custom-certificate",
+        "airgap",
+        "raspi-disk",
+        "tpm"
       ]
     },
     {
-      type: 'category',
-      collapsible: true,
-      collapsed: true,
-      label: 'Troubleshooting',
-      items: [
+      "type": "category",
+      "collapsible": true,
+      "collapsed": true,
+      "label": 'Troubleshooting',
+      "items": [
         {
           "type": "category",
           "collapsible": true,

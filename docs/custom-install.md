@@ -12,8 +12,8 @@ title: ''
 Elemental installed OS images can be customized in different ways.
 
 One option is to remaster container OS images by simply using a docker build.
-SLE Micro for Rancher images are regular container images, so it is absolutely possible to create
-a new image using a Dockerfile based on SLE Micro for Rancher. See [Build Custom OS Images](/custom-images.md)
+SLE Micro images are regular container images, so it is absolutely possible to create
+a new image using a Dockerfile based on SLE Micro. See [Build Custom OS Images](/custom-images.md)
 section for further details on that possibility.
 
 Alternatively, it is also possible to provide additional resources within the installation

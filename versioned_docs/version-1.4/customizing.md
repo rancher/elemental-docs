@@ -275,7 +275,7 @@ show case how this could be added:
 
 ```docker showLineNumbers
 # The version of Elemental to modify
-FROM registry.suse.com/suse/sle-micro/5.5:2.0.2
+FROM registry.suse.com/suse/sle-micro/5.5:latest
 
 # Custom commands
 RUN rpm --import <repo-signing-key-url> && \

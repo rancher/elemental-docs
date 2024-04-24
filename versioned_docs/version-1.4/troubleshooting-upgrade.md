@@ -80,7 +80,7 @@ spec:
 
 ## Elemental Cluster side
 
-Any Elemental Teal node correctly registered and part of the target cluster will fetch the bundle and start applying it.  
+Any Elemental node correctly registered and part of the target cluster will fetch the bundle and start applying it.  
 This operation is performed by the Rancher's `system-upgrade-controller` running on the Elemental Cluster.  
 To monitor the correct operation of this controller, you can read its logs:
 
@@ -103,7 +103,7 @@ You can monitor these jobs with:
 kubectl -n cattle-system get jobs
 ```
 
-Each job will use a `privileged: true` container with the Elemental Teal image specified in the `ManagedOSImage` definition. This container will try to upgrade the system and perform a reboot.  
+Each job will use a `privileged: true` container with the SLE Micro image specified in the `ManagedOSImage` definition. This container will try to upgrade the system and perform a reboot.  
 
 If the job fails, you can check its status by examining the logs:
 
@@ -115,7 +115,7 @@ kubectl -n cattle-system logs job.batch/apply-os-upgrader-my-upgrade-on-my-host-
 
 Note that the upgrade process is performed in two stages.  
 You will notice that the same job is ran twice and the first one ends with the `Uknown` Status and will not complete.  
-**This is to be expected**, as Elemental Teal relies on the job to be ran again after the machine restarts, so that it can verify the new version was installed correctly.  
+**This is to be expected**, as Elemental relies on the job to be ran again after the machine restarts, so that it can verify the new version was installed correctly.  
 You will notice a second run of the job, this time completing correctly.
 
 ```shell showLineNumbers

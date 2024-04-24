@@ -122,7 +122,3 @@ an update of containerd, k3s, RKE2, or Rancher does not require an OS upgrade
 or node reboot.
 
 ----
-
-## Elemental
-
-Elemental OS is built on top of SUSE Linux Enterprise (SLE) Micro for Rancher using the Elemental stack.

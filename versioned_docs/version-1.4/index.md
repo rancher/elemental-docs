@@ -24,26 +24,9 @@ Cluster Node OSes are built and maintained via container images through the <Var
 
 The <Vars link="elemental_operator_url" name="elemental_operator_name" /> and the <Vars link="ranchersystemagent_url" name="ranchersystemagent_name" /> enable Rancher Manager to fully control Elemental clusters, from the installation and management of the OS on the Nodes to the provisioning of new K3s or RKE2 clusters in a centralized way.
 
-## What is Elemental Teal ?
-
-Elemental Teal is a combination of "SLE Micro for Rancher" with the Rancher Elemental stack.
-
-SLE Micro for Rancher is a containerized and "stripped to the bones" OS layer. At its core, it only requires grub2, dracut, a kernel, and systemd.
-
-It's sole purpose is to run Kubernetes (k3s or RKE2), with everything controlled through Rancher Manager.
-
-Elemental Teal is built in the [openSUSE Build Service](https://build.opensuse.org/package/show/isv:Rancher:Elemental:Stable:Teal53/node-image)
-and available through the [SUSE Registry](https://registry.suse.com).
-
-You can check latest versions available with [skopeo](https://github.com/containers/skopeo):
-
-```console showLineNumbers
-skopeo list-tags docker://registry.suse.com/suse/sle-micro/5.5
-```
-
 ### Elemental on x86-64 hardware
 
-Elemental Teal is production ready and fully supported on x86-64 starting with Rancher v2.7.0.
+Elemental is production ready and fully supported on x86-64 starting with Rancher v2.7.0.
 
 ### Elemental on ARM hardware
 

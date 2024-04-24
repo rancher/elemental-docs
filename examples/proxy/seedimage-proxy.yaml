@@ -4,7 +4,7 @@ metadata:
   name: ...
   namespace: ...
 spec:
-  baseImage: https://download.opensuse.org/repositories/isv:/Rancher:/Elemental:/Stable:/Teal53/media/iso/elemental-teal.x86_64.iso
+  baseImage: registry.suse.com/suse/sle-micro/5.5:2.0.2
   cloud-config:
     write_files:
     - path: /etc/sysconfig/proxy

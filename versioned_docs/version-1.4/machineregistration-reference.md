@@ -108,7 +108,7 @@ If both `device` and `device-selector` is specified the value of `device` is use
           debug: true
           reboot: true
           eject-cd: true
-          system-uri: registry.suse.com/rancher/elemental-teal/5.4:latest
+          system-uri: registry.suse.com/suse/sle-micro/5.5:latest
   ```
 </details>
 
@@ -197,7 +197,7 @@ Supports the following values:
           reset-persistent: true
           reset-oem: true
           reboot: true
-          system-uri: registry.opensuse.org/isv/rancher/elemental/stable/teal53/15.4/rancher/elemental-teal/5.3:latest
+          system-uri: registry.suse.com/suse/sle-micro/5.5:latest
   ```
 </details>
 

@@ -172,9 +172,9 @@ This command will download the vanilla iso and inject it with the parameters of 
 If you would like to download the vanilla ISO and reuse it later to create additional ISO's, then you can download the iso separately using the below command and then pass the local file path as an argument to the script
 
 ```shell showLineNumbers
-wget https://download.opensuse.org/repositories/isv:/Rancher:/Elemental:/Stable:/Teal53/media/iso/elemental-teal.x86_64.iso 
+wget https://download.opensuse.org/repositories/isv:/Rancher:/Elemental:/Staging/containers/iso/sl-micro-6.0-baremetal.x86_64.iso
 
-./elemental-iso-add-registration initial-registration.yaml /home/elemental-iso/elemental-teal.x86_64.iso
+./elemental-iso-add-registration initial-registration.yaml /home/elemental-iso/sl-micro-6.0-baremetal.x86_64.iso
 ```
 
 :::

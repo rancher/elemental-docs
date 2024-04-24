@@ -260,7 +260,7 @@ Assuming an `overlay` folder was created in the current directory containing all
 additional files to be appended, the following `xorriso` command adds the extra files:
 
 ```bash showLineNumbers
-xorriso -indev elemental-teal.x86_64.iso -outdev elemental-teal.custom.x86_64.iso -map overlay / -boot_image any replay
+xorriso -indev elemental.x86_64.iso -outdev elemental.custom.x86_64.iso -map overlay / -boot_image any replay
 ```
 
 For that a `xorriso` equal or higher than version 1.5 is required.
@@ -275,7 +275,7 @@ show case how this could be added:
 
 ```docker showLineNumbers
 # The version of Elemental to modify
-FROM registry.suse.com/rancher/elemental-teal/5.4:latest
+FROM registry.suse.com/suse/sle-micro/5.5:2.0.2
 
 # Custom commands
 RUN rpm --import <repo-signing-key-url> && \
@@ -335,7 +335,7 @@ RUN --mount=type=bind,source=./,target=/output,rw \
         dir:rootfs \
         --bootloader-in-rootfs \
         --squash-no-compression \
-        -o /output -n "elemental-teal-${TARGETARCH}"
+        -o /output -n "elemental-${TARGETARCH}"
 ```
 
 
@@ -348,7 +348,7 @@ buildah build --tag myrepo/custom-build:v1.1.1 \
               .
 ```
 
-The new customized installation media can be found in `elemental-teal-amd64.iso`.
+The new customized installation media can be found in `elemental-amd64.iso`.
 
 :::caution important
 You still need to [prepare the installation image](quickstart-cli#preparing-the-installation-seed-image) so it can be used to boot and provision the machine.

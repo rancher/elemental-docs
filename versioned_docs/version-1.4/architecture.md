@@ -123,6 +123,6 @@ or node reboot.
 
 ----
 
-## Elemental Teal
+## Elemental
 
-Elemental Teal is Elemental OS built on top of SUSE Linux Enterprise (SLE) Micro for Rancher using the Elemental stack.
+Elemental OS is built on top of SUSE Linux Enterprise (SLE) Micro for Rancher using the Elemental stack.

@@ -155,10 +155,10 @@ The seed image created by the `SeedImage` resource above can be downloaded as an
 
 ```shell showLineNumbers
 kubectl wait --for=condition=ready pod -n fleet-default fire-img
-wget --no-check-certificate `kubectl get seedimage -n fleet-default fire-img -o jsonpath="{.status.downloadURL}"` -O elemental-teal.x86_64.iso
+wget --no-check-certificate `kubectl get seedimage -n fleet-default fire-img -o jsonpath="{.status.downloadURL}"` -O elemental.x86_64.iso
 ```
 
-The first command waits for the ISO to be built and ready, the second one downloads it in the current directory with the name `elemental-teal-x86_64.iso`.
+The first command waits for the ISO to be built and ready, the second one downloads it in the current directory with the name `elemental.x86_64.iso`.
 
 </TabItem>
 <TabItem value="manual_iso" label="Preparing the seed image (x86_64) manually">

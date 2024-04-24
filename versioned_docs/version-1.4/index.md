@@ -38,7 +38,7 @@ and available through the [SUSE Registry](https://registry.suse.com).
 You can check latest versions available with [skopeo](https://github.com/containers/skopeo):
 
 ```console showLineNumbers
-skopeo list-tags docker://registry.suse.com/rancher/elemental-teal/5.3
+skopeo list-tags docker://registry.suse.com/suse/sle-micro/5.5
 ```
 
 ### Elemental on x86-64 hardware

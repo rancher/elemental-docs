@@ -120,6 +120,15 @@ const sidebars = {
           "type": "category",
           "collapsible": true,
           "collapsed": true,
+          "label": "Support",
+          "items": [
+            "troubleshooting-support",
+          ]
+        },
+        {
+          "type": "category",
+          "collapsible": true,
+          "collapsed": true,
           "label": "Rancher",
           "items": [
             "troubleshooting-rancher-upgrades",

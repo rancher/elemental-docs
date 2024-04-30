@@ -9,7 +9,7 @@ title: ''
 
 # Elemental Support
 
-The `elemental-support` is a utility program that collects all information about the machine where the elemental stack is running.  
+The `elemental-support` is a utility program that collects all information about the machine where the Elemental stack is running.  
 
 When troubleshooting issues with any Elemental node, it is possible to generate a compressed file containing logs and config files.  
 Be aware that **the tar.gz generated file may contain sensitive information**, like access tokens to the management cluster and more.  

@@ -106,7 +106,7 @@ Note this is the basic structure of any OS built by the <Vars name="elemental_to
 
 ## Elemental Immutable Root
 
-ne of the characteristics of Elemental OSes is the setup of an immutable root
+One of the characteristics of Elemental OSes is the setup of an immutable root
 filesystem where some ephemeral or persistent locations are applied on top of
 it. The default folders structure is listed in the matrix below.
 

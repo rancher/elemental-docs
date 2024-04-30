@@ -117,49 +117,29 @@ const sidebars = {
       "label": 'Troubleshooting',
       "items": [
         {
-          "type": "category",
-          "collapsible": true,
-          "collapsed": true,
+          "type": "doc",
           "label": "Support",
-          "items": [
-            "troubleshooting-support",
-          ]
+          "id": "troubleshooting-support",
         },
         {
-          "type": "category",
-          "collapsible": true,
-          "collapsed": true,
+          "type": "doc",
           "label": "Rancher",
-          "items": [
-            "troubleshooting-rancher-upgrades",
-          ]
+          "id": "troubleshooting-rancher-upgrades",
         },
         {
-          "type": "category",
-          "collapsible": true,
-          "collapsed": true,
+          "type": "doc",
           "label": "Restore",
-          "items": [
-            "troubleshooting-restore",
-          ]
+          "id": "troubleshooting-restore",
         },
         {
-          "type": "category",
-          "collapsible": true,
-          "collapsed": true,
+          "type": "doc",
           "label": "Upgrade",
-          "items": [
-            "troubleshooting-upgrade"
-          ]
+          "id": "troubleshooting-upgrade",
         },
         {
-          "type": "category",
-          "collapsible": true,
-          "collapsed": true,
+          "type": "doc",
           "label": "Reset",
-          "items": [
-            "troubleshooting-reset"
-          ]
+          "id": "troubleshooting-reset",
         }
       ],
     },

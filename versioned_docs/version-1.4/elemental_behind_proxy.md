@@ -20,7 +20,7 @@ This guide will not cover the Rancher installation behind a proxy. It's a differ
 :::
 
 :::info info
-For this documentation, we assume you are using a SUSE family system (like Elemental Teal), so proxy settings have to be written in `/etc/sysconfig/proxy`.
+For this documentation, we assume you are using a SUSE family system (like SLE Micro), so proxy settings have to be written in `/etc/sysconfig/proxy`.
 :::
 
 Proxy settings must be configured in the following locations:

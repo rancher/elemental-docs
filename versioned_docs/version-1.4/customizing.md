@@ -9,14 +9,14 @@ title: ''
 
 # Customize Elemental Install
 
-Elemental Teal images can be customized in different ways.
+Elemental installed OS can be customized in three different non-exclusive ways
 One option is to provide
 additional resources within the installation media so that during installation, or
 eventually at boot time, additional binaries such as drivers can be included.
 
-Another option would be to remaster the Elemental Teal by simply using a docker build.
-Elemental Teal is a regular container image, so it is absolutely possible to create
-a new image using a Dockerfile based on Elemental Teal image.
+Another option would be to remaster the Elemental images by simply using a docker build.
+Elemental images are regular container images, so it is absolutely possible to create
+a new image using a Dockerfile.
 
 ## Customize installation ISO and installation process
 
@@ -26,7 +26,7 @@ is added.
 
 ### Common customization pattern
 
-Elemental Teal installation can be customized in three different non-exclusive ways. First, including
+Elemental installed OS can be customized in three different non-exclusive ways. First, including
 some custom Elemental client configuration file, second, by including additional cloud-init files to execute at
 boot time, and finally, by including  `cloud-init` files such as installation hooks or boot stages evaluated during
 the live system boot itself.
@@ -75,7 +75,7 @@ the `config-urls` field is used for this exact purpose. See [MachineRegistration
 cloud-init file. The local path is evaluated during
 the installation, hence it must exists within the installation media, commonly an ISO image.
 
-By default, Elemental Teal live systems mount the ISO root at `/run/initramfs/live` which is also the default path set for `config-url` in `MachineRegistrations`:
+By default, Elemental live systems mount the ISO root at `/run/initramfs/live` which is also the default path set for `config-url` in `MachineRegistrations`:
 See the example below:
 
 ```yaml showLineNumbers
@@ -95,7 +95,7 @@ spec:
         config-urls:
         - "/run/initramfs/live/oem/custom_config.yaml"
 ```
-Elemental Teal live ISOs, when booted, have the ISO root mounted at `/run/initramfs/live`.
+Elemental live ISOs, when booted, have the ISO root mounted at `/run/initramfs/live`.
 According to that, the ISO for the example above is expected to include the `/oem/custom_config.yaml` file.
 
 :::note
@@ -169,7 +169,7 @@ as part of an LVM setup.
 As an example, we have an host with three disks (`/dev/sda`, `/dev/sdb`
 and `/dev/sdc`). 
 
-The first disk is used for a regular Elemental Teal installation
+The first disk is used for a regular Elemental installation
 and the other remaining two are used as part of a LVM group where arbitrary logical volumes
 are created, formatted and mounted at boot time via an extended `fstab` file.
 
@@ -260,14 +260,14 @@ Assuming an `overlay` folder was created in the current directory containing all
 additional files to be appended, the following `xorriso` command adds the extra files:
 
 ```bash showLineNumbers
-xorriso -indev elemental-teal.x86_64.iso -outdev elemental-teal.custom.x86_64.iso -map overlay / -boot_image any replay
+xorriso -indev elemental.x86_64.iso -outdev elemental.custom.x86_64.iso -map overlay / -boot_image any replay
 ```
 
 For that a `xorriso` equal or higher than version 1.5 is required.
 
 ## Remastering a custom docker image
 
-Since Elemental Teal image is a Docker image it can also be used as a base image
+Since Elemental images are Docker images, they can also be used as a base image
 in a Dockerfile in order to create a new container image.
 
 Imagine some additional package from an extra repository is required, the following example
@@ -275,7 +275,7 @@ show case how this could be added:
 
 ```docker showLineNumbers
 # The version of Elemental to modify
-FROM registry.suse.com/rancher/elemental-teal/5.4:latest
+FROM registry.suse.com/suse/sle-micro/5.5:latest
 
 # Custom commands
 RUN rpm --import <repo-signing-key-url> && \
@@ -335,7 +335,7 @@ RUN --mount=type=bind,source=./,target=/output,rw \
         dir:rootfs \
         --bootloader-in-rootfs \
         --squash-no-compression \
-        -o /output -n "elemental-teal-${TARGETARCH}"
+        -o /output -n "elemental-${TARGETARCH}"
 ```
 
 
@@ -348,7 +348,7 @@ buildah build --tag myrepo/custom-build:v1.1.1 \
               .
 ```
 
-The new customized installation media can be found in `elemental-teal-amd64.iso`.
+The new customized installation media can be found in `elemental-amd64.iso`.
 
 :::caution important
 You still need to [prepare the installation image](quickstart-cli#preparing-the-installation-seed-image) so it can be used to boot and provision the machine.

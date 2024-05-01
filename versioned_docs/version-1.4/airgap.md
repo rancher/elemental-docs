@@ -20,7 +20,7 @@ In order to run Elemental in an air-gapped environment the following artifacts a
 - the containerized OS images
 
 Moreover, it could be handy to create a *channel image* referencing the containerized OS images available.
-The official channel image (the *elemental-teal-channel* one) references absolute URLs of the OS images on the official suse registry, so it cannot be used in an air-gapped scenario.
+The official channel image (the *elemental-channel* one) references absolute URLs of the OS images on the official suse registry, so it cannot be used in an air-gapped scenario.
 
 All these steps can be performed by executing the [`elemental-airgap.sh` script](https://raw.githubusercontent.com/rancher/elemental-operator/main/scripts/elemental-airgap.sh) from a host with Internet access.
 You can provide manually downloaded Elemental charts to the script or let it download the helm charts for you.
@@ -67,7 +67,7 @@ helm upgrade --create-namespace -n cattle-elemental-system \
 helm upgrade --create-namespace -n cattle-elemental-system \
   --install elemental-operator elemental-operator-chart-<VERSION>.tgz \
   --set registryUrl=<REGISTRY.YOURDOMAIN.COM:PORT> \
-  --set channel.repository=rancher/elemental-teal-channel-<REGISTRY.YOURDOMAIN.COM>
+  --set channel.repository=rancher/elemental-channel-<REGISTRY.YOURDOMAIN.COM>
 ```
 
 :::info The elemental airgap script outputs the required commands

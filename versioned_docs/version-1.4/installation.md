@@ -12,10 +12,8 @@ title: ''
 ## Overview
 
 Elemental stack provides OS management using OCI containers and Kubernetes. The Elemental
-stack installation encompasses the installation of the <Vars name="elemental_operator_name" /> into the
-management cluster and the creation and use of Elemental Teal installation media to
-provide the OS into the Cluster Nodes. See [Architecture](architecture.md) section to read about the
-interaction of the components.
+stack installation encompasses the installation of the <Vars name="elemental_operator_name" /> into the management cluster and the creation and use of installation media to
+provide the OS into the Cluster Nodes. See [Architecture](architecture.md) section to read about the interaction of the components.
 
 The installation configuration is mostly applied and set as part of the registration process.
 The registration process is done by the `elemental-register` (the <Vars name="elemental_operator_name" /> client part)
@@ -45,7 +43,7 @@ resources are required in order to prepare an Elemental based cluster deployment
 * [MachineRegistration](machineregistration-reference.md):
   This resource defines OS deployment details for any machine attempting to register. The machine
   registration is the entrance for Elemental nodes as it handles the authentication (based on TPM),
-  the Elemental Teal deployment and the node inclusion into to the MachineInventory so it can be added
+  the OS deployment and the node inclusion into to the MachineInventory so it can be added
   to a cluster when there is a match based on a MachineInventorySelectorTemplate. The MachineRegistration
   object includes the machine registration URL that nodes use to register against it.
 
@@ -54,7 +52,7 @@ the [Quick Start](quickstart-cli.md) guide or created from the Rancher 2.6 UI.
 
 ## Prepare Installation Media
 
-The installation media is the media that will be used to kick start an Elemental Teal deployment. Currently
+The installation media is the media that will be used to kick start an OS deployment. Currently
 the supported media is a live ISO. The live ISO must include the registration configuration yaml hence it must
 crafted once the MachineRegistration is created. The installation
 media is created by using the [`elemental-iso-add-registration`](https://github.com/rancher/elemental/blob/main/.github/elemental-iso-add-registration)
@@ -85,16 +83,16 @@ attempt to contact the management cluster and register to it by calling `element
 As the registration yaml configuration is already included into the ISO `elemental-register` knows the registration URL and
 any other required data for the registration.
 
-On a succeeded registration the installation media will start the Elemental Teal installation into the host based
+On a succeeded registration the installation media will start the installation into the host based
 on the configuration already included in the media and the MachineRegistration parameters. As soon as the installation
-is done the node is ready to reboot. The deployed Elemental Teal includes a system agent plan to
+is done the node is ready to reboot. The deployed OS includes a system agent plan to
 kick start a regular rancher provisioning process to install the selected kubernetes version, once booted, after
 some minutes the node installation is finalized and the node is included into the cluster and visible through
 the Rancher UI.
 
-## Deployed Elemental Teal Partition Table
+## Deployed Partition Table
 
-Once Elemental Teal is installed the OS partition table, according to default values, will look like
+Once the operating system is installed the OS partition table, according to default values, will look like
 
 | Label          | Default Size    | Contains                                                    |
 |----------------|-----------------|-------------------------------------------------------------|
@@ -106,11 +104,11 @@ Once Elemental Teal is installed the OS partition table, according to default va
 
 Note this is the basic structure of any OS built by the <Vars name="elemental_toolkit_name" link="elemental_toolkit_url" />
 
-## Elemental Teal Immutable Root
+## Elemental Immutable Root
 
-One of the characteristics of Elemental OSes is the setup of an immutable root filesystem where some ephemeral or
-persistent locations are applied on top of it. Elemental Teal default folders structure is listed in the
-matrix below.
+One of the characteristics of Elemental OSes is the setup of an immutable root
+filesystem where some ephemeral or persistent locations are applied on top of
+it. The default folders structure is listed in the matrix below.
 
 | Path                    | Read-Only | Ephemeral | Persistent |
 |-------------------------|:---------:|:---------:|:----------:|
@@ -131,7 +129,7 @@ matrix below.
 | /var/lib/kubelet        |           |           |     x      |
 | /var/lib/longhorn       |           |           |     x      |
 | /var/lib/rancher        |           |           |     x      |
-| /var/lib/elemetal       |           |           |     x      |
+| /var/lib/elemental      |           |           |     x      |
 | /var/lib/NetworkManager |           |           |     x      |
 | /var/lib/calico         |           |           |     x      |
 | /var/log                |           |           |     x      |

@@ -123,7 +123,7 @@ Once you create the machine registration end point it should show up as active.
 
 ## Preparing the installation (seed) image
 
-Now this is the last step, you need to prepare an Elemental Teal seed image that includes the initial registration config, so
+Now this is the last step, you need to prepare a seed image that includes the initial registration config, so
 it can be auto registered, installed and fully deployed as part of your cluster. The contents of the file are nothing 
 more than the registration URL that the node needs to register and the proper server certificate, so it can connect securely.
 
@@ -140,7 +140,7 @@ Once the build is done, ISO can be downloaded using the `Download ISO` button:
 You can now boot your nodes with this image and they will:
 
 - Register with the registrationURL given and create a per-machine `MachineInventory`
-- Install Elemental Teal to the given device
+- Install SLE Micro to the given device
 - Reboot
 
 ## Machine Inventory

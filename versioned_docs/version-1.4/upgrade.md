@@ -20,9 +20,9 @@ import Versions from "../examples/upgrade/versions.raw!=!raw-loader!@site/exampl
 All components in Elemental are managed using Kubernetes. Below is how
 to use Kubernetes approaches to upgrade the components.
 
-## Elemental Teal node upgrade
+## Elemental node upgrade
 
-Elemental Teal is upgraded with the <Vars name="elemental_operator_name" />. Refer to the
+Elemental nodes are upgraded with the <Vars name="elemental_operator_name" />. Refer to the
 [<Vars name="elemental_operator_name" />](elementaloperatorchart-reference.md) documentation for complete information.
 
 Upgrade can be achieve either with CLI or UI:
@@ -117,8 +117,8 @@ The generated data is then automounted by the syncer and then parsed so it can g
 The only requirement to make your own custom syncer is to make it output a json file to `/data/output` and keep the correct json structure.
 :::
 
-Elemental project provides an Elemental Teal channel to list all `ManagedOSVersions` released as a custom syncer.
-See the Elemental Teal channel resource definition below:
+Elemental project provides a channel to list all `ManagedOSVersions` released as a custom syncer.
+See the channel resource definition below:
 
 <CodeBlock language="yaml" title="managed-os-version-channel-json.yaml" showLineNumbers>{ManagedOSVersionChannelCustom}</CodeBlock>
 

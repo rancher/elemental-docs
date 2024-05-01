@@ -138,7 +138,7 @@ Once the build is done, media can be downloaded using the `Download Media` butto
 You can now boot your nodes with this image and they will:
 
 - Register with the registrationURL given and create a per-machine `MachineInventory`
-- Install SLE Micro for Rancher to the given device
+- Install SLE Micro to the given device
 - Reboot
 
 ## Machine Inventory

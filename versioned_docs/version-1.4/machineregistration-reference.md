@@ -108,7 +108,7 @@ If both `device` and `device-selector` is specified the value of `device` is use
           debug: true
           reboot: true
           eject-cd: true
-          system-uri: registry.suse.com/rancher/elemental-teal/5.4:latest
+          system-uri: registry.suse.com/suse/sle-micro/5.5:latest
   ```
 </details>
 
@@ -197,7 +197,7 @@ Supports the following values:
           reset-persistent: true
           reset-oem: true
           reboot: true
-          system-uri: registry.opensuse.org/isv/rancher/elemental/stable/teal53/15.4/rancher/elemental-teal/5.3:latest
+          system-uri: registry.suse.com/suse/sle-micro/5.5:latest
   ```
 </details>
 
@@ -233,7 +233,7 @@ The UUID will be retrieved from the SMBIOS data if available, otherwise a random
 Labels that will be set to the `MachineInventory` that is created from this `MachineRegistration`
 `Key: value` type. These labels will be used to establish a selection criteria in [MachineInventorySelectorTemplate](machineinventoryselectortemplate-reference.md).  
 
-Elemental Teal nodes will run `elemental-register` every 24 hours.  
+Elemental nodes will run `elemental-register` every 24 hours.  
 It is possible to update the `machineInventoryLabels` so that all registered nodes will apply the new labels on the next successfull registration update.  
 
 :::info

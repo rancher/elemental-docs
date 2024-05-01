@@ -98,7 +98,7 @@ helm upgrade --create-namespace -n cattle-elemental-system \
 helm upgrade --create-namespace -n cattle-elemental-system \
   --install elemental-operator elemental-operator-chart-<VERSION>.tgz \
   --set registryUrl=<REGISTRY.YOURDOMAIN.COM:PORT> \
-  --set channel.repository=rancher/elemental-teal-channel-<REGISTRY.YOURDOMAIN.COM>
+  --set channel.repository=rancher/elemental-channel-<REGISTRY.YOURDOMAIN.COM>
 ```
 </TabItem>
 <TabItem value="haulerArchive" label="Install from a Hauler archive" default>

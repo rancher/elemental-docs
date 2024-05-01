@@ -10,7 +10,7 @@
 
 
 <link rel="search" type="application/opensearchdescription+xml" title="Elemental - Immutable Linux for Rancher" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.5d1d48fd.css">
-<script src="/assets/js/runtime~main.c236724d.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.048d97df.js" defer="defer"></script>
 <script src="/assets/js/main.938a1698.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -77,7 +77,7 @@
 <p>Once you create the machine registration end point it should show up as active.</p>
 <p><img loading="lazy" alt="Machine registered in Registration Endpoints" src="/assets/images/quickstart-ui-registration-endpoint-complete-2e9c6ad1ad36b63e77b99236e12c440e.png" width="1428" height="738" class="img_CujE"></p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="preparing-the-installation-seed-image">Preparing the installation (seed) image<a href="#preparing-the-installation-seed-image" class="hash-link" aria-label="Direct link to Preparing the installation (seed) image" title="Direct link to Preparing the installation (seed) image">​</a></h2>
-<p>Now this is the last step, you need to prepare an Elemental Teal seed image that includes the initial registration config, so
+<p>Now this is the last step, you need to prepare a seed image that includes the initial registration config, so
 it can be auto registered, installed and fully deployed as part of your cluster. The contents of the file are nothing
 more than the registration URL that the node needs to register and the proper server certificate, so it can connect securely.</p>
 <p>This seed image can then be used to provision an infinite number of machines.</p>
@@ -88,7 +88,7 @@ more than the registration URL that the node needs to register and the proper se
 <p>You can now boot your nodes with this image and they will:</p>
 <ul>
 <li>Register with the registrationURL given and create a per-machine <code>MachineInventory</code></li>
-<li>Install Elemental Teal to the given device</li>
+<li>Install SLE Micro to the given device</li>
 <li>Reboot</li>
 </ul>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="machine-inventory">Machine Inventory<a href="#machine-inventory" class="hash-link" aria-label="Direct link to Machine Inventory" title="Direct link to Machine Inventory">​</a></h2>

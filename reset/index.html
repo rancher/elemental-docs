@@ -10,7 +10,7 @@
 
 
 <link rel="search" type="application/opensearchdescription+xml" title="Elemental - Immutable Linux for Rancher" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.5d1d48fd.css">
-<script src="/assets/js/runtime~main.c236724d.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.048d97df.js" defer="defer"></script>
 <script src="/assets/js/main.938a1698.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -34,7 +34,7 @@
 <!-- -->This will fetch the remote <code>MachineRegistration</code> and apply the <code>spec.config.elemental.reset</code> options to reset the machine.<br>
 <!-- -->A new <code>MachineInventory</code> will be created and the <code>spec.config.cloud-config</code> defined in the <code>MachineRegistration</code> will be applied again.</li>
 </ol>
-<p>Note that the <code>MachineRegistration</code> reference will <strong>not</strong> change, the machine will <strong>not</strong> be reinstalled, the <code>COS_PERSISTENT</code> and <code>COS_OEM</code> partition will be cleared by default if reset is <code>enabled</code>. For more information, you can consult the <a href="/installation#deployed-elemental-teal-partition-table">Partition Table</a>.</p>
+<p>Note that the <code>MachineRegistration</code> reference will <strong>not</strong> change, the machine will <strong>not</strong> be reinstalled, the <code>COS_PERSISTENT</code> and <code>COS_OEM</code> partition will be cleared by default if reset is <code>enabled</code>. For more information, you can consult the <a href="/installation#deployed-elemental-partition-table">Partition Table</a>.</p>
 <p>Since the <code>cloud-config</code> is re-applied during the reset workflow, you can reset a machine to apply updates from the <code>MachineRegistration</code> definition, for example to rotate <code>users</code> credentials and authorized keys. It is strongly recommended to enable the <code>reset-oem</code> option, to avoid conflicts with previously configured cloud-configs.</p>
 <p>If you need to bind a machine to a different <code>MachineRegistration</code> and trigger a new full installation, you need to reprovision it again using a new image.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="enable-machine-reset">Enable machine reset<a href="#enable-machine-reset" class="hash-link" aria-label="Direct link to Enable machine reset" title="Direct link to Enable machine reset">​</a></h3>

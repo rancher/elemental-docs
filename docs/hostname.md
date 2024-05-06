@@ -63,4 +63,3 @@ the registration phase, which will be later set as the static hostname of the ho
 provisioning phase.
 
 <CodeBlock language="yaml" title="registration example with hostname and MachineInventory name set on the hostname got by the DHCP server" showLineNumbers>{Registration}</CodeBlock>
-:::

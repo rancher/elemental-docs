@@ -8,6 +8,8 @@ title: ''
 </head>
 
 ## Customize hostname
+
+
 ### Elemental hostname management overview
 
 When a host boots from the Elemental ISO, the hostname is temporarily set (*transient hostname*) to the one provided from the DHCP server.
@@ -63,4 +65,16 @@ the registration phase, which will be later set as the static hostname of the ho
 provisioning phase.
 
 <CodeBlock language="yaml" title="registration example with hostname and MachineInventory name set on the hostname got by the DHCP server" showLineNumbers>{Registration}</CodeBlock>
+
+:::caution DHCP hostname breaks reset functionality
+SLE Micro images distributed through the default Elemental channel enforce _recovery_ as the static hostname when
+a machine is rebooted into recovery mode.
+
+If the [reset functionality](reset.md) has been enabled, when a machine is reset, it gets rebooted in
+recovery mode, so it gets the _recovery_ static hostname.
+It then registers anew to the operator, triggering the creation of a new MachineInventory with name
+_recovery_.
+
+The next machine going through the reset process will end up trying to register with the same
+_recovery_ name, causing a registration failure due to duplicated name.
 :::

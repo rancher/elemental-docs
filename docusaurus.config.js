@@ -171,10 +171,6 @@ const config = {
                 href: 'https://github.com/rancher/elemental-operator',
               },
               {
-                label: 'Elemental CLI',
-                href: 'https://github.com/rancher/elemental-cli',
-              },
-              {
                 label: 'Rancher System Agent',
                 href: 'https://github.com/rancher/system-agent',
               },

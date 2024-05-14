@@ -26,7 +26,41 @@ const sidebars = {
         "quickstart-cli"
       ]
     },
-    "architecture",
+    {
+      "type": "category",
+      "collapsible": true,
+      "collapsed": true,
+      "label": "Architecture",
+      "items": [
+        "architecture",
+        "architecture-components",
+        {
+          "type": "category",
+          "collapsible": true,
+          "collapsed": true,
+          "label": "Custom Resources",
+          "link": {"type": "doc", "id": "custom-resources"},
+          "items": [
+            "machineinventory",
+            "machineinventoryselector",
+            "machineinventoryselectortemplate",
+            "machineregistration",
+            "seedimage",
+          ]
+        },
+        {
+          "type": "category",
+          "collapsible": true,
+          "collapsed": true,
+          "label": "Services",
+          "link": {"type": "doc", "id": "architecture-services"},
+          "items": [
+            "architecture-machineonboarding",
+            "architecture-clusterdeployment",
+          ]
+        },
+      ]
+    },
     {
       "type": "category",
       "collapsible": true,

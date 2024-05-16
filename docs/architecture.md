@@ -21,5 +21,5 @@ This is achieved through a [set of services](architecture-services.md) offered b
 
 
 
-![Elemental Architecture](images/elemental-arch-v1.3_nobg.png)
+![Elemental Architecture](images/elemental-architecture-v1.4.png)
 ----

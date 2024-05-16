@@ -6,14 +6,14 @@ title: ''
 # Elemental components
 
 The components required to provide the [Elemental services](architecture-services.md) are:
-* the [``elemental``](#elemental) command line tool
-* the [``elemental-operator``](#elemental-operator) daemon
-* the [``elemental-register``](#elemental-register) command line tool
-* the [``elemental-system-agent``](#elemental-system-agent) daemon
+* the [``elemental``](#elemental-command-line-tool) command line tool
+* the [``elemental-operator``](#elemental-operator-daemon) daemon
+* the [``elemental-register``](#elemental-register-command-line-tool) command line tool
+* the [``elemental-system-agent``](#elemental-system-agent-daemon) daemon
 * one or more [Elemental OS container images](#elemental-os-container-image)
 
 ### ``elemental`` command line tool
-The ``elemental`` tool is part of the Elemental Toolkit project.
+The ``elemental`` tool is part of the <Vars name="elemental_toolkit_name" link="elemental_toolkit_url" /> project.
 It performs the actual OS installation and upgrade operations on the host and is used to execute the [cloud-config](cloud-config-reference.md) directives added in the [Elemental CRDs](custom-resources.md).
 
 The ``elemental`` binary is included in all the base OS images distributed with Elemental.

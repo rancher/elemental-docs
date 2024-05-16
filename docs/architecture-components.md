@@ -26,10 +26,10 @@ The **elemental-operator** daemon performs two main tasks:
 The `elemental-operator` daemon is deployed on the Rancher cluster as a `Deployment` via the [Elemental Operator Helm Chart](elementaloperatorchart-reference.md).
 
 ### ``elemental-register`` command line tool
-The **elemental-register** binary is the client used to register the host against the _registration endpoints_ exposed by the [elemental-operator](#elemental-operator). It collects and forwards the host data to allow the [elemental-operator](#elemental-operator) to fill the [SMBIOS](smbios.md) and the [Hardware](hardwarelabels.md) label templates.
+The **elemental-register** binary is the client used to register the host against the _registration endpoints_ exposed by the [elemental-operator](#elemental-operator-daemon). It collects and forwards the host data to allow the [elemental-operator](#elemental-operator-daemon) to fill the [SMBIOS](smbios.md) and the [Hardware](hardwarelabels.md) label templates.
 
-If the registraton phase is performed successfully, the **elemental-register** gets the full configuration stored in the [MachineRegistration](machineregistration.md) from the **elemental-operator**.
-As the last step, the **elemental-register** client calls the [elemental](#elemental) binary passing the retrieved configuration to kick off the OS installation.
+If the registraton phase is performed successfully, the **elemental-register** gets the full configuration stored in the [MachineRegistration](machineregistration-reference.md) from the **elemental-operator**.
+As the last step, the **elemental-register** client calls the [elemental](#elemental-command-line-tool) binary passing the retrieved configuration to kick off the OS installation.
 
 ### ``elemental-system-agent`` daemon
 The ``elemental-system-agent`` is built from the [Rancher System Agent project](https://github.com/rancher/system-agent) and allows Elemental to deploy _plans_ to assist with the host provisioning.

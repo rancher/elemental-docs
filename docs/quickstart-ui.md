@@ -143,7 +143,7 @@ You can now boot your nodes with this image and they will:
 
 ## Machine Inventory
 
-When nodes are booting up for the first time, they connect to Rancher Manager and a [`Machine Inventory`](architecture#machineinventory) is created for each node.
+When nodes are booting up for the first time, they connect to Rancher Manager and a [`Machine Inventory`](machineinventory-reference.md) is created for each node.
 
 ![Machine Inventory menu](images/quickstart-ui-machine-inventory-menu.png)
 

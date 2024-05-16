@@ -12,7 +12,7 @@ title: ''
 The MachineRegistration resource allows:
 * to configure the registration process
 * to provide OS installation parameters
-* to define the [Elemental services](#architecture-services) enabled for the registering machine
+* to define the [Elemental services](architecture-services.md) enabled for the registering machine
 Once created it generates the registration URL used by nodes to register and start the [machine onboarding](architecture-machineonboarding.md) process.
 
 The MachineRegistration has a `Ready` condition which turns to true when the <Vars name="elemental_operator_name" /> has successfully generated the registration URL and an associated `ServiceAccount`. From this point on the target host can connect to the registration URL to kick off the provisioning process.

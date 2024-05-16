@@ -1,10 +1,10 @@
 ---
-sidebar_label: MachineInventory
+sidebar_label: MachineInventory reference
 title: ''
 ---
 
 <head>
-  <link rel="canonical" href="https://elemental.docs.rancher.com/machineinventory"/>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/machineinventory-reference"/>
 </head>
 
 # MachineInventory

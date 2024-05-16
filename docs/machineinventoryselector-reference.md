@@ -1,13 +1,13 @@
 ---
-sidebar_label: MachineInventorySelector
+sidebar_label: MachineInventorySelector reference
 title: ''
 ---
 
 <head>
-  <link rel="canonical" href="https://elemental.docs.rancher.com/machineinventoryselector"/>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/machineinventoryselector-reference"/>
 </head>
 
-# MachineInventorySelector
+# MachineInventorySelector reference
 
 A MachineInventorySelector selects MachineInventories based on applied selectors (usually pattern matching on MachineInventory label values).
 

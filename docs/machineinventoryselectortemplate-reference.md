@@ -9,7 +9,9 @@ title: ''
 
 # MachineInventorySelectorTemplate reference
 
-The MachineInventorySelectorTemplate is the resource responsible of defining the matching criteria to pair an inventoried machine with a Cluster resource.
+The MachineInventorySelectorTemplate is a user defined resource that will be used as the blueprint to create the required [MachineInventorySelectors](machineinventoryselector-reference.md).
+
+It is the resource responsible of defining the matching criteria to pair an inventoried machine with a Cluster resource.
 
 The relevant key is the `selector` which includes label selector expressions.
 

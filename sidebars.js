@@ -31,23 +31,10 @@ const sidebars = {
       "collapsible": true,
       "collapsed": true,
       "label": "Architecture",
+      "link": {"type": "doc", "id": "architecture"},
       "items": [
-        "architecture",
         "architecture-components",
-        {
-          "type": "category",
-          "collapsible": true,
-          "collapsed": true,
-          "label": "Custom Resources",
-          "link": {"type": "doc", "id": "custom-resources"},
-          "items": [
-            "machineinventory",
-            "machineinventoryselector",
-            "machineinventoryselectortemplate",
-            "machineregistration",
-            "seedimage",
-          ]
-        },
+        "custom-resources",
         {
           "type": "category",
           "collapsible": true,
@@ -83,12 +70,14 @@ const sidebars = {
       "items": [
         "cloud-config-reference",
         "machineregistration-reference",
+        "machineinventory-reference",
+        "machineinventoryselector-reference",
         "machineinventoryselectortemplate-reference",
         "managedosimage-reference",
         "managedosversionchannel-reference",
         "managedosversion-reference",
-        "cluster-reference",
         "seedimage-reference",
+        "cluster-reference",
         "elementaloperatorchart-reference",
         "kubernetesversions",
         "smbios",

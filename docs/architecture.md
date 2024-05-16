@@ -20,6 +20,5 @@ to provide a seamless experience going from hosts without OS to fully configured
 This is achieved through a [set of services](architecture-services.md) offered by Elemental that are made possible thanks to the [components](architecture-components.md) borrowed from the Elemental Toolkit and the Elemental Operator projects.
 
 
+![Elemental Architecture](images/elemental-architecture-v1.5.png)
 
-![Elemental Architecture](images/elemental-architecture-v1.4.png)
-----

@@ -9,7 +9,7 @@ title: ''
 
 # How to build and use custom OS images
 
-## Remasterimg an OS image with a custom Dockerfile
+## Remastering an OS image with a custom Dockerfile
 
 Since OS images provided by Elemental are container images, they can also be used as a base image
 in a Dockerfile in order to create a new container image.

@@ -26,7 +26,28 @@ const sidebars = {
         "quickstart-cli"
       ]
     },
-    "architecture",
+    {
+      "type": "category",
+      "collapsible": true,
+      "collapsed": true,
+      "label": "Architecture",
+      "link": {"type": "doc", "id": "architecture"},
+      "items": [
+        "architecture-components",
+        "custom-resources",
+        {
+          "type": "category",
+          "collapsible": true,
+          "collapsed": true,
+          "label": "Services",
+          "link": {"type": "doc", "id": "architecture-services"},
+          "items": [
+            "architecture-machineonboarding",
+            "architecture-clusterdeployment",
+          ]
+        },
+      ]
+    },
     {
       "type": "category",
       "collapsible": true,
@@ -49,12 +70,14 @@ const sidebars = {
       "items": [
         "cloud-config-reference",
         "machineregistration-reference",
+        "machineinventory-reference",
+        "machineinventoryselector-reference",
         "machineinventoryselectortemplate-reference",
         "managedosimage-reference",
         "managedosversionchannel-reference",
         "managedosversion-reference",
-        "cluster-reference",
         "seedimage-reference",
+        "cluster-reference",
         "elementaloperatorchart-reference",
         "kubernetesversions",
         "smbios",

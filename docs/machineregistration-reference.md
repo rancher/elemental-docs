@@ -1,15 +1,24 @@
 ---
-sidebar_label: MachineRegistration reference
+sidebar_label: MachineRegistration
 title: ''
 ---
 
 <head>
-  <link rel="canonical" href="https://elemental.docs.rancher.com/machineregistration-reference"/>
+  <link rel="canonical" href="https://elemental.docs.rancher.com/machineregistration"/>
 </head>
 
 # MachineRegistration reference
 
-The MachineRegistration resource is the responsible of defining a machine registration end point. Once created it generates a registration URL used by nodes to register so they are inventoried.
+The MachineRegistration resource allows:
+* to configure the registration process
+* to provide OS installation parameters
+* to define the [Elemental services](architecture-services.md) enabled for the registering machine
+Once created it generates the registration URL used by nodes to register and start the [machine onboarding](architecture-machineonboarding.md) process.
+
+The MachineRegistration has a `Ready` condition which turns to true when the <Vars name="elemental_operator_name" /> has successfully generated the registration URL and an associated `ServiceAccount`. From this point on the target host can connect to the registration URL to kick off the provisioning process.
+
+An HTTP GET request against the registration URL returns the _registration file_: a .yaml file containing the registration data (i.e., the _spec:config:elemental:registration_ section from the just created MachineRegistration).
+The registration file contains all the required data to allow the target host to perform self registration and start the Elemental provisioning.
 
 There are several keys that can be configured under a `MachineRegistration` resource spec.
 

@@ -3,6 +3,9 @@ sidebar_label: Overview
 title: ''
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
 <head>
   <link rel="canonical" href="https://elemental.docs.rancher.com/architecture"/>
 </head>
@@ -19,6 +22,10 @@ to provide a seamless experience going from hosts without OS to fully configured
 
 This is achieved through a [set of services](architecture-services.md) offered by Elemental that are made possible thanks to the [components](architecture-components.md) borrowed from the Elemental Toolkit and the Elemental Operator projects.
 
-
-![Elemental Architecture](images/elemental-architecture-v1.5.png)
-
+<ThemedImage
+  alt="Elemental Architecture"
+  sources={{
+    light: useBaseUrl('img/elemental-architecture-v1.5.png'),
+    dark: useBaseUrl('img/elemental-architecture-v1.5-dark.png'),
+  }}
+/>

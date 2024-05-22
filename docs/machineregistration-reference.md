@@ -58,6 +58,7 @@ Supports the following values:
 | url               | string | empty         | URL to connect to the <Vars name="elemental_operator_name" />                                                                                  |
 | ca-cert           | string | empty         | CA to validate the certificate provided by the server at 'url' (required if the certificate is not signed by a public CA)                      |
 | no-smbios         | bool   | false         | Whether SMBIOS data should be sent to the <Vars name="elemental_operator_name" /> (see the [SMBIOS reference](smbios.md) for more information) |
+| no-toolkit        | bool   | false         | Disables the <Vars name="elemental_toolkit_name" link="elemental_toolkit_url" /> support and allows registration of an [unmanaged OS](unmanaged-os.md)                                           |
 
 :::warning
 The following values are for development purposes only.

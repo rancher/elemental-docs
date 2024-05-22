@@ -130,7 +130,8 @@ const sidebars = {
         "custom-certificate",
         "airgap",
         "raspi-disk",
-        "tpm"
+        "tpm",
+        "unmanaged-os"
       ]
     },
     {

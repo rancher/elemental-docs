@@ -12,7 +12,7 @@ title: ''
 
 Elemental is a software stack enabling centralized, full cloud-native OS management with Kubernetes.
 
-The Elemental Stack consists of a handful of packages on top of SLE Micro for Rancher:
+The Elemental Stack consists of a handful of packages on top of SLE Micro:
 
 - **elemental-toolkit** - Includes a set of OS utilities to enable OS management via containers. Includes dracut modules, bootloader configuration, cloud-init style configuration services, etc.
 - **elemental-operator** - Connects to Rancher Manager and handles MachineRegistration and MachineInventory CRDs.

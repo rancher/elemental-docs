@@ -46,7 +46,7 @@ You can do it either with [UI](quickstart-ui#add-a-machine-registration-endpoint
 
 ## Elemental-register
 
-[Elemental-register](architecture#elemental-register-client) is the first communication endpoint between the new host and Rancher Manager, this is the first place where proxy settings need to be set.
+[Elemental-register](architecture-components#elemental-register-command-line-tool) is the first communication endpoint between the new host and Rancher Manager, this is the first place where proxy settings need to be set.
 
 :::warning warning
 At the time of writing, it's only possible to configure proxy settings for the ISO with the CLI. The proxy settings aren't implemented in the UI.
@@ -64,7 +64,7 @@ kubectl apply -f <my_seedimage_yaml_file>
 kubectl get seedimage <seed_image_name> -n <namespace> -o yaml
 ```
 
-Boot the ISO and you should see your new system appears in [Machine inventory](architecture#machineinventory).
+Boot the ISO and you should see your new system appears in [Machine inventory](machineinventory-reference.md).
 
 ## Create Elemental cluster
 

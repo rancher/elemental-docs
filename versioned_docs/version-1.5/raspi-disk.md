@@ -26,7 +26,7 @@ metadata:
   namespace: fleet-default
 spec:
   type: raw
-  baseImage: registry.opensuse.org/isv/rancher/elemental/dev/containers/suse/sle-micro/5.5:latest
+  baseImage: registry.opensuse.org/isv/rancher/elemental/staging/containers/suse/sl-micro/6.0/baremetal-os-container:latest
   targetPlatform: linux/arm64
   registrationRef:
     apiVersion: elemental.cattle.io/v1beta1
@@ -51,3 +51,12 @@ Now we can write the `.raw` image to the SD-card. This can be done with `dd` on 
 [openSUSE](https://www.opensuse.org) has nice instructions on how to write an image to a storage medium for [Linux](https://en.opensuse.org/SDB:Live_USB_stick),
 [Windows](https://en.opensuse.org/SDB:Create_a_Live_USB_stick_using_Windows), and [OS X](https://en.opensuse.org/SDB:Create_a_Live_USB_stick_using_macOS).
 
+### Starting the machine
+
+The raw disk image will only include the EFI partition, OEM partition and
+recovery partition. On first boot the system will boot into the recovery system
+to expand and add missing partitions. After expansion it will register with
+rancher and reboot.
+
+If an error occurs during registration phase the journal can be found using
+`journalctl -u elemental-register-reset`.

@@ -12,9 +12,6 @@ import NodeSelector from "!!raw-loader!@site/examples/upgrade/upgrade-node-selec
 import UpgradeForce from "!!raw-loader!@site/examples/upgrade/upgrade-force.yaml"
 import UpgradeRecovery from "!!raw-loader!@site/examples/upgrade/upgrade-recovery.yaml"
 import ManagedOSVersion from "!!raw-loader!@site/examples/upgrade/upgrade-managedos-version.yaml"
-import MangedOSVersionChannelJson from "!!raw-loader!@site/examples/upgrade/managed-os-version-channel-json.yaml"
-import ManagedOSVersionChannelCustom from "!!raw-loader!@site/examples/upgrade/managed-os-version-channel-custom.yaml"
-import Versions from "../examples/upgrade/versions.raw!=!raw-loader!@site/examples/upgrade/versions.json"
 
 # Upgrade
 
@@ -96,40 +93,9 @@ If both `osImage` and `ManagedOSVersion` are defined in the same `ManagedOSImage
 
 ### Managing available versions
 
-An `ManagedOSVersionChannel` resource can be created in a Kubernetes cluster where the Elemental operator is installed to synchronize available versions for upgrades.
+It is possible to create [ManagedOSVersions](./managedosversion-reference.md) directly, or to subscribe to [ManagedOSVersionChannels](./managedosversionchannel-reference.md) to automatically sync `ManagedOSVersions` from them.  
 
-It has a syncer in order to generate `ManagedOSVersion` automatically. Currently, we provide a json syncer and a custom one.
-
-<Tabs>
-<TabItem value="jsonSyncer" label="Json syncer">
-
-This syncer will fetch a json from url and parse it into valid `ManagedOSVersion` resources.
-
-<CodeBlock language="yaml" title="managed-os-version-json" showLineNumbers>{MangedOSVersionChannelJson}</CodeBlock>
-
-</TabItem>
-<TabItem value="customSyncer" label="Custom syncer">
-
-A custom syncer allows more flexibility on how to gather `ManagedOSVersion` by allowing custom commands with custom images.
-
-This type of syncer allows to run a given command with arguments and env vars in a custom image and output a json file to `/data/output`.
-The generated data is then automounted by the syncer and then parsed so it can gather create the proper versions.
-
-:::info
-The only requirement to make your own custom syncer is to make it output a json file to `/data/output` and keep the correct json structure.
-:::
-
-Elemental project provides a channel to list all `ManagedOSVersions` released as a custom syncer.
-See the channel resource definition below:
-
-<CodeBlock language="yaml" title="managed-os-version-channel-json.yaml" showLineNumbers>{ManagedOSVersionChannelCustom}</CodeBlock>
-
-</TabItem>
-</Tabs>
-
-In both cases the file that the operator expects to parse is a json file with the versions on it as follows
-
-<CodeBlock language="json" title="versions.json" showLineNumbers>{Versions}</CodeBlock>
+For more details and a list of available channels, or to even make your own, please read the [documentation](./channels.md).  
 
 ## Upgrade via user interface
 

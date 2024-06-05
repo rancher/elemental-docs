@@ -92,6 +92,7 @@ const sidebars = {
       "items": [
         "inventory-management",
         "reset",
+        "channels",
       ]
     },
     {

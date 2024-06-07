@@ -58,7 +58,7 @@ Elemental distributes different OS flavors that can better fit specific use case
 |--------|-----------------------------------------------------------------|---------------------------------------------------------------------------------------------------|
 | None   | Unflavored images can be used for any generic workload.         | [Source](https://github.com/rancher/elemental/blob/v2.0.x/.obs/dockerfile/slem-os/Dockerfile)     |
 | KVM    | Ready to be used with KVM. Contain QEMU Guest agent by default. | [Source](https://github.com/rancher/elemental/blob/v2.0.x/.obs/dockerfile/slem-kvm-os/Dockerfile) |
-| RT     | Like unflavored images, but bring a Real-Time kernel.           | [Source](https://github.com/rancher/elemental/blob/v2.0.x/.obs/dockerfile/slem-rt-os/Dockerfile)  |
+| RT     | Like unflavored images, but brings a Real-Time kernel.           | [Source](https://github.com/rancher/elemental/blob/v2.0.x/.obs/dockerfile/slem-rt-os/Dockerfile)  |
 
 ### Channels lifecycle and best practices
 

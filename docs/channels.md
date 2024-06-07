@@ -13,7 +13,7 @@ import Versions from "../examples/upgrade/versions.raw!=!raw-loader!@site/exampl
 
 ## Channels
 
-The <Vars name="elemental_operator_name"/> allows subscription to one or more [ManagedOSVersionChannels](./managedosversionchannel-reference.md), to automatically populate a list of [ManagedOSVersions](./managedosversion-reference.md) ready to be consumed to build new ISOs using a [SeedImage](./seedimage-reference.md), or to upgrade existing ELemental nodes to new OS versions using the [ManagedOSImage](./managedosimage-reference.md).  
+The <Vars name="elemental_operator_name"/> allows subscription to one or more [ManagedOSVersionChannels](./managedosversionchannel-reference.md), to automatically populate a list of [ManagedOSVersions](./managedosversion-reference.md) ready to be consumed to build new ISOs using a [SeedImage](./seedimage-reference.md), or to upgrade existing Elemental nodes to new OS versions using the [ManagedOSImage](./managedosimage-reference.md).  
 
 A channel is normally distributed as an OCI container image, but it is also possible to reference the URI of a JSON file directly containing a list of `ManagedOSVersion`. Note that the best practice is to distribute channels using images, so that distribution is consistent with all other images needed by the <Vars name="elemental_operator_name"/>. This can be beneficial for example when deploying in an Airgapped environment.
 

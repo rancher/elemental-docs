@@ -114,7 +114,6 @@
         "removable-device-cloudconfig",
         "custom-certificate",
         "airgap",
-        "raspi-disk",
         "tpm",
 	"unmanaged-os"
       ]

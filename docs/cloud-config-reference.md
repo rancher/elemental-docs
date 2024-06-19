@@ -40,11 +40,12 @@ Elemental Toolkit integrates five predefined stages into the OS boot process.
 
 By default, `elemental` reads the yaml configuration files from the following paths in order: `/system/oem`, `/oem` and `/usr/local/cloud-config`.
 
+In Elemental Operator, all kubernetes resources including a `cloud-config` field can be expressed in either [yip](#configuration-syntax) or [cloud-init compatible](#compatibility-with-cloud-init-format) syntax. This includes resources such as `MachineRegistration`, `SeedImage`, and `ManagedOSImage`.
+
 :::note
 In contrast to similar projects such as _Cloud Init_, Yip does not keep records or caches of executed stages and steps,
 all stages and its associated configuration is executed at every boot.
 :::
-
 
 ## Configuration syntax
 
@@ -55,6 +56,14 @@ Consider the following example:
 
 ```yaml
 stages:
+  initramfs:
+  - name: "Setup users"
+    ensure_entities:
+    - path: /etc/shadow
+      entity: |
+          kind: "shadow"
+          username: "root"
+          password: "root"
   boot:
   - files:
     - path: /tmp/script.sh
@@ -68,7 +77,9 @@ stages:
     - /tmp/script.sh
 ```
 
-In the above exaple there is one `boot` stage including two steps, one to create an executable script file and a second one
+In the above exaple there are two stages: `initramfs` and `boot`.  
+The `initramfs` stage initializes a sample user.  
+The `boot` stage includes two steps, one to create an executable script file and a second one
 that actually runs the script.
 
 Yip also supports `*.before` and `*.after` suffix modifiers to any given stage. For instance, running the `network` stage
@@ -76,6 +87,53 @@ results into running first `network.before` stages found in config files and the
 
 See the full reference of applicable keys in steps documented in
 [yip project](https://github.com/rancher/yip?tab=readme-ov-file#configuration-reference) itself.
+
+Below is an example of the above configuration embedded in a MachineRegistration resource.  
+
+<details>
+  <summary>MachineRegistration example</summary>
+
+```yaml showLineNumbers
+apiVersion: elemental.cattle.io/v1beta1
+kind: MachineRegistration
+metadata:
+  name: my-nodes
+  namespace: fleet-default
+spec:
+  config:
+    cloud-config:
+      name: "A registration driven config"
+      stages:
+        initramfs:
+        - name: "Setup users"
+          ensure_entities:
+          - path: /etc/shadow
+            entity: |
+                kind: "shadow"
+                username: "root"
+                password: "root"
+        boot:
+        - files:
+          - path: /tmp/script.sh
+            content: |
+              #!/bin/sh
+              echo "test"
+            permissions: 0777
+            owner: 1000
+            group: 100
+        - commands:
+          - /tmp/script.sh
+    elemental:
+      install:
+        reboot: true
+        device: /dev/sda
+        debug: true
+  machineName: my-machine
+  machineInventoryLabels:
+    element: fire
+```
+
+</details>
 
 ## Compatibility with Cloud Init format
 
@@ -113,8 +171,6 @@ write_files:
   permissions: "0644"
   owner: "bar"
 ```
-
-In Elemental all kubernetes resources including a cloud-config field assume cloud-init syntax. This includes resources such as `MachineRegistration` or `SeedImage`.
 
 Below is an example of the above configuration embedded in a MachineRegistration resource.
 

@@ -46,7 +46,8 @@ spec:
 
 #### config.cloud-config
 
-Contains the cloud-configuration to be injected in the node. See the [Cloud Config Reference](cloud-config-reference.md) for full information.
+Contains the cloud-configuration to be injected in the node.  
+Both yip and cloud-init syntax are supported. See the [Cloud Config Reference](cloud-config-reference.md) for full information.
 
 #### config.elemental.registration
 Contains the configuration used for the connection and the initial registration to the <Vars name="elemental_operator_name" />.

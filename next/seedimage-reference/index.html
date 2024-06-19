@@ -10,7 +10,7 @@
 
 
 <link rel="search" type="application/opensearchdescription+xml" title="Elemental - Immutable Linux for Rancher" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.5d1d48fd.css">
-<script src="/assets/js/runtime~main.736d1fe7.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.f2573e57.js" defer="defer"></script>
 <script src="/assets/js/main.ccf0ba37.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -18,7 +18,7 @@
 <h1>SeedImage reference</h1>
 <p>A <code>SeedImage</code> resource allows to build an installation media that can be used to install Elemental onto a node.
 It requires a <code>baseImage</code>, i.e., a URL to an Elemental installation ISO or node container image, and a <code>registrationRef</code> reference to a <code>MachineRegistration</code> resource, from which the registration part of the Elemental configuration is extracted and injected in the media to produce the final <em>seed image</em>.
-It is also possible to inject customizations in the <code>cloud-config</code> field.</p>
+It is also possible to inject customizations in the <code>cloud-config</code> field. Both yip and cloud-init syntax are supported. See the <a href="/next/cloud-config-reference">Cloud Config Reference</a> for full information.</p>
 <p>Once the seed image is ready, the download URL is shared in the <code>.status.downloadURL</code> field.
 It stays available for download for <code>cleanupAfterMinutes</code> minutes (default is <code>60</code>, 1 hour), after which it is deleted.
 Setting <code>retriggerBuild</code> to <code>true</code> retriggers the seed image build process while setting <code>cleanupAfterMinutes</code> to <code>0</code> keeps the seed image around till the <code>SeedImage</code> resource is deleted.</p>

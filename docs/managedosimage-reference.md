@@ -23,7 +23,7 @@ There are several keys that can be configured under a `ManagedOSImage` resource 
 |------------------------|--------|---------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | osImage                | string | empty         | The fully qualified image to upgrade nodes to. This value has priority over `managedOSVersionName` if both are configured.                 |
 | managedOSVersionName   | string | empty         | The name of a `ManagedOSVersion` to upgrade nodes to.                                                                                      |
-| cloudConfig            | object | null          | A cloud-init config to apply to the nodes during upgrades. See [reference](#cloudconfig).                                                  |
+| cloudConfig            | object | null          | A cloud-init or yip config to apply to the nodes during upgrades. See [reference](#cloudconfig).                                                  |
 | nodeSelector           | object | null          | This selector can be used to target specific nodes within the `clusterTargets`. See [reference](#nodeselector).                            |
 | concurrency            | int    | 1             | How many nodes within the same cluster should be upgraded at the same time.                                                                |
 | cordon                 | bool   | true          | Set this to true if the nodes should be cordoned before applying the upgrade. Ineffective when `drain` is also configured.                 |
@@ -35,8 +35,8 @@ There are several keys that can be configured under a `ManagedOSImage` resource 
 
 #### cloudConfig
 
-This describes a cloud-init config that will be copied to each upgraded node to the `/oem/90_operator.yaml` path.  
-This cloud-init config will be applied by the system after reboot.  
+This describes a cloud-init or yip config that will be copied to each upgraded node to the `/oem/90_operator.yaml` path.  
+This config will be applied by the system after reboot.  
 For more information and examples, see the `MachineRegistration` `spec.config.cloud-config` [reference](./cloud-config-reference.md).  
 
 #### nodeSelector

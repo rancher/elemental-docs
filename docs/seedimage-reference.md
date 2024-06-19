@@ -11,7 +11,7 @@ title: ''
 
 A `SeedImage` resource allows to build an installation media that can be used to install Elemental onto a node.
 It requires a `baseImage`, i.e., a URL to an Elemental installation ISO or node container image, and a `registrationRef` reference to a `MachineRegistration` resource, from which the registration part of the Elemental configuration is extracted and injected in the media to produce the final *seed image*.
-It is also possible to inject customizations in the `cloud-config` field.
+It is also possible to inject customizations in the `cloud-config` field. Both yip and cloud-init syntax are supported. See the [Cloud Config Reference](cloud-config-reference.md) for full information.
 
 Once the seed image is ready, the download URL is shared in the `.status.downloadURL` field.
 It stays available for download for `cleanupAfterMinutes` minutes (default is `60`, 1 hour), after which it is deleted.

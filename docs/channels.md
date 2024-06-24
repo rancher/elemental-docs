@@ -65,7 +65,15 @@ Elemental distributes different OS flavors that can better fit specific use case
 Once a new `ManagedOSVersionChannel` is created, the <Vars name="elemental_operator_name"/> will periodically sync the channel provided JSON list, and convert it to new `ManagedOSVersions`.  
 All synced `ManagedOSVersions` will be owned by the `ManagedOSVersionChannel`. Deleting the `ManagedOSVersionChannel` will lead to the deletion of all `ManagedOSVersions` on cascade.  
 
-If there are no `SeedImages` or `ManagedOSImages` making use of the synced `ManagedOSVersion` to create a new ISO or to upgrade nodes in any Elemental cluster, then it's safe to delete the `ManagedOSChannel` and all owned `ManagedOSVersions`.  
+Note that the `ManagedOSVersionChannel` supports automatic clean up of no longer in sync `ManagedOSVersions`, when the `ManagedOSVersionChannel.spec.deleteNoLongerInSyncVersions` option is enabled.  
+
+When a `ManagedOSVersion` is scheduled for deletion, a finalizer will make sure that there is no active reference on any `ManagedOSImage`.  
+
+If a `ManagedOSVersion` can not be deleted, you can find out by which resources it is referenced:  
+
+```bash
+kubectl -n fleet-default get managedosimages -l elemental.cattle.io/managed-os-version-name=my-deleted-os-version
+```
 
 When using multiple channels it's important to keep a proper naming strategy to always have a quick, human readable reference on the owned `ManagedOSVersions`.  
 It is recommended to name any channel as: `{BaseOS}-{BaseOSVersion}-{Flavor}`.  

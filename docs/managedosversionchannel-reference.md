@@ -28,12 +28,13 @@ spec:
 
 #### ManagedOSVersionChannelSpec reference
 
-| Key              | Type   | Default value | Description                                                                  |
-|------------------|--------|---------------|------------------------------------------------------------------------------|
-| options          | object | null          | Defines the optional informations that can be added in an OS channel         |
-| syncInterval     | string | 1h            | Defines when to sync the OS channel                                          |
-| type             | string | empty         | Defines the channel type, only `custom` is supported now                     |
-| upgradeContainer | object | null          | An upgrade container that can be defined. See [reference](#upgradecontainer) |
+| Key                          | Type   | Default value | Description                                                                  |
+|------------------------------|--------|---------------|------------------------------------------------------------------------------|
+| options                      | object | null          | Defines the optional informations that can be added in an OS channel         |
+| syncInterval                 | string | 1h            | Defines when to sync the OS channel                                          |
+| type                         | string | empty         | Defines the channel type, only `custom` is supported now                     |
+| upgradeContainer             | object | null          | An upgrade container that can be defined. See [reference](#upgradecontainer) |
+| deleteNoLongerInSyncVersions | bool   | false         | Automatically delete OS versions that are no longer included in the channel  |
 
 #### upgradeContainer
 

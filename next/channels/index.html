@@ -10,7 +10,7 @@
 
 
 <link rel="search" type="application/opensearchdescription+xml" title="Elemental - Immutable Linux for Rancher" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.5d1d48fd.css">
-<script src="/assets/js/runtime~main.f2573e57.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.a1cb08fc.js" defer="defer"></script>
 <script src="/assets/js/main.ccf0ba37.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -32,7 +32,10 @@ The generated data is then automounted by the syncer and then parsed so it can g
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="channels-lifecycle-and-best-practices">Channels lifecycle and best practices<a href="#channels-lifecycle-and-best-practices" class="hash-link" aria-label="Direct link to Channels lifecycle and best practices" title="Direct link to Channels lifecycle and best practices">​</a></h3>
 <p>Once a new <code>ManagedOSVersionChannel</code> is created, the <span>Elemental Operator</span> will periodically sync the channel provided JSON list, and convert it to new <code>ManagedOSVersions</code>.<br>
 <!-- -->All synced <code>ManagedOSVersions</code> will be owned by the <code>ManagedOSVersionChannel</code>. Deleting the <code>ManagedOSVersionChannel</code> will lead to the deletion of all <code>ManagedOSVersions</code> on cascade.</p>
-<p>If there are no <code>SeedImages</code> or <code>ManagedOSImages</code> making use of the synced <code>ManagedOSVersion</code> to create a new ISO or to upgrade nodes in any Elemental cluster, then it&#x27;s safe to delete the <code>ManagedOSChannel</code> and all owned <code>ManagedOSVersions</code>.</p>
+<p>Note that the <code>ManagedOSVersionChannel</code> supports automatic clean up of no longer in sync <code>ManagedOSVersions</code>, when the <code>ManagedOSVersionChannel.spec.deleteNoLongerInSyncVersions</code> option is enabled.</p>
+<p>When a <code>ManagedOSVersion</code> is scheduled for deletion, a finalizer will make sure that there is no active reference on any <code>ManagedOSImage</code>.</p>
+<p>If a <code>ManagedOSVersion</code> can not be deleted, you can find out by which resources it is referenced:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">kubectl -n fleet-default get managedosimages -l elemental.cattle.io/managed-os-version-name=my-deleted-os-version</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <p>When using multiple channels it&#x27;s important to keep a proper naming strategy to always have a quick, human readable reference on the owned <code>ManagedOSVersions</code>.<br>
 <!-- -->It is recommended to name any channel as: <code>{BaseOS}-{BaseOSVersion}-{Flavor}</code>.</p>
 <p>This should allow the user to use the <code>ManagedOSVersion</code> name as the specific Elemental build version of the image, while keeping a reference on the Base OS and Base OS version from the parent channel.<br>

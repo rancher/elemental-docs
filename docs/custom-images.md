@@ -86,7 +86,7 @@ RUN elemental build-iso \
         -o /output -n "elemental-${TARGETARCH}"
 
 FROM busybox
-COPY --from=builder /output /custom-iso
+COPY --from=builder /output /elemental-iso
 
 ENTRYPOINT ["busybox", "sh", "-c"]
 ```
@@ -105,7 +105,7 @@ this container image can be pushed to an OCI registry too. The ISO image can be
 extracted from the container to the current folder by executing the container as:
 
 ```bash showLineNumbers
-docker run --rm -v $(pwd):/host mytest-image "busybox cp /custom-iso/*.iso /host"
+docker run --rm -v $(pwd):/host mytest-image "busybox cp /elemental-iso/*.iso /host"
 ```
 
 The new customized installation media can be found in `elemental-<arch>.iso`.

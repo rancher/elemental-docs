@@ -24,7 +24,7 @@ metadata:
 spec:
   metadata:
     displayName: SLE Micro
-    upgradeImage: registry.suse.com/suse/sle-micro-iso/5.5:2.0.2
+    upgradeImage: registry.suse.com/suse/sle-micro/5.5:2.0.2
   type: container
   version: v2.0.2
 ```
@@ -45,7 +45,7 @@ spec:
   ```yaml showLineNumbers
   metadata:
     displayName: SLE Micro ISO x86_64
-    uri: registry.suse.com/suse/sle-micro-iso/5.5:2.0.2
+    uri: registry.suse.com/suse/sle-micro/5.5:2.0.2
   type: iso
   version: v2.0.2
   ```
@@ -58,7 +58,7 @@ spec:
   ```yaml showLineNumbers
   metadata:
     displayName: SLE Micro
-    upgradeImage: registry.suse.com/suse/sle-micro-iso/5.5:2.0.2
+    upgradeImage: registry.suse.com/suse/sle-micro/5.5:2.0.2
   type: container
   version: v2.0.2
   ```

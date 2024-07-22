@@ -26,7 +26,25 @@ const config = {
     locales: ['en'],
   },
 
-    presets: [
+  plugins: [
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            to: '/custom-install',
+            from: '/customizing',
+          },
+          {
+            to: '/next/custom-install',
+            from: '/next/customizing',
+          },
+        ],
+      },
+    ],
+  ],
+
+  presets: [
     [
       'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */

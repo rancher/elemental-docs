@@ -35,6 +35,7 @@ spec:
 | type                         | string | empty         | Defines the channel type, only `custom` is supported now                                |
 | upgradeContainer             | object | null          | An upgrade container that can be defined. See [reference](#upgradecontainer)            |
 | deleteNoLongerInSyncVersions | bool   | false         | Automatically delete deprecated OS versions that are no longer included in the channel  |
+| enabled                      | bool   | true          | Enables this channel. Allowing syncing of OS versions.                                  |
 
 #### upgradeContainer
 

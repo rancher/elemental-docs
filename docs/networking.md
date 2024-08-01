@@ -7,11 +7,15 @@ title: ''
   <link rel="canonical" href="https://elemental.docs.rancher.com/networking"/>
 </head>
 
+import RegistrationWithNetwork from "!!raw-loader!@site/examples/network/machineregistration.yaml"
+
 ## Network configuration with Elemental
 
 The [MachineRegistration](machineregistration-reference) supports Declarative Networking and integration with [CAPI IPAM Providers](https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20220125-ipam-integration.md#ipam-provider).  
 
 ### Prerequisites
+
+- A DHCP server is still required for the first boot registration and reset of machines. For this reason Lease Time can be kept minimal, as for the entire lifecycle of the machine, the IPAM driven IP Addresses will be used.  
 
 - The `ipaddresses.ipam.cluster.x-k8s.io` and `ipaddressclaims.ipam.cluster.x-k8s.io` CRDs must be installed on the Rancher management cluster:  
 
@@ -44,59 +48,7 @@ The `network` section of the `MachineRegistration` allows users to define:
 
 For example:
 
-```yaml
-apiVersion: ipam.cluster.x-k8s.io/v1alpha2
-kind: InClusterIPPool
-metadata:
-  name: elemental-inventory-pool
-  namespace: fleet-default
-spec:
-  addresses:
-    - 192.168.122.150-192.168.122.200
-  prefix: 24
-  gateway: 192.168.122.1
----
-apiVersion: elemental.cattle.io/v1beta1
-kind: MachineRegistration
-metadata:
-  name: fire-nodes
-  namespace: fleet-default
-spec:
-  machineName: m-${System Information/UUID}
-  config:
-    network:
-      ipAddresses:
-        inventory-ip:
-          apiGroup: ipam.cluster.x-k8s.io
-          kind: InClusterIPPool
-          name: elemental-inventory-pool
-      config:
-        dns-resolver:
-          config:
-            server:
-            - 192.168.122.1
-            search: []
-        routes:
-          config:
-          - destination: 0.0.0.0/0
-            next-hop-interface: enp1s0
-            next-hop-address: 192.168.122.1
-            metric: 150
-            table-id: 254
-        interfaces:
-          - name: enp1s0
-            type: ethernet
-            description: Main-NIC
-            state: up
-            ipv4:
-              enabled: true
-              dhcp: false
-              address:
-              - ip: "{inventory-ip}"
-                prefix-length: 24
-            ipv6:
-              enabled: false
-```
+<CodeBlock language="yaml" title="example MachineRegistration using Declarative Networking" showLineNumbers>{RegistrationWithNetwork}</CodeBlock>
 
 Here we can observe that one `InClusterIPPool` has been defined, since we are using the [InCluster IPAM Provider](https://github.com/kubernetes-sigs/cluster-api-ipam-provider-in-cluster) for this example.  
 
@@ -149,7 +101,7 @@ config:
         enabled: false
 ```
 
-The snippet above is almost 1:1 nmstate syntax, with the only exception of the `"{inventory-ip}"` placeholder.  
+The snippet above is almost 1:1 [nmstate syntax](https://nmstate.io/examples.html#nmstate-state-examples), with the only exception of the `"{inventory-ip}"` placeholder.  
 During the installation or reset phases of Elemental machines, the `elemental-operator` will claim one IP Address from the referenced IP Pool, and substitute the `"{inventory-ip}"` placeholder with a real IP Address.  
 
 The `IPAddressClaim` will follow the entire lifecycle of the `MachineInventory`, ensuring that each registered machine will be assigned unique IPs.  
@@ -165,7 +117,6 @@ metadata:
   namespace: fleet-default
   ownerReferences:
     - apiVersion: elemental.cattle.io/v1beta1
-      controller: true
       kind: MachineInventory
       name: m-e5331e3b-1e1b-4ce7-b080-235ed9a6d07c
 spec:

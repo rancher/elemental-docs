@@ -62,6 +62,7 @@ const sidebars = {
       ]
     },
     "authentication",
+    "networking",
     {
       "type": "category",
       "collapsible": true,
@@ -114,7 +115,6 @@ const sidebars = {
         "custom-images",
         "elemental_behind_proxy",
         "hostname",
-        "networking",
         "ntp",
         "rancher-vmware",
         "removable-device-cloudconfig",

@@ -1,5 +1,5 @@
 ---
-sidebar_label: Configure Networking
+sidebar_label: Declarative Networking
 title: ''
 ---
 
@@ -103,6 +103,8 @@ config:
 
 The snippet above is almost 1:1 [nmstate syntax](https://nmstate.io/examples.html#nmstate-state-examples), with the only exception of the `{inventory-ip}` placeholder.  
 During the installation or reset phases of Elemental machines, the `elemental-operator` will claim one IP Address from the referenced IP Pool, and substitute the `{inventory-ip}` placeholder with a real IP Address.  
+
+### Claimed IPAddresses
 
 The `IPAddressClaim` will follow the entire lifecycle of the `MachineInventory`, ensuring that each registered machine will be assigned unique IPs.  
 Each claim is named after the `MachineInventory` that uses it, as `$MachineIventoryName-$IPPoolRefKey`, for example:  

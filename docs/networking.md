@@ -17,34 +17,62 @@ The [MachineRegistration](machineregistration-reference) supports Declarative Ne
 
 - A DHCP server is still required for the first boot registration and reset of machines. For this reason Lease Time can be kept minimal, as for the entire lifecycle of the machine, the IPAM driven IP Addresses will be used.  
 
-- The `ipaddresses.ipam.cluster.x-k8s.io` and `ipaddressclaims.ipam.cluster.x-k8s.io` CRDs must be installed on the Rancher management cluster:  
-
-  ```bash
-  kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/cluster-api/main/config/crd/bases/ipam.cluster.x-k8s.io_ipaddressclaims.yaml
-  kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/cluster-api/main/config/crd/bases/ipam.cluster.x-k8s.io_ipaddresses.yaml
-  ```
-
-  :::info info
-  These CRDs are expected to eventually be part of Rancher, not requiring manual installation.  
-  See: https://github.com/rancher/rancher/issues/46385
-  :::
-
 - An IPAM Provider of your choice is installed on the Rancher management cluster.  
-  For example the [InCluster IPAM Provider](https://github.com/kubernetes-sigs/cluster-api-ipam-provider-in-cluster):  
-
-  ```bash
-  kubectl apply -f https://github.com/kubernetes-sigs/cluster-api-ipam-provider-in-cluster/releases/download/v0.1.0/ipam-components.yaml
-  ```
+  For example the [InCluster IPAM Provider](https://github.com/kubernetes-sigs/cluster-api-ipam-provider-in-cluster).
 
 - [nmstatectl](https://github.com/nmstate/nmstate/releases) and [NetworkManager](https://networkmanager.dev) need to be installed on the Elemental OS in use.  
   Elemental provided images already include these dependencies, this only applies when building custom images.  
+
+### How to install the CAPI IPAM Provider
+
+The recommended way to install any CAPI Provider into Rancher is to use [Rancher Turtles](https://turtles.docs.rancher.com).  
+Rancher Turtles will allow the user to install and manage the lifecycle of any CAPI Provider.  
+To install it on your system please follow the [documentation](https://turtles.docs.rancher.com/getting-started/install-rancher-turtles/using_helm).  
+
+Once Rancher Turtles is installed, installing an IPAM CAPI Provider, for example the [InCluster IPAM Provider](https://github.com/kubernetes-sigs/cluster-api-ipam-provider-in-cluster), can be accomplished applying the following resource:
+
+```yaml
+kind: CAPIProvider
+metadata:
+  name: in-cluster
+  namespace: default
+spec:
+  name: in-cluster
+  type: ipam
+  fetchConfig:
+    url: "https://github.com/kubernetes-sigs/cluster-api-ipam-provider-in-cluster/releases"
+  version: v0.1.0
+```
+
+#### Without Rancher Turtles
+
+An alternative option to install a CAPI IPAM Provider is to directly apply the manifest in the Rancher cluster.  
+Note that this solution may eventually lead to conflicts with the applied CRDs and resources, as they need to be applied and maintained manually.  
+
+1. The `ipaddresses.ipam.cluster.x-k8s.io` and `ipaddressclaims.ipam.cluster.x-k8s.io` CRDs must be installed on the Rancher management cluster:  
+
+    ```bash
+    kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/cluster-api/main/config/crd/bases/ipam.cluster.x-k8s.io_ipaddressclaims.yaml
+    kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/cluster-api/main/config/crd/bases/ipam.cluster.x-k8s.io_ipaddresses.yaml
+    ```
+
+    :::info info
+    These CRDs are expected to eventually be part of Rancher, not requiring manual installation.  
+    See: https://github.com/rancher/rancher/issues/46385
+    :::
+
+1. Install the [InCluster IPAM Provider](https://github.com/kubernetes-sigs/cluster-api-ipam-provider-in-cluster) from the released manifest:  
+
+    ```bash
+    kubectl apply -f https://github.com/kubernetes-sigs/cluster-api-ipam-provider-in-cluster/releases/download/v0.1.0/ipam-components.yaml
+    ```
 
 ### Configuring Network
 
 The `network` section of the `MachineRegistration` allows users to define:
 
 1. A map of IPPool references.
-2. A nmstate configuration template.
+1. A nmstate configuration template.
 
 For example:
 

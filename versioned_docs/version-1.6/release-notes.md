@@ -19,7 +19,7 @@ Here's the different components, their latest version and a link to the respecti
 |----------------------------------------------------------------------|---------|------------------------------------------------------------------------------|
 | [Elemental Operator](https://github.com/rancher/elemental-operator/) | v1.6.3  | [Link](https://github.com/rancher/elemental-operator/releases/tag/v1.6.3)    |
 | [Elemental Toolkit](https://github.com/rancher/elemental-toolkit/)   | v2.1.1  | [Link](https://github.com/rancher/elemental-toolkit/releases/tag/v2.1.1)     |
-| [Elemental Linux](https://github.com/rancher/elemental)              | v2.0.4  | [Link](https://github.com/rancher/elemental/releases/tag/v2.1.1)             |
+| [Elemental Linux](https://github.com/rancher/elemental)              | v2.1.1  | [Link](https://github.com/rancher/elemental/releases/tag/v2.1.1)             |
 | [Elemental UI](https://github.com/rancher/elemental-ui)              | v1.3.1  | [Link](https://github.com/rancher/elemental-ui/releases/tag/elemental-1.3.1) |
 
 :::note Information on docs versioning

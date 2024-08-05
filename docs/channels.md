@@ -44,21 +44,23 @@ See the channel resource definition below:
 
 Elemental maintains a list of channels that can be used out of the box.  
 
-| Base OS           | BaseOS Version | Flavor | Channel URI                                                                                            |
-|-------------------|----------------|--------|--------------------------------------------------------------------------------------------------------|
-| SLE Micro         | 5.5            |        | registry.opensuse.org/isv/rancher/elemental/dev/containers/rancher/elemental-channel/sle-micro:5.5     |
-| SLE Micro         | 5.5            | KVM    | registry.opensuse.org/isv/rancher/elemental/dev/containers/rancher/elemental-channel/sle-micro:5.5-kvm |
-| SLE Micro         | 5.5            | RT     | registry.opensuse.org/isv/rancher/elemental/dev/containers/rancher/elemental-channel/sle-micro:5.5-rt  |
+| Base OS          | BaseOS Version | Flavor     | Channel URI                                                                                                 |
+|------------------|----------------|------------|-------------------------------------------------------------------------------------------------------------|
+| SL Micro         | 6.0            | Base       | registry.opensuse.org/isv/rancher/elemental/dev/containers/rancher/elemental-channel/sl-micro:6.0-base      |
+| SL Micro         | 6.0            | Bare-metal | registry.opensuse.org/isv/rancher/elemental/dev/containers/rancher/elemental-channel/sl-micro:6.0-baremetal |
+| SL Micro         | 6.0            | KVM        | registry.opensuse.org/isv/rancher/elemental/dev/containers/rancher/elemental-channel/sl-micro:6.0-kvm       |
+| SL Micro         | 6.0            | RT         | registry.opensuse.org/isv/rancher/elemental/dev/containers/rancher/elemental-channel/sl-micro:6.0-rt        |
 
 ### Flavors
 
 Elemental distributes different OS flavors that can better fit specific use cases.
 
-| Flavor | Description                                                     | Reference                                                                                         |
-|--------|-----------------------------------------------------------------|---------------------------------------------------------------------------------------------------|
-| None   | Unflavored images can be used for any generic workload.         | [Source](https://github.com/rancher/elemental/blob/v2.0.x/.obs/dockerfile/slem-os/Dockerfile)     |
-| KVM    | Ready to be used with KVM. Contains QEMU Guest agent by default. | [Source](https://github.com/rancher/elemental/blob/v2.0.x/.obs/dockerfile/slem-kvm-os/Dockerfile) |
-| RT     | Like unflavored images, but brings a Real-Time kernel.           | [Source](https://github.com/rancher/elemental/blob/v2.0.x/.obs/dockerfile/slem-rt-os/Dockerfile)  |
+| Flavor     | Description                                                                       | Reference                                                                                                |
+|------------|-----------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------|
+| Base       | A minimal image that can be used as base to build custom images.                  | [Source](https://github.com/rancher/elemental/blob/v2.1.x/.obs/dockerfile/micro-base-os/Dockerfile)      |
+| Bare-metal | Contains bare-metal and usability packages. Can be used for any generic workload. | [Source](https://github.com/rancher/elemental/blob/v2.1.x/.obs/dockerfile/micro-baremetal-os/Dockerfile) |
+| KVM        | Ready to be used with KVM. Contains QEMU Guest agent by default.                  | [Source](https://github.com/rancher/elemental/blob/v2.1.x/.obs/dockerfile/micro-kvm-os/Dockerfile)       |
+| RT         | Like bare-metal images, but includes a Real-Time kernel.                          | [Source](https://github.com/rancher/elemental/blob/v2.1.x/.obs/dockerfile/micro-rt-os/Dockerfile)        |
 
 ### Channels lifecycle and best practices
 

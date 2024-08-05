@@ -49,6 +49,7 @@ Elemental maintains a list of channels that can be used out of the box.
 | SL Micro         | 6.0            | Base       | registry.opensuse.org/isv/rancher/elemental/dev/containers/rancher/elemental-channel/sl-micro:6.0-base      |
 | SL Micro         | 6.0            | Bare-metal | registry.opensuse.org/isv/rancher/elemental/dev/containers/rancher/elemental-channel/sl-micro:6.0-baremetal |
 | SL Micro         | 6.0            | KVM        | registry.opensuse.org/isv/rancher/elemental/dev/containers/rancher/elemental-channel/sl-micro:6.0-kvm       |
+| SL Micro         | 6.0            | RT         | registry.opensuse.org/isv/rancher/elemental/dev/containers/rancher/elemental-channel/sl-micro:6.0-rt        |
 
 ### Flavors
 
@@ -59,6 +60,7 @@ Elemental distributes different OS flavors that can better fit specific use case
 | Base       | A minimal image that can be used as base to build custom images.                  | [Source](https://github.com/rancher/elemental/blob/v2.1.x/.obs/dockerfile/micro-base-os/Dockerfile)      |
 | Bare-metal | Contains bare-metal and usability packages. Can be used for any generic workload. | [Source](https://github.com/rancher/elemental/blob/v2.1.x/.obs/dockerfile/micro-baremetal-os/Dockerfile) |
 | KVM        | Ready to be used with KVM. Contains QEMU Guest agent by default.                  | [Source](https://github.com/rancher/elemental/blob/v2.1.x/.obs/dockerfile/micro-kvm-os/Dockerfile)       |
+| RT         | Like bare-metal images, but includes a Real-Time kernel.                          | [Source](https://github.com/rancher/elemental/blob/v2.1.x/.obs/dockerfile/micro-rt-os/Dockerfile)        |
 
 ### Channels lifecycle and best practices
 

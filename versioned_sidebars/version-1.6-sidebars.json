@@ -1,0 +1,158 @@
+{
+  "docs": [
+    "index",
+    {
+      "type": "category",
+      "collapsible": true,
+      "collapsed": false,
+      "label": "Quickstarts",
+      "items": [
+        "quickstart-ui",
+        "quickstart-cli"
+      ]
+    },
+    {
+      "type": "category",
+      "collapsible": true,
+      "collapsed": true,
+      "label": "Architecture",
+      "link": {"type": "doc", "id": "architecture"},
+      "items": [
+        "architecture-components",
+        "custom-resources",
+        {
+          "type": "category",
+          "collapsible": true,
+          "collapsed": true,
+          "label": "Services",
+          "link": {"type": "doc", "id": "architecture-services"},
+          "items": [
+            "architecture-machineonboarding",
+            "architecture-clusterdeployment"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "collapsible": true,
+      "collapsed": true,
+      "label": "Install/Upgrade",
+      "items": [
+        "installation",
+        "upgrade",
+        "upgrade-lifecycle",
+        "custom-install",
+        "elemental-plans"
+      ]
+    },
+    "authentication",
+    {
+      "type": "category",
+      "collapsible": true,
+      "collapsed": true,
+      "label": "Reference",
+      "items": [
+        "cloud-config-reference",
+        "machineregistration-reference",
+        "machineinventory-reference",
+        "machineinventoryselector-reference",
+        "machineinventoryselectortemplate-reference",
+        "managedosimage-reference",
+        "managedosversionchannel-reference",
+        "managedosversion-reference",
+        "seedimage-reference",
+        "cluster-reference",
+        "elementaloperatorchart-reference",
+        "kubernetesversions",
+        "smbios",
+        "hardwarelabels"
+      ]
+    },
+    {
+      "type": "category",
+      "collapsible": true,
+      "collapsed": true,
+      "label": "Operator",
+      "items": [
+        "inventory-management",
+        "reset",
+        "channels"
+      ]
+    },
+    {
+      "type": "category",
+      "collapsible": true,
+      "collapsed": true,
+      "label": "Backup",
+      "items": [
+        "backup",
+        "restore"
+      ]
+    },
+    {
+      "type": "category",
+      "collapsible": true,
+      "collapsed": true,
+      "label": "How to",
+      "items": [
+        "custom-images",
+        "elemental_behind_proxy",
+        "hostname",
+        {
+          "type": "category",
+          "collapsible": true,
+          "collapsed": true,
+          "label": "Customize networking",
+          "link": {"type": "doc", "id": "networking"},
+          "items": [
+            "networking-vlans",
+            "wifi"
+          ]
+        },
+        "ntp",
+        "rancher-vmware",
+        "removable-device-cloudconfig",
+        "custom-certificate",
+        "airgap",
+        "raspi-disk",
+        "tpm",
+        "unmanaged-os"
+      ]
+    },
+    {
+      "type": "category",
+      "collapsible": true,
+      "collapsed": true,
+      "label": "Troubleshooting",
+      "items": [
+        {
+          "type": "doc",
+          "label": "Support",
+          "id": "troubleshooting-support"
+        },
+        {
+          "type": "doc",
+          "label": "Rancher",
+          "id": "troubleshooting-rancher-upgrades"
+        },
+        {
+          "type": "doc",
+          "label": "Restore",
+          "id": "troubleshooting-restore"
+        },
+        {
+          "type": "doc",
+          "label": "Upgrade",
+          "id": "troubleshooting-upgrade"
+        },
+        {
+          "type": "doc",
+          "label": "Reset",
+          "id": "troubleshooting-reset"
+        }
+      ]
+    },
+    "release-notes"
+  ]
+}

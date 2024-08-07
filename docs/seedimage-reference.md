@@ -106,7 +106,7 @@ When building a `iso` `SeedImage`, you can use an `iso` Elemental image.
 Alternatively, when building a `raw` `SeedImage`, you should use `container` Elemental images. These images are also used during the upgrade process (See: [ManagedOSImage](./managedosimage-reference.md)), but can be used to build `raw` `SeedImages` as well.  
 
 <details>
-  <summary>ISO SeedImage example</summary>
+  <summary>Raw SeedImage example</summary>
 
   ```yaml showLineNumbers
   apiVersion: elemental.cattle.io/v1beta1

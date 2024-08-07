@@ -132,7 +132,7 @@ Elemental ships `linux/x86_64` and `linux/aarch64` images for most flavors.
 In order to determine whether a `ManagedOSVersion` image supports both platforms, you can verify the `ManagedOSVersion.spec.metadata.platform` values. (See [documentation](./managedosversion-reference.md#metadata)).
 
 When defining a `SeedImage`, you can then use this value for the image's `targetPlatform`.  
-Leaving the `targetPlatform`, will default to the platform where the `elemental-operator` is running.  
+Leaving the `targetPlatform` empty, will default to the platform where the `elemental-operator` is running.  
 
 <details>
   <summary>Raw aarch64 SeedImage example</summary>

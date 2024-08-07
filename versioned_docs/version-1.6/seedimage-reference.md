@@ -63,9 +63,9 @@ The SeedImage build process expects the build container to place the build artif
 
 Configuration files are available in:
 
-- `reg/livecd-cloud-config.yaml`: A configuration file that can be used by `elemental-register` to register the machine.
+- `/overlay/reg/livecd-cloud-config.yaml`: A configuration file that can be used by `elemental-register` to register the machine.
 
-- `iso-config/cloud-config.yaml`: The cloud-config defined in `SeedImage.spec.cloud-config`
+- `/overlay/iso-config/cloud-config.yaml`: The cloud-config defined in `SeedImage.spec.cloud-config`
 
 The following list of environment variables can also be used within the custom build container:
 

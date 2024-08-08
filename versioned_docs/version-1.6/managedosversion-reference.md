@@ -70,16 +70,18 @@ spec:
 This describes the needed informations to define an OS image in Elemental.
 
 If `type` is set to `container`:
-| Key          | Type   | Default value | Description                                                  |
-|--------------|--------|---------------|--------------------------------------------------------------|
-| displayName  | string | empty         | OS image name as seen in Rancher UI                          |
-| upgradeImage | string | empty         | Fully qualified Containter image (OCI reference or HTTP URI) |
+| Key          | Type   | Default value | Description                                                         |
+|--------------|--------|---------------|---------------------------------------------------------------------|
+| displayName  | string | empty         | OS image name as seen in Rancher UI                                 |
+| upgradeImage | string | empty         | Fully qualified Containter image (OCI reference or HTTP URI)        |
+| platforms    | list   | empty         | The supported platforms (`linux/x86_64`, `linux/aarch64`, or both). |
 
 If `type` is set to `iso`:
-| Key          | Type   | Default value | Description                         |
-|--------------|--------|---------------|-------------------------------------|
-| displayName  | string | empty         | OS image name as seen in Rancher UI |
-| uri          | string | empty         | Fully qualified ISO image           |
+| Key          | Type   | Default value | Description                                                         |
+|--------------|--------|---------------|---------------------------------------------------------------------|
+| displayName  | string | empty         | OS image name as seen in Rancher UI                                 |
+| uri          | string | empty         | Fully qualified ISO image                                           |
+| platforms    | list   | empty         | The supported platforms (`linux/x86_64`, `linux/aarch64`, or both). |
 
 #### upgradeContainer
 

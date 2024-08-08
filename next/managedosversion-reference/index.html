@@ -10,7 +10,7 @@
 
 
 <link rel="search" type="application/opensearchdescription+xml" title="Elemental - Immutable Linux for Rancher" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.5d1d48fd.css">
-<script src="/assets/js/runtime~main.ffe74c04.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.b5675243.js" defer="defer"></script>
 <script src="/assets/js/main.6ba6742b.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -26,9 +26,9 @@
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="metadata">metadata<a href="#metadata" class="hash-link" aria-label="Direct link to metadata" title="Direct link to metadata">​</a></h4>
 <p>This describes the needed informations to define an OS image in Elemental.</p>
 <p>If <code>type</code> is set to <code>container</code>:</p>
-<table><thead><tr><th>Key</th><th>Type</th><th>Default value</th><th>Description</th></tr></thead><tbody><tr><td>displayName</td><td>string</td><td>empty</td><td>OS image name as seen in Rancher UI</td></tr><tr><td>upgradeImage</td><td>string</td><td>empty</td><td>Fully qualified Containter image (OCI reference or HTTP URI)</td></tr></tbody></table>
+<table><thead><tr><th>Key</th><th>Type</th><th>Default value</th><th>Description</th></tr></thead><tbody><tr><td>displayName</td><td>string</td><td>empty</td><td>OS image name as seen in Rancher UI</td></tr><tr><td>upgradeImage</td><td>string</td><td>empty</td><td>Fully qualified Containter image (OCI reference or HTTP URI)</td></tr><tr><td>platforms</td><td>list</td><td>empty</td><td>The supported platforms (<code>linux/x86_64</code>, <code>linux/aarch64</code>, or both).</td></tr></tbody></table>
 <p>If <code>type</code> is set to <code>iso</code>:</p>
-<table><thead><tr><th>Key</th><th>Type</th><th>Default value</th><th>Description</th></tr></thead><tbody><tr><td>displayName</td><td>string</td><td>empty</td><td>OS image name as seen in Rancher UI</td></tr><tr><td>uri</td><td>string</td><td>empty</td><td>Fully qualified ISO image</td></tr></tbody></table>
+<table><thead><tr><th>Key</th><th>Type</th><th>Default value</th><th>Description</th></tr></thead><tbody><tr><td>displayName</td><td>string</td><td>empty</td><td>OS image name as seen in Rancher UI</td></tr><tr><td>uri</td><td>string</td><td>empty</td><td>Fully qualified ISO image</td></tr><tr><td>platforms</td><td>list</td><td>empty</td><td>The supported platforms (<code>linux/x86_64</code>, <code>linux/aarch64</code>, or both).</td></tr></tbody></table>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="upgradecontainer">upgradeContainer<a href="#upgradecontainer" class="hash-link" aria-label="Direct link to upgradeContainer" title="Direct link to upgradeContainer">​</a></h4>
 <p>This allows to overwrite the default <code>upgrade</code> field of System Upgrade Controller plans (see <a href="/next/upgrade-lifecycle#components">upgrade compontents</a>) based on this ManagedOSVersion.
 These keys are translated by the System Upgrade Controller to a Kubernetes <a href="https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#Container" target="_blank" rel="noopener noreferrer">container</a> specification.

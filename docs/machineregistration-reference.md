@@ -49,6 +49,12 @@ spec:
 Contains the cloud-configuration to be injected in the node.  
 Both yip and cloud-init syntax are supported. See the [Cloud Config Reference](cloud-config-reference.md) for full information.
 
+#### config.network
+
+Contains the Declarative Networking configuration, supporting integration with [CAPI IPAM Providers](https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20220125-ipam-integration.md#ipam-provider).  
+Supports [nmstate](https://nmstate.io) syntax.  
+See the [Declarative Networking Reference](networking.md) for full information.  
+
 #### config.elemental.registration
 Contains the configuration used for the connection and the initial registration to the <Vars name="elemental_operator_name" />.
 

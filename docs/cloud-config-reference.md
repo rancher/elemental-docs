@@ -9,7 +9,7 @@ title: ''
 
 # Cloud-config Reference
 
-Node OS images build using the [Elemental Toolkit](https://github.com/elemental-toolkit) are expected
+Node OS images build using the [Elemental Toolkit](https://github.com/rancher/elemental-toolkit) are expected
 to be initialized and configured by using [yip](https://github.com/rancher/yip). Yip is a small utility to
 apply a set of actions and configurations to the system described with yaml files. Yip is integrated and consumed
 as a library within the elemental client binary (see `elemental run-stage --help`). Yip groups the configurations

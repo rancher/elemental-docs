@@ -1,5 +1,5 @@
 ---
-sidebar_label: Configure Networking
+sidebar_label: Declarative Networking
 title: ''
 ---
 
@@ -7,94 +7,158 @@ title: ''
   <link rel="canonical" href="https://elemental.docs.rancher.com/networking"/>
 </head>
 
+import RegistrationWithNetwork from "!!raw-loader!@site/examples/network/machineregistration.yaml"
 
 ## Network configuration with Elemental
 
-Elemental cloud-config support does not include declarative networking at the moment.
+The [MachineRegistration](machineregistration-reference) supports Declarative Networking and integration with [CAPI IPAM Providers](https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20220125-ipam-integration.md#ipam-provider).  
 
-The defaul OS channel shipped with Elemental provides SLE Micro OS images with [NetworkManager](https://networkmanager.dev) which enables DCHP ethernet configuration automatically.
+### Prerequisites
 
-[Elemental cloud-config](cloud-config-reference) allows to create NetworkManager connection profile configuration files in order to customize the host network.
+- A DHCP server is still required for the first boot registration and reset of machines. For this reason Lease Time can be kept minimal, as for the entire lifecycle of the machine, the IPAM driven IP Addresses will be used.  
 
-To define custom network configuration for your Elemental OS deployment the required steps are:
-* Identify the content of the desired NetworkManager connection profile configuration files
-* Include a `write_files` cloud-config snippet in the Elemental [MachineRegistration](machineregistration-reference) resource to create configuration files with content identified in the previous step
+- An IPAM Provider of your choice is installed on the Rancher management cluster.  
+  For example the [InCluster IPAM Provider](https://github.com/kubernetes-sigs/cluster-api-ipam-provider-in-cluster).
 
-:::info info
-The cloud-config configuration put in the Elemental [MachineRegistration](machineregistration-reference) is applied on the installed system only, not on the generated ISO/Image.
-This means that when booting from the Elemental ISO/Image the [MachineRegistration](machineregistration-reference) cloud-config is not applied on the host: it will be applied only after the OS is installed and rebooted.
+- [nmstatectl](https://github.com/nmstate/nmstate/releases) and [NetworkManager](https://networkmanager.dev) need to be installed on the Elemental OS in use.  
+  Elemental provided images already include these dependencies, this only applies when building custom images.  
 
-Host configuration during Elemental ISO/Image boot is possible adding the cloud-config customization in the [SeedImage](seedimage-reference) resource instead of the [MachineRegistration](machineregistration-reference) one.
-:::
+### How to install the CAPI IPAM Provider
 
-### Identify NetworkManager connection profile configuration files content
-NetworkManager supports multiple connection profile storage formats.
-While one could focus on any of the supported configuration file plugins, the [keyfile plugin](https://networkmanager.dev/docs/api/latest/nm-settings-keyfile.html) is the one we recommend: it allows to store all the possible connection profile data and has a quite simple syntax.
+The recommended way to install any CAPI Provider into Rancher is to use [Rancher Turtles](https://turtles.docs.rancher.com).  
+Rancher Turtles will allow the user to install and manage the lifecycle of any CAPI Provider.  
+To install it on your system please follow the [documentation](https://turtles.docs.rancher.com/getting-started/install-rancher-turtles/using_helm).  
 
-NetworkManager keyfiles can be written directly following the [nm-settings-keyfile man page](https://networkmanager.dev/docs/api/latest/nm-settings-keyfile.html).
+Once Rancher Turtles is installed, installing an IPAM CAPI Provider, for example the [InCluster IPAM Provider](https://github.com/kubernetes-sigs/cluster-api-ipam-provider-in-cluster), can be accomplished applying the following resource:
 
-Anyway, it could be easier to instruct NetworkManager to configure a connection profile if a live system is available: NetworkManager then creates the keyfiles for us in the `/etc/NetworkManager/system-connections/` directory.
-
-There are multiple different ways to interact with NetworkManager and create connection profiles. The most used and handy configuration tools include:
-* [nmcli](https://networkmanager.dev/docs/api/latest/nmcli.html) - the NetworkManager CLI
-* [nmtui](https://networkmanager.dev/docs/api/latest/nmtui.html) - the NetworManager Text User Interface
-* the UI applets present in all the major linux desktops environments
-
-Finally, to generate NetworkManager keyfiles _offline_ using a declarative approach, one could use the [nm-configurator](https://github.com/suse-edge/nm-configurator) project.
-
-```shell title="Example: generate a static IPv4 ethernet connection porfile with nmcli" showLineNumbers
-nmcli connection add \
-  con-name fixed-ip\
-  type ethernet \
-  ipv4.method manual \
-  ipv4.addresses 192.168.1.2/24 \
-  ipv4.gateway 192.168.1.1 \
-  ipv4.dns 192.168.1.1
-```
-After running the above command, you will find your keyfile at
-`/etc/NetworkManager/system-connections/fixed-ip.nmconnection`.
-
-### Elemental cloud-config
-The NetworkManager connection profile keyfiles can be injected in a [MachineRegistration](machineregistration-reference) using the `write_files` module.
-
-The `content` can be either plain text or base64 encoded (`encoding: b64`).
-
-```yaml title="Example: MachineRegistration with static IPv4 ethernet connection profile" showLineNumbers
-apiVersion: elemental.cattle.io/v1beta1
-kind: MachineRegistration
+```yaml
+kind: CAPIProvider
 metadata:
-  name: fire-nodes
-  namespace: fleet-default
+  name: in-cluster
+  namespace: default
 spec:
-  config:
-    cloud-config:
-      users:
-        - name: root
-          passwd: root
-      write_files:
-        - content: |
-            [connection]
-            id=fixed-ip
-            uuid=9039a243-452d-4f01-9424-78648404d50b
-            type=ethernet
-            [ipv4]
-            address1=192.168.1.2/24,192.168.1.1
-            dns=192.168.1.1;
-            method=manual
-          path: /etc/NetworkManager/system-connections/fixed-ip.nmconnection
-          permissions: 600
-    elemental:
-      install:
-        reboot: true
-        device: /dev/sda
-        debug: true
-  machineInventoryLabels:
-    element: fire
-    manufacturer: "${System Information/Manufacturer}"
-    productName: "${System Information/Product Name}"
-    serialNumber: "${System Information/Serial Number}"
-    machineUUID: "${System Information/UUID}"
+  name: in-cluster
+  type: ipam
+  fetchConfig:
+    url: "https://github.com/kubernetes-sigs/cluster-api-ipam-provider-in-cluster/releases"
+  version: v0.1.0
 ```
-:::warning
-The connection profile keyfile file permissions should allow read and write access to the root user only, otherwise NetworkManager will refuse to load the connection profile: ensure to set `permissions` to `600` for NetworkManager keyfiles, otherwise your connection profiles will not be loaded.
-:::
+
+#### Without Rancher Turtles
+
+An alternative option to install a CAPI IPAM Provider is to directly apply the manifest in the Rancher cluster.  
+Note that this solution may eventually lead to conflicts with the applied CRDs and resources, as they need to be applied and maintained manually.  
+
+1. The `ipaddresses.ipam.cluster.x-k8s.io` and `ipaddressclaims.ipam.cluster.x-k8s.io` CRDs must be installed on the Rancher management cluster:  
+
+    ```bash
+    kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/cluster-api/main/config/crd/bases/ipam.cluster.x-k8s.io_ipaddressclaims.yaml
+    kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/cluster-api/main/config/crd/bases/ipam.cluster.x-k8s.io_ipaddresses.yaml
+    ```
+
+    :::info info
+    These CRDs are expected to eventually be part of Rancher, not requiring manual installation.  
+    See: https://github.com/rancher/rancher/issues/46385
+    :::
+
+1. Install the [InCluster IPAM Provider](https://github.com/kubernetes-sigs/cluster-api-ipam-provider-in-cluster) from the released manifest:  
+
+    ```bash
+    kubectl apply -f https://github.com/kubernetes-sigs/cluster-api-ipam-provider-in-cluster/releases/download/v0.1.0/ipam-components.yaml
+    ```
+
+### Configuring Network
+
+The `network` section of the `MachineRegistration` allows users to define:
+
+1. A map of IPPool references.
+1. A nmstate configuration template.
+
+For example:
+
+<CodeBlock language="yaml" title="example MachineRegistration using Declarative Networking" showLineNumbers>{RegistrationWithNetwork}</CodeBlock>
+
+Here we can observe that one `InClusterIPPool` has been defined, since we are using the [InCluster IPAM Provider](https://github.com/kubernetes-sigs/cluster-api-ipam-provider-in-cluster) for this example.  
+
+Next we are going to reference this IPPool in the `MachineRegistration`. The key for this reference is `inventory-ip`, and we are only going to need one IP per registered Machine. If your machine has more than one NIC, you can define more references, and use different IPPools as well, for example:  
+
+```yaml
+ipAddresses:
+  main-nic-ip:
+    apiGroup: ipam.cluster.x-k8s.io
+    kind: InClusterIPPool
+    name: elemental-inventory-pool
+  secondary-nic-ip:
+    apiGroup: ipam.cluster.x-k8s.io
+    kind: InClusterIPPool
+    name: elemental-inventory-pool
+  private-nic-ip:
+    apiGroup: ipam.cluster.x-k8s.io
+    kind: InClusterIPPool
+    name: elemental-private-pool
+```
+
+Each defined IPPool reference key can be used for the network config template:
+
+```yaml
+config:
+  dns-resolver:
+    config:
+      server:
+      - 192.168.122.1
+      search: []
+  routes:
+    config:
+    - destination: 0.0.0.0/0
+      next-hop-interface: enp1s0
+      next-hop-address: 192.168.122.1
+      metric: 150
+      table-id: 254
+  interfaces:
+    - name: enp1s0
+      type: ethernet
+      description: Main-NIC
+      state: up
+      ipv4:
+        enabled: true
+        dhcp: false
+        address:
+        - ip: "{inventory-ip}"
+          prefix-length: 24
+      ipv6:
+        enabled: false
+```
+
+The snippet above is almost 1:1 [nmstate syntax](https://nmstate.io/examples.html#nmstate-state-examples), with the only exception of the `{inventory-ip}` placeholder.  
+During the installation or reset phases of Elemental machines, the `elemental-operator` will claim one IP Address from the referenced IP Pool, and substitute the `{inventory-ip}` placeholder with a real IP Address.  
+
+### Claimed IPAddresses
+
+The `IPAddressClaim` will follow the entire lifecycle of the `MachineInventory`, ensuring that each registered machine will be assigned unique IPs.  
+Each claim is named after the `MachineInventory` that uses it, as `$MachineIventoryName-$IPPoolRefKey`, for example:  
+
+```yaml
+apiVersion: ipam.cluster.x-k8s.io/v1beta1
+kind: IPAddressClaim
+metadata:
+  finalizers:
+    - ipam.cluster.x-k8s.io/ReleaseAddress
+  name: m-e5331e3b-1e1b-4ce7-b080-235ed9a6d07c-inventory-ip
+  namespace: fleet-default
+  ownerReferences:
+    - apiVersion: elemental.cattle.io/v1beta1
+      kind: MachineInventory
+      name: m-e5331e3b-1e1b-4ce7-b080-235ed9a6d07c
+spec:
+  poolRef:
+    apiGroup: ipam.cluster.x-k8s.io
+    kind: InClusterIPPool
+    name: elemental-inventory-pool
+status:
+  addressRef:
+    name: m-e5331e3b-1e1b-4ce7-b080-235ed9a6d07c-inventory-ip
+```
+
+Whenever a `MachineInventory` is deleted, the default (DHCP) network configuration will be restored and the IPs assigned will be released.  
+
+For more information and details on how troubleshoot issues, please consult the [documentation](./troubleshooting-network.md).

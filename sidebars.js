@@ -62,6 +62,7 @@ const sidebars = {
       ]
     },
     "authentication",
+    "networking",
     {
       "type": "category",
       "collapsible": true,
@@ -114,17 +115,6 @@ const sidebars = {
         "custom-images",
         "elemental_behind_proxy",
         "hostname",
-        {
-          "type": "category",
-          "collapsible": true,
-          "collapsed": true,
-          "label": "Customize networking",
-          "link": {"type": "doc", "id": "networking"},
-          "items": [
-            "networking-vlans",
-            "wifi"
-          ]
-        },
         "ntp",
         "rancher-vmware",
         "removable-device-cloudconfig",
@@ -165,6 +155,11 @@ const sidebars = {
           "type": "doc",
           "label": "Reset",
           "id": "troubleshooting-reset",
+        },
+        {
+          "type": "doc",
+          "label": "Declarative Networking",
+          "id": "troubleshooting-network",
         }
       ],
     },

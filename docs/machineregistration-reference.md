@@ -52,7 +52,7 @@ Both yip and cloud-init syntax are supported. See the [Cloud Config Reference](c
 #### config.network
 
 Contains the Declarative Networking configuration, supporting integration with [CAPI IPAM Providers](https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20220125-ipam-integration.md#ipam-provider).  
-Supports [nmstate](https://nmstate.io) syntax.  
+Supports [nm-configurator](https://github.com/suse-edge/nm-configurator) syntax.  
 See the [Declarative Networking Reference](networking.md) for full information.  
 
 #### config.elemental.registration

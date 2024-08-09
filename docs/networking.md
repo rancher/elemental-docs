@@ -20,7 +20,7 @@ The [MachineRegistration](machineregistration-reference) supports Declarative Ne
 - An IPAM Provider of your choice is installed on the Rancher management cluster.  
   For example the [InCluster IPAM Provider](https://github.com/kubernetes-sigs/cluster-api-ipam-provider-in-cluster).
 
-- [nmstatectl](https://github.com/nmstate/nmstate/releases) and [NetworkManager](https://networkmanager.dev) need to be installed on the Elemental OS in use.  
+- [nmc](https://github.com/suse-edge/nm-configurator/releases) and [NetworkManager](https://networkmanager.dev) need to be installed on the Elemental OS in use.  
   Elemental provided images already include these dependencies, this only applies when building custom images.  
 
 ### How to install the CAPI IPAM Provider
@@ -72,7 +72,7 @@ Note that this solution may eventually lead to conflicts with the applied CRDs a
 The `network` section of the `MachineRegistration` allows users to define:
 
 1. A map of IPPool references.
-1. A nmstate configuration template.
+1. A nm-configurator [unified configuration](https://github.com/suse-edge/nm-configurator?tab=readme-ov-file#unified-configurations) template.
 
 For example:
 
@@ -129,7 +129,7 @@ config:
         enabled: false
 ```
 
-The snippet above is almost 1:1 [nmstate syntax](https://nmstate.io/examples.html#nmstate-state-examples), with the only exception of the `{inventory-ip}` placeholder.  
+The snippet above is almost 1:1 [nm-configurator syntax](https://github.com/suse-edge/nm-configurator?tab=readme-ov-file#unified-configurations), with the only exception of the `{inventory-ip}` placeholder.  
 During the installation or reset phases of Elemental machines, the `elemental-operator` will claim one IP Address from the referenced IP Pool, and substitute the `{inventory-ip}` placeholder with a real IP Address.  
 
 ### Claimed IPAddresses

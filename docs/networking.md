@@ -170,7 +170,7 @@ Whenever a `MachineInventory` is deleted, the default (DHCP) network configurati
 
 For more information and details on how troubleshoot issues, please consult the [documentation](./troubleshooting-network.md).
 
-## Configurators
+### Configurators
 
 On the Elemental machine, `elemental-register` can configure the `NetworkManager` in different ways.  
 The configurator in use is defined in the [MachineRegistration.spec.network](./machineregistration-reference.md#confignetwork):  

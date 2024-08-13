@@ -28,7 +28,7 @@ The [MachineRegistration](machineregistration-reference) supports Declarative Ne
   
 - (optionally) [nmc](https://github.com/suse-edge/nm-configurator/releases) can be used with `nmc` network [configurator](#configurators).  
 
-- (optionally) [nmstate](https://github.com/nmstate/nmstate/releases) can be used with `nmstate` network [configurator](#configurators).
+- (optionally) [nmstatectl](https://github.com/nmstate/nmstate/releases) can be used with `nmstate` network [configurator](#configurators).
 
 ### How to install the CAPI IPAM Provider
 

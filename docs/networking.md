@@ -185,7 +185,10 @@ The configurator in use is defined in the [MachineRegistration.spec.network](./m
 
 The `nmc` configurator uses the [nm-configurator unified syntax](https://github.com/suse-edge/nm-configurator?tab=readme-ov-file#unified-configurations) to generate NetworkManager's connection files.  
 
-<CodeBlock language="yaml" title="example MachineRegistration using nmc configurator" showLineNumbers>{RegistrationWithNetworkNmc}</CodeBlock>
+<details>
+  <summary>example MachineRegistration using nmc configurator</summary>
+<CodeBlock language="yaml" showLineNumbers>{RegistrationWithNetworkNmc}</CodeBlock>
+</details>
 
 </TabItem>
 
@@ -194,7 +197,10 @@ The `nmc` configurator uses the [nm-configurator unified syntax](https://github.
 The `nmstate` configurator uses [nmstate syntax](https://nmstate.io/examples.html) to generate NetworkManager's connection files.  
 Note that [nmstatectl](https://github.com/nmstate/nmstate/releases) needs to be installed on the Elemental system to use this configurator. This is not included by default in Elemental images, but can be installed when building a [custom image](./custom-images.md).
 
-<CodeBlock language="yaml" title="example MachineRegistration using nmstate configurator" showLineNumbers>{RegistrationWithNetworkNmstate}</CodeBlock>
+<details>
+  <summary>example MachineRegistration using nmstate configurator</summary>
+<CodeBlock language="yaml" showLineNumbers>{RegistrationWithNetworkNmstate}</CodeBlock>
+</details>
 
 </TabItem>
 
@@ -204,7 +210,10 @@ The `nmconnections` configurator is the simplest option available and allows the
 Defining these files for complex network setups may be challenging, but it's always possible to use [nmcli](https://networkmanager.dev/docs/api/latest/nmcli.html), or even [nmstate](https://nmstate.io), or [nm-configurator](https://github.com/suse-edge/nm-configurator), and use the generated `nmconnection` files as a template.  
 This configurator only needs `NetworkManager`, without any extra dependency.  
 
-<CodeBlock language="yaml" title="example MachineRegistration using nmconnections configurator" showLineNumbers>{RegistrationWithNetworkNmconnections}</CodeBlock>
+<details>
+  <summary>example MachineRegistration using nmconnections configurator</summary>
+<CodeBlock language="yaml" showLineNumbers>{RegistrationWithNetworkNmconnections}</CodeBlock>
+</details>
 
 </TabItem>
 

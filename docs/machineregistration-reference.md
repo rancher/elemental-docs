@@ -52,8 +52,13 @@ Both yip and cloud-init syntax are supported. See the [Cloud Config Reference](c
 #### config.network
 
 Contains the Declarative Networking configuration, supporting integration with [CAPI IPAM Providers](https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20220125-ipam-integration.md#ipam-provider).  
-Supports [nm-configurator](https://github.com/suse-edge/nm-configurator) syntax.  
 See the [Declarative Networking Reference](networking.md) for full information.  
+
+| Key               | Type      | Default value | Description                                                                                                   |
+|-------------------|-----------|---------------|---------------------------------------------------------------------------------------------------------------|
+| configurator      | string    | nmc           | The network configurator type to use (`nmc`, `nmstate`, or `nmconnections`)                                   |
+| ipAddresses       | objRefMap | empty         | A map of `IPPool` references. Map keys can be used for IPAddress substitution in the network config template. |
+| config            | obj       | empty         | The network config template. Syntax varies depending on the `configurator` in use.                            |
 
 #### config.elemental.registration
 Contains the configuration used for the connection and the initial registration to the <Vars name="elemental_operator_name" />.

@@ -8,6 +8,9 @@ title: ''
 </head>
 
 import RegistrationWithNetwork from "!!raw-loader!@site/examples/network/machineregistration.yaml"
+import RegistrationWithNetworkNmc from "!!raw-loader!@site/examples/network/machineregistration-nmc.yaml"
+import RegistrationWithNetworkNmstate from "!!raw-loader!@site/examples/network/machineregistration-nmstate.yaml"
+import RegistrationWithNetworkNmconnections from "!!raw-loader!@site/examples/network/machineregistration-nmconnections.yaml"
 
 ## Network configuration with Elemental
 
@@ -20,8 +23,12 @@ The [MachineRegistration](machineregistration-reference) supports Declarative Ne
 - An IPAM Provider of your choice is installed on the Rancher management cluster.  
   For example the [InCluster IPAM Provider](https://github.com/kubernetes-sigs/cluster-api-ipam-provider-in-cluster).
 
-- [nmc](https://github.com/suse-edge/nm-configurator/releases) and [NetworkManager](https://networkmanager.dev) need to be installed on the Elemental OS in use.  
-  Elemental provided images already include these dependencies, this only applies when building custom images.  
+- [NetworkManager](https://networkmanager.dev) needs to be installed on OS images and it can be directly configured using the `nmconnections` network [configurator](#configurators).  
+  Already included in Elemental provided images.  
+  
+- (optionally) [nmc](https://github.com/suse-edge/nm-configurator/releases) can be used with `nmc` network [configurator](#configurators).  
+
+- (optionally) [nmstate](https://github.com/nmstate/nmstate/releases) can be used with `nmstate` network [configurator](#configurators).
 
 ### How to install the CAPI IPAM Provider
 
@@ -72,7 +79,7 @@ Note that this solution may eventually lead to conflicts with the applied CRDs a
 The `network` section of the `MachineRegistration` allows users to define:
 
 1. A map of IPPool references.
-1. A nm-configurator [unified configuration](https://github.com/suse-edge/nm-configurator?tab=readme-ov-file#unified-configurations) template.
+1. A network config template (in this case `nmc` configurator is in use).  
 
 For example:
 
@@ -162,3 +169,43 @@ status:
 Whenever a `MachineInventory` is deleted, the default (DHCP) network configuration will be restored and the IPs assigned will be released.  
 
 For more information and details on how troubleshoot issues, please consult the [documentation](./troubleshooting-network.md).
+
+## Configurators
+
+On the Elemental machine, `elemental-register` can configure the `NetworkManager` in different ways.  
+The configurator in use is defined in the [MachineRegistration.spec.network](./machineregistration-reference.md#confignetwork):  
+
+- [nmc](https://github.com/suse-edge/nm-configurator)
+- [nmstate](https://nmstate.io/)
+- [nmconnections](https://networkmanager.pages.freedesktop.org/NetworkManager/NetworkManager/nm-settings-keyfile.html)
+
+<Tabs>
+
+<TabItem value="nmc" label="nmc" default>
+
+The `nmc` configurator uses the [nm-configurator unified syntax](https://github.com/suse-edge/nm-configurator?tab=readme-ov-file#unified-configurations) to generate NetworkManager's connection files.  
+
+<CodeBlock language="yaml" title="example MachineRegistration using nmc configurator" showLineNumbers>{RegistrationWithNetworkNmc}</CodeBlock>
+
+</TabItem>
+
+<TabItem value="nmstate" label="nmstate" default>
+
+The `nmstate` configurator uses [nmstate syntax](https://nmstate.io/examples.html) to generate NetworkManager's connection files.  
+Note that [nmstatectl](https://github.com/nmstate/nmstate/releases) needs to be installed on the Elemental system to use this configurator. This is not included by default in Elemental images, but can be installed when building a [custom image](./custom-images.md).
+
+<CodeBlock language="yaml" title="example MachineRegistration using nmstate configurator" showLineNumbers>{RegistrationWithNetworkNmstate}</CodeBlock>
+
+</TabItem>
+
+<TabItem value="nmconnections" label="nmconnections" default>
+
+The `nmconnections` configurator is the simplest option available and allows the user to directly write `nmconnection` files.  
+Defining these files for complex network setups may be challenging, but it's always possible to use [nmcli](https://networkmanager.dev/docs/api/latest/nmcli.html), or even [nmstate](https://nmstate.io), or [nm-configurator](https://github.com/suse-edge/nm-configurator), and use the generated `nmconnection` files as a template.  
+This configurator only needs `NetworkManager`, without any extra dependency.  
+
+<CodeBlock language="yaml" title="example MachineRegistration using nmconnections configurator" showLineNumbers>{RegistrationWithNetworkNmconnections}</CodeBlock>
+
+</TabItem>
+
+</Tabs>

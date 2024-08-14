@@ -29,7 +29,7 @@ The Elemental templating functionality covers also the [MachineRegistration] `sp
 which defines the resulting hostname of the registering machine and the `name` of the associated
 [MachineInventory](machineinventory-reference) resource.
 
-See the [Machine Name](#machine-name) section for more details.
+See the [Machine Name](#custom-machine-names) section for more details.
 :::
 
 ## Label Template Variables

@@ -1,5 +1,5 @@
 ---
-sidebar_label: Smbios
+sidebar_label: SMBIOS
 title: ''
 ---
 
@@ -9,27 +9,19 @@ title: ''
 
 import Registration from "!!raw-loader!@site/examples/quickstart/registration.yaml"
 
-## Introduction
+## SMBIOS Template Variables
 
 The System Management BIOS (SMBIOS) specification defines data structures (and access methods) that can be used to read management information produced by the BIOS of a computer.
 
 This allows us to gather hardware information about the running system and use that as part of our labels.
 
-## How does Elemental use SMBIOS data?
+The [Elemental Register Client](architecture-components#elemental-register-command-line-tool) gathers SMBIOS data running the `dmidecode` binary during the initial registration of the machine and
+sends that data to the [Elemental Operator](architecture-components#elemental-operator-daemon).
 
-The registration client tries to gather SMBIOS data by running `dmidecode` during the initial registration of the node and that data is
-sent to the registration controller to use on interpolating different fields in the inventory that we create for that node.
+That data is used to render the [template label variables](label-templates#label-template-variables) in the [MachineInventory](machineinventory-reference) associated to that machine.
 
-Currently, we support interpolating that data into the `machineName` and the `machineInventoryLabels` of a [machineRegistration](machineregistration-reference.md)
-
-The interpolation format is as follows:
-
-`{$KEY/VALUE}` and `${KEY/SUBKEY/VALUE}`
-
-This can be mixed with normal strings so `my-prefix-${KEY/VALUE}` would result into the resolved values with `my-prefix-` prefixed
-
-
-For example, having the following SMBIOS data:
+:::note Example
+Having the following SMBIOS data:
 
 ```console showLineNumbers
 System Information
@@ -41,13 +33,6 @@ System Information
 ```
 
 And setting the `machineName` to `serial-${System Information/Serial Number}` would result in the final value of `serial-THX1138`
-
-This is useful to generate automatic names for machines based on their hardware values, for example using the UUID or the Product name.
-Our default `machineName` when the registration values are empty is `"m-${System Information/UUID}"`.
-
-:::warning warning
-All non-valid characters will be changed into `-` automatically on parse. Valid characters for labels are alphanumeric and `-`,`_` and `.`
-For machineName the constraints are stricter as that value is used for the hostname so valid values are lowercase alphanumeric and `-` only.
 :::
 
 A good use of SMBIOS data is to set up different labels for all your machines and get those values from the hardware directly.
@@ -57,4 +42,4 @@ you to use selectors down the line to select similar machines.
 
 For example using the following label `cpuFamily: "${Processor Information/Family}` would allow you to use a selector to search for i7 cpus in your machine fleet.
 
-<CodeBlock language="yaml" title="registration example with smbios labels" showLineNumbers>{Registration}</CodeBlock>
+<CodeBlock language="yaml" title="registration example with SMBIOS template variables" showLineNumbers>{Registration}</CodeBlock>

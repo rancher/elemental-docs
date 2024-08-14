@@ -74,7 +74,16 @@ const sidebars = {
         "label-templates-random",
       ]
     },
-    "networking",
+    {
+      "type": "category",
+      "collapsible": true,
+      "collapsed": true,
+      "label": "Declarative Networking",
+      "items": [
+        "networking",
+        "networking-static",
+      ]
+    },
     {
       "type": "category",
       "collapsible": true,

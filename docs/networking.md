@@ -1,5 +1,5 @@
 ---
-sidebar_label: Declarative Networking
+sidebar_label: IPAM Driven Networking
 title: ''
 ---
 
@@ -11,6 +11,7 @@ import RegistrationWithNetwork from "!!raw-loader!@site/examples/network/machine
 import RegistrationWithNetworkNmc from "!!raw-loader!@site/examples/network/machineregistration-nmc.yaml"
 import RegistrationWithNetworkNmstate from "!!raw-loader!@site/examples/network/machineregistration-nmstate.yaml"
 import RegistrationWithNetworkNmconnections from "!!raw-loader!@site/examples/network/machineregistration-nmconnections.yaml"
+import YipNmcStaticConfig from "!!raw-loader!@site/examples/network/yip-nmc-static-config.yaml"
 
 ## Network configuration with Elemental
 

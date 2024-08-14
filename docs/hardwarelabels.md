@@ -1,5 +1,5 @@
 ---
-sidebar_label: Hardware Labels
+sidebar_label: Hardware
 title: ''
 ---
 
@@ -9,15 +9,15 @@ title: ''
 
 import Registration from "!!raw-loader!@site/examples/quickstart/registration-hardware-dhcphostname.yaml"
 
-## Hardware Labels
+## Hardware Template Variables
 
-When a node is registered, hardware data is collected and made available to the MachineRegistration in the same way as [SMBIOS data](smbios.md).
+When a node is registered, hardware data is collected and made available to the MachineRegistration in a way similar to [SMBIOS variables](smbios.md).
 
 This data can be used for easy identification and selection via a [MachineSelector](machineinventoryselectortemplate-reference.md).
 
 The following are available for templating:
 
-| Label                                                         | Description                                                           |
+| Variable                                                      | Description                                                           |
 | ------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `${System Data/Runtime/Hostname}`                             | The hostname of the node (at registration time)                       |
 | `${System Data/Memory/Total Physical Bytes}`                  | The total RAM memory in the node, expressed in bytes                  |
@@ -66,4 +66,4 @@ On both `Block Devices` and `Network` the device name is used as a sub-block, as
 
 ### Example MachineRegistration
 
-<CodeBlock language="yaml" title="registration example with smbios labels" showLineNumbers>{Registration}</CodeBlock>
+<CodeBlock language="yaml" title="registration example with Hardware template variables" showLineNumbers>{Registration}</CodeBlock>

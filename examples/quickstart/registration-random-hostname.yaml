@@ -1,0 +1,19 @@
+apiVersion: elemental.cattle.io/v1beta1
+kind: MachineRegistration
+metadata:
+  name: fire-nodes
+  namespace: fleet-default
+spec:
+  machineName: "fire-node-${Random/Hex/12}"
+  config:
+    cloud-config:
+      users:
+        - name: root
+          passwd: root
+    elemental:
+      install:
+        reboot: true
+        device: /dev/sda
+        debug: true
+  machineInventoryLabels:
+    elemental.cattle.io/UUID: "${Random/UUID}"

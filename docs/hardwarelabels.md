@@ -1,5 +1,5 @@
 ---
-sidebar_label: Hardware Labels
+sidebar_label: Hardware
 title: ''
 ---
 
@@ -17,7 +17,7 @@ This data can be used for easy identification and selection via a [MachineSelect
 
 The following are available for templating:
 
-| Label                                                         | Description                                                           |
+| Variable                                                      | Description                                                           |
 | ------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `${System Data/Runtime/Hostname}`                             | The hostname of the node (at registration time)                       |
 | `${System Data/Memory/Total Physical Bytes}`                  | The total RAM memory in the node, expressed in bytes                  |

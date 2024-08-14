@@ -62,6 +62,18 @@ const sidebars = {
       ]
     },
     "authentication",
+    {
+      "type": "category",
+      "collapsible": true,
+      "collapsed": true,
+      "label": "Label Templates",
+      "link": {"type": "doc", "id": "label-templates"},
+      "items": [
+        "smbios",
+        "hardwarelabels",
+        "label-templates-random",
+      ]
+    },
     "networking",
     {
       "type": "category",

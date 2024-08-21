@@ -177,7 +177,6 @@ stages:
                 nm-configurator.interface.description=Main-NIC
               encoding: ""
               ownerstring: ""
-          if: '[ ! -f /run/elemental/recovery_mode ]'
 ```
 
 ### During reset

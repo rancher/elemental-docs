@@ -177,3 +177,9 @@ Note that the URL will use the same endpoint as Rancher, so beware of HTTPS vali
 ```bash
 kubectl get seedimage -n fleet-default fire-img -o jsonpath="{.status.downloadURL}"
 ```
+
+The checksum of the image is also available to verify the download was correct:
+
+```bash
+kubectl get seedimage -n fleet-default fire-img -o jsonpath="{.status.checksumURL}"
+```

@@ -102,8 +102,6 @@ const sidebars = {
         "cluster-reference",
         "elementaloperatorchart-reference",
         "kubernetesversions",
-        "smbios",
-        "hardwarelabels",
       ]
     },
     {

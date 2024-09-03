@@ -45,8 +45,18 @@ name inside the belonging family group.
 
 Elemental currently supports three families of template variables:
 * **SMBIOS**:  **\$\{ System Information \/** _VARPATH_ **\}**
-* **HARDWARE**:  **\$\{ System Data \/** _VARPATH_ **\}**
-* **RANDOM**:  **\$\{ Random \/** _VARPATH_ **\}**
+* **Hardware**:  **\$\{ System Data \/** _VARPATH_ **\}**
+* **Random**:  **\$\{ Random \/** _VARPATH_ **\}**
+
+:::warning
+**SMBIOS** and **Hardware** variables are enabled only if [MachineRegistration](machineregistration-reference.md)
+`elemental:registration:no-smbios` field is set to `false` (default).
+
+When `elemental:registration:no-smbios` field is set to `true`, the registering machines do not send any
+SMBIOS and hardware data and the **SMBIOS** and **Hardware** data will not be available.
+
+**Random** variables are always available instead.
+:::
 
 Template variables can be mixed with static text to form the actual labels assigned to
 ([MachineInventories](machineinventory-reference)).

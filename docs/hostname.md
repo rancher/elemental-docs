@@ -38,7 +38,8 @@ The hostname can be specified setting the [`machineName`](machineregistration-re
 ['MachineRegistration'](machineregistration-reference.md) resource.
 
 The hostname set in the `machineName` field is expected to be in a template form, in order to be uniquely generated
-for each registering node, using [SMBIOS](smbios.md) and [Hardware Labels](hardwarelabels.md) data.
+for each registering node, using the [Random](label-templates-random.md), [SMBIOS](smbios.md) and [Hardware](hardwarelabels.md)
+variables from the [Label Templates](label-templates.md) feature.
 
 :::caution important note
 The `machineName` field in the `MachineRegistration` resource is used as the blueprint not

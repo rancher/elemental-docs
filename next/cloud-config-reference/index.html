@@ -10,7 +10,7 @@
 
 
 <link rel="search" type="application/opensearchdescription+xml" title="Elemental - Immutable Linux for Rancher" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.5d1d48fd.css">
-<script src="/assets/js/runtime~main.283d956c.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.dded7d82.js" defer="defer"></script>
 <script src="/assets/js/main.8f941bd2.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -26,9 +26,14 @@ any time as they are simply grouping a set of actions under an arbitrary name.</
 <p>Elemental Toolkit integrates five predefined stages into the OS boot process.</p>
 <ol>
 <li>
-<p><strong><code>rootfs</code></strong>: this stage runs on early boot inside the init ram disk, just after mounting the root device (typically at <code>/sysroot</code>).
-This stage can be used to define first-boot steps like expanding or creating persistent partitions. Ephemeral and
-persistent paths are typically defined at this stage. Executed as part of the <code>initrd-root-fs.target</code>.</p>
+<p><strong><code>pre-rootfs</code></strong>: this stage runs on early boot inside the init ram disk, just <em>before</em> mounting the root device (typically at <code>/sysroot</code>).
+This stage can be used to define first-boot steps that are required before mounting the root device. A good example is expanding the
+root device partition. Executed as part of the <code>initrd-root-device.target</code>.</p>
+</li>
+<li>
+<p><strong><code>rootfs</code></strong>: this stage runs on early boot inside the init ram disk, just <em>after</em> mounting the root device (typically at <code>/sysroot</code>).
+This stage can be used to define first-boot steps like creating new partitions. Ephemeral and  persistent paths are typically defined
+at this stage. Executed as part of the <code>initrd-root-fs.target</code>.</p>
 </li>
 <li>
 <p><strong><code>initramfs</code></strong>: this stage runs inside the init ram disk too, but on a later stage just before switching root. This stage runs in a chrooted

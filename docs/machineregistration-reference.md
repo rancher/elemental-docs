@@ -226,14 +226,14 @@ Supports the following values:
 
 #### machineName
 
-This refers to the name that will be set to the node and the kubernetes resources that require a hostname (rke2 deployed pods for example, they use the node hostname as part of the pod names)
-`String` type.
+Template used to derive the hostname to be set to the node and as the name of the associated [MachineInventory](machineinventory-reference.md) kubernetes resource.
+
+The value is interpolated using [Label Templates](label-templates.md).
 
 :::info
-When `elemental:registration:no-smbios` is set to `false` (default), machineName is interpolated with [SMBIOS](https://www.dmtf.org/standards/smbios) data which allows you to store hardware information.
-See our [SMBIOS docs](smbios.md) for more information.
 If no `machineName` is specified, a default one in the form `m-$UUID` will be set.
-The UUID will be retrieved from the SMBIOS data if available, otherwise a random UUID will be generated.
+
+See the [Customize Hostname section](hostname.md#customize-hostname) for further details.
 :::
 
 <details>
@@ -253,16 +253,15 @@ The UUID will be retrieved from the SMBIOS data if available, otherwise a random
 
 #### machineInventoryLabels
 
-Labels that will be set to the `MachineInventory` that is created from this `MachineRegistration`
-`Key: value` type. These labels will be used to establish a selection criteria in [MachineInventorySelectorTemplate](machineinventoryselectortemplate-reference.md).  
+Labels to be set to the `MachineInventory` created from this `MachineRegistration`.
 
-Elemental nodes will run `elemental-register` every 24 hours.  
-It is possible to update the `machineInventoryLabels` so that all registered nodes will apply the new labels on the next successfull registration update.  
+The label values are interpolated using [Label Templates](label-templates.md).
 
-:::info
-When `elemental:registration:no-smbios` is set to `false` (default), Labels are interpolated with [SMBIOS](https://www.dmtf.org/standards/smbios) data. This allows to store hardware information in custom labels.
-See our [SMBIOS docs](smbios.md) for more information.
-:::
+These labels could be used to establish a selection criteria in [MachineInventorySelectorTemplate](machineinventoryselectortemplate-reference.md).
+
+Elemental nodes will run `elemental-register` every 30 minutes.
+
+It is possible to update the `machineInventoryLabels` so that all registered nodes apply the new labels on the next successfull registration update.
 
 <details>
 <summary>Example</summary>

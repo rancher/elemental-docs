@@ -10,7 +10,7 @@
 
 
 <link rel="search" type="application/opensearchdescription+xml" title="Elemental - Immutable Linux for Rancher" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.5d1d48fd.css">
-<script src="/assets/js/runtime~main.dded7d82.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.d406f83a.js" defer="defer"></script>
 <script src="/assets/js/main.8f941bd2.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -37,7 +37,8 @@ the corresponding host, overriding the previous assigned hostname (<code>rancher
 <p>The hostname can be specified setting the <a href="/next/machineregistration-reference#machinename"><code>machineName</code></a> field in the
 <a href="/next/machineregistration-reference">&#x27;MachineRegistration&#x27;</a> resource.</p>
 <p>The hostname set in the <code>machineName</code> field is expected to be in a template form, in order to be uniquely generated
-for each registering node, using <a href="/next/smbios">SMBIOS</a> and <a href="/next/hardwarelabels">Hardware Labels</a> data.</p>
+for each registering node, using the <a href="/next/label-templates-random">Random</a>, <a href="/next/smbios">SMBIOS</a> and <a href="/next/hardwarelabels">Hardware</a>
+variables from the <a href="/next/label-templates">Label Templates</a> feature.</p>
 <div class="theme-admonition theme-admonition-caution admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>important note</div><div class="admonitionContent_BuS1"><p>The <code>machineName</code> field in the <code>MachineRegistration</code> resource is used as the blueprint not
 only for the hostname of the registering host, but also for the name of the <code>MachineInventory</code> resource
 created to track the host.</p><p>This means that if you don&#x27;t use a templated <code>machineName</code> such to generate a unique name for each

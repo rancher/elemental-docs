@@ -15,7 +15,9 @@ import Selector from "!!raw-loader!@site/examples/quickstart/selector.yaml"
 # Elemental the visual way
 
 :::note
-The following instructions need Rancher 2.8.x at least.
+The following instructions need Rancher 2.8.x at least.  
+
+The Elemental UI extension may not be available by default on your Rancher instance. If this is the case, please refer to the [command line documentation](quickstart-cli.md).
 :::
 
 This quickstart will show you how to deploy the Elemental plugin and operator into an existing Rancher Manager instance.

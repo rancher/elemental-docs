@@ -44,12 +44,12 @@ See the channel resource definition below:
 
 Elemental maintains a list of channels that can be used out of the box.  
 
-| Base OS          | BaseOS Version | Flavor     | Channel URI                                                                                                 |
-|------------------|----------------|------------|-------------------------------------------------------------------------------------------------------------|
-| SL Micro         | 6.0            | Base       | registry.opensuse.org/isv/rancher/elemental/dev/containers/rancher/elemental-channel/sl-micro:6.0-base      |
-| SL Micro         | 6.0            | Bare-metal | registry.opensuse.org/isv/rancher/elemental/dev/containers/rancher/elemental-channel/sl-micro:6.0-baremetal |
-| SL Micro         | 6.0            | KVM        | registry.opensuse.org/isv/rancher/elemental/dev/containers/rancher/elemental-channel/sl-micro:6.0-kvm       |
-| SL Micro         | 6.0            | RT         | registry.opensuse.org/isv/rancher/elemental/dev/containers/rancher/elemental-channel/sl-micro:6.0-rt        |
+| Base OS          | BaseOS Version | Flavor     | Channel URI                                                        |
+|------------------|----------------|------------|--------------------------------------------------------------------|
+| SL Micro         | 6.0            | Base       | registry.suse.com/rancher/elemental-channel/sl-micro:6.0-base      |
+| SL Micro         | 6.0            | Bare-metal | registry.suse.com/rancher/elemental-channel/sl-micro:6.0-baremetal |
+| SL Micro         | 6.0            | KVM        | registry.suse.com/rancher/elemental-channel/sl-micro:6.0-kvm       |
+| SL Micro         | 6.0            | RT         | registry.suse.com/rancher/elemental-channel/sl-micro:6.0-rt        |
 
 ### Flavors
 

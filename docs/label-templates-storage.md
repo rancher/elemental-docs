@@ -32,3 +32,27 @@ The tracked disks include also optical disk drives and removable devices (e.g., 
 | `${Storage/Disks/_<DeviceName>_/Size}`               | Size ( bytes)                         |
 | `${Storage/Disks/_<DeviceName>_/StorageController}`  | Controller type                       |
 | `${Storage/TotalDisks}`                              | Number of disks present in the system |
+
+
+### Disks' DriveTypes
+
+| Type    | Description                     |
+|---------|---------------------------------|
+| HDD     | Hard disk drive                 |
+| FDD     | Floppy disk drive               |
+| ODD     | Optical disk drive              |
+| SSD     | Solid-state drive               |
+| virtual | virtual drive i.e. loop devices |
+| Unknown | unknown drive type              |
+
+### Disks' StorageController types
+
+| Type    | Description                                                    |
+|---------|----------------------------------------------------------------|
+| IDE     | Integrated Drive Electronics                                   |
+| SCSI    | Small computer system interface                                |
+| NVMe    | Non-volatile Memory Express                                    |
+| MMC     | Multi-media controller (used for mobile phone storage devices) |
+| virtio  | Virtualized storage controller/driver                          |
+| loop    | loop device                                                    |
+| Unknown | unknown controller type                                        |

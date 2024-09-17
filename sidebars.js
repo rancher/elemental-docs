@@ -69,8 +69,6 @@ const sidebars = {
       "label": "Label Templates",
       "link": {"type": "doc", "id": "label-templates"},
       "items": [
-        "smbios",
-        "hardwarelabels",
         "label-templates-baseboard",
         "label-templates-bios",
         "label-templates-chassis",
@@ -82,6 +80,7 @@ const sidebars = {
         "label-templates-random",
         "label-templates-runtime",
         "label-templates-storage",
+        "label-templates-deprecated",
       ]
     },
     {

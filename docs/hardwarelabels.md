@@ -9,6 +9,15 @@ title: ''
 
 import Registration from "!!raw-loader!@site/examples/quickstart/registration-hardware-dhcphostname.yaml"
 
+:::warning
+Hardware Template Variables have been deprecated: please use the new
+[Label Templates' Variables](label-templates#label-templates-variables) when possible.
+
+Check the [deprecated variables page](label-templates-deprecated) and the
+[conversion table](label-templates-deprecated#hardware-labels-to-new-label-templates-variables-table)
+for a smooth transition.
+:::
+
 ## Hardware Template Variables
 
 When a node is registered, hardware data is collected and made available to the MachineRegistration in a way similar to [SMBIOS variables](smbios.md).
@@ -64,6 +73,3 @@ On both `Block Devices` and `Network` the device name is used as a sub-block, as
 | loop    | loop device                                                    |
 | Unknown | unknown controller type                                        |
 
-### Example MachineRegistration
-
-<CodeBlock language="yaml" title="registration example with Hardware template variables" showLineNumbers>{Registration}</CodeBlock>

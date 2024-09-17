@@ -58,9 +58,6 @@ Elemental currently supports the following _template variable families_:
 * [**Runtime**](label-templates-runtime): **\$\{ Runtime \/** _VARPATH_ **\}**
 * [**Storage**](label-templates-storage): **\$\{ Storage \/** _VARPATH_ **\}**
 
-* **SMBIOS**:  **\$\{ System Information \/** _VARPATH_ **\}**
-* **Hardware**:  **\$\{ System Data \/** _VARPATH_ **\}**
-
 :::warning
 All the _template variable families_ (but _`Random`_) are enabled only if [MachineRegistration](machineregistration-reference.md)
 `elemental:registration:no-smbios` field is set to `false` (default).

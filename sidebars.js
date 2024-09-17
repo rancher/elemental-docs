@@ -71,7 +71,17 @@ const sidebars = {
       "items": [
         "smbios",
         "hardwarelabels",
+        "label-templates-baseboard",
+        "label-templates-bios",
+        "label-templates-chassis",
+        "label-templates-cpu",
+        "label-templates-gpu",
+        "label-templates-memory",
+        "label-templates-network",
+        "label-templates-product",
         "label-templates-random",
+        "label-templates-runtime",
+        "label-templates-storage",
       ]
     },
     {

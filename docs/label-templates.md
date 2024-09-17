@@ -7,6 +7,8 @@ title: ''
   <link rel="canonical" href="https://elemental.docs.rancher.com/label-templates"/>
 </head>
 
+import Registration from "!!raw-loader!@site/examples/quickstart/registration-hardware-dhcphostname.yaml"
+
 # Label Templates Overview
 Elemental allows to specify *label templates* in the `spec.machineInventoryLabels` section of the 
 [MachineRegistration](machineregistration-reference).
@@ -43,19 +45,31 @@ The syntax used to specify template variables is:
 where _VARFAMILY_ defines a group (family) of supported variables and _VARPATH_ defines the actual variable
 name inside the belonging family group.
 
-Elemental currently supports three families of template variables:
+Elemental currently supports the following _template variable families_:
+
+* [**BIOS**](label-templates-bios): **\$\{ BIOS \/** _VARPATH_ **\}**
+* [**BaseBoard**](label-templates-baseboard): **\$\{ BaseBoard \/** _VARPATH_ **\}**
+* [**CPU**](label-templates-cpu): **\$\{ CPU \/** _VARPATH_ **\}**
+* [**Chassis**](label-templates-chassis): **\$\{ Chassis \/** _VARPATH_ **\}**
+* [**GPU**](label-templates-gpu): **\$\{ GPU \/** _VARPATH_ **\}**
+* [**Memory**](label-templates-memory): **\$\{ Memory \/** _VARPATH_ **\}**
+* [**Network**](label-templates-network): **\$\{ Network \/** _VARPATH_ **\}**
+* [**Product**](label-templates-product): **\$\{ Product \/** _VARPATH_ **\}**
+* [**Runtime**](label-templates-runtime): **\$\{ Runtime \/** _VARPATH_ **\}**
+* [**Storage**](label-templates-storage): **\$\{ Storage \/** _VARPATH_ **\}**
+
 * **SMBIOS**:  **\$\{ System Information \/** _VARPATH_ **\}**
 * **Hardware**:  **\$\{ System Data \/** _VARPATH_ **\}**
-* **Random**:  **\$\{ Random \/** _VARPATH_ **\}**
 
 :::warning
-**SMBIOS** and **Hardware** variables are enabled only if [MachineRegistration](machineregistration-reference.md)
+All the _template variable families_ (but _`Random`_) are enabled only if [MachineRegistration](machineregistration-reference.md)
 `elemental:registration:no-smbios` field is set to `false` (default).
 
 When `elemental:registration:no-smbios` field is set to `true`, the registering machines do not send any
-SMBIOS and hardware data and the **SMBIOS** and **Hardware** data will not be available.
+data required for rendering the template variables, so no variables will be available, but the
+**Random** variables, which are the only notable exception.
 
-**Random** variables are always available instead.
+**Random** variables are always available since they are built-in on the operator side.
 :::
 
 Template variables can be mixed with static text to form the actual labels assigned to
@@ -63,10 +77,10 @@ Template variables can be mixed with static text to form the actual labels assig
 
 :::note Rendering Examples
 * Template label tracking the number of CPU cores of the registering host (assume host has 4 cores):
-  * template label: **cpu: $\{System Data\/CPU\/Total Cores\}-cores**
+  * template label: **cpu: $\{CPU\/TotalCores\}-cores**
   * rendered label: **cpu: 4-cores**
 * Template label to track the SMBIOS UUID of the registering host:
-  * template label: **sbios-UUID: \$\{System Information\/UUID\}**
+  * template label: **sbios-UUID: \$\{Product\/UUID\}**
   * rendered label: **sbios-UUID: fd95324a-c26b-4e28-8727-1dcec293a0ec**
 :::
 
@@ -105,8 +119,8 @@ There are basically three main cases where the template labels are handy:
 * as template for custom Machine Names
 
 ### Hardware data for the Elemental catalog
-The [SMBIOS](smbios) and [Hardware](hardwarelabels) template variables can be used to attach to each
-[MachineInventory](machineinventory-reference) hardware and system data of each host.
+The template variables can be used to attach to each [MachineInventory](machineinventory-reference)
+hardware data of the associated host.
 
 ### Selectors for Cluster Provisioning
 The `template labels` can be used to indentify and select machines with special properties to form
@@ -138,3 +152,7 @@ For more information on how to define the hostname for Elemental hosts, see the
   * MachineRegistration spec: **machineName: SLE-Micro-\$\{Random\/Hex\/6\}**
   * MachineInventory name: **SLE-Micro-32ad41**
 :::
+
+## Label Templates in action
+
+<CodeBlock language="yaml" title="registration example with Template Label variables" showLineNumbers>{Registration}</CodeBlock>

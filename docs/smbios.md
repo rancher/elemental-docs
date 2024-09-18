@@ -9,6 +9,15 @@ title: ''
 
 import Registration from "!!raw-loader!@site/examples/quickstart/registration.yaml"
 
+:::warning
+SMBIOS Template Variables have been deprecated: please use the new
+[Label Templates' Variables](label-templates#label-templates-variables) when possible.
+
+Check the [deprecated variables page](label-templates-deprecated) and the
+[conversion table](label-templates-deprecated#smbios-labels-to-new-label-templates-variable-table)
+for a smooth transition.
+:::
+
 ## SMBIOS Template Variables
 
 The System Management BIOS (SMBIOS) specification defines data structures (and access methods) that can be used to read management information produced by the BIOS of a computer.

@@ -15,7 +15,7 @@ metadata:
   name: fire-nodes
   namespace: fleet-default
 spec:
-  machineName: m-${System Information/UUID}
+  machineName: m-${Product/UUID}
   config:
     network:
       configurator: nmc

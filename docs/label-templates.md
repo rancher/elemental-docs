@@ -10,24 +10,24 @@ title: ''
 import Registration from "!!raw-loader!@site/examples/quickstart/registration-hardware-dhcphostname.yaml"
 
 # Label Templates Overview
-Elemental allows to specify *label templates* in the `spec.machineInventoryLabels` section of the 
-[MachineRegistration](machineregistration-reference).
+Elemental allows to specify *label templates* in the `spec.machineInventoryLabels` and `spec.machineInventoryAnnotations` sections of the
+[MachineRegistration](machineregistration-reference) resources.
 
-Their format is the canonical `key`:`value` used in Kubernetes labels.
+Their format is the canonical `key`:`value` used in Kubernetes labels and annotations.
 
-These label templates are converted to actual labels attached to each
-[MachineInventory](machineinventory-reference) resources created during the
+These label templates are converted to actual labels and annotations attached to each
+[MachineInventory](machineinventory-reference) resource created during the
 [machine onboarding](architecture-machineonboarding) phase.
 
-The resulting labels have the same `key` of the label template.
+The resulting labels and annotations have the same `key` of the label template.
 
 The associated `value` is generated:
 * **rendering the [`label template variables`](#label-template-variables)** (if present)
-* **`sanitizing`** the resulting value
+* **`sanitizing`** the resulting value (in the case of the labels only)
 
 
 :::info
-The Elemental templating functionality covers also the [MachineRegistration] `spec.machineName` field,
+The Elemental templating functionality covers also the [MachineRegistration](machineregistration-reference) `spec.machineName` field,
 which defines the resulting hostname of the registering machine and the `name` of the associated
 [MachineInventory](machineinventory-reference) resource.
 
@@ -38,7 +38,7 @@ See the [Machine Name](#custom-machine-names) section for more details.
 Elemental Label Templating includes a set of predefined variables that could be used inside the `value` of
 the *label templates* specified in the [MachineRegistration](machineregistration-reference).
 
-The syntax used to specify template variables is:
+The syntax used to specify label templates' variables is:
 
 **\$\{ *VARFAMILY* \/ *VARPATH* \}**
 
@@ -59,14 +59,16 @@ Elemental currently supports the following _template variable families_:
 * [**Storage**](label-templates-storage): **\$\{ Storage \/** _VARPATH_ **\}**
 
 :::warning
-All the _template variable families_ (but _`Random`_) are enabled only if [MachineRegistration](machineregistration-reference.md)
-`elemental:registration:no-smbios` field is set to `false` (default).
+All the _template variable families_ (but _`Random`_) are enabled only if [MachineRegistration](machineregistration-reference.md)'s
+`elemental.registration.no-smbios` field is set to `false` (default).
 
-When `elemental:registration:no-smbios` field is set to `true`, the registering machines do not send any
-data required for rendering the template variables, so no variables will be available, but the
-**Random** variables, which are the only notable exception.
+When the `elemental.registration.no-smbios` field is set to `true`, the registering machines do not
+send any data required for rendering the template variables, so no variables will be available, but
+the **Random** variables, which are the only notable exception.
 
 **Random** variables are always available since they are built-in on the operator side.
+They are also special since they are computed only once: see the
+[Random Template variables](label-templates-random) section for more details.
 :::
 
 Template variables can be mixed with static text to form the actual labels assigned to
@@ -99,32 +101,34 @@ Two consecutive hyphens are replaced with one.
 :::
 
 ## Usage of Label Templates
-Label Templates allow to automatically attach labels to each host's
-[MachineInventory](machineinventory-reference) every time an host register to the Elemental Operator.
+Label Templates allow to automatically attach and update labels and annotations to each host's
+[MachineInventory](machineinventory-reference) every time an host registers to the Elemental Operator.
 
 :::info
 Registration happens not only during the [onboarding phase](architecture-machineonboarding): each host
 re-registers every 30 minutes (and every time it reboots).
-During the re-registration, the Label Templatess in the associated
+During the re-registration, the Label Templates in the associated
 [MachineRegistration](machineregistration-reference) are re-evaluated and added/updated in the
 [MachineInventory](machineinventory-reference).
 :::
 
-There are basically three main cases where the label templates can be used:
-* as hardware data added to the Elemental catalog
-* as selectors for Cluster Provisioning
-* as template for custom Machine Names
+There are basically three main cases where the label templates can be of use:
+* to attach hardware data to the Elemental Catalog
+* to add selectors to pick up hosts for Cluster Provisioning
+* to define a custom template for the Machine Names
 
 ### Hardware data for the Elemental catalog
 The Label Templates' variables can be used to attach hardware data to each
-[MachineInventory](machineinventory-reference) resource.
+[MachineInventory](machineinventory-reference) resource (which form the Elemental Catalog).
+
+In this case, annotations may be a better choice since their values are not sanitized.
 
 ### Selectors for Cluster Provisioning
-The `Label Templates` can be used to indentify and select machines with special properties to form
-a new Kubernetes Cluster.
+The `Label Templates` can be used to generate labels used to indentify and select machines
+with special hardware properties to form new Kubernetes Clusters.
 
-The labels generated for each [MachineInventory](machineinventory-reference) are an handy selector for the
-[MachineInventorySelectorTemplate](machineinventoryselectortemplate-reference) resource
+The labels attached to each [MachineInventory](machineinventory-reference) are eligible to _selector_
+for the [MachineInventorySelectorTemplate](machineinventoryselectortemplate-reference) resource
 (see the [Kubernetes Cluster provisioning](architecture-clusterdeployment#kubernetes-cluster-provisioning)
 section for more details).
 
@@ -132,13 +136,14 @@ section for more details).
 The hostname of the onboarding machine can be specified using the
 [MachineRegistration](machineregistration-reference) `spec.machineName` field.
 
-`spec.machineName` value undergoes the same `Label Templates' variables` and `sanitization` process reserved
-to the `spec.machineInventoryLabels` label rendering.
+`spec.machineName` value undergoes the same `Label Templates' variables` and `sanitization` processes
+reserved to the `spec.machineInventoryLabels` field.
 
 :::warning
-There is one notable difference during the [sanitization](#sanitization) process: the underscore (`_`) is
-not allowed and is dealt as the other forbidden characters (i.e., it is substituted by an hyphen: `-`).
-This is required as the underscore is not allowed in OS hostnames.
+There is one notable difference between the [MachineRegistration](machineregistration-reference) `spec.machineName` and `spec.machineInventorylabels` fields: during the [sanitization](#sanitization) process
+the underscore (`_`) is substituted as the other forbidden characters (i.e., it is substituted by an
+hyphen: `-`).
+This is required as the underscore is not allowed in linux hostnames.
 :::
 
 For more information on how to define the hostname for Elemental hosts, see the

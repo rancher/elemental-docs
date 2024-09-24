@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.1.1">
-<title data-rh="true">Elemental - Immutable Linux for Rancher</title><meta data-rh="true" property="og:title" content="Elemental - Immutable Linux for Rancher"><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://rancher.github.io/next/label-templates"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="description" content="Elemental allows to specify label templates in the spec.machineInventoryLabels section of the"><meta data-rh="true" property="og:description" content="Elemental allows to specify label templates in the spec.machineInventoryLabels section of the"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="alternate" href="https://rancher.github.io/next/label-templates" hreflang="en"><link data-rh="true" rel="alternate" href="https://rancher.github.io/next/label-templates" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://QLF01IU46G-dsn.algolia.net" crossorigin="anonymous"><link data-rh="true" rel="canonical" href="https://elemental.docs.rancher.com/label-templates"><link rel="preconnect" href="https://www.google-analytics.com">
+<title data-rh="true">Elemental - Immutable Linux for Rancher</title><meta data-rh="true" property="og:title" content="Elemental - Immutable Linux for Rancher"><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://rancher.github.io/next/label-templates"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="description" content="Elemental allows to specify label templates in the spec.machineInventoryLabels and spec.machineInventoryAnnotations sections of the"><meta data-rh="true" property="og:description" content="Elemental allows to specify label templates in the spec.machineInventoryLabels and spec.machineInventoryAnnotations sections of the"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="alternate" href="https://rancher.github.io/next/label-templates" hreflang="en"><link data-rh="true" rel="alternate" href="https://rancher.github.io/next/label-templates" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://QLF01IU46G-dsn.algolia.net" crossorigin="anonymous"><link data-rh="true" rel="canonical" href="https://elemental.docs.rancher.com/label-templates"><link rel="preconnect" href="https://www.google-analytics.com">
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-57KS2MW"></script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","GTM-57KS2MW",{})</script>
 
 
 <link rel="search" type="application/opensearchdescription+xml" title="Elemental - Immutable Linux for Rancher" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.5d1d48fd.css">
-<script src="/assets/js/runtime~main.33e8bf9a.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.5b07de39.js" defer="defer"></script>
 <script src="/assets/js/main.3076eaeb.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -18,25 +18,25 @@
 <!-- -->
 <!-- -->
 <h1>Label Templates Overview</h1>
-<p>Elemental allows to specify <em>label templates</em> in the <code>spec.machineInventoryLabels</code> section of the
-<a href="/next/machineregistration-reference">MachineRegistration</a>.</p>
-<p>Their format is the canonical <code>key</code>:<code>value</code> used in Kubernetes labels.</p>
-<p>These label templates are converted to actual labels attached to each
-<a href="/next/machineinventory-reference">MachineInventory</a> resources created during the
+<p>Elemental allows to specify <em>label templates</em> in the <code>spec.machineInventoryLabels</code> and <code>spec.machineInventoryAnnotations</code> sections of the
+<a href="/next/machineregistration-reference">MachineRegistration</a> resources.</p>
+<p>Their format is the canonical <code>key</code>:<code>value</code> used in Kubernetes labels and annotations.</p>
+<p>These label templates are converted to actual labels and annotations attached to each
+<a href="/next/machineinventory-reference">MachineInventory</a> resource created during the
 <a href="/next/architecture-machineonboarding">machine onboarding</a> phase.</p>
-<p>The resulting labels have the same <code>key</code> of the label template.</p>
+<p>The resulting labels and annotations have the same <code>key</code> of the label template.</p>
 <p>The associated <code>value</code> is generated:</p>
 <ul>
 <li><strong>rendering the <a href="#label-template-variables"><code>label template variables</code></a></strong> (if present)</li>
-<li><strong><code>sanitizing</code></strong> the resulting value</li>
+<li><strong><code>sanitizing</code></strong> the resulting value (in the case of the labels only)</li>
 </ul>
-<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>The Elemental templating functionality covers also the [MachineRegistration] <code>spec.machineName</code> field,
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>The Elemental templating functionality covers also the <a href="/next/machineregistration-reference">MachineRegistration</a> <code>spec.machineName</code> field,
 which defines the resulting hostname of the registering machine and the <code>name</code> of the associated
 <a href="/next/machineinventory-reference">MachineInventory</a> resource.</p><p>See the <a href="#custom-machine-names">Machine Name</a> section for more details.</p></div></div>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="label-templates-variables">Label Templates&#x27; Variables<a href="#label-templates-variables" class="hash-link" aria-label="Direct link to Label Templates&#x27; Variables" title="Direct link to Label Templates&#x27; Variables">​</a></h2>
 <p>Elemental Label Templating includes a set of predefined variables that could be used inside the <code>value</code> of
 the <em>label templates</em> specified in the <a href="/next/machineregistration-reference">MachineRegistration</a>.</p>
-<p>The syntax used to specify template variables is:</p>
+<p>The syntax used to specify label templates&#x27; variables is:</p>
 <p><strong>${ <em>VARFAMILY</em> / <em>VARPATH</em> }</strong></p>
 <p>where <em>VARFAMILY</em> defines a group (family) of supported variables and <em>VARPATH</em> defines the actual variable
 name inside the belonging family group.</p>
@@ -53,10 +53,12 @@ name inside the belonging family group.</p>
 <li><a href="/next/label-templates-runtime"><strong>Runtime</strong></a>: <strong>${ Runtime /</strong> <em>VARPATH</em> <strong>}</strong></li>
 <li><a href="/next/label-templates-storage"><strong>Storage</strong></a>: <strong>${ Storage /</strong> <em>VARPATH</em> <strong>}</strong></li>
 </ul>
-<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>warning</div><div class="admonitionContent_BuS1"><p>All the <em>template variable families</em> (but <em><code>Random</code></em>) are enabled only if <a href="/next/machineregistration-reference">MachineRegistration</a>
-<code>elemental:registration:no-smbios</code> field is set to <code>false</code> (default).</p><p>When <code>elemental:registration:no-smbios</code> field is set to <code>true</code>, the registering machines do not send any
-data required for rendering the template variables, so no variables will be available, but the
-<strong>Random</strong> variables, which are the only notable exception.</p><p><strong>Random</strong> variables are always available since they are built-in on the operator side.</p></div></div>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>warning</div><div class="admonitionContent_BuS1"><p>All the <em>template variable families</em> (but <em><code>Random</code></em>) are enabled only if <a href="/next/machineregistration-reference">MachineRegistration</a>&#x27;s
+<code>elemental.registration.no-smbios</code> field is set to <code>false</code> (default).</p><p>When the <code>elemental.registration.no-smbios</code> field is set to <code>true</code>, the registering machines do not
+send any data required for rendering the template variables, so no variables will be available, but
+the <strong>Random</strong> variables, which are the only notable exception.</p><p><strong>Random</strong> variables are always available since they are built-in on the operator side.
+They are also special since they are computed only once: see the
+<a href="/next/label-templates-random">Random Template variables</a> section for more details.</p></div></div>
 <p>Template variables can be mixed with static text to form the actual labels assigned to
 (<a href="/next/machineinventory-reference">MachineInventories</a>).</p>
 <div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>Rendering Examples</div><div class="admonitionContent_BuS1"><ul>
@@ -89,37 +91,39 @@ If it is not, it is dropped.</p>
 </li>
 </ul></div></div>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="usage-of-label-templates">Usage of Label Templates<a href="#usage-of-label-templates" class="hash-link" aria-label="Direct link to Usage of Label Templates" title="Direct link to Usage of Label Templates">​</a></h2>
-<p>Label Templates allow to automatically attach labels to each host&#x27;s
-<a href="/next/machineinventory-reference">MachineInventory</a> every time an host register to the Elemental Operator.</p>
+<p>Label Templates allow to automatically attach and update labels and annotations to each host&#x27;s
+<a href="/next/machineinventory-reference">MachineInventory</a> every time an host registers to the Elemental Operator.</p>
 <div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>info</div><div class="admonitionContent_BuS1"><p>Registration happens not only during the <a href="/next/architecture-machineonboarding">onboarding phase</a>: each host
 re-registers every 30 minutes (and every time it reboots).
-During the re-registration, the Label Templatess in the associated
+During the re-registration, the Label Templates in the associated
 <a href="/next/machineregistration-reference">MachineRegistration</a> are re-evaluated and added/updated in the
 <a href="/next/machineinventory-reference">MachineInventory</a>.</p></div></div>
-<p>There are basically three main cases where the label templates can be used:</p>
+<p>There are basically three main cases where the label templates can be of use:</p>
 <ul>
-<li>as hardware data added to the Elemental catalog</li>
-<li>as selectors for Cluster Provisioning</li>
-<li>as template for custom Machine Names</li>
+<li>to attach hardware data to the Elemental Catalog</li>
+<li>to add selectors to pick up hosts for Cluster Provisioning</li>
+<li>to define a custom template for the Machine Names</li>
 </ul>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="hardware-data-for-the-elemental-catalog">Hardware data for the Elemental catalog<a href="#hardware-data-for-the-elemental-catalog" class="hash-link" aria-label="Direct link to Hardware data for the Elemental catalog" title="Direct link to Hardware data for the Elemental catalog">​</a></h3>
 <p>The Label Templates&#x27; variables can be used to attach hardware data to each
-<a href="/next/machineinventory-reference">MachineInventory</a> resource.</p>
+<a href="/next/machineinventory-reference">MachineInventory</a> resource (which form the Elemental Catalog).</p>
+<p>In this case, annotations may be a better choice since their values are not sanitized.</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="selectors-for-cluster-provisioning">Selectors for Cluster Provisioning<a href="#selectors-for-cluster-provisioning" class="hash-link" aria-label="Direct link to Selectors for Cluster Provisioning" title="Direct link to Selectors for Cluster Provisioning">​</a></h3>
-<p>The <code>Label Templates</code> can be used to indentify and select machines with special properties to form
-a new Kubernetes Cluster.</p>
-<p>The labels generated for each <a href="/next/machineinventory-reference">MachineInventory</a> are an handy selector for the
-<a href="/next/machineinventoryselectortemplate-reference">MachineInventorySelectorTemplate</a> resource
+<p>The <code>Label Templates</code> can be used to generate labels used to indentify and select machines
+with special hardware properties to form new Kubernetes Clusters.</p>
+<p>The labels attached to each <a href="/next/machineinventory-reference">MachineInventory</a> are eligible to <em>selector</em>
+for the <a href="/next/machineinventoryselectortemplate-reference">MachineInventorySelectorTemplate</a> resource
 (see the <a href="/next/architecture-clusterdeployment#kubernetes-cluster-provisioning">Kubernetes Cluster provisioning</a>
 section for more details).</p>
 <h3 class="anchor anchorWithStickyNavbar_LWe7" id="custom-machine-names">Custom Machine Names<a href="#custom-machine-names" class="hash-link" aria-label="Direct link to Custom Machine Names" title="Direct link to Custom Machine Names">​</a></h3>
 <p>The hostname of the onboarding machine can be specified using the
 <a href="/next/machineregistration-reference">MachineRegistration</a> <code>spec.machineName</code> field.</p>
-<p><code>spec.machineName</code> value undergoes the same <code>Label Templates&#x27; variables</code> and <code>sanitization</code> process reserved
-to the <code>spec.machineInventoryLabels</code> label rendering.</p>
-<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>warning</div><div class="admonitionContent_BuS1"><p>There is one notable difference during the <a href="#sanitization">sanitization</a> process: the underscore (<code>_</code>) is
-not allowed and is dealt as the other forbidden characters (i.e., it is substituted by an hyphen: <code>-</code>).
-This is required as the underscore is not allowed in OS hostnames.</p></div></div>
+<p><code>spec.machineName</code> value undergoes the same <code>Label Templates&#x27; variables</code> and <code>sanitization</code> processes
+reserved to the <code>spec.machineInventoryLabels</code> field.</p>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>warning</div><div class="admonitionContent_BuS1"><p>There is one notable difference between the <a href="/next/machineregistration-reference">MachineRegistration</a> <code>spec.machineName</code> and <code>spec.machineInventorylabels</code> fields: during the <a href="#sanitization">sanitization</a> process
+the underscore (<code>_</code>) is substituted as the other forbidden characters (i.e., it is substituted by an
+hyphen: <code>-</code>).
+This is required as the underscore is not allowed in linux hostnames.</p></div></div>
 <p>For more information on how to define the hostname for Elemental hosts, see the
 <a href="/next/hostname">HowTo/Customize hostname</a> section.</p>
 <div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>Rendering Example</div><div class="admonitionContent_BuS1"><ul>

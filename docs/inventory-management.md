@@ -16,10 +16,30 @@ the mapping of the machine to it's configuration and assigned cluster.
 ### MachineInventory
 
 The `MachineInventory` holds all the relevant information for a registered machine.  
-Upon successful registration, the `MachineInventory` will inherit all `machineInventoryLabels` defined in the related `MachineRegistration`.  
-Additionally, the machine `annotations` will also be updated on each successful registration.  
 
-By default, Elemental machines will attempt a registration update every 24 hours to update labels and annotations.  
+Upon successful registration, the `MachineInventory` inherits all the `machineInventoryLabels`
+and the `machineInventoryAnnotations` defined in the associated `MachineRegistration`.
+
+The registering host sends also a bunch of [`system annotations`](#system-annotations) tracking information regarding the authentication
+method used, the running OS version and the current IP address.
+
+Those annotations are added to the associated [MachineInventory](machineinventory-reference.md).
+
+Elemental machines attempt a registration update every 30 minutes to update labels and annotations.
+
+#### System Annotations
+| Key                                         | Description                                                                                |
+|---------------------------------------------|--------------------------------------------------------------------------------------------|
+| elemental.cattle.io/auth                    | Authentication used during registration (one of 'tpm', 'emulated-tpm', 'mac', 'sys-uuid')  |
+| elemental.cattle.io/registration-ip         | IP address used during last registration                                                   |
+| elemental.cattle.io/os.unmanaged            | Only present when set to 'true', disables OS management functionality on the tracked host  |
+| elemental.cattle.io/name                    | 'NAME' from /etc/os-release                                                                |
+| elemental.cattle.io/version                 | 'VERSION' from /etc/os-release                                                             |
+| elemental.cattle.io/version-id              | 'VERSION_ID' from /etc/os-release                                                          |
+| elemental.cattle.io/id                      | 'ID' from /etc/os-release                                                                  |
+| elemental.cattle.io/pretty-name             | 'PRETTY_NAME' from /etc/os-release                                                         |
+| elemental.cattle.io/image                   | 'IMAGE' from /etc/os-release                                                               |
+| elemental.cattle.io/cpe-name                | 'CPE_NAME' from /etc/os-release                                                            |
 
 #### Reference
 
@@ -65,11 +85,15 @@ spec:
 
 `MachineRegistration` holds information on how to install, reset, and configure all connected Elemental machines.  
 
-It's possible to update the `spec.machineInventoryLabels` and `spec.machineInventoryAnnotations` and this will be applied to all registered machines.
-By default, Elemental machines will attempt a registration update every 24 hours to update labels and annotations.
+The `spec.machineInventoryLabels` and `spec.machineInventoryAnnotations` fields hold label and annotation templates
+rendered to actual labels and annotations applied to the [MachineInventories](machineinventory-reference.md) tracking
+the registered machines.
+
+Elemental machines attempt a registration update every 30 minutes to update labels and annotations.
 
 While it's possible to modify the `spec.config` definition, updates to the `spec.config` will be ignored by machines that already completed installation.
-Machines that couldn't complete the installation will try again every 30 minutes by reloading the remote `MachineRegistration` definition. This can be useful to correct `spec.config` mistakes that prevent successful installation (for ex. `spec.config.elemental.install.device`), without having to create a new `MachineRegistration` and a new ISO.  
+Machines that couldn't complete the installation will try again every 30 minutes by reloading the remote `MachineRegistration` definition.
+This can be useful to correct `spec.config` mistakes that prevent successful installation (for ex. `spec.config.elemental.install.device`), without having to create a new `MachineRegistration` and a new ISO.
 
 #### Reference
 

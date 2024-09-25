@@ -92,7 +92,7 @@ Supports the following values:
 | tty             | string | empty         | Add named tty to grub                                                                                                                      |
 | poweroff        | bool   | false         | Shutdown the system after install                                                                                                          |
 | reboot          | bool   | false         | Reboot the system after install                                                                                                            |
-| snapshotter     | string | loopdevice    | Type of device used to manage snapshots in OS images ('loopdevice' or 'btrfs').                                                            |
+| snapshotter     | obj    | empty         | Snapshotter configuration. See [reference](#configelementalinstallsnapshotter)                                                             |
 | eject-cd        | bool   | false         | Try to eject the cd on reboot                                                                                                              |
 
 :::warning warning
@@ -173,6 +173,16 @@ The currently supported keys are:
 | Size                | The device size (values can be specified using kubernetes resources, eg 100Gi) |
 
 The rules are AND:ed together, which means all rules must match the targeted device.
+
+#### config.elemental.install.snapshotter
+
+You can configure how Elemental manages snapshots on the installed machine.  
+New snapshots are created for example when [upgrading](./upgrade) the machine with a new OS image.  
+The `loopdevice` snapshotter will unpack new images on a `ext4` filesystem, while the `btrfs` snapshotter will make use of the underlying [btrfs snapshots](https://archive.kernel.org/oldwiki/btrfs.wiki.kernel.org/index.php/SysadminGuide.html#Snapshots) functionality, greatly reducing the amount of disk space needed to store multiple snapshots.  
+
+| Key      | Type   | Default value | Description                                                                     |
+|----------|--------|---------------|---------------------------------------------------------------------------------|
+| type     | string | loopdevice    | Type of device used to manage snapshots in OS images ('loopdevice' or 'btrfs'). |
 
 #### config.elemental.reset
 

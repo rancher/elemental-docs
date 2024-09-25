@@ -31,9 +31,9 @@ The docs versioning is based on the `Elemental Operator` component as it's the u
 ## Known issues
 
 ### Predictable Network Interface Names
-The SLE Micro OS images released in the default
+The SLE Micro OS images with versions v2.1.1 and v2.1.2 (released in the default
 [ManagedOSVersionChannel](managedosversionchannel-reference))
-with versions v2.1.1 and v2.1.2 adopt predictable network interface names by default.
+adopt predictable network interface names by default.
 
 This is a change from SLE Micro OS images previously released, so you should expect your
 Elemental hosts to switch the network interface names from the `ethX` template to the `enpXsY` one.

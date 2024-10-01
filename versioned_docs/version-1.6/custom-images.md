@@ -116,7 +116,6 @@ hence this is also a good check mark to verify the container can be pushed to a
 registry and used by the *elemental-operator* as a `baseImage` for a
 [SeedImage](seedimage-reference) resource.
 
-
 ## List custom images as a ManagedOSVersion resource
 
 In Elemental listing OS container images and ISO container images as ManagedOSVersion
@@ -163,3 +162,46 @@ spec:
 
 Note the  `type: iso` states this is an ISO. This makes the image `myrepo/custom-build-iso:v1.1.1`
 eligible for SeedImages generation from UI.
+
+## Custom partition size
+
+When building custom images, it's important to take in account disk partition sizes, to ensure the image and the upgrade snapshots can fit correctly over time.  
+A partitions configuration can be included in your custom image, or alternatively it can be conveniently applied to the [SeedImage](./seedimage-reference.md) used to generate the install media.  
+Note that all `size` values are expressed in megabytes, and a value of `0` will take the rest of the disk. This is the default behavior of the `persistent` partition if no `size` has been defined for it. For more information, see the full [configuration sample](https://github.com/rancher/elemental-toolkit/blob/main/config.yaml.example).  
+
+```yaml
+apiVersion: elemental.cattle.io/v1beta1
+kind: SeedImage
+metadata:
+  name: custom-partitions-iso
+  namespace: fleet-default
+spec:
+  cloud-config:
+    write_files:
+    - path: /etc/elemental/config.d/partitions.yaml
+      content: |
+        install:
+          partitions:
+            recovery:
+              size: 8192
+            state:
+              size: 16384
+    - path: /etc/elemental/config.d/snapshotter.yaml
+      content: |
+        snapshotter:
+          max-snaps: 2
+  baseImage: myrepo/custom-build-iso:v1.1.1
+  registrationRef:
+    name: my-machine-registration
+    namespace: fleet-default
+```
+
+The `state` partition will hold all system snapshots. Therefore when sizing this partition, the following formula can be considered: `$image_size * ($max_number_of_snapshots + 1 + 1)`.  
+The `$max_number_of_snapshots` can be similarly configured with a custom configuration file as shown in the sample above.  
+Note that by default it's `4` for the `btrfs` snapshotter type, and `2` for the `loopdevice` type.  
+You can configure the snapshotter type in use editing the [MachineRegistration](./machineregistration-reference.md#configelementalinstallsnapshotter).  
+
+Since the state partition is also used for the <Vars name="elemental_toolkit_name" link="elemental_toolkit_url"/> work directory, it's best to leave an additional `$image_size` worth of free space, so that the image can be unpacked correctly for example when running upgrades.  
+
+Lastly, an extra `$image_size` free space can be used as a safe margin to keep. This is especially important when using the `loopdevice` snapshotter type, in case newer images will grow in size from the originally installed one.  
+On the contrary, the `btrfs` snapshotter can be used instead to save space on the `state` partition, or to use the same space to keep more snapshots.  

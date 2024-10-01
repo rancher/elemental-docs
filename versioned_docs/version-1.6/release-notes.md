@@ -31,6 +31,7 @@ The docs versioning is based on the `Elemental Operator` component as it's the u
 ## Known issues
 
 ### Predictable Network Interface Names
+
 The SLE Micro OS images with versions v2.1.1 and v2.1.2 (released in the default
 [ManagedOSVersionChannel](managedosversionchannel-reference))
 adopt predictable network interface names by default.
@@ -41,9 +42,10 @@ Elemental hosts to switch the network interface names from the `ethX` template t
 You can disable the predictable network interface names by passing the `net.ifnames=0` argument
 to the kernel command line. To make it permanent:
 
-```
+```sh
 grub2-editenv /oem/grubenv set extra_cmdline=net.ifnames=0
 ```
+
 :::warning
 The adoption of the predictable network interface names feature was not a planned one:
 it will be reverted in the next SLE Micro OS images starting from version v2.1.3.
@@ -52,7 +54,13 @@ The v2.1.3 OS images will be released via the default Elemental 1.6 channel.
 :::
 
 ### SSH root access
+
 The SLE Micro OS images released in the current Elemental version (throught the default
 [ManagedOSVersionChannel](managedosversionchannel-reference)) do not allow ssh root access
 via password anymore. Easyest workaround is to either configure ssh root access via an ssh
 key or add a new user to the system.
+
+### Kernel Panic on hypervisors
+
+OS Images based on SL Micro 6.0 can fail to boot with a kernel panic on virtual machines using an unsupported CPU type.  
+The `x86-64-v2` instruction set is required. For best compatibility CPU host passthrough is recommended.

@@ -56,7 +56,7 @@ See the [Declarative Networking Reference](networking.md) for full information.
 
 | Key               | Type      | Default value | Description                                                                                                   |
 |-------------------|-----------|---------------|---------------------------------------------------------------------------------------------------------------|
-| configurator      | string    | nmc           | The network configurator type to use (`nmc`, `nmstate`, or `nmconnections`)                                   |
+| configurator      | string    | nmconnections           | The network configurator type to use (`nmc`, `nmstate`, or `nmconnections`)                                   |
 | ipAddresses       | objRefMap | empty         | A map of `IPPool` references. Map keys can be used for IPAddress substitution in the network config template. |
 | config            | obj       | empty         | The network config template. Syntax varies depending on the `configurator` in use.                            |
 

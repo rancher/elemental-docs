@@ -33,7 +33,7 @@ The [MachineRegistration](machineregistration-reference) supports Declarative Ne
 
 #### Installing nmc or nmstatectl on OS images
 
-When using the `nmc` or `nmstate` configurators, the [nmc](https://github.com/suse-edge/nm-configurator/releases) or [nmstatectl](https://github.com/nmstate/nmstate/releases) tool needs to be installed on the system.  
+When using the `nmc` or `nmstate` configurators, the [nmc](https://github.com/suse-edge/nm-configurator/releases) or [nmstatectl](https://github.com/nmstate/nmstate/releases) tools need to be installed on the system.  
 
 Currently this can be achieved by [customizing an Elemental OS image](./custom-images.md#remastering-an-os-image-with-a-custom-dockerfile) with a custom command:
 

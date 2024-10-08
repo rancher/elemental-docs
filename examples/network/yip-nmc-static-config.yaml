@@ -24,12 +24,12 @@ stages:
           routes:
             config:
             - destination: 0.0.0.0/0
-              next-hop-interface: enp1s0
+              next-hop-interface: eth0
               next-hop-address: 192.168.122.1
               metric: 150
               table-id: 254
           interfaces:
-          - name: enp1s0
+          - name: eth0
             type: ethernet
             state: up
             mac-address: 52:54:00:45:14:c5
@@ -55,12 +55,12 @@ stages:
           routes:
             config:
             - destination: 0.0.0.0/0
-              next-hop-interface: enp1s0
+              next-hop-interface: eth0
               next-hop-address: 192.168.122.1
               metric: 150
               table-id: 254
           interfaces:
-          - name: enp1s0
+          - name: eth0
             type: ethernet
             state: up
             mac-address: 52:54:00:3a:ae:3b

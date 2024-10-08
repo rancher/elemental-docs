@@ -24,7 +24,7 @@ Elemental will make use of the `cacerts`, when including the CA cert to be trust
 Note however that it will not be possible to update this value after an Elemental machine has been installed.  
 Replacing the CA certificate on Rancher may lead to Elemental machines not being able to re-connect to Rancher and operating normally, when the `agent-tls-mode` is set to `strict`.  
 
-For this reason the reccomendation is to use the `agent-tls-mode: system-store` setting instead and manage the lifecycle of CA certs on Elemental machines directly, when a private Certificate Authority is in use.  
+For this reason the recommendation is to use the `agent-tls-mode: system-store` setting instead and manage the lifecycle of CA certs on Elemental machines directly, when a private Certificate Authority is in use.  
 
 The CA cert can be installed in [custom OS images](./custom-images.md) directly, or passed as a cloud-init configuration in Elemental resources.  
 For example the initial CA certificate can be included in the [MachineRegistration](./machineregistration-reference.md#configcloud-config) `cloud-config`:  

@@ -65,7 +65,7 @@ are not easily achievable with the `elemental` client configuration options. A g
 partition for Raspberry Pi devices.
 
 :::warning
-Note most hooks are executed in the host environment with privileges, so that they are potentially destructive operations. In most
+Note most hooks are executed in the host environment with privileges, so they are potentially destructive operations. In most
 cases regular cloud-config operations at boot time are sufficient to setup the system. Also to include additional software in an image
 the preferred option is to build a [derivative image](custom-images.md) and not abuse of hooks to install additional software.
 :::

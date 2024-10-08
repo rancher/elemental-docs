@@ -122,6 +122,7 @@ const sidebars = {
         "inventory-management",
         "reset",
         "channels",
+        "certificate-authority",
       ]
     },
     {

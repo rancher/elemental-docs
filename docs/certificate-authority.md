@@ -18,7 +18,7 @@ Note that if the `agent-tls-mode` setting changes, Elemental machines will need 
 
 ## Private CA certificate lifecycle
 
-When using a private CA, the reccomendation is to always make sure that the same CA is also used for Rancher.  
+When using a private CA, the recommendation is to always make sure that the same CA is also used for Rancher.  
 Elemental will make use of the `cacerts`, when including the CA cert to be trusted by agents. This is the same value as it appears on the `https://my.rancher.example/cacerts` URL.  
 
 Note however that it will be not possible to update this value after an Elemental machine has been installed.  

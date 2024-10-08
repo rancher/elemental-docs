@@ -48,17 +48,17 @@ spec:
         routes:
           config:
           - destination: 0.0.0.0/0
-            next-hop-interface: enp1s0
+            next-hop-interface: eth0
             next-hop-address: 192.168.122.1
             metric: 150
             table-id: 254
           - destination: 172.16.0.1/24
-            next-hop-interface: enp8s0
+            next-hop-interface: eth1
             next-hop-address: 172.16.0.1
             metric: 150
             table-id: 254
         interfaces:
-          - name: enp1s0
+          - name: eth0
             type: ethernet
             description: Main-NIC
             state: up
@@ -70,7 +70,7 @@ spec:
                 prefix-length: 24
             ipv6:
               enabled: false
-          - name: enp8s0
+          - name: eth1
             type: ethernet
             description: Secondary-NIC
             state: up

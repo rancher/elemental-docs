@@ -61,7 +61,7 @@ spec:
           enabled: true
         ipv6:
           enabled: false
-        name: enp1s0
+        name: eth0
         state: up
         type: ethernet
       routes:
@@ -69,7 +69,7 @@ spec:
         - destination: 0.0.0.0/0
           metric: 150
           next-hop-address: 192.168.122.1
-          next-hop-interface: enp1s0
+          next-hop-interface: eth0
           table-id: 254
     ipAddresses:
       inventory-ip: 192.168.122.150
@@ -117,7 +117,7 @@ config:
       enabled: true
     ipv6:
       enabled: false
-    name: enp1s0
+    name: eth0
     state: up
     type: ethernet
   routes:
@@ -125,7 +125,7 @@ config:
     - destination: 0.0.0.0/0
       metric: 150
       next-hop-address: 192.168.122.1
-      next-hop-interface: enp1s0
+      next-hop-interface: eth0
       table-id: 254
 ```
 
@@ -151,7 +151,7 @@ stages:
                 uuid=d26b4ae4-d525-3cbf-a557-33feb60343c0
                 type=ethernet
                 autoconnect-priority=-999
-                interface-name=enp1s0
+                interface-name=eth0
                 timestamp=1722340245
 
                 [ethernet]

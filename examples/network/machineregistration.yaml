@@ -33,12 +33,12 @@ spec:
         routes:
           config:
           - destination: 0.0.0.0/0
-            next-hop-interface: enp1s0
+            next-hop-interface: eth0
             next-hop-address: 192.168.122.1
             metric: 150
             table-id: 254
         interfaces:
-          - name: enp1s0
+          - name: eth0
             type: ethernet
             description: Main-NIC
             state: up

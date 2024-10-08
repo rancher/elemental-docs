@@ -31,6 +31,39 @@ The [MachineRegistration](machineregistration-reference) supports Declarative Ne
 
 - (optionally) [nmstatectl](https://github.com/nmstate/nmstate/releases) can be used with `nmstate` network [configurator](#configurators).
 
+#### Installing nmc or nmstatectl on OS images
+
+When using the `nmc` or `nmstate` configurators, the [nmc](https://github.com/suse-edge/nm-configurator/releases) or [nmstatectl](https://github.com/nmstate/nmstate/releases) tool needs to be installed on the system.  
+
+Currently this can be achieved by [customizing an Elemental OS image](./custom-images.md#remastering-an-os-image-with-a-custom-dockerfile) with a custom command:
+
+<Tabs>
+
+<TabItem value="nmc" label="nmc" default>
+
+```yaml
+# Install nmc
+RUN wget https://github.com/suse-edge/nm-configurator/releases/download/v0.3.1/nmc-linux-x86_64 -O /usr/sbin/nmc && \
+    chmod +x /usr/sbin/nmc
+```
+
+</TabItem>
+
+<TabItem value="nmstatectl" label="nmstatectl" default>
+
+```yaml
+# Install nmstatectl
+RUN wget https://github.com/nmstate/nmstate/releases/download/v2.2.37/nmstatectl-linux-x64.zip && \
+    unzip nmstatectl-linux-x64.zip && \
+    chmod +x nmstatectl && \
+    mv ./nmstatectl /usr/sbin/nmstatectl && \
+    rm nmstatectl-linux-x64.zip
+```
+
+</TabItem>
+
+</Tabs>
+
 ### How to install the CAPI IPAM Provider
 
 The recommended way to install any CAPI Provider into Rancher is to use [Rancher Turtles](https://turtles.docs.rancher.com).  

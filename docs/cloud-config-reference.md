@@ -80,7 +80,7 @@ the preferred option is to build a [derivative image](custom-images.md) and not 
 
 * After chrooted stages: `after-install-chroot`, `after-upgrade-chroot`, `after-reset-chroot`, `after-disk-chroot`
   These stages are executed after deploying the target system into the working area into a chroot environment rooted to the
-  actual deployed image. Since this in a chroot env the elemental client analyses the hooks present in the deployed image, not the host.
+  actual deployed image. Since this happens in a chroot env the elemental client analyses the hooks present in the deployed image, not in the host.
   Only `/oem` is shared with the host if available.
 
 * After stages: `after-install`, `after-upgrade`, `after-reset`, `after-disk`

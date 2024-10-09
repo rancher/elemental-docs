@@ -49,6 +49,9 @@ spec:
 Contains the cloud-configuration to be injected in the node.  
 Both yip and cloud-init syntax are supported. See the [Cloud Config Reference](cloud-config-reference.md) for full information.
 
+The cloud-configuration provided in this field is not evaluated during the installation, it is
+just added to the node so it gets evaluated on reboot.
+
 #### config.network
 
 Contains the Declarative Networking configuration, supporting integration with [CAPI IPAM Providers](https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20220125-ipam-integration.md#ipam-provider).  

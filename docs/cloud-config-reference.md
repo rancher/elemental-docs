@@ -93,6 +93,11 @@ the preferred option is to build a [derivative image](custom-images.md) and not 
   These stages are executed at end before exiting the command and running a cleanup process. At this stage the image is already deployed
   and locked in a read-only subvolume or filesystem. Partitions are still mounted at this stage.
 
+:::note
+Note installation hooks are not applied as part of the [MachineRegistartion.config.cloud-config](machineregistration-reference.md#configcloud-config).
+In order to provide installation hooks they can be included as part of the [SeedImage.cloud-config](seedimage-reference.md#seedimagespec-reference),
+as they need to be present in the installation media.
+:::
 
 ## Configuration syntax
 

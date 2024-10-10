@@ -119,13 +119,5 @@ It should boot up with the ISO and start installing Elemental:
 
 ![Elemental OS install logs](images/rancher-vmware-elemental-install-logs.png)
 
-And once it is complete it will reboot the VM and it should show up as active under the machine inventory in Rancher as follow:
-
-* Machine inventory status while booting
-
-![Machine inventory status during boot](images/rancher-vmware-machine-inventory-status-booting.png)
-
-* Machine inventory status after boot completed
-
-![Machine inventory status after boot complete](images/rancher-vmware-machine-inventory-status-boot-complete.png)
+And once it is complete it will reboot the VM and it will show up as active under the machine inventory in Rancher.
 

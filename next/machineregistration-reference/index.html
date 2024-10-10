@@ -10,7 +10,7 @@
 
 
 <link rel="search" type="application/opensearchdescription+xml" title="Elemental - Immutable Linux for Rancher" href="/opensearch.xml"><link rel="stylesheet" href="/assets/css/styles.426aa01c.css">
-<script src="/assets/js/runtime~main.7a33e30c.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.38b25bff.js" defer="defer"></script>
 <script src="/assets/js/main.df752ca6.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -31,6 +31,8 @@ The registration file contains all the required data to allow the target host to
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="configcloud-config">config.cloud-config<a href="#configcloud-config" class="hash-link" aria-label="Direct link to config.cloud-config" title="Direct link to config.cloud-config">​</a></h4>
 <p>Contains the cloud-configuration to be injected in the node.<br>
 <!-- -->Both yip and cloud-init syntax are supported. See the <a href="/next/cloud-config-reference">Cloud Config Reference</a> for full information.</p>
+<p>The cloud-configuration provided in this field is not evaluated during the installation, it is
+just added to the node so it gets evaluated on reboot.</p>
 <h4 class="anchor anchorWithStickyNavbar_LWe7" id="confignetwork">config.network<a href="#confignetwork" class="hash-link" aria-label="Direct link to config.network" title="Direct link to config.network">​</a></h4>
 <p>Contains the Declarative Networking configuration, supporting integration with <a href="https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20220125-ipam-integration.md#ipam-provider" target="_blank" rel="noopener noreferrer">CAPI IPAM Providers</a>.<br>
 <!-- -->See the <a href="/next/networking">Declarative Networking Reference</a> for full information.</p>
@@ -62,7 +64,7 @@ The registration file contains all the required data to allow the target host to
 <!-- -->New snapshots are created for example when <a href="/next/upgrade">upgrading</a> the machine with a new OS image.<br>
 <!-- -->The <code>loopdevice</code> snapshotter will unpack new images on a <code>ext4</code> filesystem, while the <code>btrfs</code> snapshotter will make use of the underlying <a href="https://archive.kernel.org/oldwiki/btrfs.wiki.kernel.org/index.php/SysadminGuide.html#Snapshots" target="_blank" rel="noopener noreferrer">btrfs snapshots</a> functionality, greatly reducing the amount of disk space needed to store multiple snapshots.</p>
 <table><thead><tr><th>Key</th><th>Type</th><th>Default value</th><th>Description</th></tr></thead><tbody><tr><td>type</td><td>string</td><td>loopdevice</td><td>Type of device used to manage snapshots in OS images (&#x27;loopdevice&#x27; or &#x27;btrfs&#x27;).</td></tr><tr><td>maxSnaps</td><td>int</td><td>2</td><td>Maximum amount of snapshots to keep.</td></tr></tbody></table>
-<h4 class="anchor anchorWithStickyNavbar_LWe7" id="configelementalreset">config.elemental.reset<a href="#configelementalreset" class="hash-link" aria-label="Direct link to config.elemental.reset" title="Direct link to config.elemental.reset"> ​</a></h4>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="configelementalreset">config.elemental.reset<a href="#configelementalreset" class="hash-link" aria-label="Direct link to config.elemental.reset" title="Direct link to config.elemental.reset">​</a></h4>
 <p>Contains the reset configuration that would be applied via <code>elemental-register --reset</code>, when booted from the recovery partition and passed to <a href="https://github.com/rancher/elemental-toolkit/blob/main/docs/elemental_reset.md" target="_blank" rel="noopener noreferrer"><code>elemental reset</code></a></p>
 <p>Supports the following values:</p>
 <table><thead><tr><th>Key</th><th>Type</th><th>Default value</th><th>Description</th></tr></thead><tbody><tr><td>enabled</td><td>bool</td><td>false</td><td>MachineInventories created from this MachineRegistration will have reset functionality enabled</td></tr><tr><td>reset-persistent</td><td>bool</td><td>true</td><td>Format the COS_PERSISTENT partition</td></tr><tr><td>reset-oem</td><td>bool</td><td>true</td><td>Format the COS_OEM partition</td></tr><tr><td>config-urls</td><td>list</td><td>empty</td><td>Cloud-init config files</td></tr><tr><td>system-uri</td><td>string</td><td>empty</td><td>Sets the system image source and its type (e.g. &#x27;docker<!-- -->:registry<!-- -->.org/image<!-- -->:tag<!-- -->&#x27;) instead of using the running ISO</td></tr><tr><td>debug</td><td>bool</td><td>false</td><td>Enable debug output</td></tr><tr><td>poweroff</td><td>bool</td><td>false</td><td>Shutdown the system after reset</td></tr><tr><td>reboot</td><td>bool</td><td>true</td><td>Reboot the system after reset</td></tr></tbody></table>

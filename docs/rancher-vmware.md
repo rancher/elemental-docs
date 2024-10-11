@@ -31,7 +31,7 @@ See this example of MachineRegistration:
 
 The above MachineRegistration assumes the nodes include TPM 2.0. In case the virtualized target machine does
 not include a virtual TPM device a software emulation can be configured in the
-`config.elemental.registration` field.
+`config.elemental.registration` section.
 
 Consider the following example:
 

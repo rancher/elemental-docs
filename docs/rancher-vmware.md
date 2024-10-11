@@ -54,7 +54,7 @@ spec:
     ...
 ```
 
-`emulated-tpm-seed: -1` is sets the client to use a random seed to compute TPM hash, this is useful to be capable
+`emulated-tpm-seed: -1` sets the client to use a random seed to compute TPM hash, this is useful to be capable
 to reuse the same registration end point definition for multiple machines. See further [TPM documentation](tpm.md).
 
 ## Step 2: Create the installation ISO

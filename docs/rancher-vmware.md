@@ -30,7 +30,7 @@ See this example of MachineRegistration:
 <CodeBlock language="yaml" title="registration.yaml" showLineNumbers>{Registration}</CodeBlock>
 
 The above MachineRegistration assumes the nodes include TPM 2.0. In case the virtualized target machine does
-not include a virtual TPM device a software emulation can be configured by adding the
+not include a virtual TPM device a software emulation can be configured in the
 `config.elemental.registration` field.
 
 Consider the following example:

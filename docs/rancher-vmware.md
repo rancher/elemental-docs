@@ -66,7 +66,7 @@ Consider the following example:
 
 <CodeBlock language="yaml" title="seedimage.yaml" showLineNumbers>{SeedImage}</CodeBlock>
 
-Once the SeedImage resources is created it starts building an ISO with the provided OS image and linking it to
+Once the SeedImage resource is created it starts building an ISO with the provided OS image and linking it to
 the given registration end point. Once done a download URL will be available in the SeedImage resource status.
 
 You can download it with:

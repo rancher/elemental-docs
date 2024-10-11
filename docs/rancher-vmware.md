@@ -23,7 +23,7 @@ In this document we will see how to set a virtual machine in VMware workstation 
 ## Step 1: Create the registration end point
 
 We need to create an ISO image to bootstrap nodes and register against the Rancher instance. For that
-a registraion end point ([MachineRegistration](machineregistration-reference.md) resource) is required.
+a registration end point ([MachineRegistration](machineregistration-reference.md) resource) is required.
 
 See this example of MachineRegistration:
 

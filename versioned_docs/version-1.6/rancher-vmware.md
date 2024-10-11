@@ -22,16 +22,16 @@ In this document we will see how to set a virtual machine in VMware workstation 
 
 ## Step 1: Create the registration end point
 
-We need to create an ISO image to bootstrap nodes and register against the Ranche instance. For that
-a registraion end point ([MachineRegistration](machineregistration-reference.md) resource) is required.
+We need to create an ISO image to bootstrap nodes and register against the Rancher instance. For that
+a registration end point ([MachineRegistration](machineregistration-reference.md) resource) is required.
 
 See this example of MachineRegistration:
 
 <CodeBlock language="yaml" title="registration.yaml" showLineNumbers>{Registration}</CodeBlock>
 
 The above MachineRegistration assumes the nodes include TPM 2.0. In case the virtualized target machine does
-not include a virtual TPM device a software emulation can be configured by adding the
-`config.elemental.registration` field.
+not include a virtual TPM device a software emulation can be configured in the
+`config.elemental.registration` section.
 
 Consider the following example:
 
@@ -54,25 +54,25 @@ spec:
     ...
 ```
 
-`emulated-tpm-seed: -1` is sets the client to use a random seed to compute TPM hash, this is useful to be capable
+`emulated-tpm-seed: -1` sets the client to use a random seed to compute TPM hash, this is useful to be capable
 to reuse the same registration end point definition for multiple machines. See further [TPM documentation](tpm.md).
 
 ## Step 2: Create the installation ISO
 
-The installation media needs to be tied to an specific registration end point. This is created and handled
+The installation media needs to be tied to a specific registration end point. This is created and handled
 with the [SeedImage](seedimage-reference.md) resource.
 
-Consider follwing example:
+Consider the following example:
 
 <CodeBlock language="yaml" title="seedimage.yaml" showLineNumbers>{SeedImage}</CodeBlock>
 
-Once the SeedImage resources is created it starts building an ISO with the provided OS image and linking it to
+Once the SeedImage resource is created it starts building an ISO with the provided OS image and linking it to
 the given registration end point. Once done a download URL will be available in the SeedImage resource status.
 
 You can download it with:
 
 ```shell
-wget --no-check-certificate $(kubectl get machineregistration -n fleet-default fire-nodes -o jsonpath="{.status.registrationURL}") -O initial-registration.yaml
+wget --no-check-certificate --content-disposition $(kubectl get seedimages.elemental.cattle.io -n fleet-default fire-img -o jsonpath="{.status.downloadURL}")
 ```
 
 ## Step 3: Boot the target device

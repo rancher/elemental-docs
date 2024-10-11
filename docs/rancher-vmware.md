@@ -59,7 +59,7 @@ to reuse the same registration end point definition for multiple machines. See f
 
 ## Step 2: Create the installation ISO
 
-The installation media needs to be tied to an specific registration end point. This is created and handled
+The installation media needs to be tied to a specific registration end point. This is created and handled
 with the [SeedImage](seedimage-reference.md) resource.
 
 Consider follwing example:

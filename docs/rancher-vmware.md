@@ -62,7 +62,7 @@ to reuse the same registration end point definition for multiple machines. See f
 The installation media needs to be tied to a specific registration end point. This is created and handled
 with the [SeedImage](seedimage-reference.md) resource.
 
-Consider follwing example:
+Consider the following example:
 
 <CodeBlock language="yaml" title="seedimage.yaml" showLineNumbers>{SeedImage}</CodeBlock>
 

@@ -72,7 +72,7 @@ the given registration end point. Once done a download URL will be available in 
 You can download it with:
 
 ```shell
-wget --no-check-certificate $(kubectl get machineregistration -n fleet-default fire-nodes -o jsonpath="{.status.registrationURL}") -O initial-registration.yaml
+wget --no-check-certificate --content-disposition $(kubectl get seedimages.elemental.cattle.io -n fleet-default fire-img -o jsonpath="{.status.downloadURL}")
 ```
 
 ## Step 3: Boot the target device

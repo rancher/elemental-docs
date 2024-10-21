@@ -97,6 +97,9 @@ the preferred option is to build a [derivative image](custom-images.md) and not 
 Note installation hooks are not applied as part of the [MachineRegistartion.config.cloud-config](machineregistration-reference.md#configcloud-config).
 In order to provide installation hooks they can be included as part of the [SeedImage.cloud-config](seedimage-reference.md#seedimagespec-reference),
 as they need to be present in the installation media.
+The only exception is `after-install-chroot` which can be provided as part of a
+[MachineRegistartion.config.cloud-config](machineregistration-reference.md#configcloud-config) because the hook runs
+in the deployed image chroot and by that time cloud-config is already installed into the system.
 :::
 
 ## Configuration syntax
@@ -156,6 +159,10 @@ spec:
     cloud-config:
       name: "A registration driven config"
       stages:
+        after-install-chroot:
+        - name: "Set serial console"
+          commands:
+          - grub2-editenv /oem/grubenv set extra_cmdline="console=ttyS0"
         initramfs:
         - name: "Setup users"
           ensure_entities:

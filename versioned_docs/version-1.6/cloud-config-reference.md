@@ -153,6 +153,10 @@ spec:
     cloud-config:
       name: "A registration driven config"
       stages:
+        after-install-chroot:
+        - name: "Set serial console"
+          commands:
+          - grub2-editenv /oem/grubenv set extra_cmdline="console=ttyS0"
         initramfs:
         - name: "Setup users"
           ensure_entities:

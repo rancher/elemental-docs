@@ -19,9 +19,9 @@ any time as they are simply grouping a set of actions under an arbitrary name.
 
 Elemental Toolkit integrates five predefined stages into the OS boot process.
 
-1. **`rootfs`**: this stage runs on early boot inside the init ram disk, just after mounting the root device (typically at `/sysroot`).
-   This stage can be used to define first-boot steps like expanding or creating persistent partitions. Ephemeral and
-   persistent paths are typically defined at this stage. Executed as part of the `initrd-root-fs.target`.
+1. **`rootfs`**: this stage runs on early boot inside the init ram disk, just *after* mounting the root device (typically at `/sysroot`).
+   This stage can be used to define first-boot steps like creating new partitions. Ephemeral and  persistent paths are typically defined
+   at this stage. Executed as part of the `initrd-root-fs.target`.
 
 2. **`initramfs`**: this stage runs inside the init ram disk too, but on a later stage just before switching root. This stage runs in a chrooted
    environment to the actual root device. This stage is handy to set some system parameters that might be relevant to systemd
@@ -40,11 +40,60 @@ Elemental Toolkit integrates five predefined stages into the OS boot process.
 
 By default, `elemental` reads the yaml configuration files from the following paths in order: `/system/oem`, `/oem` and `/usr/local/cloud-config`.
 
-In Elemental Operator, all kubernetes resources including a `cloud-config` field can be expressed in either [yip](#configuration-syntax) or [cloud-init compatible](#compatibility-with-cloud-init-format) syntax. This includes resources such as `MachineRegistration`, `SeedImage`, and `ManagedOSImage`.
+In Elemental Operator, all kubernetes resources including a `cloud-config` field can be expressed in either [yip](#configuration-syntax) or
+[cloud-init compatible](#compatibility-with-cloud-init-format) syntax. This includes resources such as `MachineRegistration`, `SeedImage`, and `ManagedOSImage`.
 
 :::note
 In contrast to similar projects such as _Cloud Init_, Yip does not keep records or caches of executed stages and steps,
 all stages and its associated configuration is executed at every boot.
+:::
+
+
+## Elemental client cloud-config hooks
+
+In addition to the defined cloud-config stages at boot described in the previous section the Elemental client also
+honors some specific stages, referenced as hooks, to customize the behavior of these subcommands: `install`, 
+`upgrade`, `reset` and `build-disk`. Each of these subcommands has it's own set of four different cloud-config stages executed at
+analog phases of the specific subcommand execution.
+
+Hooks are essetially a way to provide permanent changes to system that can't be easily expressed as part of an OCI container or that
+are not easily achievable with the `elemental` client configuration options. A good example could be handling the firmware in EFI
+partition for Raspberry Pi devices.
+
+:::warning
+Note most hooks are executed in the host environment with privileges, so they are potentially destructive operations. In most
+cases regular cloud-config operations at boot time are sufficient to setup the system. Also to include additional software in an image
+the preferred option is to build a [derivative image](custom-images.md) and not abuse of hooks to install additional software.
+:::
+
+
+### Hook stages
+
+* Before stages: `before-install`, `before-upgrade`, `before-reset`, `before-disk`
+  These stages are executed once the working directories and environment are prepared but before starting the actual action. In
+  `install`, `upgrade` and `reset` steps this happens once all the associated partitions are created and mounted, but before stating
+  the deployment of any image.
+
+* After chrooted stages: `after-install-chroot`, `after-upgrade-chroot`, `after-reset-chroot`, `after-disk-chroot`
+  These stages are executed after deploying the target system into the working area into a chroot environment rooted to the
+  actual deployed image. Since this happens in a chroot env the elemental client analyses the hooks present in the deployed image, not in the host.
+  Only `/oem` is shared with the host if available.
+
+* After stages: `after-install`, `after-upgrade`, `after-reset`, `after-disk`
+  These stages are executed after deploying the target system into the working area from the host environment. At this stages all
+  partitions are still mounted and available in RW mode.
+
+* Post stages: `post-install`, `post-upgrade`, `post-reset`, `post-disk`
+  These stages are executed at end before exiting the command and running a cleanup process. At this stage the image is already deployed
+  and locked in a read-only subvolume or filesystem. Partitions are still mounted at this stage.
+
+:::note
+Note installation hooks are not applied as part of the [MachineRegistartion.config.cloud-config](machineregistration-reference.md#configcloud-config).
+In order to provide installation hooks they can be included as part of the [SeedImage.cloud-config](seedimage-reference.md#seedimagespec-reference),
+as they need to be present in the installation media.
+The only exception is `after-install-chroot` which can be provided as part of a
+[MachineRegistartion.config.cloud-config](machineregistration-reference.md#configcloud-config) because the hook runs
+in the deployed image chroot and by that time cloud-config is already installed into the system.
 :::
 
 ## Configuration syntax

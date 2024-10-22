@@ -200,7 +200,7 @@ status:
     name: m-e5331e3b-1e1b-4ce7-b080-235ed9a6d07c-inventory-ip
 ```
 
-Whenever a `MachineInventory` is deleted, the default (DHCP) network configuration will be restored and the IPs assigned will be released.  
+Whenever a `MachineInventory` is deleted, the default (DHCP) network configuration will be restored, deleting any network profile on the machine and restarting the network stack. Finally the assigned IPs will be released.  
 
 For more information and details on how troubleshoot issues, please consult the [documentation](./troubleshooting-network.md).
 

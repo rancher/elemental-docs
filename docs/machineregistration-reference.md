@@ -56,10 +56,11 @@ just added to the node so it gets evaluated on reboot.
 
 Contains the Declarative Networking configuration, supporting integration with [CAPI IPAM Providers](https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20220125-ipam-integration.md#ipam-provider).  
 See the [Declarative Networking Reference](networking.md) for full information.  
+Any `configurator` value different than `none` will denote that the Network is managed by Elemental.  
 
 | Key               | Type      | Default value | Description                                                                                                   |
 |-------------------|-----------|---------------|---------------------------------------------------------------------------------------------------------------|
-| configurator      | string    | nmc           | The network configurator type to use (`nmc`, `nmstate`, or `nmconnections`)                                   |
+| configurator      | string    | none          | The network configurator type to use (`none`, `nmc`, `nmstate`, or `nmconnections`)                           |
 | ipAddresses       | objRefMap | empty         | A map of `IPPool` references. Map keys can be used for IPAddress substitution in the network config template. |
 | config            | obj       | empty         | The network config template. Syntax varies depending on the `configurator` in use.                            |
 

@@ -148,21 +148,25 @@ spec:
 
 ### Custom Elemental client configuration file
 
-[Elemental client](https://github.com/rancher/elemental-toolkit/blob/main/docs/elemental.md) `install`, `upgrade` and `reset` commands can be configured with a [custom configuration file](https://rancher.github.io/elemental-toolkit/docs/customizing/general_configuration/) located by default in `/etc/elemental/config.yaml`.
-If you have multiple yaml files, you need to add them in the `/etc/elemental/config.d` directory.
+[Elemental client](https://github.com/rancher/elemental-toolkit/blob/main/docs/elemental.md) `install`, `upgrade` and 
+`reset` commands can be configured with a
+[custom configuration file](https://rancher.github.io/elemental-toolkit/docs/customizing/general_configuration/) located
+by default in `/etc/elemental/config.yaml`. If you have multiple yaml files, you need to add them in the
+`/etc/elemental/config.d` directory.
 
-A simple example to set hooks location could be:
+The following example sets an additional extra partition during the installation:
 
 ```yaml showLineNumbers
-extra-partitions:
-- size: 10240
-  fs: ext4
-  label: EXTRA_PARTITION
+install:
+  extra-partitions:
+  - size: 10240
+    fs: ext4
+    label: EXTRA_PARTITION
 ```
 
-The above example sets an additional extra partition during the installation. In order to make it available at
-at installation time this could be done my adding the extra file as part of the SeedImage resource cloud-config
-as it is described in the previous section of this page. Consider the example:
+In order to make it available at installation time this could be done my adding the extra file as part
+of the SeedImage resource cloud-config as it is described in the previous section of this page. Consider
+the example:
 
 ```yaml showLineNumbers
 apiVersion: elemental.cattle.io/v1beta1
@@ -180,8 +184,9 @@ spec:
         - path: /etc/elemental/config.d/extra-partition.yaml
           permissions: 0664
           content: |
-            extra-partitions:
-            - size: 10240
-              fs: ext4
-              label: EXTRA_PARTITION
+            install:
+              extra-partitions:
+              - size: 10240
+                fs: ext4
+                label: EXTRA_PARTITION
 ```

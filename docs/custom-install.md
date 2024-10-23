@@ -63,10 +63,10 @@ spec:
     cloud-config:
       stages:
         boot:
-        - name: "Setting root user password"
+        - name: "Adding 'admin' user"
           users:
-            root:
-              passwd: root
+            admin:
+              passwd: mysecretpasswd
 ```
 
 Alternatively, cloud-config files path can also be referenced explicitly so the configuration is not

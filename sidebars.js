@@ -57,7 +57,6 @@ const sidebars = {
         "installation",
         "upgrade",
         "upgrade-lifecycle",
-        "custom-install",
         "elemental-plans",
       ]
     },
@@ -142,6 +141,17 @@ const sidebars = {
       "label": "How to",
       "items": [
         "custom-images",
+        {
+          "type": "category",
+          "collapsible": true,
+          "collapsed": true,
+          "label": "Customize Elemental Installation",
+          "link": {"type": "doc", "id": "custom-install"},
+          "items": [
+            "extra-rpms",
+            "lvm-drives-example"
+          ]
+        },
         "elemental_behind_proxy",
         "hostname",
         "ntp",

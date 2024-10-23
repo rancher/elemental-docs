@@ -70,7 +70,7 @@ spec:
 ```
 
 Alternatively, cloud-config files path can also be referenced explicitly so the configuration is not
-extrictly needed to live within the MachineRegistration resource itself. The `config-urls` section of the
+strictly needed to live within the MachineRegistration resource itself. The `config-urls` section of the
 MachineRegistration is used for this exact purpose. See
 [MachineRegistration reference](/machineregistration-reference) page.
 

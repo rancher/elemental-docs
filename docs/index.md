@@ -4,11 +4,24 @@ sidebar_label: Overview
 title: ''
 ---
 
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Button from '@mui/material/Button';
+
 <head>
   <link rel="canonical" href="https://elemental.docs.rancher.com"/>
 </head>
 
-# Overview
+# OS Management for Rancher
+
+Manage your OS appliance for Kubernetes nodes as simple OCI images and turn them into self installing
+ISO or disk images.
+
+<ButtonGroup size="small">
+  <Button variant="contained" href="release-notes">Latest Release:</Button>
+  <Button variant="outlined" href="release-notes">v1.6.5</Button>
+</ButtonGroup>
+
+## Welcone to Elemental
 
 Elemental is a software stack enabling centralized, full cloud-native OS management with Kubernetes.
 

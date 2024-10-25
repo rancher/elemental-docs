@@ -21,7 +21,7 @@ ISO or disk images.
   <Button variant="outlined" href="release-notes">v1.6.5</Button>
 </ButtonGroup>
 
-## Welcone to Elemental
+## Welcome to Elemental
 
 Elemental is a software stack enabling centralized, full cloud-native OS management with Kubernetes.
 

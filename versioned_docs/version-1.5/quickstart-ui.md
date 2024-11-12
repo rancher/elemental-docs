@@ -17,7 +17,18 @@ import Selector from "!!raw-loader!@site/examples/quickstart/selector.yaml"
 :::note
 The following instructions need Rancher 2.8.x at least.  
 
-The Elemental UI extension may not be available by default on your Rancher instance. If this is the case, please refer to the [command line documentation](quickstart-cli.md).
+The Elemental UI extension may not be available by default on your Rancher instance. If this is the case, you can [add](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/helm-charts-in-rancher#manage-repositories) the `https://github.com/rancher/ui-plugin-charts` `git` repository, or apply the following resource:
+
+```yaml
+apiVersion: catalog.cattle.io/v1
+kind: ClusterRepo
+metadata:
+  name: rancher-ui-charts
+spec:
+  gitBranch: main
+  gitRepo: https://github.com/rancher/ui-plugin-charts
+```
+
 :::
 
 This quickstart will show you how to deploy the Elemental plugin and operator into an existing Rancher Manager instance.

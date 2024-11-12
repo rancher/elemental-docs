@@ -15,9 +15,7 @@ import Selector from "!!raw-loader!@site/examples/quickstart/selector.yaml"
 # Elemental the visual way
 
 :::note
-The following instructions need Rancher 2.8.x at least.  
-
-The Elemental UI extension may not be available by default on your Rancher instance. If this is the case, please refer to the [command line documentation](quickstart-cli.md).
+The following instructions need Rancher 2.9.x at least.  
 :::
 
 This quickstart will show you how to deploy the Elemental plugin and operator into an existing Rancher Manager instance.
@@ -26,22 +24,23 @@ Once installed, you'll be able to provision a new Elemental cluster based on RKE
 
 However, if you want to install staging or dev operator, you can only do it in [CLI mode](quickstart-cli#non-stable-installations).
 
-## Enable the Rancher Manager Extensions Support
+## Add the Official Rancher Extensions Repository
 
-In order to enable the Rancher Manager Extensions Support, you'll need to follow the steps below:
-
-* Open a web browser, connect and login to your Rancher Manager instance
-* Click on the top left menu and click on `Extensions`
-
-![Rancher Manager menu](images/quickstart-ui-menu.png)
-
-* Click on `Enable` button to install the `Extension Operator`
-
-![Enable Rancher Manager Extensions Operator](images/quickstart-ui-extension-enable.png)
-
-* A popup will appear, click on the `OK` button to continue and install the Rancher Manager Extensions repository
+If the Elemental extension is not available, you need to add the `Official Rancher Extensions Repository`:
 
 ![Add Rancher Manager Extensions repository](images/quickstart-ui-extension-repository.png)
+
+If this repository can not be added through the Extensions UI settings, it can be manually managed by [adding](https://ranchermanager.docs.rancher.com/how-to-guides/new-user-guides/helm-charts-in-rancher#manage-repositories) the `https://github.com/rancher/ui-plugin-charts` `git` repository, or alternatively by applying the following resource:  
+
+```yaml
+apiVersion: catalog.cattle.io/v1
+kind: ClusterRepo
+metadata:
+  name: rancher-ui-charts
+spec:
+  gitBranch: main
+  gitRepo: https://github.com/rancher/ui-plugin-charts
+```
 
 ## Install the elemental plugin
 

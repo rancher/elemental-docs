@@ -43,8 +43,8 @@ Currently this can be achieved by [customizing an Elemental OS image](./custom-i
 
 ```yaml
 # Install nmc
-RUN wget https://github.com/suse-edge/nm-configurator/releases/download/v0.3.1/nmc-linux-x86_64 -O /usr/sbin/nmc && \
-    chmod +x /usr/sbin/nmc
+RUN curl -LO https://github.com/suse-edge/nm-configurator/releases/download/v0.3.1/nmc-linux-x86_64 && \
+    install -o root -g root -m 0755 nmc-linux-x86_64 /usr/sbin/nmc
 ```
 
 </TabItem>
@@ -53,7 +53,7 @@ RUN wget https://github.com/suse-edge/nm-configurator/releases/download/v0.3.1/n
 
 ```yaml
 # Install nmstatectl
-RUN wget https://github.com/nmstate/nmstate/releases/download/v2.2.37/nmstatectl-linux-x64.zip && \
+RUN curl -LO https://github.com/nmstate/nmstate/releases/download/v2.2.37/nmstatectl-linux-x64.zip && \
     unzip nmstatectl-linux-x64.zip && \
     chmod +x nmstatectl && \
     mv ./nmstatectl /usr/sbin/nmstatectl && \

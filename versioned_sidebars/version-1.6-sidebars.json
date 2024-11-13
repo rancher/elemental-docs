@@ -117,7 +117,8 @@
           "link": {"type": "doc", "id": "networking"},
           "items": [
             "networking-vlans",
-            "wifi"
+            "wifi",
+            "networking-static"
           ]
         },
         "ntp",

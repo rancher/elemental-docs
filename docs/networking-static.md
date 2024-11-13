@@ -35,9 +35,9 @@ COPY 99_static_network_config.yaml /system/oem/99_static_network_config.yaml
 ARG IMAGE_REPO=norepo
 ARG IMAGE_TAG=latest
 RUN \
-    sed -i -e "s/^IMAGE_REPO=.*/IMAGE_REPO=\"${IMAGE_REPO}\"/g" /etc/os-release && \
-    sed -i -e "s/^IMAGE_TAG=.*/IMAGE_TAG=\"${IMAGE_TAG}\"/g" /etc/os-release && \
-    sed -i -e "s/^IMAGE=.*/IMAGE=\"${IMAGE_REPO}:${IMAGE_TAG}\"/g" /etc/os-release
+    sed -i -e "s|^IMAGE_REPO=.*|IMAGE_REPO=\"${IMAGE_REPO}\"|g" /etc/os-release && \
+    sed -i -e "s|^IMAGE_TAG=.*|IMAGE_TAG=\"${IMAGE_TAG}\"|g" /etc/os-release && \
+    sed -i -e "s|^IMAGE=.*|IMAGE=\"${IMAGE_REPO}:${IMAGE_TAG}\"|g" /etc/os-release
 
 # IMPORTANT: it is good practice to recreate the initrd and re-apply `elemental-init`
 RUN elemental init --force immutable-rootfs,grub-config,dracut-config,cloud-config-essentials,elemental-setup

@@ -133,3 +133,12 @@ apply-os-upgrader-my-upgrade-on-my-host-zvrff   0/1     Unknown     0           
 ```
 
 :::
+
+## Recovering from failures
+
+It is possible that the ManagedOSImage upgrade process will fail, leaving one or more nodes in a faulty state.  
+For example if the to-be-upgraded image is not found on the registry or otherwise broken, the upgrade job running on the downstream clusters will not succeed.  
+
+When this is the case, the nodes running the failing upgrade job will stay cordoned.  
+You can update the ManagedOSImage with a functioning `osImage`, or alternatively delete it to stop any further upgrade attempt.  
+In any case, in order to restore them and be able to also schedule following upgrades, the affected nodes need to be uncordoned manually.  

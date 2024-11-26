@@ -15,9 +15,7 @@ The `nm-configurator` [per node configuration](https://github.com/suse-edge/nm-c
 
 This solution does not require a remote IPAM provider, but requires the user to maintain mapping between known MAC addresses and IP Addresses.  
 
-In this example, we are going to customize an Elemental image, and include a [yip config](./cloud-config-reference.md#configuration-syntax) that will apply the static network config early at boot.
-
-The following configuration covers 2 nodes with a very basic network setup.  
+In this example, we are going to customize an Elemental image, and include a [yip config](./cloud-config-reference.md#configuration-syntax) that will apply the static network config early at boot. The following configuration covers 2 nodes with a very basic network setup.  
 
 <CodeBlock language="yaml" title="99_static_network_config.yaml" showLineNumbers>{YipNmcStaticConfig}</CodeBlock>
 

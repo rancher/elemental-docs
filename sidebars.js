@@ -140,7 +140,11 @@ const sidebars = {
       "collapsed": true,
       "label": "How to",
       "items": [
+        "custom-certificate",
+        "airgap",
         "custom-images",
+        "raspi-disk",
+        "ntp",
         {
           "type": "category",
           "collapsible": true,
@@ -152,16 +156,12 @@ const sidebars = {
             "lvm-drives-example"
           ]
         },
-        "elemental_behind_proxy",
         "hostname",
-        "ntp",
+        "elemental_behind_proxy",
         "rancher-vmware",
         "removable-device-cloudconfig",
-        "custom-certificate",
-        "airgap",
-        "raspi-disk",
-        "tpm",
-        "unmanaged-os"
+        "unmanaged-os",
+        "tpm"
       ]
     },
     {

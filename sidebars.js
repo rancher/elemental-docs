@@ -160,6 +160,7 @@ const sidebars = {
         "elemental_behind_proxy",
         "rancher-vmware",
         "removable-device-cloudconfig",
+        "rancher-ip",
         "unmanaged-os",
         "tpm"
       ]

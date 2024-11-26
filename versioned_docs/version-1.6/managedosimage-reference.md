@@ -12,7 +12,7 @@ import ClusterTarget from "!!raw-loader!@site/examples/upgrade/upgrade-cluster-t
 # ManagedOSImage reference
 
 The ManagedOSImage resource is responsible of defining an OS image or image version that needs to be applied to each node in a set of targeted Clusters.  
-Once created, the ManagedOSImage resource can be updated with a new `osImage` or `managedOSVersionName` to trigger a following upgrade.  
+Once created, the ManagedOSImage resource can be updated with a new `osImage` or `managedOSVersionName` to trigger a new upgrade.  
 Similarly, an existing ManagedOSImage can be updated to target new Clusters.  
 
 There are several keys that can be configured under a `ManagedOSImage` resource spec.

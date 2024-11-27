@@ -1,0 +1,20 @@
+apiVersion: elemental.cattle.io/v1beta1
+kind: MachineRegistration
+metadata:
+  name: fire-nodes
+  namespace: fleet-default
+spec:
+  config:
+    cloud-config:
+      users:
+        - name: root
+          passwd: root
+    elemental:
+      install:
+        reboot: true
+        device: /dev/sda
+        debug: true
+  machineInventoryLabels:
+    element: fire
+    elemental.cattle.io/InternalIP: ${Network/NICs/eth0/IPv4Address}
+    elemental.cattle.io/ExternalIP: ${Network/NICs/eth1/IPv4Address}

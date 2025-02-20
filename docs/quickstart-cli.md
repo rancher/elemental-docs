@@ -279,7 +279,7 @@ You should be able to follow along what the machine is doing via:
     - running `journalctl -f -u elemental-system-agent` shows the output of the initial elemental config and the installation of the `rancher-system-agent`
     - running `journalctl -f -u rancher-system-agent` shows the output of the bootstrap of cluster components like k3s
     - running `journalctl -f -u k3s` shows the logs of the k3s deployment
-   
+
 ## Optional: Install the Elemental UI extension via CLI
 
 Create and apply a new ClusterRepo to add the official Rancher Extensions repository.

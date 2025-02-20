@@ -279,3 +279,26 @@ You should be able to follow along what the machine is doing via:
     - running `journalctl -f -u elemental-system-agent` shows the output of the initial elemental config and the installation of the `rancher-system-agent`
     - running `journalctl -f -u rancher-system-agent` shows the output of the bootstrap of cluster components like k3s
     - running `journalctl -f -u k3s` shows the logs of the k3s deployment
+
+## Optional: Install the Elemental UI extension via CLI
+
+Create and apply a new ClusterRepo to add the official Rancher Extensions repository.
+```
+apiVersion: catalog.cattle.io/v1
+kind: ClusterRepo
+metadata:
+  name: rancher-ui-charts
+spec:
+  gitBranch: main
+  gitRepo: https://github.com/rancher/ui-plugin-charts
+```
+
+Add a helm repo for the Rancher UI extensions charts.
+```
+helm repo add rancher-ui-plugins https://raw.githubusercontent.com/rancher/ui-plugin-charts/main/
+```
+
+Install the Elemental UI extension.
+```
+helm install elemental rancher-ui-plugins/elemental -n cattle-ui-plugin-system
+```

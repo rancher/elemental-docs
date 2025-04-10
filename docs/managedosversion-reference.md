@@ -67,13 +67,13 @@ spec:
 
 #### metadata
 
-This describes the needed informations to define an OS image in Elemental.
+This describes the needed information to define an OS image in Elemental.
 
 If `type` is set to `container`:
 | Key          | Type   | Default value | Description                                                         |
 |--------------|--------|---------------|---------------------------------------------------------------------|
 | displayName  | string | empty         | OS image name as seen in Rancher UI                                 |
-| upgradeImage | string | empty         | Fully qualified Containter image (OCI reference or HTTP URI)        |
+| upgradeImage | string | empty         | Fully qualified Container image (OCI reference or HTTP URI)        |
 | platforms    | list   | empty         | The supported platforms (`linux/x86_64`, `linux/aarch64`, or both). |
 
 If `type` is set to `iso`:
@@ -85,6 +85,6 @@ If `type` is set to `iso`:
 
 #### upgradeContainer
 
-This allows to overwrite the default `upgrade` field of System Upgrade Controller plans (see [upgrade compontents](/upgrade-lifecycle.md#components)) based on this ManagedOSVersion.
+This allows to overwrite the default `upgrade` field of System Upgrade Controller plans (see [upgrade components](/upgrade-lifecycle.md#components)) based on this ManagedOSVersion.
 These keys are translated by the System Upgrade Controller to a Kubernetes [container](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#Container) specification.
 This is the container responsible of running an OS upgrade.

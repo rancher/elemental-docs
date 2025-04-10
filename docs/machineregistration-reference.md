@@ -276,7 +276,7 @@ These labels could be used to establish a selection criteria in [MachineInventor
 
 Elemental nodes will run `elemental-register` every 30 minutes.
 
-It is possible to update the `machineInventoryLabels` so that all registered nodes apply the new labels on the next successfull registration update.
+It is possible to update the `machineInventoryLabels` so that all registered nodes apply the new labels on the next successful registration update.
 
 <details>
 <summary>Example</summary>

@@ -91,7 +91,7 @@ You will notice that the `MachineInventory` carries the same `network.config` as
 
 This `inventory-ip` will then be substituted in the `nm-configurator` config whenever `{inventory-ip}` has been defined.  
 
-Also note that the `MachineInventory` references and owns each `IPAddressClaim` associated with it. Each claim follow the predictable `$MachineIventoryName-$IPPoolRefKey` naming convention: `m-e5331e3b-1e1b-4ce7-b080-235ed9a6d07c-inventory-ip`.  
+Also note that the `MachineInventory` references and owns each `IPAddressClaim` associated with it. Each claim follow the predictable `$MachineInventoryName-$IPPoolRefKey` naming convention: `m-e5331e3b-1e1b-4ce7-b080-235ed9a6d07c-inventory-ip`.  
 These claims will follow the lifecycle of the `MachineInventory` object and be deleted on cascade, for example during the [reset workflow](./reset.md).  
 
 If the `IPAddresses` can not be claimed, the `NetworkConfigReady` condition will be `False`, preventing the machine from completing installation. This can be the case if the `IPPool` has no more `IPAddresses` available.  

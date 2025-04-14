@@ -110,7 +110,7 @@ device: /dev/sda --> Make sure your target device is "sda" otherwise find out an
 
 emulate-tpm: true  --> Use this only if your target device doesnt have a tpm device and you have a way of emulating tpm like in VMware or KVM
 
-emulated-tpm-seed: 1 --> increase this by 1 for every new machine. --> If this is not given each machine will recieve the same tpm hash so at any point in time regardless of how many machines you boot it wont show up under the machine inventory.
+emulated-tpm-seed: 1 --> increase this by 1 for every new machine. --> If this is not given each machine will receive the same tpm hash so at any point in time regardless of how many machines you boot it wont show up under the machine inventory.
 :::
 
 :::danger attention

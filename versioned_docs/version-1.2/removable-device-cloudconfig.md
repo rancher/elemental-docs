@@ -45,7 +45,7 @@ on any later cloud-init stage.
 
 Since the data is copied to `/oem` it will be persistent, hence on follow up reboots the removable device is
 not required to be present any more. If still present on follow up reboots, it just overwrites any
-aleady pre-existing data.
+already pre-existing data.
 
 #### Include non cloud-config data
 

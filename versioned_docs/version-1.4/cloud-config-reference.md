@@ -68,7 +68,7 @@ stages:
     - /tmp/script.sh
 ```
 
-In the above exaple there is one `boot` stage including two steps, one to create an executable script file and a second one
+In the above example there is one `boot` stage including two steps, one to create an executable script file and a second one
 that actually runs the script.
 
 Yip also supports `*.before` and `*.after` suffix modifiers to any given stage. For instance, running the `network` stage

@@ -95,6 +95,6 @@ xorriso -indev elemental.x86_64.iso -outdev elemental.custom.x86_64.iso -map ove
 
 Requires `xorriso` equal or higher than version 1.5.
 
-The contents of `install_hooks.yaml` could eventually be the same as the previous section but omiting the RPM
+The contents of `install_hooks.yaml` could eventually be the same as the previous section but omitting the RPM
 package download and also adapting the RPM path to `/run/initramfs/live/data/extra-pkgs/some_package.rpm` as
 the ISO root folder is mounted at `/run/initramfs/live`.

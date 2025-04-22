@@ -37,7 +37,7 @@ The authentication/identification method can be specified in the
 
 :::warning
 The only secure and officially supported **authentication** method in Elemental is the default one, based on TPM attestation.
-The TPM alternatives can be used for demo purposes or local deployments but are not reccomended for production use as the onboarding machines identity is not securely verified.
+The TPM alternatives can be used for demo purposes or local deployments but are not recommended for production use as the onboarding machines identity is not securely verified.
 :::
 
 ### TPM emulation
@@ -60,7 +60,7 @@ To replace TPM authentication with MAC address identification, it is enough to s
 
 :::warning
 The MAC address is considered unique by the <Vars name="elemental_operator_name" />.
-This is true for phisical devices, while if using VirtualMachines from different hypervisors and different network segments it is up to the administrator to ensure that the registering VMs have a unique MAC address.
+This is true for physical devices, while if using VirtualMachines from different hypervisors and different network segments it is up to the administrator to ensure that the registering VMs have a unique MAC address.
 :::
 
 ### SMBIOS UUID identification

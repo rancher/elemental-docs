@@ -41,7 +41,7 @@ To apply this pattern, the ISO needs to include:
 2. The additional `cloud-init` files to be included into the installed system. They
    allow to perform custom operations at boot time.
 
-3. The installation hooks are evalutated at install time. They allow to perform custom operations
+3. The installation hooks are evaluated at install time. They allow to perform custom operations
    during the installation process (include extra software, set additional disks...). The same
    way `cloud-init` files can be included to perform custom operations during the live installation
    media boot time.

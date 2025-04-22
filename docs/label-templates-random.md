@@ -29,7 +29,7 @@ or its value has been cleared out
 | Variable                                 | Description                                                           |
 | ---------------------------------------- | --------------------------------------------------------------------- |
 | `${Random/UUID}`                         | random UUID (e.g., fd95324a-c26b-4e28-8727-1dcec293a0ec)              |
-| `${Random/Hex/[1-32]}`                   | random hexadecimal string of the specified lenght (min 1, max 32)     |
+| `${Random/Hex/[1-32]}`                   | random hexadecimal string of the specified length (min 1, max 32)     |
 | `${Random/Int/[MAXINT]`                  | random integer (min 0, max MAXINT-1)                                  |
 
 

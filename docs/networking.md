@@ -176,7 +176,7 @@ During the installation or reset phases of Elemental machines, the `elemental-op
 ### Claimed IPAddresses
 
 The `IPAddressClaim` will follow the entire lifecycle of the `MachineInventory`, ensuring that each registered machine will be assigned unique IPs.  
-Each claim is named after the `MachineInventory` that uses it, as `$MachineIventoryName-$IPPoolRefKey`, for example:  
+Each claim is named after the `MachineInventory` that uses it, as `$MachineInventoryName-$IPPoolRefKey`, for example:  
 
 ```yaml
 apiVersion: ipam.cluster.x-k8s.io/v1beta1

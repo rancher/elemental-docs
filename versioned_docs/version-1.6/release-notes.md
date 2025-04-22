@@ -91,7 +91,7 @@ The v2.1.3 OS images will be released via the default Elemental 1.6 channel.
 
 ### SSH root access
 
-The SLE Micro OS images released in the current Elemental version (throught the default
+The SLE Micro OS images released in the current Elemental version (through the default
 [ManagedOSVersionChannel](managedosversionchannel-reference)) do not allow ssh root access
 via password anymore. Easyest workaround is to either configure ssh root access via an ssh
 key or add a new user to the system.

@@ -40,7 +40,7 @@ spec:
 |------------------------------|--------|---------------|-----------------------------------------------------------------------------------------|
 | deleteNoLongerInSyncVersions | bool   | false         | Automatically delete deprecated OS versions that are no longer included in the channel  |
 | enabled                      | bool   | true          | Enables this channel. Allowing syncing of OS versions.                                  |
-| options                      | object | null          | Defines the optional informations that can be added in an OS channel                    |
+| options                      | object | null          | Defines the optional information that can be added in an OS channel                    |
 | registry                     | string | empty         | Registry prepended to all the embedded URIs during ManagedOSVersion resource generation |
 | syncInterval                 | string | 1h            | Defines when to sync the OS channel                                                     |
 | type                         | string | empty         | Defines the channel type, only `custom` is supported now                                |
@@ -54,6 +54,6 @@ on the private registry).
 
 #### upgradeContainer
 
-This allows to overwrite the default `upgrade` field of System Upgrade Controller plans (see [upgrade compontents](/upgrade-lifecycle.md#components)) based on this ManagedOSVersion.
+This allows to overwrite the default `upgrade` field of System Upgrade Controller plans (see [upgrade components](/upgrade-lifecycle.md#components)) based on this ManagedOSVersion.
 These keys are translated by the System Upgrade Controller to a Kubernetes [container](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#Container) specification.
 This is the container responsible of running an OS upgrade.

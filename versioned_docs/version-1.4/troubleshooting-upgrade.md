@@ -114,7 +114,7 @@ kubectl -n cattle-system logs job.batch/apply-os-upgrader-my-upgrade-on-my-host-
 :::info Two stages job process
 
 Note that the upgrade process is performed in two stages.  
-You will notice that the same job is ran twice and the first one ends with the `Uknown` Status and will not complete.  
+You will notice that the same job is ran twice and the first one ends with the `Unknown` Status and will not complete.  
 **This is to be expected**, as Elemental relies on the job to be ran again after the machine restarts, so that it can verify the new version was installed correctly.  
 You will notice a second run of the job, this time completing correctly.
 

@@ -94,11 +94,11 @@ the preferred option is to build a [derivative image](custom-images.md) and not 
   and locked in a read-only subvolume or filesystem. Partitions are still mounted at this stage.
 
 :::note
-Note installation hooks are not applied as part of the [MachineRegistartion.config.cloud-config](machineregistration-reference.md#configcloud-config).
+Note installation hooks are not applied as part of the [MachineRegistration.config.cloud-config](machineregistration-reference.md#configcloud-config).
 In order to provide installation hooks they can be included as part of the [SeedImage.cloud-config](seedimage-reference.md#seedimagespec-reference),
 as they need to be present in the installation media.
 The only exception is `after-install-chroot` which can be provided as part of a
-[MachineRegistartion.config.cloud-config](machineregistration-reference.md#configcloud-config) because the hook runs
+[MachineRegistration.config.cloud-config](machineregistration-reference.md#configcloud-config) because the hook runs
 in the deployed image chroot and by that time cloud-config is already installed into the system.
 :::
 
@@ -132,7 +132,7 @@ stages:
     - /tmp/script.sh
 ```
 
-In the above exaple there are two stages: `initramfs` and `boot`.  
+In the above example there are two stages: `initramfs` and `boot`.  
 The `initramfs` stage initializes a sample user.  
 The `boot` stage includes two steps, one to create an executable script file and a second one
 that actually runs the script.

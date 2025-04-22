@@ -56,7 +56,7 @@ metadata:
     uid: 0a1f751e-4ca9-4a0d-919a-97ba1f434d12
 spec:
   # The hash of the TPM EK public key. This is used if you are
-  # using TPM2 to identifiy nodes. Nodes can report their TPM
+  # using TPM2 to identify nodes. Nodes can report their TPM
   # hash by using the MachineRegistration.
   tpmHash: d68795c6192af9922692f050b...
 ```

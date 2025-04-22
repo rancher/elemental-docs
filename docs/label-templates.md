@@ -124,7 +124,7 @@ The Label Templates' variables can be used to attach hardware data to each
 In this case, annotations may be a better choice since their values are not sanitized.
 
 ### Selectors for Cluster Provisioning
-The `Label Templates` can be used to generate labels used to indentify and select machines
+The `Label Templates` can be used to generate labels used to identify and select machines
 with special hardware properties to form new Kubernetes Clusters.
 
 The labels attached to each [MachineInventory](machineinventory-reference) are eligible to _selector_

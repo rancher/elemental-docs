@@ -277,7 +277,7 @@ You should be able to follow along what the machine is doing via:
   - On the Rancher UI -> `Cluster Management` allows you to see your new cluster and the `Provisioning Log` in the cluster details
   - ssh into the machine (user/pass: Whatever your configured on the registration.yaml under `Spec.config.cloud-config.users`):
     - running `journalctl -f -u elemental-system-agent` shows the output of the initial elemental config and the installation of the `rancher-system-agent`
-    - running `journalctl -f -u rancher-system-agent` shows the output of the boostrap of cluster components like k3s
+    - running `journalctl -f -u rancher-system-agent` shows the output of the bootstrap of cluster components like k3s
     - running `journalctl -f -u k3s` shows the logs of the k3s deployment
    
 ## Optional: Install the Elemental UI extension via CLI

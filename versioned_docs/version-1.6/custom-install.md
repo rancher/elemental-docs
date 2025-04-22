@@ -36,7 +36,7 @@ Elemental client configuration file (`/etc/elemental/config.yaml`).
    at install time or to customize the installation environment to match certain specific needs.
 
 3. A custom Elemental client configuration file is, by default, located at `/etc/elemental/config.yaml`
-   and it can also be splitted into multiple yaml files under `/etc/elemental/config.d` directory.
+   and it can also be split into multiple yaml files under `/etc/elemental/config.d` directory.
    See the configuration file
    [reference](https://rancher.github.io/elemental-toolkit/docs/customizing/general_configuration/).
 
@@ -107,7 +107,7 @@ According to that, the ISO for the example above is expected to include the `/oe
 
 ### Adding additional cloud-config files within the installation media
 
-Adding additional cloud-config files within he installtion media might be required to configure the
+Adding additional cloud-config files within he installation media might be required to configure the
 installation environment (e.g. setting the network connectivity to register) or to provide some
 [installation hooks](cloud-config-reference.md#elemental-client-cloud-config-hooks) to run custom
 logic during the installation itself.

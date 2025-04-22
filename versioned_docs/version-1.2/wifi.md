@@ -11,7 +11,7 @@ title: ''
 
 :::caution important note
 This guide describes how to configure Wi-Fi on a freshly installed operating system.
-For some reasons, like no wired network connection availabe, you may want to also use Wi-Fi when you boot from the ISO.
+For some reasons, like no wired network connection available, you may want to also use Wi-Fi when you boot from the ISO.
 
 This is possible by using a cloud-config definition in the [SeedImage](https://elemental.docs.rancher.com/seedimage-reference/) resource.
 You can refer to the same instructions as below on how to create it.

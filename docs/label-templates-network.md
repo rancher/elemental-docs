@@ -30,7 +30,7 @@ The secondary `eth0` IPv4 address can be retrieved with `${Network/NICs/eth0/IPv
 | `${Network/NICs/_<IfaceName>_/IPv4Addresses/_<Number>_}`  | \<Number\>ith assigned IPv4 address              |
 | `${Network/NICs/_<IfaceName>_/IPv6Address}`               | First IPv6 address assigned to the interface     |
 | `${Network/NICs/_<IfaceName>_/IPv6Addresses/_<Number>_}`  | \<Number\>ith assigned IPv6 address              |
-| `${Network/NICs/_<IfaceName>_/IsVirtual}`                 | Wheter the NIC is real ("false") or not ("true") |
+| `${Network/NICs/_<IfaceName>_/IsVirtual}`                 | Whether the NIC is real ("false") or not ("true") |
 | `${Network/NICs/_<IfaceName>_/MacAddress}`                | MAC of the interface                             |
 | `${Network/NICs/_<IfaceName>_/Name}`                      | Interface name                                   |
 | `${Network/NICs/_<IfaceName>_/Speed}`                     | Speed of the link                                |
@@ -42,7 +42,7 @@ The secondary `eth0` IPv4 address can be retrieved with `${Network/NICs/eth0/IPv
 | `${Network/NICs/_<Number>_/IPv4Addresses/_<Number>_}`     | \<Number\>ith assigned IPv4 address              |
 | `${Network/NICs/_<Number>_/IPv6Address}`                  | First IPv6 address assigned to the interface     |
 | `${Network/NICs/_<Number>_/IPv6Addresses/_<Number>_}`     | \<Number\>ith assigned IPv6 address              |
-| `${Network/NICs/_<Number>_/IsVirtual}`                    | Wheter the NIC is real ("false") or not ("true") |
+| `${Network/NICs/_<Number>_/IsVirtual}`                    | Whether the NIC is real ("false") or not ("true") |
 | `${Network/NICs/_<Number>_/MacAddress}`                   | MAC of the interface                             |
 | `${Network/NICs/_<Number>_/Name}`                         | Interface name                                   |
 | `${Network/NICs/_<Number>_/Speed}`                        | Speed of the link                                |

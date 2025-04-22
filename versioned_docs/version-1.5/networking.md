@@ -12,7 +12,7 @@ title: ''
 
 Elemental cloud-config support does not include declarative networking at the moment.
 
-The defaul OS channel shipped with Elemental provides SLE Micro OS images with [NetworkManager](https://networkmanager.dev) which enables DCHP ethernet configuration automatically.
+The default OS channel shipped with Elemental provides SLE Micro OS images with [NetworkManager](https://networkmanager.dev) which enables DHCP ethernet configuration automatically.
 
 [Elemental cloud-config](cloud-config-reference) allows to create NetworkManager connection profile configuration files in order to customize the host network.
 

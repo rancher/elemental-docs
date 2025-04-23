@@ -19,23 +19,27 @@ any time as they are simply grouping a set of actions under an arbitrary name.
 
 Elemental Toolkit integrates five predefined stages into the OS boot process.
 
-1. **`rootfs`**: this stage runs on early boot inside the init ram disk, just *after* mounting the root device (typically at `/sysroot`).
+1. **`pre-rootfs`**: this stage runs on early boot inside the init ram disk, just *before* mounting the root device (typically at `/sysroot`).
+   This stage can be used to define first-boot steps that are required before mounting the root device. A good example is expanding the
+   root device partition. Executed as part of the `initrd-root-device.target`.
+
+2. **`rootfs`**: this stage runs on early boot inside the init ram disk, just *after* mounting the root device (typically at `/sysroot`).
    This stage can be used to define first-boot steps like creating new partitions. Ephemeral and  persistent paths are typically defined
    at this stage. Executed as part of the `initrd-root-fs.target`.
 
-2. **`initramfs`**: this stage runs inside the init ram disk too, but on a later stage just before switching root. This stage runs in a chrooted
+3. **`initramfs`**: this stage runs inside the init ram disk too, but on a later stage just before switching root. This stage runs in a chrooted
    environment to the actual root device. This stage is handy to set some system parameters that might be relevant to systemd
    after switching root. For instance, additional systemd unit files could be added here before the systemd from the actual root is executed.
    Executed as part of the `initrd.target`.
 
-3. **`fs`**: this stage is the first one executed after switching root and it is executed as part of the `sysinit.target` which runs once all
+4. **`fs`**: this stage is the first one executed after switching root and it is executed as part of the `sysinit.target` which runs once all
    all local filesystems and mountpoints defined in fstab are mounted and ready.
 
-4. **`network`**: this stage is executed as part of the `multi-user.target` and after the `network-online.target` is reached. This stage can be used
+5. **`network`**: this stage is executed as part of the `multi-user.target` and after the `network-online.target` is reached. This stage can be used
    to run actions and configurations that require network connectivity. For instance this stage is used to run the very first node registration and
    and installation from a live ISO.
 
-5. **`boot`**: this stage is executed as part of the `multi-user.target` and before the `getty.target`. This is the default stage to run cloud-config
+6. **`boot`**: this stage is executed as part of the `multi-user.target` and before the `getty.target`. This is the default stage to run cloud-config
    data provided using the supported cloud-init syntax. See [cloud-init compatibility](cloud-config-reference.md#compatibility-with-cloud-init-format) section.
 
 By default, `elemental` reads the yaml configuration files from the following paths in order: `/system/oem`, `/oem` and `/usr/local/cloud-config`.
@@ -81,7 +85,9 @@ the preferred option is to build a [derivative image](custom-images.md) and not 
 
 * After stages: `after-install`, `after-upgrade`, `after-reset`, `after-disk`
   These stages are executed after deploying the target system into the working area from the host environment. At this stages all
-  partitions are still mounted and available in RW mode.
+  partitions are still mounted and available in RW mode. This particular set of stages analyses the hooks present in the host
+  and into the equivalent set of paths chrooted to the deployed image. The hook however is not executed in a chroot environment.
+  This is helpful to provide `after-*` hooks within the deployed image.
 
 * Post stages: `post-install`, `post-upgrade`, `post-reset`, `post-disk`
   These stages are executed at end before exiting the command and running a cleanup process. At this stage the image is already deployed
@@ -198,10 +204,13 @@ For example:
 
 ```yaml
 #cloud-config
+
+# Note groups are delivered as list, not as comma separated values
 users:
 - name: "bar"
   passwd: "foo"
-  groups: "users"
+  groups:
+  - "users"
   homedir: "/home/foo"
   shell: "/bin/bash"
   ssh_authorized_keys:
@@ -210,11 +219,15 @@ users:
 # Assigns these keys to the first user in users or root if there
 # is none
 ssh_authorized_keys:
-- asdd
+- asddadfafefa
 
 # Run these commands once the system has fully booted
+# Each command is expressed as a sinlge string, no nested lists
 runcmd:
-- foo
+- echo hello world
+
+# Hostname
+hostame: myserver
 
 # Write arbitrary files
 write_files:
@@ -242,7 +255,8 @@ spec:
       users:
       - name: "bar"
         passwd: "foo"
-        groups: "users"
+        groups:
+        - "users"
         homedir: "/home/foo"
         shell: "/bin/bash"
         ssh_authorized_keys:
@@ -266,5 +280,5 @@ spec:
   machineInventoryLabels:
     element: fire
 ```
-  
+
 </details>

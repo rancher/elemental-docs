@@ -204,10 +204,13 @@ For example:
 
 ```yaml
 #cloud-config
+
+# Note groups are delivered as list, not as comma separated values
 users:
 - name: "bar"
   passwd: "foo"
-  groups: "users"
+  groups:
+  - "users"
   homedir: "/home/foo"
   shell: "/bin/bash"
   ssh_authorized_keys:
@@ -216,11 +219,15 @@ users:
 # Assigns these keys to the first user in users or root if there
 # is none
 ssh_authorized_keys:
-- asdd
+- asddadfafefa
 
 # Run these commands once the system has fully booted
+# Each command is expressed as a sinlge string, no nested lists
 runcmd:
-- foo
+- echo hello world
+
+# Hostname
+hostame: myserver
 
 # Write arbitrary files
 write_files:
@@ -248,7 +255,8 @@ spec:
       users:
       - name: "bar"
         passwd: "foo"
-        groups: "users"
+        groups:
+        - "users"
         homedir: "/home/foo"
         shell: "/bin/bash"
         ssh_authorized_keys:
@@ -272,5 +280,5 @@ spec:
   machineInventoryLabels:
     element: fire
 ```
-  
+
 </details>

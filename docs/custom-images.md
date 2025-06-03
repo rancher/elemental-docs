@@ -14,12 +14,18 @@ title: ''
 Since OS images provided by Elemental are container images, they can also be used as a base image
 in a Dockerfile in order to create a new container image.
 
+The Elemental project publishes several flavors for images:
+* baremetal: An image containing firmware and drivers suitable for baremetal deployment.
+* rt: Based on the baremetal image, but contains the real-time kernel.
+* kvm: A slimmer image suitable for VMs.
+* base: The base system needed for Elemental used by the other flavors.
+
 Imagine some additional packages from an extra repository is required, the following example
 showcases how this could be added:
 
 ```docker showLineNumbers
-# The version of Elemental to modify
-FROM registry.suse.com/suse/sle-micro/5.5:latest
+# The version of Elemental to modify.
+FROM registry.suse.com/suse/sl-micro/6.1/baremetal-os-container:latest
 
 # Custom commands
 RUN rpm --import <repo-signing-key-url> && \
@@ -65,12 +71,12 @@ Elemental leverages container images to build its root filesystems; therefore, i
 to use it in a multi-stage environment to create custom bootable media that bundles a custom container image.
 
 ```docker showLineNumbers
-FROM registry.suse.com/suse/sle-micro/5.5:latest AS os
+FROM registry.suse.com/suse/sl-micro/6.1/baremetal-os-container:latest AS os
 
 # Check the previous section on building custom images
 
 # The released OS already includes the toolchain for building ISOs
-FROM registry.suse.com/suse/sle-micro/5.5:latest AS builder
+FROM registry.suse.com/suse/sl-micro/6.1/baremetal-os-container:latest AS builder
 
 ARG TARGETARCH
 WORKDIR /iso
@@ -182,12 +188,14 @@ spec:
       content: |
         install:
           partitions:
-            bootloader:
-              size: 512
             recovery:
               size: 8192
             state:
               size: 16384
+    - path: /etc/elemental/config.d/snapshotter.yaml
+      content: |
+        snapshotter:
+          max-snaps: 2
   baseImage: myrepo/custom-build-iso:v1.1.1
   registrationRef:
     name: my-machine-registration
@@ -195,7 +203,9 @@ spec:
 ```
 
 The `state` partition will hold all system snapshots. Therefore when sizing this partition, the following formula can be considered: `$image_size * ($max_number_of_snapshots + 1 + 1)`.  
-The `$max_number_of_snapshots` can be configured on the [MachineRegistration](./machineregistration-reference.md#configelementalinstallsnapshotter).  
+The `$max_number_of_snapshots` can be similarly configured with a custom configuration file as shown in the sample above.  
+Note that by default it's `4` for the `btrfs` snapshotter type, and `2` for the `loopdevice` type.  
+You can configure the snapshotter type in use editing the [MachineRegistration](./machineregistration-reference.md#configelementalinstallsnapshotter).  
 
 Since the state partition is also used for the <Vars name="elemental_toolkit_name" link="elemental_toolkit_url"/> work directory, it's best to leave an additional `$image_size` worth of free space, so that the image can be unpacked correctly for example when running upgrades.  
 

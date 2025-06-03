@@ -211,3 +211,30 @@ Since the state partition is also used for the <Vars name="elemental_toolkit_nam
 
 Lastly, an extra `$image_size` free space can be used as a safe margin to keep. This is especially important when using the `loopdevice` snapshotter type, in case newer images will grow in size from the originally installed one.  
 On the contrary, the `btrfs` snapshotter can be used instead to save space on the `state` partition, or to use the same space to keep more snapshots.  
+
+## Finding Elemental base images
+
+Using crane we can find the following SL-Micro images suitable for extending:
+
+```
+$ crane catalog registry.suse.com | grep -i "suse/sl-micro"
+suse/sl-micro/6.0/baremetal-iso-image
+suse/sl-micro/6.0/baremetal-os-container
+suse/sl-micro/6.0/base-iso-image
+suse/sl-micro/6.0/base-os-container
+suse/sl-micro/6.0/kvm-iso-image
+suse/sl-micro/6.0/kvm-os-container
+suse/sl-micro/6.0/rt-iso-image
+suse/sl-micro/6.0/rt-os-container
+suse/sl-micro/6.1/baremetal-iso-image
+suse/sl-micro/6.1/baremetal-os-container
+suse/sl-micro/6.1/base-iso-image
+suse/sl-micro/6.1/base-os-container
+suse/sl-micro/6.1/kvm-iso-image
+suse/sl-micro/6.1/kvm-os-container
+suse/sl-micro/6.1/rt-iso-image
+suse/sl-micro/6.1/rt-os-container
+```
+
+The images with `-iso-image` suffix contains a pre-built ISO image and a busybox system to be able to copy the contents to a volume.
+Images with a `-os-container` suffix contains a root filesystem that can be used as the base for custom images.

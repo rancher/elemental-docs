@@ -14,12 +14,18 @@ title: ''
 Since OS images provided by Elemental are container images, they can also be used as a base image
 in a Dockerfile in order to create a new container image.
 
+The Elemental project publishes several flavors for images:
+* baremetal: An image containing firmware and drivers suitable for baremetal deployment.
+* rt: Based on the baremetal image, but contains the real-time kernel.
+* kvm: A slimmer image suitable for VMs.
+* base: The base system needed for Elemental used by the other flavors.
+
 Imagine some additional packages from an extra repository is required, the following example
 showcases how this could be added:
 
 ```docker showLineNumbers
-# The version of Elemental to modify
-FROM registry.suse.com/suse/sle-micro/5.5:latest
+# The version of Elemental to modify.
+FROM registry.suse.com/suse/sl-micro/6.0/baremetal-os-container:latest
 
 # Custom commands
 RUN rpm --import <repo-signing-key-url> && \
@@ -65,12 +71,12 @@ Elemental leverages container images to build its root filesystems; therefore, i
 to use it in a multi-stage environment to create custom bootable media that bundles a custom container image.
 
 ```docker showLineNumbers
-FROM registry.suse.com/suse/sle-micro/5.5:latest AS os
+FROM registry.suse.com/suse/sl-micro/6.0/baremetal-os-container:latest AS os
 
 # Check the previous section on building custom images
 
 # The released OS already includes the toolchain for building ISOs
-FROM registry.suse.com/suse/sle-micro/5.5:latest AS builder
+FROM registry.suse.com/suse/sl-micro/6.0/baremetal-os-container:latest AS builder
 
 ARG TARGETARCH
 WORKDIR /iso

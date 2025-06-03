@@ -44,7 +44,7 @@ RUN \
 # IMPORTANT: it is good practice to recreate the initrd and re-apply `elemental-init`
 # command that was used in the base image. This ensures that any eventual change that should
 # be synced in initrd included binaries is also applied there and consistent.
-RUN elemental init --force immutable-rootfs,grub-config,dracut-config,cloud-config-essentials,elemental-setup
+RUN elemental init --force elemental-rootfs,grub-config,dracut-config,cloud-config-essentials,elemental-setup
 ```
 
 Where `latest` is the base version we want to customize.

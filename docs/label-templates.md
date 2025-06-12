@@ -86,7 +86,7 @@ Template variables can be mixed with static text to form the actual labels assig
 ## Sanitization
 Once the label template value has been rendered accordingly to the included [label template variables](#label-template-variables), the resulting value is `sanitized` before being assigned to the resulting label.
 
-**The `sanitization` enforce the label value to only contain letters (capitalized or not), numbers and the hyphen (`-`), point (`.`) and underscore (`_`) characters**:
+**The `sanitization` enforces the label value to only contain letters (capitalized or not), numbers and the hyphen (`-`), point (`.`) and underscore (`_`) characters**:
 all the characters not included are substituted with an hyphen.
 
 Any character at the beginning and at the end of the label value must be a letter or a number.

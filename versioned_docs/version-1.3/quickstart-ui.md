@@ -7,10 +7,10 @@ title: ''
   <link rel="canonical" href="https://elemental.docs.rancher.com/quickstart-ui"/>
 </head>
 
-import Cluster from "!!raw-loader!@site/examples/quickstart/cluster.yaml"
-import Registration from "!!raw-loader!@site/examples/quickstart/registration.yaml"
-import RegistrationRPi from "!!raw-loader!@site/examples/quickstart/rpi-registration.yaml"
-import Selector from "!!raw-loader!@site/examples/quickstart/selector.yaml"
+import Cluster from "!!raw-loader!./examples/quickstart/cluster.yaml"
+import Registration from "!!raw-loader!./examples/quickstart/registration.yaml"
+import RegistrationRPi from "!!raw-loader!./examples/quickstart/rpi-registration.yaml"
+import Selector from "!!raw-loader!./examples/quickstart/selector.yaml"
 import Prereqs from './partials/_quickstart-prereqs.md'
 import Operator from './partials/_elemental-operator-install.md'
 

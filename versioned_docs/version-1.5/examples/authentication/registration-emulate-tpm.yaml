@@ -1,0 +1,25 @@
+apiVersion: elemental.cattle.io/v1beta1
+kind: MachineRegistration
+metadata:
+  name: fire-nodes-emulate-tpm
+  namespace: fleet-default
+spec:
+  config:
+    cloud-config:
+      users:
+        - name: root
+          passwd: root
+    elemental:
+      install:
+        reboot: true
+        device: /dev/sda
+        debug: true
+      registration:
+        emulate-tpm: true
+        emulated-tpm-seed: -1
+  machineInventoryLabels:
+    element: fire
+    manufacturer: "${System Information/Manufacturer}"
+    productName: "${System Information/Product Name}"
+    serialNumber: "${System Information/Serial Number}"
+    machineUUID: "${System Information/UUID}"

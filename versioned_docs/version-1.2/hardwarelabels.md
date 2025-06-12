@@ -7,7 +7,7 @@ title: ''
   <link rel="canonical" href="https://elemental.docs.rancher.com/hardwarelabels"/>
 </head>
 
-import Registration from "!!raw-loader!@site/examples/quickstart/registration-hardware.yaml"
+import Registration from "!!raw-loader!./examples/quickstart/registration-hardware.yaml"
 
 ## Hardware Labels
 

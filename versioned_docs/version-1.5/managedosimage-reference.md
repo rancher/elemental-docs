@@ -7,7 +7,7 @@ title: ''
   <link rel="canonical" href="https://elemental.docs.rancher.com/managedosimage-reference"/>
 </head>
 
-import ClusterTarget from "!!raw-loader!@site/examples/upgrade/upgrade-cluster-target.yaml"
+import ClusterTarget from "!!raw-loader!./examples/upgrade/upgrade-cluster-target.yaml"
 
 # ManagedOSImage reference
 

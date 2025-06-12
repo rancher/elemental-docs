@@ -1,0 +1,21 @@
+apiVersion: elemental.cattle.io/v1beta1
+kind: SeedImage
+metadata:
+  name: ...
+  namespace: ...
+spec:
+  baseImage: registry.suse.com/suse/sle-micro-iso/5.5:2.0.2
+  cloud-config:
+    write_files:
+    - path: /etc/sysconfig/proxy
+      append: true
+      content: |
+        PROXY_ENABLED="yes"
+        HTTP_PROXY=http://<MY_PROXY>:<MY_PORT>
+        HTTPS_PROXY=https://<MY_PROXY>:<MY_PORT>
+        NO_PROXY="localhost, 127.0.0.1"
+  registrationRef:
+    apiVersion: elemental.cattle.io/v1beta1
+    kind: MachineRegistration
+    name: ...
+    namespace: ...

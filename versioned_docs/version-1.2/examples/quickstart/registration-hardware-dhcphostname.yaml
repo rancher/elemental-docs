@@ -1,0 +1,22 @@
+apiVersion: elemental.cattle.io/v1beta1
+kind: MachineRegistration
+metadata:
+  name: my-nodes
+  namespace: fleet-default
+spec:
+  machineName: "${System Data/Runtime/Hostname}"
+  config:
+    cloud-config:
+      users:
+        - name: root
+          passwd: root
+    elemental:
+      install:
+        reboot: true
+        device: /dev/sda
+        debug: true
+  machineInventoryLabels:
+    elemental.cattle.io/CpuTotalCores: "${System Data/CPU/Total Cores}"
+    elemental.cattle.io/CpuTotalThreads: "${System Data/CPU/Total Threads}"
+    elemental.cattle.io/TotalMemoryBytes: "${System Data/Memory/Total Physical Bytes}"
+    elemental.cattle.io/NumberBlockDevices: "${System Data/Block Devices/Number Devices}"

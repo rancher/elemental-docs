@@ -1,0 +1,84 @@
+apiVersion: ipam.cluster.x-k8s.io/v1alpha2
+kind: InClusterIPPool
+metadata:
+  name: elemental-inventory-pool
+  namespace: fleet-default
+spec:
+  addresses:
+    - 192.168.122.150-192.168.122.200
+  prefix: 24
+  gateway: 192.168.122.1
+---
+apiVersion: ipam.cluster.x-k8s.io/v1alpha2
+kind: InClusterIPPool
+metadata:
+  name: elemental-secondary-pool
+  namespace: fleet-default
+spec:
+  addresses:
+    - 172.16.0.150-172.16.0.200
+  prefix: 24
+  gateway: 172.16.0.1
+---
+apiVersion: elemental.cattle.io/v1beta1
+kind: MachineRegistration
+metadata:
+  name: fire-nodes
+  namespace: fleet-default
+spec:
+  machineName: m-${System Information/UUID}
+  config:
+    network:
+      configurator: nmc
+      ipAddresses:
+        inventory-ip:
+          apiGroup: ipam.cluster.x-k8s.io
+          kind: InClusterIPPool
+          name: elemental-inventory-pool
+        secondary-ip:
+          apiGroup: ipam.cluster.x-k8s.io
+          kind: InClusterIPPool
+          name: elemental-secondary-pool
+      config:
+        dns-resolver:
+          config:
+            server:
+            - 192.168.122.1
+            search: []
+        routes:
+          config:
+          - destination: 0.0.0.0/0
+            next-hop-interface: enp1s0
+            next-hop-address: 192.168.122.1
+            metric: 150
+            table-id: 254
+          - destination: 172.16.0.1/24
+            next-hop-interface: enp8s0
+            next-hop-address: 172.16.0.1
+            metric: 150
+            table-id: 254
+        interfaces:
+          - name: enp1s0
+            type: ethernet
+            description: Main-NIC
+            state: up
+            ipv4:
+              enabled: true
+              dhcp: false
+              address:
+              - ip: "{inventory-ip}"
+                prefix-length: 24
+            ipv6:
+              enabled: false
+          - name: enp8s0
+            type: ethernet
+            description: Secondary-NIC
+            state: up
+            ipv4:
+              enabled: true
+              dhcp: false
+              address:
+              - ip: "{secondary-ip}"
+                prefix-length: 24
+            ipv6:
+              enabled: false

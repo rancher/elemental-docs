@@ -7,7 +7,7 @@ title: ''
   <link rel="canonical" href="https://elemental.docs.rancher.com/smbios"/>
 </head>
 
-import Registration from "!!raw-loader!@site/examples/quickstart/registration.yaml"
+import Registration from "!!raw-loader!./examples/quickstart/registration.yaml"
 
 ## Introduction
 

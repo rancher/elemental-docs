@@ -7,9 +7,9 @@ title: ''
   <link rel="canonical" href="https://elemental.docs.rancher.com/channels"/>
 </head>
 
-import MangedOSVersionChannelJson from "!!raw-loader!@site/examples/upgrade/managed-os-version-channel-json.yaml"
-import ManagedOSVersionChannelCustom from "!!raw-loader!@site/examples/upgrade/managed-os-version-channel-custom.yaml"
-import Versions from "../examples/upgrade/versions.raw!=!raw-loader!@site/examples/upgrade/versions.json"
+import MangedOSVersionChannelJson from "!!raw-loader!./examples/upgrade/managed-os-version-channel-json.yaml"
+import ManagedOSVersionChannelCustom from "!!raw-loader!./examples/upgrade/managed-os-version-channel-custom.yaml"
+import Versions from "../examples/upgrade/versions.raw!=!raw-loader!./examples/upgrade/versions.json"
 
 ## Channels
 

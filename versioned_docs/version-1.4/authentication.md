@@ -7,9 +7,9 @@ title: ''
   <link rel="canonical" href="https://elemental.docs.rancher.com/authentication"/>
 </head>
 
-import RegistrationEmulateTpm from "!!raw-loader!@site/examples/authentication/registration-emulate-tpm.yaml"
-import RegistrationMac from "!!raw-loader!@site/examples/authentication/registration-mac.yaml"
-import RegistrationSysUUID from "!!raw-loader!@site/examples/authentication/registration-sys-uuid.yaml"
+import RegistrationEmulateTpm from "!!raw-loader!./examples/authentication/registration-emulate-tpm.yaml"
+import RegistrationMac from "!!raw-loader!./examples/authentication/registration-mac.yaml"
+import RegistrationSysUUID from "!!raw-loader!./examples/authentication/registration-sys-uuid.yaml"
 
 # Authentication
 

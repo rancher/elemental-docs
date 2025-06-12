@@ -53,7 +53,7 @@ registering host will be successful while the others will fail: the `MachineInve
 unique.
 :::
 
-import Registration from "!!raw-loader!@site/examples/quickstart/registration-hardware-dhcphostname.yaml"
+import Registration from "!!raw-loader!./examples/quickstart/registration-hardware-dhcphostname.yaml"
 
 ### Keep the hostname assigned from DHCP
 In order to keep the hostname assigned from the DHCP server before the host registers to the operator,

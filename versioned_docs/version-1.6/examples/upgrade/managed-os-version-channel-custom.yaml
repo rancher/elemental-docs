@@ -1,0 +1,9 @@
+apiVersion: elemental.cattle.io/v1beta1
+kind: ManagedOSVersionChannel
+metadata:
+  name: elemental-channel
+  namespace: fleet-default
+spec:
+  options:
+    image: registry.suse.com/rancher/elemental-channel:latest
+  type: custom

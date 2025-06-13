@@ -7,7 +7,7 @@ title: ''
   <link rel="canonical" href="https://elemental.docs.rancher.com/tpm"/>
 </head>
 
-import RegistrationTpm from "!!raw-loader!@site/examples/quickstart/registration-tpm.yaml"
+import RegistrationTpm from "!!raw-loader!./examples/quickstart/registration-tpm.yaml"
 
 # Trusted Platform Module 2.0 (TPM)
 

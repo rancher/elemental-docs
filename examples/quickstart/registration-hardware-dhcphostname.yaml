@@ -4,7 +4,7 @@ metadata:
   name: my-nodes
   namespace: fleet-default
 spec:
-  machineName: "${System Data/Runtime/Hostname}"
+  machineName: "${Runtime/Hostname}"
   config:
     cloud-config:
       users:

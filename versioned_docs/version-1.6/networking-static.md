@@ -7,7 +7,7 @@ title: ''
   <link rel="canonical" href="https://elemental.docs.rancher.com/networking"/>
 </head>
 
-import YipNmcStaticConfig from "!!raw-loader!@site/examples/network/yip-nmc-static-config.yaml"
+import YipNmcStaticConfig from "!!raw-loader!./examples/network/yip-nmc-static-config.yaml"
 
 ## Static Network with nm-configurator
 

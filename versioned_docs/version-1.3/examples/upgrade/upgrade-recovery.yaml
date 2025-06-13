@@ -1,0 +1,18 @@
+apiVersion: elemental.cattle.io/v1beta1
+kind: ManagedOSImage
+metadata:
+  name: my-upgrade-recovery
+  namespace: fleet-default
+spec:
+  # Set to the new Elemental version you would like to upgrade to
+  osImage: "registry.suse.com/suse/sle-micro/5.5:latest"
+  clusterTargets:
+    - clusterName: my-cluster
+  upgradeContainer:
+    envs:
+      # Use UPGRADE_RECOVERY_ONLY to upgrade the recovery partition only. (This has the same effect as FORCE="true")
+      - name: UPGRADE_RECOVERY_ONLY
+        value: "false"
+      # Use UPGRADE_RECOVERY to upgrade both system and recovery partitions.
+      - name: UPGRADE_RECOVERY
+        value: "true"

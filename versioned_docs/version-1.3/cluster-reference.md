@@ -7,7 +7,7 @@ title: ''
   <link rel="canonical" href="https://elemental.docs.rancher.com/cluster-reference"/>
 </head>
 
-import Machinepools from "!!raw-loader!@site/examples/clusters/clusters-several-machinepools.yml"
+import Machinepools from "!!raw-loader!./examples/clusters/clusters-several-machinepools.yml"
 
 # Cluster reference
 

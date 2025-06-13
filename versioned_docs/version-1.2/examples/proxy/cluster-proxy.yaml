@@ -1,0 +1,33 @@
+kind: Cluster
+apiVersion: provisioning.cattle.io/v1
+metadata:
+  name: my-cluster
+  namespace: fleet-default
+spec:
+  agentEnvVars:
+  - name: HTTP_PROXY
+    value: http://<MY_PROXY>:<MY_PORT>
+  - name: HTTPS_PROXY
+    value: https://<MY_PROXY>:<MY_PORT>
+  - name: NO_PROXY
+    value: localhost,127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.svc,.cluster.local
+  rkeConfig:
+    machineGlobalConfig:
+      etcd-expose-metrics: false
+      profile: null
+    machinePools:
+      - controlPlaneRole: true
+        etcdRole: true
+        machineConfigRef:
+          apiVersion: elemental.cattle.io/v1beta1
+          kind: MachineInventorySelectorTemplate
+          name: my-machine-selector
+        name: pool1
+        quantity: 1
+        unhealthyNodeTimeout: 0s
+        workerRole: true
+    machineSelectorConfig:
+      - config:
+          protect-kernel-defaults: false
+    registries: {}
+  kubernetesVersion: v1.24.8+k3s1

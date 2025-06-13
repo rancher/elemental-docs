@@ -7,8 +7,8 @@ title: ''
   <link rel="canonical" href="https://elemental.docs.rancher.com/rancher-vmware"/>
 </head>
 
-import Registration from "!!raw-loader!@site/examples/quickstart/registration.yaml"
-import SeedImage from "!!raw-loader!@site/examples/quickstart/seedimage.yaml"
+import Registration from "!!raw-loader!./examples/quickstart/registration.yaml"
+import SeedImage from "!!raw-loader!./examples/quickstart/seedimage.yaml"
 
 # How to use Elemental with Rancher and VMware
 

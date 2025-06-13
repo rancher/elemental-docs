@@ -7,11 +7,11 @@ title: ''
   <link rel="canonical" href="https://elemental.docs.rancher.com/upgrade"/>
 </head>
 
-import ClusterTarget from "!!raw-loader!@site/examples/upgrade/upgrade-cluster-target.yaml"
-import NodeSelector from "!!raw-loader!@site/examples/upgrade/upgrade-node-selector.yaml"
-import UpgradeForce from "!!raw-loader!@site/examples/upgrade/upgrade-force.yaml"
-import UpgradeRecovery from "!!raw-loader!@site/examples/upgrade/upgrade-recovery.yaml"
-import ManagedOSVersion from "!!raw-loader!@site/examples/upgrade/upgrade-managedos-version.yaml"
+import ClusterTarget from "!!raw-loader!./examples/upgrade/upgrade-cluster-target.yaml"
+import NodeSelector from "!!raw-loader!./examples/upgrade/upgrade-node-selector.yaml"
+import UpgradeForce from "!!raw-loader!./examples/upgrade/upgrade-force.yaml"
+import UpgradeRecovery from "!!raw-loader!./examples/upgrade/upgrade-recovery.yaml"
+import ManagedOSVersion from "!!raw-loader!./examples/upgrade/upgrade-managedos-version.yaml"
 
 # Upgrade
 

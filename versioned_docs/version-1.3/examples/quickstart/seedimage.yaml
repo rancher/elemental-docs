@@ -1,0 +1,12 @@
+apiVersion: elemental.cattle.io/v1beta1
+kind: SeedImage
+metadata:
+  name: fire-img
+  namespace: fleet-default
+spec:
+  baseImage: registry.suse.com/suse/sle-micro-iso/5.5:2.0.2
+  registrationRef:
+    apiVersion: elemental.cattle.io/v1beta1
+    kind: MachineRegistration
+    name: fire-nodes
+    namespace: fleet-default

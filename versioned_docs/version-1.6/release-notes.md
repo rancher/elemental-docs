@@ -66,6 +66,20 @@ helm upgrade --install -n cattle-elemental-system --create-namespace \
 
 ## Known issues
 
+### ManagedOSVersion of type ISO may report a wrong version number
+
+The `ManagedOSVersions` used for OS installation and upgrades come from the OS Channel (`ManagedOSVersionChannel`)
+shipped with the Elemental Operator. The Channel contains two *types* of `ManagedOSVersions`: `container` and `iso`,
+where the former is used for OS upgrades and the latter for new installations.
+The `iso` types are sometimes labelled with a OS version lower than the actual one. This can be easily spotted by
+checking if the latest version of the available `ManagedOSVersions` of type `container` lacks a matching version of a
+`ManagedOSVersion` of type `iso`.
+
+Example: the latest OS version actually present in the `registry.suse.com/rancher/elemental-channel/sl-micro:6.1-baremetal`
+OS channel is `v2.2.0-4.4`. The ManagedOSVersion of type `container` is correctly labelled `v2.2.0-4.4`, while the latest
+version of the ManagedOSVersion of type `iso` is `v2.2.0-4.3`: the `iso` type contains instead the OS version `v2.2.0-4.4`,
+as would result by checking the `/etc/os-release` file of the installed machine.
+
 ### Predictable Network Interface Names
 
 The SLE Micro OS images with versions v2.1.1 and v2.1.2 (released in the default

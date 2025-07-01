@@ -97,9 +97,6 @@ the preferred option is to build a [derivative image](custom-images.md) and not 
 Note installation hooks are not applied as part of the [MachineRegistration.config.cloud-config](machineregistration-reference.md#configcloud-config).
 In order to provide installation hooks they can be included as part of the [SeedImage.cloud-config](seedimage-reference.md#seedimagespec-reference),
 as they need to be present in the installation media.
-The only exception is `after-install-chroot` which can be provided as part of a
-[MachineRegistration.config.cloud-config](machineregistration-reference.md#configcloud-config) because the hook runs
-in the deployed image chroot and by that time cloud-config is already installed into the system.
 :::
 
 ## Configuration syntax
@@ -132,8 +129,8 @@ stages:
     - /tmp/script.sh
 ```
 
-In the above example there are two stages: `initramfs` and `boot`.  
-The `initramfs` stage initializes a sample user.  
+In the above example there are two stages: `initramfs` and `boot`.
+The `initramfs` stage initializes a sample user.
 The `boot` stage includes two steps, one to create an executable script file and a second one
 that actually runs the script.
 
@@ -143,7 +140,7 @@ results into running first `network.before` stages found in config files and the
 See the full reference of applicable keys in steps documented in
 [yip project](https://github.com/rancher/yip?tab=readme-ov-file#configuration-reference) itself.
 
-Below is an example of the above configuration embedded in a MachineRegistration resource.  
+Below is an example of the above configuration embedded in a MachineRegistration resource.
 
 <details>
   <summary>MachineRegistration example</summary>

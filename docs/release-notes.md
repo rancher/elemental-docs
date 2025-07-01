@@ -66,6 +66,13 @@ helm upgrade --install -n cattle-elemental-system --create-namespace \
 
 ## Known issues
 
+### Install hooks not applicable in MachineRegistration resources
+
+The cloud-config defined in `MachineRegistrations` is not applying `after-install-chroot` stage. Since
+SL Micro 6.1 in order to apply `after-install-chroot` [yip stages](cloud-config-reference#elemental-client-cloud-config-hooks)
+they should be defined as part of the `SeedImage` cloud-config. This stage is executed at install time and
+so that it needs to be present in the installation media.
+
 ### ManagedOSVersion of type ISO may report a wrong version number
 
 The `ManagedOSVersions` used for OS installation and upgrades come from the OS Channel (`ManagedOSVersionChannel`)

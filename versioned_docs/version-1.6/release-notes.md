@@ -66,6 +66,13 @@ helm upgrade --install -n cattle-elemental-system --create-namespace \
 
 ## Known issues
 
+### Install hooks not applicable in MachineRegistration resources
+
+The cloud-config defined in `MachineRegistrations` is not applying `after-install-chroot` stage. Since
+SL Micro 6.1 in order to apply `after-install-chroot` [yip stages](cloud-config-reference#elemental-client-cloud-config-hooks)
+they should be defined as part of the `SeedImage` cloud-config. This stage is executed at install time and
+so that it needs to be present in the installation media.
+
 ### ManagedOSVersion of type ISO may report a wrong version number
 
 The `ManagedOSVersions` used for OS installation and upgrades come from the OS Channel (`ManagedOSVersionChannel`)
@@ -99,7 +106,7 @@ grub2-editenv /oem/grubenv set extra_cmdline=net.ifnames=0
 :::warning
 The adoption of the predictable network interface names feature was not a planned one:
 it will be reverted in the next SLE Micro OS images starting from version v2.1.3.
-These OS images will include the `net.ifnames=0` kernel command line argument by default.  
+These OS images will include the `net.ifnames=0` kernel command line argument by default.
 The v2.1.3 OS images will be released via the default Elemental 1.6 channel.
 :::
 
@@ -112,5 +119,5 @@ key or add a new user to the system.
 
 ### Kernel Panic on hypervisors
 
-OS Images based on SL Micro 6.0 can fail to boot with a kernel panic on virtual machines using an unsupported CPU type.  
+OS Images based on SL Micro 6.0 can fail to boot with a kernel panic on virtual machines using an unsupported CPU type.
 The `x86-64-v2` instruction set is required. For best compatibility CPU host passthrough is recommended.

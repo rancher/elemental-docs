@@ -12,12 +12,12 @@ Subset of SMBIOS System Information data (type 1).
 For more information on SMBIOS see the
 [SMSBIOS specification](https://www.dmtf.org/sites/default/files/standards/documents/DSP0134_3.7.1.pdf).
 
-| Variable                  | Description               |
-| ------------------------- | ------------------------- |
-| `${Product/Family}`       | System Family             |
-| `${Product/Name}`         | Product Name              |
-| `${Product/SKU}`          | System SKU Number         |
-| `${Product/SerialNumber}` | System serial number      |
-| `${Product/UUID}`         | System UUID               |
-| `${Product/Vendor}`       | System vendor             |
-| `${Product/Version}`      | System version            |
+| Variable                  | Description               | from  |
+| ------------------------- | ------------------------- | ----- |
+| `${Product/Family}`       | System Family             | 1.7.0 |
+| `${Product/Name}`         | Product Name              | 1.7.0 |
+| `${Product/SKU}`          | System SKU Number         | 1.7.0 |
+| `${Product/SerialNumber}` | System serial number      | 1.7.0 |
+| `${Product/UUID}`         | System UUID               | 1.7.0 |
+| `${Product/Vendor}`       | System vendor             | 1.7.0 |
+| `${Product/Version}`      | System version            | 1.7.0 |

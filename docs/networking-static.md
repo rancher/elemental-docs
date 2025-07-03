@@ -9,6 +9,11 @@ title: ''
 
 import YipNmcStaticConfig from "!!raw-loader!@site/examples/network/yip-nmc-static-config.yaml"
 
+:::warning warning
+Declarative Networking is in **technology preview** state with limited support.  
+As such it is not recommended for production environments.
+:::
+
 ## Static Network with nm-configurator
 
 The `nm-configurator` [per node configuration](https://github.com/suse-edge/nm-configurator?tab=readme-ov-file#per-node-configurations) can be used to statically assign IP addresses to individual machines, based on the NIC's MAC addresses.  

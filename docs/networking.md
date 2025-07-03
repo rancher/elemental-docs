@@ -13,6 +13,11 @@ import RegistrationWithNetworkNmstate from "!!raw-loader!@site/examples/network/
 import RegistrationWithNetworkNmconnections from "!!raw-loader!@site/examples/network/machineregistration-nmconnections.yaml"
 import YipNmcStaticConfig from "!!raw-loader!@site/examples/network/yip-nmc-static-config.yaml"
 
+:::warning warning
+Declarative Networking is in **technology preview** state with limited support.  
+As such it is not recommended for production environments.
+:::
+
 ## Network configuration with Elemental
 
 The [MachineRegistration](machineregistration-reference) supports Declarative Networking and integration with [CAPI IPAM Providers](https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20220125-ipam-integration.md#ipam-provider).  

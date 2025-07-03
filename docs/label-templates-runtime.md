@@ -7,6 +7,6 @@ title: ''
 
 Runtime template variables collect information about the system configuration.
 
-| Variable              | Description      |
-| --------------------- | ---------------- |
-| `${Runtime/Hostname}` | System hostname  |
+| Variable              | Description      | from  |
+| --------------------- | ---------------- | ----- |
+| `${Runtime/Hostname}` | System hostname  | 1.7.0 |

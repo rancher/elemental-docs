@@ -26,16 +26,16 @@ So, the three cases in which a label template with a Random variable is rendered
 or its value has been cleared out
 :::
 
-| Variable                                 | Description                                                           |
-| ---------------------------------------- | --------------------------------------------------------------------- |
-| `${Random/UUID}`                         | random UUID (e.g., fd95324a-c26b-4e28-8727-1dcec293a0ec)              |
-| `${Random/Hex/[1-32]}`                   | random hexadecimal string of the specified length (min 1, max 32)     |
-| `${Random/Int/[MAXINT]`                  | random integer (min 0, max MAXINT-1)                                  |
+| Variable                 | Description                                                        | from  |
+| ------------------------ | ------------------------------------------------------------------ | ----- |
+| `${Random/UUID}`         | random UUID (e.g., fd95324a-c26b-4e28-8727-1dcec293a0ec)           | 1.7.0 |
+| `${Random/Hex/[1-32]}`   | random hexadecimal string of the specified length (min 1, max 32)  | 1.7.0 |
+| `${Random/Int/[MAXINT]`  | random integer (min 0, max MAXINT-1)                               | 1.7.0 |
 
 
 :::note Rendering Examples
-| template value         | rendered value example               |
-|------------------------|--------------------------------------|
+| template value        | rendered value example               |
+|-----------------------|--------------------------------------|
 | `${Random/UUID}`      | fd95324a-c26b-4e28-8727-1dcec293a0ec |
 | `${Random/Hex/12}`    | acd231f222b8                         |
 | `${Random/Int/10000}` | 9432                                 |

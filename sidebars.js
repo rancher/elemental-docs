@@ -200,7 +200,12 @@ const sidebars = {
           "type": "doc",
           "label": "Declarative Networking",
           "id": "troubleshooting-network",
-        }
+        },
+        {
+          "type": "doc",
+          "label": "Label Templates",
+          "id": "troubleshooting-label-templates",
+        },
       ],
     },
     "release-notes",

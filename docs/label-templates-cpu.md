@@ -15,20 +15,20 @@ To reference the first processor the processor number (_`<Number>`_) can be omit
 `${CPU/Processor/0/Model}`).
 
 
-| Variable             | Description           |
-| -------------------- | --------------------- |
-| `${CPU/Processor/Capabilities}`| Comma separated list of processor capabilities |
-| `${CPU/Processor/ID}` | Processor ID |
-| `${CPU/Processor/Model}`| Processor model |
-| `${CPU/Processor/NumCores}`| Number of cores |
-| `${CPU/Processor/NumThreads}`| Number of threads |
-| `${CPU/Processor/Vendor}`| Processor vendor |
-| `${CPU/Processor/_<Number>_/Capabilities}` | Comma separated list of processor _number_ | 
-| `${CPU/Processor/_<Number>_/ID}`| Processor _number_ ID |
-| `${CPU/Processor/_<Number>_/Model}`| Processor _number_ model |
-| `${CPU/Processor/_<Number>_/NumCores}`| Number of cores of processor _number_ |
-| `${CPU/Processor/_<Number>_/NumThreads}`| Number of threads of processor _number_ |
-| `${CPU/Processor/_<Number>_/Vendor}`| Processor _number_ vendor |
-| `${CPU/TotalCores}`| Total number of cores in the system |
-| `${CPU/TotalProcessors}`| Number of processors in the system |
-| `${CPU/TotalThreads}`| Total number of threads in the system |
+| Variable                                   | Description                                    | from  |
+| ------------------------------------------ | ---------------------------------------------- | ----- |
+| `${CPU/Processor/Capabilities}`            | Comma separated list of processor capabilities | 1.7.0 |
+| `${CPU/Processor/ID}`                      | Processor ID                                   | 1.7.0 |
+| `${CPU/Processor/Model}`                   | Processor model                                | 1.7.0 |
+| `${CPU/Processor/NumCores}`                | Number of cores                                | 1.7.0 |
+| `${CPU/Processor/NumThreads}`              | Number of threads                              | 1.7.0 | 
+| `${CPU/Processor/Vendor}`                  | Processor vendor                               | 1.7.0 |
+| `${CPU/Processor/_<Number>_/Capabilities}` | Comma separated list of processor _number_     | 1.7.0 |
+| `${CPU/Processor/_<Number>_/ID}`           | Processor _number_ ID                          | 1.7.0 |
+| `${CPU/Processor/_<Number>_/Model}`        | Processor _number_ model                       | 1.7.0 |
+| `${CPU/Processor/_<Number>_/NumCores}`     | Number of cores of processor _number_          | 1.7.0 |
+| `${CPU/Processor/_<Number>_/NumThreads}`   | Number of threads of processor _number_        | 1.7.0 |
+| `${CPU/Processor/_<Number>_/Vendor}`       | Processor _number_ vendor                      | 1.7.0 |
+| `${CPU/TotalCores}`                        | Total number of cores in the system            | 1.7.0 |
+| `${CPU/TotalProcessors}`                   | Number of processors in the system             | 1.7.0 |
+| `${CPU/TotalThreads}`                      | Total number of threads in the system          | 1.7.0 |

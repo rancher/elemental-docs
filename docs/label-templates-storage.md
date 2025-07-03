@@ -17,21 +17,21 @@ both the `${Storage/Disks/2/Model}` and the `${Storage/Disks/sda/Model}` variabl
 The tracked disks include also optical disk drives and removable devices (e.g., USB sticks).
 :::
 
-| Variable                                             | Description                           |
-| ---------------------------------------------------- | ------------------------------------- |
-| `${Storage/Disks/_<Number>_/DriveType}`              | Disk type                             |
-| `${Storage/Disks/_<Number>_/Model}`                  | Disk model                            |
-| `${Storage/Disks/_<Number>_/Name}`                   | Device name                           |
-| `${Storage/Disks/_<Number>_/Removable}`              | is removable media?                   |
-| `${Storage/Disks/_<Number>_/Size}`                   | Size ( bytes)                         |
-| `${Storage/Disks/_<Number>_/StorageController}`      | Controller type                       |
-| `${Storage/Disks/_<DeviceName>_/DriveType}`          | Disk type                             |
-| `${Storage/Disks/_<DeviceName>_/Model}`              | Disk model                            |
-| `${Storage/Disks/_<DeviceName>_/Name}`               | Device name                           |
-| `${Storage/Disks/_<DeviceName>_/Removable}`          | is removable media?                   |
-| `${Storage/Disks/_<DeviceName>_/Size}`               | Size ( bytes)                         |
-| `${Storage/Disks/_<DeviceName>_/StorageController}`  | Controller type                       |
-| `${Storage/TotalDisks}`                              | Number of disks present in the system |
+| Variable                                             | Description                           | from  |
+| ---------------------------------------------------- | ------------------------------------- | ----- |
+| `${Storage/Disks/_<Number>_/DriveType}`              | Disk type                             | 1.7.0 |
+| `${Storage/Disks/_<Number>_/Model}`                  | Disk model                            | 1.7.0 |
+| `${Storage/Disks/_<Number>_/Name}`                   | Device name                           | 1.7.0 |
+| `${Storage/Disks/_<Number>_/Removable}`              | is removable media?                   | 1.7.0 |
+| `${Storage/Disks/_<Number>_/Size}`                   | Size ( bytes)                         | 1.7.0 |
+| `${Storage/Disks/_<Number>_/StorageController}`      | Controller type                       | 1.7.0 |
+| `${Storage/Disks/_<DeviceName>_/DriveType}`          | Disk type                             | 1.7.0 |
+| `${Storage/Disks/_<DeviceName>_/Model}`              | Disk model                            | 1.7.0 |
+| `${Storage/Disks/_<DeviceName>_/Name}`               | Device name                           | 1.7.0 |
+| `${Storage/Disks/_<DeviceName>_/Removable}`          | is removable media?                   | 1.7.0 |
+| `${Storage/Disks/_<DeviceName>_/Size}`               | Size ( bytes)                         | 1.7.0 |
+| `${Storage/Disks/_<DeviceName>_/StorageController}`  | Controller type                       | 1.7.0 |
+| `${Storage/TotalDisks}`                              | Number of disks present in the system | 1.7.0 |
 
 
 ### Disks' DriveTypes

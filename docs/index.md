@@ -18,7 +18,7 @@ ISO or disk images.
 
 <ButtonGroup size="small">
   <Button variant="contained" href="release-notes">Latest Release:</Button>
-  <Button variant="outlined" href="release-notes">v1.6.5</Button>
+  <Button variant="outlined" href="release-notes">v1.7.3</Button>
 </ButtonGroup>
 
 ## Welcome to Elemental

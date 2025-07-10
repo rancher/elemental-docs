@@ -17,8 +17,8 @@ Manage your OS appliance for Kubernetes nodes as simple OCI images and turn them
 ISO or disk images.
 
 <ButtonGroup size="small">
-  <Button variant="contained" href="release-notes">Latest Release:</Button>
-  <Button variant="outlined" href="release-notes">v1.7.3</Button>
+  <Button variant="contained" href="https://elemental.docs.rancher.com/release-notes">Latest Release:</Button>
+  <Button variant="outlined" href="https://elemental.docs.rancher.com/release-notes">v1.7.3</Button>
 </ButtonGroup>
 
 ## Welcome to Elemental

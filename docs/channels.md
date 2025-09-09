@@ -46,10 +46,27 @@ Elemental maintains a list of channels that can be used out of the box.
 
 | Base OS          | BaseOS Version | Flavor     | Channel URI                                                        |
 |------------------|----------------|------------|--------------------------------------------------------------------|
-| SL Micro         | 6.0            | Base       | registry.suse.com/rancher/elemental-channel/sl-micro:6.0-base      |
-| SL Micro         | 6.0            | Bare-metal | registry.suse.com/rancher/elemental-channel/sl-micro:6.0-baremetal |
-| SL Micro         | 6.0            | KVM        | registry.suse.com/rancher/elemental-channel/sl-micro:6.0-kvm       |
-| SL Micro         | 6.0            | RT         | registry.suse.com/rancher/elemental-channel/sl-micro:6.0-rt        |
+| SL Micro         | 6.1            | Base       | registry.suse.com/rancher/elemental-channel/sl-micro:6.1-base      |
+| SL Micro         | 6.1            | Bare-metal | registry.suse.com/rancher/elemental-channel/sl-micro:6.1-baremetal |
+| SL Micro         | 6.1            | KVM        | registry.suse.com/rancher/elemental-channel/sl-micro:6.1-kvm       |
+| SL Micro         | 6.1            | RT         | registry.suse.com/rancher/elemental-channel/sl-micro:6.1-rt        |
+
+#### Finding Elemental channels
+
+Using crane we can find the channels maintained:
+
+```
+$ crane ls -O registry.suse.com/rancher/elemental-channel/sl-micro
+6.0-baremetal
+6.0-base
+6.0-kvm
+6.0-rt
+6.1-baremetal
+6.1-base
+6.1-kvm
+6.1-rt
+<snip>
+```
 
 ### Flavors
 

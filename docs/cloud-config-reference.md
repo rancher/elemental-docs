@@ -224,7 +224,7 @@ runcmd:
 - echo hello world
 
 # Hostname
-hostame: myserver
+hostname: myserver
 
 # Write arbitrary files
 write_files:

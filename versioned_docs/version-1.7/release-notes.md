@@ -66,6 +66,10 @@ helm upgrade --install -n cattle-elemental-system --create-namespace \
 
 ## Known issues
 
+### Selinux in permissive mode
+
+Setting selinux in enforcing mode is not supported as of today with Elemental.
+
 ### Install hooks not applicable in MachineRegistration resources
 
 The cloud-config defined in `MachineRegistrations` is not applying `after-install-chroot` stage. Since

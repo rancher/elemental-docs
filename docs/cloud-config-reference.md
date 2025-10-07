@@ -191,6 +191,13 @@ spec:
 
 </details>
 
+## Synchronization
+
+During execution of a stage all files are loaded and a graph is computed and then executed. This means that steps in the
+same stage can be expected to be executed in any order (regardless of filenames).
+
+In order to synchronize execution the user can use the post/pre stages or refer to the `after` keyword in the [yip syntax](https://github.com/rancher/yip/blob/ee4051d9ec2782989344f813bc6a0975bbd8f3fe/pkg/executor/default_test.go#L222)
+
 ## Compatibility with Cloud Init format
 
 A subset of the official [cloud-config spec](http://cloudinit.readthedocs.org/en/latest/topics/format.html#cloud-config-data) is implemented by yip.

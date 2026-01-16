@@ -17,9 +17,9 @@ Here's the different components, their latest version and a link to the respecti
 
 | Name                                                                 | Version | Release Notes                                                                |
 |----------------------------------------------------------------------|---------|------------------------------------------------------------------------------|
-| [Elemental Operator](https://github.com/rancher/elemental-operator/) | v1.7.3  | [Link](https://github.com/rancher/elemental-operator/releases/tag/v1.7.3)    |
-| [Elemental Toolkit](https://github.com/rancher/elemental-toolkit/)   | v2.2.2  | [Link](https://github.com/rancher/elemental-toolkit/releases/tag/v2.2.2)     |
-| [Elemental Linux](https://github.com/rancher/elemental)              | v2.2.0  | [Link](https://github.com/rancher/elemental/releases/tag/v2.2.0)             |
+| [Elemental Operator](https://github.com/rancher/elemental-operator/) | v1.8.0  | [Link](https://github.com/rancher/elemental-operator/releases/tag/v1.8.0)    |
+| [Elemental Toolkit](https://github.com/rancher/elemental-toolkit/)   | v2.3.2  | [Link](https://github.com/rancher/elemental-toolkit/releases/tag/v2.3.2)     |
+| [Elemental Linux](https://github.com/rancher/elemental)              | v2.3.0  | [Link](https://github.com/rancher/elemental/releases/tag/v2.3.0)             |
 | [Elemental UI](https://github.com/rancher/elemental-ui)              | v3.0.1  | [Link](https://github.com/rancher/elemental-ui/releases/tag/elemental-3.0.1) |
 
 :::note Information on docs versioning
@@ -91,29 +91,6 @@ OS channel is `v2.2.0-4.4`. The ManagedOSVersion of type `container` is correctl
 version of the ManagedOSVersion of type `iso` is `v2.2.0-4.3`: the `iso` type contains instead the OS version `v2.2.0-4.4`,
 as would result by checking the `/etc/os-release` file of the installed machine.
 
-### Predictable Network Interface Names
-
-The SLE Micro OS images with versions v2.1.1 and v2.1.2 (released in the default
-[ManagedOSVersionChannel](managedosversionchannel-reference))
-adopt predictable network interface names by default.
-
-This is a change from SLE Micro OS images previously released, so you should expect your
-Elemental hosts to switch the network interface names from the `ethX` template to the `enpXsY` one.
-
-You can disable the predictable network interface names by passing the `net.ifnames=0` argument
-to the kernel command line. To make it permanent:
-
-```sh
-grub2-editenv /oem/grubenv set extra_cmdline=net.ifnames=0
-```
-
-:::warning
-The adoption of the predictable network interface names feature was not a planned one:
-it will be reverted in the next SLE Micro OS images starting from version v2.1.3.
-These OS images will include the `net.ifnames=0` kernel command line argument by default.  
-The v2.1.3 OS images will be released via the default Elemental 1.6 channel.
-:::
-
 ### SSH root access
 
 The SLE Micro OS images released in the current Elemental version (through the default
@@ -123,5 +100,5 @@ key or add a new user to the system.
 
 ### Kernel Panic on hypervisors
 
-OS Images based on SL Micro 6.0 can fail to boot with a kernel panic on virtual machines using an unsupported CPU type.  
+OS Images based on SL Micro 6.0 can fail to boot with a kernel panic on virtual machines using an unsupported CPU type.
 The `x86-64-v2` instruction set is required. For best compatibility CPU host passthrough is recommended.

@@ -206,6 +206,11 @@ const sidebars = {
           "label": "Label Templates",
           "id": "troubleshooting-label-templates",
         },
+        {
+          "type": "doc",
+          "label": "Verification",
+          "id": "troubleshooting-verification",
+        },
       ],
     },
     "release-notes",

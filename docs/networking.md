@@ -72,12 +72,12 @@ RUN curl -LO https://github.com/nmstate/nmstate/releases/download/v2.2.40/nmstat
 ### How to install the CAPI IPAM Provider
 
 The recommended way to install any CAPI Provider into Rancher is to use [Rancher Turtles](https://turtles.docs.rancher.com).  
-Rancher Turtles will allow the user to install and manage the lifecycle of any CAPI Provider.  
-To install it on your system please follow the [documentation](https://turtles.docs.rancher.com/getting-started/install-rancher-turtles/using_helm).  
+Since Rancher v2.13, Turtles and CAPI are installed by default.  
 
-Once Rancher Turtles is installed, installing an IPAM CAPI Provider, for example the [InCluster IPAM Provider](https://github.com/kubernetes-sigs/cluster-api-ipam-provider-in-cluster), can be accomplished applying the following resource:
+Installing an IPAM CAPI Provider, for example the [InCluster IPAM Provider](https://github.com/kubernetes-sigs/cluster-api-ipam-provider-in-cluster), can be accomplished applying the following resource:
 
 ```yaml
+apiVersion: turtles-capi.cattle.io/v1alpha1
 kind: CAPIProvider
 metadata:
   name: in-cluster
@@ -86,32 +86,9 @@ spec:
   name: in-cluster
   type: ipam
   fetchConfig:
-    url: "https://github.com/kubernetes-sigs/cluster-api-ipam-provider-in-cluster/releases"
-  version: v0.1.0
+    url: "https://github.com/kubernetes-sigs/cluster-api-ipam-provider-in-cluster/releases/v1.1.0-rc.1/ipam-components.yaml"
+  version: v1.1.0-rc.1
 ```
-
-#### Without Rancher Turtles
-
-An alternative option to install a CAPI IPAM Provider is to directly apply the manifest in the Rancher cluster.  
-Note that this solution may eventually lead to conflicts with the applied CRDs and resources, as they need to be applied and maintained manually.  
-
-1. The `ipaddresses.ipam.cluster.x-k8s.io` and `ipaddressclaims.ipam.cluster.x-k8s.io` CRDs must be installed on the Rancher management cluster:  
-
-    ```bash
-    kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/cluster-api/main/config/crd/bases/ipam.cluster.x-k8s.io_ipaddressclaims.yaml
-    kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/cluster-api/main/config/crd/bases/ipam.cluster.x-k8s.io_ipaddresses.yaml
-    ```
-
-    :::info info
-    These CRDs are expected to eventually be part of Rancher, not requiring manual installation.  
-    See: https://github.com/rancher/rancher/issues/46385
-    :::
-
-1. Install the [InCluster IPAM Provider](https://github.com/kubernetes-sigs/cluster-api-ipam-provider-in-cluster) from the released manifest:  
-
-    ```bash
-    kubectl apply -f https://github.com/kubernetes-sigs/cluster-api-ipam-provider-in-cluster/releases/download/v0.1.0/ipam-components.yaml
-    ```
 
 ### Configuring Network
 
@@ -184,7 +161,7 @@ The `IPAddressClaim` will follow the entire lifecycle of the `MachineInventory`,
 Each claim is named after the `MachineInventory` that uses it, as `$MachineInventoryName-$IPPoolRefKey`, for example:  
 
 ```yaml
-apiVersion: ipam.cluster.x-k8s.io/v1beta1
+apiVersion: ipam.cluster.x-k8s.io/v1beta2
 kind: IPAddressClaim
 metadata:
   finalizers:

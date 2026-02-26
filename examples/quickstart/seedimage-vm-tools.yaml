@@ -1,0 +1,21 @@
+apiVersion: elemental.cattle.io/v1beta1
+kind: SeedImage
+metadata:
+  name: fire-img
+  namespace: fleet-default
+spec:
+  baseImage: registry.suse.com/suse/sl-micro/6.0/baremetal-os-container:2.1.1-3.29
+  cloud-config:
+    write_files:
+      - content: |
+          name: "Enable vmtoolsd.service"
+          stages:
+            after-install-chroot:
+            - commands:
+              - systemctl enable vmtoolsd.service
+        path: /etc/elemental/config.d/install-hook.yaml
+  registrationRef:
+    apiVersion: elemental.cattle.io/v1beta1
+    kind: MachineRegistration
+    name: fire-nodes
+    namespace: fleet-default

@@ -66,6 +66,10 @@ helm upgrade --install -n cattle-elemental-system --create-namespace \
 
 ## Known issues
 
+### Rancher compatibility
+
+Any version prior to v1.9.x is not compatible with Rancher v2.14 and above.
+
 ### Selinux in permissive mode
 
 Setting selinux in enforcing mode is not supported as of today with Elemental.

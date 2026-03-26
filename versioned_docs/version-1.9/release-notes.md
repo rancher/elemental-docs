@@ -17,7 +17,7 @@ Here's the different components, their latest version and a link to the respecti
 
 | Name                                                                 | Version | Release Notes                                                                |
 |----------------------------------------------------------------------|---------|------------------------------------------------------------------------------|
-| [Elemental Operator](https://github.com/rancher/elemental-operator/) | v1.8.0  | [Link](https://github.com/rancher/elemental-operator/releases/tag/v1.8.0)    |
+| [Elemental Operator](https://github.com/rancher/elemental-operator/) | v1.9.1  | [Link](https://github.com/rancher/elemental-operator/releases/tag/v1.9.1)    |
 | [Elemental Toolkit](https://github.com/rancher/elemental-toolkit/)   | v2.3.2  | [Link](https://github.com/rancher/elemental-toolkit/releases/tag/v2.3.2)     |
 | [Elemental Linux](https://github.com/rancher/elemental)              | v2.3.0  | [Link](https://github.com/rancher/elemental/releases/tag/v2.3.0)             |
 | [Elemental UI](https://github.com/rancher/elemental-ui)              | v3.0.1  | [Link](https://github.com/rancher/elemental-ui/releases/tag/elemental-3.0.1) |
@@ -66,16 +66,14 @@ helm upgrade --install -n cattle-elemental-system --create-namespace \
 
 ## Known issues
 
+### Rancher compatibility
+
+Since version v1.9.x Elemental Operator must be paired with Rancher v2.14 or superior. Kubernetes provisioning
+is not functional otherwise, MachineInventory resorces do not succeed when attempting to join an Elemental cluster.
+
 ### Selinux in permissive mode
 
 Setting selinux in enforcing mode is not supported as of today with Elemental.
-
-### Install hooks not applicable in MachineRegistration resources
-
-The cloud-config defined in `MachineRegistrations` is not applying `after-install-chroot` stage. Since
-SL Micro 6.1 in order to apply `after-install-chroot` [yip stages](cloud-config-reference#elemental-client-cloud-config-hooks)
-they should be defined as part of the `SeedImage` cloud-config. This stage is executed at install time and
-so that it needs to be present in the installation media.
 
 ### ManagedOSVersion of type ISO may report a wrong version number
 

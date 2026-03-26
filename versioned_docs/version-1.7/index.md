@@ -18,7 +18,7 @@ ISO or disk images.
 
 <ButtonGroup size="small">
   <Button variant="contained" href="https://elemental.docs.rancher.com/release-notes">Latest Release:</Button>
-  <Button variant="outlined" href="https://elemental.docs.rancher.com/release-notes">v1.8.0</Button>
+  <Button variant="outlined" href="https://elemental.docs.rancher.com/release-notes">v1.9.1</Button>
 </ButtonGroup>
 
 ## Welcome to Elemental

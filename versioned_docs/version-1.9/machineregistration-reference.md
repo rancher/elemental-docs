@@ -320,3 +320,22 @@ Annotations that will be set to the `MachineInventory` that is created from this
   ```
 
 </details>
+
+#### token
+
+An optional static token used to generate a deterministic registration URL.
+
+<details>
+<summary>Example</summary>
+
+  ```yaml showLineNumbers
+  apiVersion: elemental.cattle.io/v1beta1
+  kind: MachineRegistration
+  metadata:
+    name: my-nodes
+    namespace: fleet-default
+  spec:
+    token: endpoint1
+  ```
+
+</details>

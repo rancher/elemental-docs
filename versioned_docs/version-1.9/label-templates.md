@@ -19,7 +19,7 @@ These label templates are converted to actual labels and annotations attached to
 [MachineInventory](machineinventory-reference) resource created during the
 [machine onboarding](architecture-machineonboarding) phase.
 
-The resulting labels and annotations have the same `key` of the label template.
+The resulting labels and annotations have the same `key` of the label template. Note that system-generated labels and annotations use the prefix defined in the `labelPrefix` field of the `MachineRegistration` (defaults to `elemental.cattle.io`).
 
 The associated `value` is generated:
 * **rendering the [`label template variables`](#label-template-variables)** (if present)

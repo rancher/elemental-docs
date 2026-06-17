@@ -1,0 +1,3 @@
+localMachineUUID: "${System Information/UUID}"
+localHostname: "${Runtime/Hostname}"
+localCluster: "fire"

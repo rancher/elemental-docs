@@ -162,7 +162,8 @@ const sidebars = {
         "removable-device-cloudconfig",
         "rancher-ip",
         "unmanaged-os",
-        "tpm"
+        "tpm",
+        "local-node-labels"
       ]
     },
     {

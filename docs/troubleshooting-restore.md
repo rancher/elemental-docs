@@ -17,7 +17,7 @@ When a restore is performed, do not restart the `rancher-system-agent` on elemen
 If you face this problem, please follow the procedure below.
 :::
 
-Before you initiate a restore, you need to copy `/var/lib/rancher/agent/rancher2_connection_info.json` from the elemental node to a place where you have access with Rancher UI.
+Before you initiate a restore, you need to copy `/var/lib/rancher/agent/rancher2_connection_info.json` from the elemental node to node where you have kubectl access to the Rancher upstream cluster. This is required in order to run the below script sucessfully.
 
 Once the file is copied, download the `rancher-agent-token-update.sh` script from the [Elemental repository](https://github.com/rancher/elemental):
 

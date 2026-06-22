@@ -57,7 +57,7 @@ import Registration from "!!raw-loader!@site/examples/quickstart/registration-ha
 ### Keep the hostname assigned from DHCP
 In order to keep the hostname assigned from the DHCP server before the host registers to the operator,
 the `MachineRegistration` [`machineName field`](machineregistration-reference.md#machinename) should be set
-to the `${System Data/Runtime/Hostname}` [Hardware Label](hardwarelabels.md).
+to the `${Runtime/Hostname}` [Hardware Label](hardwarelabels.md).
 
 This way Elemental will use the current hostname as the `MachineInventory` name during
 the registration phase, which will be later set as the static hostname of the host during the

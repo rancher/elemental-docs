@@ -20,6 +20,30 @@ There are two ways to reset Elemental machines to their original state or decomm
 
 ![Delete a single node to reset it](images/reset-single-node-deletion.png)
 
+:::warning
+With the default `reset-persistent: true` and `reset-oem: true`, this erases the machine's data, including its etcd data, and any local etcd snapshots owned by its `Machine` are removed with it.
+:::
+
+### Operations that reset a machine
+
+The operations listed below are examples that trigger a machine reset. Note that other infrastructure lifecycle events or operations not listed below may also result in a machine being reset.
+
+| Operation | Notes |
+|---|---|
+| Delete the cluster | All machines. |
+| Delete a node/`Machine` in the cluster | The removed machine is reset. |
+| Delete a `MachineInventory` | The `Machine` stays bound to the deleted inventory and is not replaced. The cluster stays unavailable until the stale `Machine` is deleted. |
+| Lower a machine pool's `quantity` | The removed machine is reset. |
+| Rename a machine pool | All machines of the pool are replaced at once, so all are reset. For an all-in-one pool the cluster ends up with no etcd data and no snapshots. |
+| `MachineHealthCheck` (`unhealthyNodeTimeout` set on a pool) | Nodes that stay `NotReady` longer than the timeout are deleted and reset. This also happens during an etcd snapshot restore, when the nodes are stopped on purpose. With `unhealthyNodeTimeout` unset, no `MachineHealthCheck` exists. |
+
+To keep machines and their data safe:
+
+- Leave `reset.enabled` off unless you want machines wiped when they are removed from a cluster.
+- Store etcd snapshots on S3. Local snapshots are deleted together with their `Machine`.
+- Remove the `resettable` annotation from the `MachineInventory` of machines that hold data you must keep (see [Enable machine reset](#enable-machine-reset)).
+- Set `unhealthyNodeTimeout` only when you accept that a node that is unreachable for that long is wiped.
+
 ### Reset workflow
 
 Once the related `MachineInventory` is flagged for deletion, a reset plan will be executed by the `elemental-system-agent` running on the machine.  
@@ -31,7 +55,9 @@ If the machine is still running, this plan will:
    This will fetch the remote `MachineRegistration` and apply the `spec.config.elemental.reset` options to reset the machine.  
    A new `MachineInventory` will be created and the `spec.config.cloud-config` defined in the `MachineRegistration` will be applied again.  
 
-Note that the `MachineRegistration` reference will **not** change, the machine will **not** be reinstalled, the `COS_PERSISTENT` and `COS_OEM` partition will be cleared by default if reset is `enabled`. For more information, you can consult the [Partition Table](installation#deployed-partition-table).  
+Note that the `MachineRegistration` reference will **not** change, the machine will **not** be reinstalled.
+When reset is enabled, the `COS_PERSISTENT` and `COS_OEM` partitions are cleared by default if `reset-persistent` and `reset-oem` are `enabled`, respectively.
+For more information, you can consult the [Partition Table](installation#deployed-partition-table) and the [MachineRegistration Reference](machineregistration-reference#configelementalreset).  
 
 Since the `cloud-config` is re-applied during the reset workflow, you can reset a machine to apply updates from the `MachineRegistration` definition, for example to rotate `users` credentials and authorized keys. It is strongly recommended to enable the `reset-oem` option, to avoid conflicts with previously configured cloud-configs.  
 
@@ -41,6 +67,8 @@ If you need to bind a machine to a different `MachineRegistration` and trigger a
 
 In order to allow machines to be reset automatically, the `spec.config.elemental.reset.enabled` flag of the `MachineRegistration` should be toggled.  
 This is off by default, but once activated, all newly created `MachineInventory` will inherit this setting automatically.  
+The setting is copied to the `MachineInventory` at registration. Changing or disabling it on the `MachineRegistration` later does **not** affect machines that are already registered: their inventories keep the `resettable` annotation and are still reset on deletion.
+To protect an already registered machine, remove the annotation from its `MachineInventory`.  
 For example:
 
 ```yaml

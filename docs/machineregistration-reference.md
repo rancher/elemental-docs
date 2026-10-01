@@ -218,6 +218,15 @@ Supports the following values:
 | poweroff          | bool   | false         | Shutdown the system after reset                                                                                   |
 | reboot            | bool   | true          | Reboot the system after reset                                                                                     |
 
+:::warning
+Formatting the `COS_PERSISTENT` partition destroys any data stored on the persistent folders.
+
+`enabled` is applied to a `MachineInventory` at registration; changing it later does not affect machines that are already registered. See [Operations that reset a machine](reset#operations-that-reset-a-machine).
+
+Check the [Partition Table](installation#deployed-partition-table) section for more information.
+:::
+
+
 <details>
 <summary>Example</summary>
 

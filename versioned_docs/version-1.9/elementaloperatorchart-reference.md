@@ -11,11 +11,11 @@ title: ''
 
 The <Vars name="elemental_operator_name" link="elemental_operator_url" /> is responsible for managing the Elemental versions and maintaining a machine inventory to assist with edge or bare metal installations.
 
-The associated chart bootstraps an elemental-operator deployment on the [Rancher Manager v2.6](https://rancher.com/docs/rancher/v2.6/) cluster using the [Helm](https://helm.sh) package manager.
+The associated chart bootstraps an elemental-operator deployment on the [Rancher Manager](https://ranchermanager.docs.rancher.com/) cluster using the [Helm](https://helm.sh) package manager.
 
 ## Prerequisites
 
-- Rancher Manager version v2.6
+- Rancher Manager version v2.9.0 or later
 - Helm client version v3.8.0+
 
 ## Get Helm chart info

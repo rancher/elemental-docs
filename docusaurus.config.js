@@ -124,11 +124,6 @@ const config = {
                 value: '<hr style="margin: 0.3rem 0;">',
               },
               {
-                label: 'Epinio',
-                to: "http://epinio.io",
-                className: 'navbar__icon navbar__epinio',
-              },
-              {
                 label: 'Fleet',
                 to: "http://fleet.rancher.io",
                 className: 'navbar__icon navbar__fleet',
